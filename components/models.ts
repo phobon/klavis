@@ -1,0 +1,1 @@
+export type ExtentType = "s" | "m" | "l" | "xl";
