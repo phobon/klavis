@@ -1,16 +1,33 @@
 import * as React from "react";
 import styled from "styled-components";
 import styledTs from "styled-components-ts";
-import { space, color, fontSize, fontWeight, SpaceProps, ColorProps, FontSizeProps, FontWeightProps } from "styled-system";
+import { 
+    space, 
+    color, 
+    fontSize, 
+    fontWeight,
+    textAlign,
+    lineHeight, 
+    SpaceProps, 
+    ColorProps, 
+    FontSizeProps, 
+    FontWeightProps,
+    TextAlignProps,
+    LineHeightProps
+} from "styled-system";
+
+export interface IHeadingProps {
+    placeholder?: string;
+}
 
 type HeadingProps = 
-    {
-        placeholder?: string
-    }
+    IHeadingProps
     & SpaceProps
     & ColorProps
     & FontSizeProps
-    & FontWeightProps;
+    & FontWeightProps
+    & TextAlignProps
+    & LineHeightProps;
 
 const defaults = {
     color: "grayscale.2",
@@ -25,6 +42,8 @@ const Heading1 = styledTs<HeadingProps>(styled.h1)`
     ${color}
     ${fontSize}
     ${fontWeight}
+    ${textAlign}
+    ${lineHeight}
 
     &::before {
         content: "${props => props.placeholder && !props.children ? props.placeholder : ""}";

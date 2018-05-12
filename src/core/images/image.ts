@@ -1,6 +1,17 @@
 import styled from "styled-components";
 import styledTs from "styled-components-ts";
-import { color, space, width, ColorProps, SpaceProps, WidthProps, borderRadius, BorderRadiusProps } from "styled-system";
+import { 
+    color, 
+    space, 
+    width, 
+    height,
+    borderRadius, 
+    ColorProps, 
+    SpaceProps, 
+    WidthProps,
+    HeightProps,
+    BorderRadiusProps
+} from "styled-system";
 
 interface IImageProps {
     fullWidth?: boolean;
@@ -13,15 +24,19 @@ type ImageProps =
     & ColorProps
     & SpaceProps
     & WidthProps
+    & HeightProps
     & BorderRadiusProps;
 
 const Image = styledTs<ImageProps>(styled.img)`
     ${color}
     ${space}
     ${width}
+    ${height}
+    ${borderRadius}
 
     width: ${props => props.fullWidth ? "100%" : width(props.width)};
     height: ${props => props.fullHeight ? "100%" : ""};
+    
     border-radius: ${props => props.round ? "100%" : borderRadius(props.borderRadius)};
 `;
 
