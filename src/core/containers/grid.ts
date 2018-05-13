@@ -72,7 +72,7 @@ export type GridProps =
     & GridAutoRowsProps
     & GridAutoColumnsProps
     & GridTemplateRowsProps
-    & GridTemplateColumnsProps
+    & GridTemplateColumnsProps;
 
 const Grid = styledTs<GridProps>(styled.div)`
     display: grid;
