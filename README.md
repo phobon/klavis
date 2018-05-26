@@ -1,2 +1,2 @@
-# mictlan
+# grimoire
 Design system
