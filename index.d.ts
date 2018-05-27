@@ -37,7 +37,7 @@ import {
     GridTemplateColumnsProps
 } from "styled-system";
 
-declare namespace Grimoire {
+declare module "grimoire" {
     type Component<P> = ComponentClass<P> | StatelessComponent<P>;
 
     type ThemeType = "light" | "dark";
@@ -132,10 +132,24 @@ declare namespace Grimoire {
 
     const Breadcrumb: StyledComponentClass<any, BaseTheme>;
     
+    type ButtonAppearanceType = "primary" | "secondary" | "warning" | "danger" | "success" | "subtle" | "link" | "inverse";
+    interface IButtonProps {
+        appearance?: ButtonAppearanceType;
+        isDisabled?: boolean;
+        isToggled?: boolean;
+    }
+    type ButtonProps = IButtonProps & SpaceProps & ColorProps;
     const Button: StyledComponentClass<any, BaseTheme>;
     const CircleButton: StyledComponentClass<any, BaseTheme>;
     const SquareButton: StyledComponentClass<any, BaseTheme>;
     
+    interface ICardProps {
+        subtle?: boolean;
+        accent?: string;
+    }
+    type CardProps = 
+        ICardProps
+        & BoxProps;
     const Card: StyledComponentClass<any, BaseTheme>;
 
     const Avatar: StyledComponentClass<any, BaseTheme>;
@@ -150,8 +164,4 @@ declare namespace Grimoire {
     const DatePicker: StyledComponentClass<any, BaseTheme>;
     const PageHeader: StyledComponentClass<any, BaseTheme>;
     const Badge: StyledComponentClass<any, BaseTheme>;
-}
-
-declare module "grimoire" {
-    export = Grimoire;
 }
