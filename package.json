@@ -1,4 +1,6 @@
 {
+  "name": "grimoire",
+  "version": "0.0.1",
   "types": "index.d.ts",
   "dependencies": {
     "@types/react": "^16.3.14",
