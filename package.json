@@ -1,7 +1,7 @@
 {
   "name": "grimoire",
   "version": "0.0.1",
-  "types": "index.d.ts",
+  "types": "src/index.d.ts",
   "scripts": {
     "type-check": "tsc",
     "build": "babel src/**/* --out-dir .out --extensions \".ts,.tsx\""
@@ -27,7 +27,7 @@
   "peerDependencies": {
     "react": "^16.x",
     "react-dom": "^16.x",
-    "styled-component": "^3.x",
+    "styled-components": "^3.x",
     "styled-system": "^2.x",
     "typescript": "^2.9.x"
   }
