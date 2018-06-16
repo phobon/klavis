@@ -3,8 +3,10 @@ import styledTs from "styled-components-ts";
 import * as React from "react";
 
 import { ILoadingProps } from "./models";
+import { IDefaultTheme } from "../models";
 
-export default styledTs<ILoadingProps>(styled.div)`
+type LoadingProps = ILoadingProps & IDefaultTheme;
+export default styledTs<LoadingProps>(styled.div)`
     display: flex;
     flex: none;
     height: 4rem;

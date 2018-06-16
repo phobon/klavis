@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import styledTs from "styled-components-ts";
 import * as React from "react";
+import { IDefaultTheme } from "../models";
 
 import { Flex, Box, IBoxProps } from "../../core";
 
@@ -13,7 +14,9 @@ interface IPercentageBarProps extends IBoxProps {
     percentage: number;
 }
 
-const PercentageBar = styledTs<IPercentageBarProps>(Box.extend)`
+type PercentageBarProps = IPercentageBarProps & IDefaultTheme;
+
+const PercentageBar = styledTs<PercentageBarProps>(Box.extend)`
     position: relative;
     background-color: ${props => props.theme.colors.grayscale[5]};
     border-radius: 1rem;
@@ -36,7 +39,9 @@ interface IStatBoxProps extends IBoxProps {
     percentageLabel: string;
     secondaryLabel: string;
 }
-const StatBox = styledTs<IStatBoxProps>(Box.extend)`
+
+type StatBoxProps = IStatBoxProps & IDefaultTheme;
+const StatBox = styledTs<StatBoxProps>(Box.extend)`
     width: 100%;
     position: relative;
     height: 100%;

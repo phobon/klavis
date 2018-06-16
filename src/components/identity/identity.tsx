@@ -4,12 +4,13 @@ import * as React from "react";
 
 import { NavLink, NavLinkProps } from 'react-router-dom';
 import { IdentityIcon } from "../../tokens";
+import { IDefaultTheme } from "../models";
 
 interface IIdentityProps extends NavLinkProps {
     palette: "colour" | "grayscale";
 }
 
-type IdentityProps = IIdentityProps;
+type IdentityProps = IIdentityProps & IDefaultTheme & NavLinkProps;
 
 const IdentityNavLink = styledTs<IdentityProps>(styled(NavLink))`
     display: flex;

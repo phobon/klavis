@@ -11,7 +11,7 @@ import {
     UpcomingIcon,
     BusinessIcon,
     SnoozeIcon
-} from "./src/tokens";
+} from "./tokens";
 
 import {
     Box, BoxProps, Flex, Inline, Grid, IBoxProps,
@@ -21,7 +21,7 @@ import {
     BoxList, FlexList, BoxListItem, FlexListItem,
     Heading1, Heading2, Heading3, Heading4, Heading5, Heading6, Text,
     Link
-} from "./src/core";
+} from "./core";
 
 import {
     Breadcrumb, 
@@ -34,7 +34,7 @@ import {
     DatePicker,
     PageHeader,
     Badge
-} from "./src/components";
+} from "./components";
 
 export {
     getTheme,
