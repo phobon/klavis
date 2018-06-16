@@ -1,7 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
+import styledTs from "styled-components-ts";
 
-import { Box, Grid, BoxList, BoxListItem, Heading3, Heading5 } from "../../core";
+import { Box, Grid, BoxListItem, Heading3, Heading5 } from "../../core";
 
 import { monthNames, dayNames, daysInMonth, leapYears } from "./models";
 
@@ -28,7 +29,6 @@ const DayLayout = Grid.withComponent("ul").extend`
 `;
 
 const DayHeader = BoxListItem.extend`
-    color: ${props => props.theme.colors.grayscale[4]};
     text-transform: uppercase;
     font-weight: 500;
     pointer-events: none;
@@ -48,7 +48,7 @@ class DatePicker extends React.Component<IDatePickerProps, IDatePickerState> {
         const { days, selectedDay } = this.state;
 
         const dayHeaders = dayNames.map((d, i) => (
-            <DayHeader key={i}>{d}</DayHeader>
+            <DayHeader key={i} color="grayscale.4">{d}</DayHeader>
         ));
 
         const dayButtons = days.map((d, i) => (

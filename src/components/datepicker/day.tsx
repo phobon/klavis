@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import styledTs from "styled-components-ts";
 import { space, SpaceProps } from "styled-system";
+import { IDefaultTheme } from "../models";
 
 interface IDayProps {
     isSelected?: boolean;
@@ -9,6 +10,8 @@ interface IDayProps {
     hasItems?: boolean;
     subtle?: boolean;
 }
+
+type DayProps = IDayProps & IDefaultTheme;
 
 const color = (props: any): string => {
     if (props.isSelected || props.isToday) {
@@ -18,7 +21,7 @@ const color = (props: any): string => {
     return props.subtle ? props.theme.colors.grayscale[4] : props.theme.colors.grayscale[2];
 }
 
-const Day = styledTs<IDayProps>(styled.button)`
+const Day = styledTs<DayProps>(styled.button)`
     position: relative;
     border-radius: 0.5rem;
     cursor: pointer;
