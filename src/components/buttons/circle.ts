@@ -1,5 +1,3 @@
-import styledTs from "styled-components-ts";
-
 import { ButtonProps } from "./models";
 
 import Button from "./button";
@@ -29,7 +27,7 @@ const size = (props: any): string => {
     }
 }
 
-const CircleButton = styledTs<CircleButtonProps>(Button.extend)`
+const CircleButton = Button.extend<CircleButtonProps>`
     border-radius: 100%;
     padding: 0;
     width: ${props => size(props)};

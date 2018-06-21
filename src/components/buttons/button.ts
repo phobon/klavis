@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import styledTs from "styled-components-ts";
 
 import { space, fontSize, SpaceProps, FontSizeProps } from "styled-system";
 
@@ -110,7 +109,7 @@ const padding = (props: any): string => {
 
 type StyledButtonProps = ButtonProps & SpaceProps & FontSizeProps;
 
-const Button = styledTs<StyledButtonProps>(styled.button)`
+const Button = styled.button<StyledButtonProps>`
     display: flex;
     flex: none;
     align-items: center;

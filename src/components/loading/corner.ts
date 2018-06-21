@@ -1,20 +1,18 @@
 import styled from "styled-components";
-import styledTs from "styled-components-ts";
-import * as React from "react";
 
 import { ILoadingProps } from "./models";
 import { IDefaultTheme } from "../models";
 
 type LoadingProps = ILoadingProps & IDefaultTheme;
-export default styledTs<LoadingProps>(styled.div)`
+export default styled.div<LoadingProps>`
     display: flex;
     flex: none;
     height: 4rem;
     width: 4rem;
     position: absolute;
-    right: 0,
-    top: 0,    
-    z-index: 2,
+    right: 0;
+    top: 0;  
+    z-index: 2;
     transition: opacity 180ms ease-out;
     overflow: hidden;
     opacity: ${props => props.visible ? 1 : 0};

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import styledTs from "styled-components-ts";
 import { color, space, borderRadius, ColorProps, SpaceProps, BorderRadiusProps } from "styled-system";
 
 export interface IInputProps {
@@ -25,7 +24,7 @@ const borderColor = (props, { disabled, error, theme } = props) => {
     return theme.colors.grayscale[2];
 };
 
-const Input = styledTs<InputProps>(styled.input)`
+const Input = styled.input<InputProps>`
     position: relative;
 
     ${color}

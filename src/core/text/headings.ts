@@ -1,6 +1,4 @@
-import * as React from "react";
 import styled from "styled-components";
-import styledTs from "styled-components-ts";
 import { 
     space, 
     color, 
@@ -35,7 +33,7 @@ const defaults = {
     m: 0
 };
 
-const Heading1 = styledTs<HeadingProps>(styled.h1)`
+const Heading1 = styled.h1<HeadingProps>`
     position: relative;
     
     ${space}

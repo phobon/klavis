@@ -1,12 +1,10 @@
-import styled from "styled-components";
-import styledTs from "styled-components-ts";
 import { space, color, fontSize, borderRadius, SpaceProps, ColorProps, FontSizeProps, BorderRadiusProps } from "styled-system";
 
 import { Box } from "../../core";
 
 type LozengeProps = SpaceProps & ColorProps & FontSizeProps & BorderRadiusProps;
 
-const Lozenge = styledTs<LozengeProps>(Box.extend)`
+const Lozenge = Box.extend<LozengeProps>`
     ${space}
     ${fontSize}
     ${color}

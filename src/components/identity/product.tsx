@@ -1,7 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
-import styledTs from "styled-components-ts";
-import { color } from "styled-system";
 
 import { Box, BoxProps, Vector, Image } from "../../core";
 import { randomColour, BusinessIcon } from "../../tokens";

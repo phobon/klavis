@@ -1,7 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
-import styledTs from "styled-components-ts";
-import { color } from "styled-system";
 
 import { Box, BoxProps, Vector, Image } from "../../core";
 import { randomColour, PersonIcon } from "../../tokens";
@@ -66,7 +63,7 @@ type AvatarProps =
     }
     & BoxProps;
 
-const AvatarBox = styledTs<AvatarProps>(Box.extend)`
+const AvatarBox = Box.extend<AvatarProps>`
     position: relative;
 
     &:before, &:after {

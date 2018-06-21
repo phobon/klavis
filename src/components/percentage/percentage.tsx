@@ -1,5 +1,3 @@
-import styled from "styled-components";
-import styledTs from "styled-components-ts";
 import * as React from "react";
 import { IDefaultTheme } from "../models";
 
@@ -16,7 +14,7 @@ interface IPercentageBarProps extends IBoxProps {
 
 type PercentageBarProps = IPercentageBarProps & IDefaultTheme;
 
-const PercentageBar = styledTs<PercentageBarProps>(Box.extend)`
+const PercentageBar = Box.extend<PercentageBarProps>`
     position: relative;
     background-color: ${props => props.theme.colors.grayscale[5]};
     border-radius: 1rem;
@@ -41,7 +39,7 @@ interface IStatBoxProps extends IBoxProps {
 }
 
 type StatBoxProps = IStatBoxProps & IDefaultTheme;
-const StatBox = styledTs<StatBoxProps>(Box.extend)`
+const StatBox = Box.extend<StatBoxProps>`
     width: 100%;
     position: relative;
     height: 100%;

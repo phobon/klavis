@@ -1,6 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import styledTs from "styled-components-ts";
-import * as React from "react";
 
 import { ILoadingProps } from "./models";
 import { IDefaultTheme } from "../models";
@@ -21,7 +19,7 @@ const barKeyframes = keyframes`
 
 type LoadingProps = ILoadingProps & IDefaultTheme;
 
-export default styledTs<LoadingProps>(styled.div)`
+export default styled.div<LoadingProps>`
     display: flex;
     flex: 1 1 auto;
     width: 100%;

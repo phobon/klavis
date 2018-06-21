@@ -1,6 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
-import styledTs from "styled-components-ts";
 
 import { Box, Grid, BoxListItem, Heading3, Heading5 } from "../../core";
 

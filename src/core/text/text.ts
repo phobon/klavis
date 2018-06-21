@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import styledTs from "styled-components-ts";
 import { 
     space,
     width,
@@ -7,6 +6,7 @@ import {
     maxWidth,
     color,
     fontSize,
+    fontWeight,
     lineHeight,
     textAlign,
     SpaceProps,
@@ -15,6 +15,7 @@ import {
     MaxWidthProps,
     ColorProps,
     FontSizeProps,
+    FontWeightProps,
     LineHeightProps,
     TextAlignProps
 } from "styled-system";
@@ -32,10 +33,11 @@ type TextProps =
     & MaxWidthProps
     & ColorProps
     & FontSizeProps
+    & FontWeightProps
     & LineHeightProps
     & TextAlignProps;
 
-const Text =  styledTs<TextProps>(styled.div)`
+const Text =  styled.div<TextProps>`
     display: inline-flex;
     flex: none;
 
@@ -45,6 +47,7 @@ const Text =  styledTs<TextProps>(styled.div)`
     ${maxWidth}
     ${color}
     ${fontSize}
+    ${fontWeight}
     ${lineHeight}
     ${textAlign}
 

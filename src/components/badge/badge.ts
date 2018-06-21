@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import styledTs from "styled-components-ts";
 import { color, space, SpaceProps, ColorProps } from "styled-system";
+import { IThemeable } from "../../tokens";
 
-type BadgeProps = SpaceProps & ColorProps;
+type BadgeProps = SpaceProps & ColorProps & IThemeable;
 
-const Badge = styledTs<BadgeProps>(styled.div)`
+const Badge = styled.div<BadgeProps>`
     display: flex;
     flex: none;
     align-items: center;

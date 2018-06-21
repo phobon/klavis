@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import styledTs from "styled-components-ts";
 import { 
     color, 
     space, 
@@ -27,7 +26,7 @@ type ImageProps =
     & HeightProps
     & BorderRadiusProps;
 
-const Image = styledTs<ImageProps>(styled.img)`
+const Image = styled.img<ImageProps>`
     ${color}
     ${space}
     ${width}

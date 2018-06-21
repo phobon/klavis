@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import styledTs from "styled-components-ts";
 import { 
     color, 
     space, 
@@ -25,7 +24,7 @@ export type VectorProps =
     & WidthProps
     & HeightProps;
 
-const Vector = styledTs<VectorProps>(styled.svg)`
+const Vector = styled.svg<VectorProps>`
     ${color}
     ${space}
     ${width}

@@ -1,6 +1,4 @@
-import styled from "styled-components";
 import { borderRadius } from "styled-system";
-import styledTs from "styled-components-ts";
 
 import { Box, BoxProps } from "../../core";
 
@@ -13,7 +11,7 @@ export type CardProps =
     ICardProps
     & BoxProps;
 
-const Card = styledTs<CardProps>(Box.extend)`
+const Card = Box.extend<CardProps>`
     transition: transform 180ms ease-out, opacity 180ms ease-out, filter 180ms ease-out;
     cursor: pointer;    
     position: relative;  

@@ -1,7 +1,4 @@
-import * as React from "react";
 import styled from "styled-components";
-import styledTs from "styled-components-ts";
-import { space, SpaceProps } from "styled-system";
 import { IDefaultTheme } from "../models";
 
 interface IDayProps {
@@ -21,7 +18,7 @@ const color = (props: any): string => {
     return props.subtle ? props.theme.colors.grayscale[4] : props.theme.colors.grayscale[2];
 }
 
-const Day = styledTs<DayProps>(styled.button)`
+const Day = styled.button<DayProps>`
     position: relative;
     border-radius: 0.5rem;
     cursor: pointer;

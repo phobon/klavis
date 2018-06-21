@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import styledTs from "styled-components-ts";
 import * as React from "react";
 
 import { NavLink, NavLinkProps } from 'react-router-dom';
@@ -12,7 +11,7 @@ interface IIdentityProps extends NavLinkProps {
 
 type IdentityProps = IIdentityProps & IDefaultTheme & NavLinkProps;
 
-const IdentityNavLink = styledTs<IdentityProps>(styled(NavLink))`
+const IdentityNavLink = styled(NavLink)<IdentityProps>`
     display: flex;
     flex: none;
     align-items: center;

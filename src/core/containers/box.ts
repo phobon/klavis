@@ -13,6 +13,7 @@ import {
     flexWrap,
     flexBasis,
     fontSize,
+    fontWeight,
     borderRadius,
     width,
     minWidth,
@@ -27,7 +28,7 @@ import {
     AlignItemsProps,
     JustifyContentProps,
     FlexDirectionProps,
-    Flexprops,
+    FlexProps,
     AlignContentProps,
     JustifySelfProps,
     AlignSelfProps,
@@ -35,6 +36,7 @@ import {
     FlexWrapProps,
     FlexBasisProps,
     FontSizeProps,
+    FontWeightProps,
     BorderRadiusProps,
     WidthProps,
     MinWidthProps,
@@ -42,10 +44,9 @@ import {
     HeightProps,
     MinHeightProps,
     MaxHeightProps,
-    BordersProps,
+    BorderProps,
     BorderColorProps
 } from "styled-system";
-import styledTs from "styled-components-ts";
 
 import { IBoxProps } from "./models";
 
@@ -56,7 +57,7 @@ export type BoxProps =
     & AlignItemsProps
     & JustifyContentProps
     & FlexDirectionProps
-    & Flexprops
+    & FlexProps
     & AlignContentProps
     & JustifySelfProps
     & AlignSelfProps
@@ -64,6 +65,7 @@ export type BoxProps =
     & FlexWrapProps
     & FlexBasisProps
     & FontSizeProps
+    & FontWeightProps
     & BorderRadiusProps
     & WidthProps
     & MinWidthProps
@@ -71,10 +73,10 @@ export type BoxProps =
     & HeightProps
     & MinHeightProps
     & MaxHeightProps
-    & BordersProps
+    & BorderProps
     & BorderColorProps;
 
-const Box = styledTs<BoxProps>(styled.div)`
+const Box = styled.div<BoxProps>`
     display: flex;
 
     ${color}

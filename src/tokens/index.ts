@@ -1,5 +1,6 @@
 import getTheme from "./theme";
 import { randomColour } from "./palettes";
+import { IThemeable } from "./models";
 
 import {
     IdentityIcon,
@@ -15,6 +16,7 @@ import {
 } from "./icons";
 
 export {
+    IThemeable,
     getTheme,
     randomColour,
     IdentityIcon,

@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import styledTs from "styled-components-ts";
 import { space, color, SpaceProps, ColorProps } from "styled-system";
 
 type LinkProps = SpaceProps & ColorProps;
 
-const Link = styledTs<LinkProps>(styled.a)`
+const Link = styled.a<LinkProps>`
     ${space}
     ${color}
 

@@ -32,7 +32,7 @@ import {
     HeightProps,
     MinHeightProps,
     MaxHeightProps,
-    BordersProps,
+    BorderProps,
     BorderColorProps,
     GridGapProps,
     GridRowGapProps,
@@ -45,7 +45,6 @@ import {
     GridTemplateRowsProps,
     GridTemplateColumnsProps
 } from "styled-system";
-import styledTs from "styled-components-ts";
 
 import { IBoxProps } from "./models";
 
@@ -61,7 +60,7 @@ export type GridProps =
     & HeightProps
     & MinHeightProps
     & MaxHeightProps
-    & BordersProps
+    & BorderProps
     & BorderColorProps
     & GridGapProps
     & GridRowGapProps
@@ -74,7 +73,7 @@ export type GridProps =
     & GridTemplateRowsProps
     & GridTemplateColumnsProps;
 
-const Grid = styledTs<GridProps>(styled.div)`
+const Grid = styled.div<GridProps>`
     display: grid;
 
     ${color}
