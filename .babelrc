@@ -1,18 +1,22 @@
 {
-    "plugins": [
-        "@babel/plugin-proposal-class-properties", 
-        "@babel/plugin-proposal-object-rest-spread"
-    ],
     "presets": [
-        "@babel/typescript",
-        "@babel/react",
-        [
-            "@babel/env",
-            {
-                "targets": {
-                    "browsers": "last 2 Chrome versions"
-                }
-            }
-        ]
-    ]  
-}
+      [
+        "@babel/env", {
+          "loose": true,
+          "modules": false
+        }
+      ],
+      "@babel/react"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-regenerator",
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-object-rest-spread",
+      [
+        "babel-plugin-styled-components", {
+          "displayName": true,
+          "preprocess": false
+        }
+      ]
+    ],
+  }
