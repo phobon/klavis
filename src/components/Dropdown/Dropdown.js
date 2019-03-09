@@ -79,8 +79,8 @@ const useAlignmentTransition = (popupDirection, isOpen, container, childrenCount
   const windowSize = useWindowSize();
   const [align, setAlign] = useState(horizontalDirection(popupDirection));
   const [valign, setValign] = useState(verticalDirection(popupDirection));
-  const [enter, setEnter] = useState(enterDirection(popupDirection)); // eslint-disable-line no-unused-vars
-  const [exit, setExit] = useState(exitDirection(popupDirection)); // eslint-disable-line no-unused-vars
+  const [enter, setEnter] = useState(enterDirection(popupDirection));
+  const [exit, setExit] = useState(exitDirection(popupDirection));
 
   useEffect(() => {
     if (container && container.current) {
