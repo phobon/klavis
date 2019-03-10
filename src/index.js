@@ -1,10 +1,11 @@
 import {
   Avatar,
   Badge, withBadge,
-  Popup,
+  Button, SquareButton, CircleButton,
   PageHeader,
-  Tag,
+  Popup,
   ProgressBar,
+  Tag,
   withTooltip,
 } from './components';
 
@@ -13,10 +14,11 @@ import { Notifications, useNotifications, Flag } from './patterns';
 export {
   Avatar,
   Badge, withBadge,
-  Popup,
+  Button, SquareButton, CircleButton,
   PageHeader,
-  Tag,
+  Popup,
   ProgressBar,
+  Tag,
   withTooltip,
   Notifications, useNotifications, Flag,
 }

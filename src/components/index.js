@@ -1,17 +1,19 @@
 import Avatar from './Avatar';
 import { Badge, withBadge } from './Badge';
-import Popup from './Popup';
+import { Button, SquareButton, CircleButton } from './Button';
 import PageHeader from './PageHeader';
+import Popup from './Popup';
+import ProgressBar from './ProgressBar';
 import Tag from './Tag';
 import withTooltip from './Tooltip';
-import ProgressBar from './ProgressBar';
 
 export {
   Avatar,
   Badge, withBadge,
-  Popup,
+  Button, SquareButton, CircleButton,
   PageHeader,
+  Popup,
+  ProgressBar,
   Tag,
   withTooltip,
-  ProgressBar,
 }
