@@ -13,6 +13,7 @@ import {
   borderColor,
 } from 'styled-system';
 import PropTypes from 'prop-types';
+import withTooltip from '../Tooltip';
 
 const buttonVariant = props => {
   const tertiary = css`
@@ -328,4 +329,4 @@ Button.defaultProps = {
   type: 'button',
 };
 
-export default Button;
+export default withTooltip(Button);
