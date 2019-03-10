@@ -1,7 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Box, Button } from '@phobon/base';
+import { Box } from '@phobon/base';
+import { Button } from '../Button';
 import Tag from '../Tag';
 
 import PageHeader from './PageHeader';

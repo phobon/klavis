@@ -1,7 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Text, Button } from '@phobon/base';
+import { Text } from '@phobon/base';
+import { Button } from '../Button';
 
 import Notifications from './Notifications';
 import useNotifications from './useNotifications';

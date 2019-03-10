@@ -5,7 +5,8 @@ import { animated, useTransition } from 'react-spring';
 
 import Close from 'rmdi/lib/Close';
 
-import { Flex, Card, SquareButton, usePortal } from '@phobon/base';
+import { Flex, Card, usePortal } from '@phobon/base';
+import { SquareButton } from '../Button';
 
 import NotificationsContext from './NotificationsContext';
 
