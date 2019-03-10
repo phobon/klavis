@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { animated, useTransition, config } from 'react-spring';
 import PropTypes from 'prop-types';
 
-import { Box, Card, Button, useWindowSize, destructureLayoutProps } from '@phobon/base';
+import { Box, Card, useWindowSize, destructureLayoutProps } from '@phobon/base';
+import { Button } from '../Button';
 
 const horizontalDirection = popupDirection => {
   const directions = {
