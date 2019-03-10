@@ -217,7 +217,7 @@ Avatar.defaultProps = {
   nameStyle: 'none',
   fontSize: 1,
   onClick: null,
-  colourCombination: ['#4B2859', '#F7F1F9'],
+  colourCombination: ['hsl(8, 96%, 27%)', 'hsl(7, 100%, 88%)'],
 };
 
 export default Avatar;

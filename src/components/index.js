@@ -1,15 +1,17 @@
 import Avatar from './Avatar';
 import { Badge, withBadge } from './Badge';
-import Dropdown from './Dropdown';
+import Popup from './Popup';
 import PageHeader from './PageHeader';
 import Tag from './Tag';
 import withTooltip from './Tooltip';
+import ProgressBar from './ProgressBar';
 
 export {
   Avatar,
   Badge, withBadge,
-  Dropdown,
+  Popup,
   PageHeader,
   Tag,
   withTooltip,
+  ProgressBar,
 }

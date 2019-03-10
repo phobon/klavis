@@ -1,6 +1,6 @@
 {
   "name": "@phobon/grimoire",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Component patterns using @phobon/base",
   "main": "dist/index.js",
   "author": "Ben McCormick",
@@ -15,7 +15,8 @@
   "scripts": {
     "build": "rollup -c",
     "clean": "npx shx rm -rf dist && mkdir dist",
-    "prepare": "npm run clean && npm run build"
+    "prepare": "npm run clean && npm run build",
+    "storybook": "start-storybook"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
@@ -25,7 +26,10 @@
     "@babel/plugin-transform-regenerator": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
-    "@phobon/base": "^1.2.0",
+    "@phobon/base": "^1.2.1",
+    "@storybook/addon-actions": "^5.0.1",
+    "@storybook/addons": "^5.0.1",
+    "@storybook/react": "^5.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.0",
     "cross-env": "^5.2.0",
@@ -41,6 +45,7 @@
     "styled-system": "^4.0.1"
   },
   "peerDependencies": {
+    "@phobon/base": "^1.x",
     "react": "^16.x",
     "react-dom": "^16.x",
     "react-spring": "^8.x",

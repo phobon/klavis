@@ -114,7 +114,7 @@ const useAlignmentTransition = (popupDirection, isOpen, container, childrenCount
   return transitions;
 };
 
-const Dropdown = ({ trigger, children, label, closeAfterAction, className, as, popupDirection, ...props }) => {
+const Popup = ({ trigger, children, label, closeAfterAction, className, as, popupDirection, ...props }) => {
   // Set up state and refs.
   const [isOpen, setIsOpen] = useState(false);
   const container = useRef(null);
@@ -175,7 +175,7 @@ const Dropdown = ({ trigger, children, label, closeAfterAction, className, as, p
   );
 }
 
-Dropdown.propTypes = {
+Popup.propTypes = {
   ...Button.propTypes,
 
   /** Trigger for the dropdown. This takes a _slots_ approach. */
@@ -194,7 +194,7 @@ Dropdown.propTypes = {
   popupDirection: PropTypes.oneOf(['up', 'down', 'left', 'right', 'auto']),
 };
 
-Dropdown.defaultProps = {
+Popup.defaultProps = {
   trigger: null,
   children: null,
   closeAfterAction: false,
@@ -202,4 +202,4 @@ Dropdown.defaultProps = {
   popupDirection: 'auto',
 };
 
-export default Dropdown;
+export default Popup;
