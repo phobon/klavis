@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { Text } from '@phobon/base';
-import { Button } from '../Button';
+import { Button } from '../../components';
 
 import Notifications from './Notifications';
 import useNotifications from './useNotifications';

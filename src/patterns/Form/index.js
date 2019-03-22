@@ -1,16 +1,16 @@
-import { Notifications, useNotifications, Flag } from './Notifications';
+import Form from './Form';
+
 import {
-  Form,
   TextField,
   TextAreaField,
   CheckboxField,
   NumberField,
-  FieldGroup,
-  FieldSet,
-}
+} from './fields';
+
+import FieldGroup from './FieldGroup';
+import FieldSet from './FieldSet';
 
 export {
-  Notifications, useNotifications, Flag,
   Form,
   TextField,
   TextAreaField,
@@ -18,4 +18,4 @@ export {
   NumberField,
   FieldGroup,
   FieldSet,
-}
+};

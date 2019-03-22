@@ -1009,10 +1009,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@phobon/base@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-1.3.0.tgz#ecc0c426447638c2b40ed42aca90fe7ffe6f3151"
-  integrity sha512-3eYekeL3GTgD9tBRR15S1jr1pW7z92q9WYMCNDKVDhtl1d14Qui4TaVN99+1UQ3fIrwvY69wG91l+1/1jHacPw==
+"@phobon/base@^1.3.4":
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-1.3.4.tgz#aa7217574e7f833511a6e12ab36ec5c857311fec"
+  integrity sha512-SlwT4YkCZ4GLMNTFAFQ1fa3aiJG3GIdISfnZ1cJTm7/59PaQIzKw5lT+OL1GasU83ygBX/oAWErgMd3sac9YnA==
 
 "@reach/router@^1.2.1":
   version "1.2.1"
