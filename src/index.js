@@ -10,7 +10,16 @@ import {
   withTooltip,
 } from './components';
 
-import { Notifications, useNotifications, Flag } from './patterns';
+import {
+  Notifications, useNotifications, Flag,
+  Form,
+  TextField,
+  TextAreaField,
+  CheckboxField,
+  NumberField,
+  FieldGroup,
+  FieldSet,
+} from './patterns'
 
 export {
   Avatar,
@@ -23,4 +32,11 @@ export {
   Tag,
   withTooltip,
   Notifications, useNotifications, Flag,
+  Form,
+  TextField,
+  TextAreaField,
+  CheckboxField,
+  NumberField,
+  FieldGroup,
+  FieldSet,
 }
