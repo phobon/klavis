@@ -3,6 +3,7 @@ import TextField from './TextField';
 import TextAreaField from './TextAreaField';
 import CheckboxField from './CheckboxField';
 import NumberField from './NumberField';
+import SelectField from './SelectField';
 
 export {
   asField,
@@ -10,4 +11,5 @@ export {
   TextAreaField,
   CheckboxField,
   NumberField,
+  SelectField,
 };

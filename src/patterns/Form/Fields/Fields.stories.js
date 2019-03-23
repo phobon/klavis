@@ -7,8 +7,18 @@ import CheckboxField from './CheckboxField';
 import NumberField from './NumberField';
 import TextAreaField from './TextAreaField';
 import TextField from './TextField';
+import SelectField from './SelectField';
 
 import FieldSet from '../FieldSet';
+
+const SelectOptions = () => (
+  <React.Fragment>
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+    <option value="4">Option 4</option>
+  </React.Fragment>
+);
 
 const withFormState = (WrappedComponent) => (props) => {
   const [value, setValue] = useState(null);
@@ -65,6 +75,25 @@ storiesOf('Patterns/Form/Fields', module)
       <TextField label="label" error="error text" id="text_3" />
       <TextField label="required field" required id="text_4" />
       <TextField label="disabled field" disabled id="text_5" />
+    </React.Fragment>
+  ))
+  .add('SelectField', () => (
+    <React.Fragment>
+      <SelectField label="label" id="select_1">
+        <SelectOptions />
+      </SelectField>
+      <SelectField label="label" hint="hint text" id="select_2">
+        <SelectOptions />
+      </SelectField>
+      <SelectField label="label" error="error text" id="select_3">
+        <SelectOptions />
+      </SelectField>
+      <SelectField label="required field" required id="select_4">
+        <SelectOptions />
+      </SelectField>
+      <SelectField label="disabled field" disabled id="select_5">
+        <SelectOptions />
+      </SelectField>
     </React.Fragment>
   ))
   .add('FieldSet', () => (
