@@ -7,7 +7,7 @@ import {
   NumberField,
   FieldGroup,
   FieldSet,
-}
+} from './Form';
 
 export {
   Notifications, useNotifications, Flag,
