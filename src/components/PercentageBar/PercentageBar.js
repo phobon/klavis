@@ -27,7 +27,7 @@ const heights = props => {
   return heightValues[props.size];
 };
 
-const ProgressBarElement = styled.div.attrs(props => ({
+const PercentageBarElement = styled.div.attrs(props => ({
   progressTranslate: `translateX(-${100 - props.percentage}%)`,
 }))`
   position: relative;
@@ -53,7 +53,7 @@ const ProgressBarElement = styled.div.attrs(props => ({
   }
 `;
 
-const ProgressBar = ({
+const PercentageBar = ({
   heading,
   total,
   complete,
@@ -68,10 +68,10 @@ const ProgressBar = ({
   const percentageString = `${percentage}%`;
 
   return (
-    <Box fullWidth {...props} flexDirection="column">
+    <Box fullWidth {...props} flexDirection="column" alignItems="flex-start">
       {heading}
       <Box fullWidth>
-        <ProgressBarElement
+        <PercentageBarElement
           rawPercentage={rawPercentage}
           percentage={percentage}
           dangerThreshold={dangerThreshold}
@@ -85,7 +85,7 @@ const ProgressBar = ({
   )
 };
 
-ProgressBar.propTypes = {
+PercentageBar.propTypes = {
   /** Optional heading slot */
   heading: PropTypes.node,
 
@@ -108,7 +108,7 @@ ProgressBar.propTypes = {
   showPercentage: PropTypes.bool,
 };
 
-ProgressBar.defaultProps = {
+PercentageBar.defaultProps = {
   heading: null,
   dangerThreshold: 30,
   warningThreshold: 70,
@@ -116,4 +116,4 @@ ProgressBar.defaultProps = {
   showPercentage: false,
 };
 
-export default ProgressBar;
+export default PercentageBar;
