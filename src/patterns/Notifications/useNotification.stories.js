@@ -25,10 +25,10 @@ const ContentHelper = (props) => (
 );
 
 storiesOf('Patterns/Notifications', module)
-  .add('Default', () => {
+  .add('With a defined timeout', () => {
     const notificationTypes = [
       {
-        label: 'Add notification',
+        label: 'Add 7000ms notification',
         notification: { content: <ContentHelper heading="Notification heading Long heading long heading" />, timeout: 7000 },
       },
     ];
@@ -38,10 +38,10 @@ storiesOf('Patterns/Notifications', module)
       </Notifications>
     );
   })
-  .add('Dismissable', () => {
+  .add('With the ability to dismiss early', () => {
     const notificationTypes = [
       {
-        label: 'Add notification',
+        label: 'Add dismissable notification',
         notification: { content: <ContentHelper heading="Notification heading Long heading long heading"  />, canDismiss: true },
       },
     ];
@@ -51,7 +51,7 @@ storiesOf('Patterns/Notifications', module)
       </Notifications>
     );
   })
-  .add('Severities', () => {
+  .add('With different severities', () => {
     const notificationTypes = [
       {
         label: 'Add info',
@@ -73,6 +73,19 @@ storiesOf('Patterns/Notifications', module)
     return (
       <Notifications timeout={3000}>
         <NotificationsHelper timeout={3000} notificationTypes={notificationTypes} />
+      </Notifications>
+    );
+  })
+  .add('With a provided promise to execute', () => {
+    const notificationTypes = [
+      {
+        label: 'Add notification with promise',
+        notification: { content: <ContentHelper heading="Notification heading Long heading long heading" />, promise: new Promise((resolve, reject) => setTimeout(() => resolve(true), 10000)) },
+      },
+    ];
+    return (
+      <Notifications>
+        <NotificationsHelper notificationTypes={notificationTypes} />
       </Notifications>
     );
   });

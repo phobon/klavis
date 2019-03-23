@@ -24,8 +24,12 @@ const Notifications = ({ children, timeout, config }) => {
 
   const transitions = useTransition(items, item => item.key, {
     from: { opacity: 0, transform: 'translate(0px, 8px)', life: '0%' },
-    enter: () => async next =>
-        next({ opacity: 1, transform: 'translate(0px, 0px)', life: '0%' }),
+    enter: item => async next => {
+      await next({ opacity: 1, transform: 'translate(0px, 0px)', life: '0%' });
+      if (item.promise) {
+        await item.promise;
+      }
+    },
     leave: item => async (next, cancel) => {
       cancelMap.set(item, cancel);
       await next({ life: '100%' });
@@ -36,7 +40,7 @@ const Notifications = ({ children, timeout, config }) => {
     }),
     config: (item, state) => {
       const c = item.config || config;
-      const duration = item.timeout || timeout;
+      const duration = item.promise ? 1 : item.timeout || timeout;
       return state === 'leave' ? [{ duration }, c] : c
     },
   });
