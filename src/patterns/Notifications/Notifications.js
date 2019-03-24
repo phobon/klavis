@@ -27,7 +27,7 @@ const Notifications = ({ children, timeout, config }) => {
     enter: item => async next => {
       await next({ opacity: 1, transform: 'translate(0px, 0px)', life: '0%' });
       if (item.promise) {
-        await item.promise;
+        await item.promise();
       }
     },
     leave: item => async (next, cancel) => {

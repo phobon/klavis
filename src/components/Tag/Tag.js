@@ -20,10 +20,10 @@ Tag.displayName = 'Tag';
 Tag.defaultProps = {
   color: 'foreground',
   bg: 'grayscale.5',
-  lineHeight: '18px',
+  lineHeight: 1.8,
   fontSize: 0,
   py: '1px',
-  px: 1,
+  px: 2,
 };
 
 Tag.propTypes = {

@@ -80,7 +80,7 @@ storiesOf('Patterns/Notifications', module)
     const notificationTypes = [
       {
         label: 'Add notification with promise',
-        notification: { content: <ContentHelper heading="Notification heading Long heading long heading" />, promise: new Promise((resolve, reject) => setTimeout(() => resolve(true), 10000)) },
+        notification: { content: <ContentHelper heading="Notification heading Long heading long heading" />, promise: () => new Promise((resolve, reject) => setTimeout(() => resolve(true), 10000)) },
       },
     ];
     return (
