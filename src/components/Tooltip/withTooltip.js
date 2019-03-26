@@ -11,13 +11,21 @@ const withTooltip = WrappedComponent => ({ tooltip, tooltipDirection, offset, as
     );
   }
 
-  const { fullWidth, fullHeight, position } = props;
-
-  const [layoutProps, passthroughProps] = destructureLayoutProps(props);
-
+  const [{ fullWidth, fullHeight, width, height, position, ...layoutProps}, passthroughProps] = destructureLayoutProps(props);
+  console.log(position);
   return (
-    <Tooltip tooltip={tooltip} tooltipDirection={tooltipDirection} offset={offset} position={position || 'relative'} as={as} {...layoutProps}>
-      <WrappedComponent {...passthroughProps} fullWidth={fullWidth} fullHeight={fullHeight} />
+    <Tooltip
+      tooltip={tooltip}
+      tooltipDirection={tooltipDirection}
+      offset={offset}
+      position={position || 'relative'}
+      as={as}
+      width={width}
+      height={height}
+      fullWidth={fullWidth}
+      fullHeight={fullHeight}
+      {...layoutProps}>
+      <WrappedComponent {...passthroughProps} fullWidth={fullWidth || width != null} fullHeight={fullHeight || height != null} />
     </Tooltip>
   );
 };

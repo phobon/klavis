@@ -2,11 +2,9 @@ import React from 'react';
 import styled, { css }  from 'styled-components';
 import { space as styledSpace, width, height, alignItems as styledAlignItems, justifyContent as styledJustifyContent } from 'styled-system';
 import PropTypes from 'prop-types';
+import { fullWidth, fullHeight } from '@phobon/base';
 
 import FormFieldContext from './FormFieldContext';
-
-const fullWidth = props => props.fullWidth && css`width: 100%;`;
-const fullHeight = props => props.fullHeight && css`height: 100%;`;
 
 const informationDensity = props => {
   const densities = {
@@ -69,7 +67,9 @@ const Form = ({
         justifyContent,
         optionalLabel,
       }}>
-        {children}
+        <fieldset disabled={isDisabled}>
+          {children}
+        </fieldset>
       </FormFieldContext.Provider>
     </StyledForm>
 );
@@ -92,6 +92,9 @@ Form.propTypes = {
 
   /** Callback to set the optional label in fields */
   optionalLabel: PropTypes.func,
+
+  /** A value indicating whether the whole form should be disabled, or not. */
+  isDisabled: PropTypes.bool,
 };
 
 /* eslint react/default-props-match-prop-types: 0 */
@@ -103,7 +106,7 @@ Form.defaultProps = {
   fullHeight: false,
   density: 'normal',
   optionalLabel: () => 'optional',
+  isDisabled: false,
 };
 
-/** @component */
 export default Form;

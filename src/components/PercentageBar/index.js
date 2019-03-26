@@ -1,1 +1,1 @@
-export {default} from './PercentageBar';
+export { default } from './PercentageBar';

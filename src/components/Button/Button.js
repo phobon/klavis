@@ -12,6 +12,7 @@ import {
   border,
   borderColor,
 } from 'styled-system';
+import { fullWidth, fullHeight } from '@phobon/base';
 import PropTypes from 'prop-types';
 import withTooltip from '../Tooltip';
 
@@ -178,9 +179,6 @@ const isToggled = props => {
 
   return isToggledVariants[props.variant];
 };
-
-const fullWidth = props => props.fullWidth && css`width: 100%;`;
-const fullHeight = props => props.fullHeight && css`height: 100%;`;
 
 const size = props => {
   const sizes = {

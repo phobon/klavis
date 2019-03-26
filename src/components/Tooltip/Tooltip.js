@@ -1,39 +1,54 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { Box } from '@phobon/base';
+import {
+  space,
+  width,
+  minWidth,
+  maxWidth,
+  height,
+  minHeight,
+  maxHeight,
+  zIndex,
+  position,
+  top,
+  left,
+  right,
+  bottom,
+} from 'styled-system';
+import { fullWidth, fullHeight } from '@phobon/base';
 
 const direction = props => {
   const tooltipDirections = {
     'down': css`
       &::after {
         left: 50%;
-        transform: translate(-50%, calc(75% + var(--factor)));
+        top: ${`calc(100% + ${props.theme.space[1]}px)`};
+        transform: translate(-50%, var(--factor));
       }
-
       &:hover, &:focus, &:focus-within {
         &::after {
-          transform: translate(-50%, calc(75% + var(--offset)));
+          transform: ${`translate(-50%, calc(var(--factor) - ${props.theme.space[1]}px))`};
         }
       }
     `,
     'up': css`
       &::after {
         left: 50%;
-        transform: translate(-50%, calc(-175% - var(--factor)));
+        bottom: ${`calc(100% + ${props.theme.space[1]}px)`};
+        transform: translate(-50%, var(--minusfactor));
       }
-
       &:hover, &:focus, &:focus-within {
         &::after {
-          transform: translate(-50%, calc(-175% - var(--offset)));
+          transform: ${`translate(-50%, calc(var(--minusfactor) + ${props.theme.space[1]}px))`};
         }
       }
     `,
     'left': css`
       &::after {
+        top: 50%;
         left: 0;
         transform: translate(calc(-100% - var(--xfactor)), -50%);
       }
-
       &:hover, &:focus, &:focus-within {
         &::after {
           transform: translate(calc(-100% - var(--factor)), -50%);
@@ -42,10 +57,10 @@ const direction = props => {
     `,
     'right': css`
       &::after {
+        top: 50%;
         right: 0;
         transform: translate(calc(100% + var(--xfactor)), -50%);
       }
-
       &:hover, &:focus, &:focus-within {
         &::after {
           transform: translate(calc(100% + var(--factor)), -50%);
@@ -57,10 +72,25 @@ const direction = props => {
   return tooltipDirections[props.tooltipDirection];
 };
 
-const Tooltip = styled(Box)`
+const Tooltip = styled.div`
+  ${space}
+  ${width}
+  ${minWidth}
+  ${maxWidth}
+  ${height}
+  ${minHeight}
+  ${maxHeight}
+  ${zIndex}
+  ${position}
+  ${top}
+  ${left}
+  ${right}
+  ${bottom}
+  ${fullWidth}
+  ${fullHeight}
   --factor: ${props => props.theme.space[1] + props.theme.space[props.offset]}px;
+  --minusfactor: -${props => props.theme.space[1] + props.theme.space[props.offset]}px;
   --xfactor: ${props => props.theme.space[2] + props.theme.space[props.offset]}px;
-  --offset: ${props => props.theme.space[props.offset]}px;
 
   &::after {
     content: '${props => props.tooltip}';
@@ -77,7 +107,6 @@ const Tooltip = styled(Box)`
     white-space: pre;
     display: inline-table;
     /* will-change: transform; */
-    top: 50%;
   }
 
   &:hover, &:focus, &:focus-within {
@@ -92,6 +121,20 @@ const Tooltip = styled(Box)`
 Tooltip.displayName = 'Tooltip';
 
 Tooltip.propTypes = {
+  ...space.propTypes,
+  ...width.propTypes,
+  ...minWidth.propTypes,
+  ...maxWidth.propTypes,
+  ...height.propTypes,
+  ...minHeight.propTypes,
+  ...maxHeight.propTypes,
+  ...zIndex.propTypes,
+  ...position.propTypes,
+  ...top.propTypes,
+  ...left.propTypes,
+  ...right.propTypes,
+  ...bottom.propTypes,
+
   tooltip: PropTypes.string,
   tooltipDirection: PropTypes.oneOf(['down', 'up', 'left', 'right']),
   offset: PropTypes.number,
