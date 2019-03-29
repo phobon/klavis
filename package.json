@@ -30,9 +30,11 @@
     "@storybook/addon-actions": "^5.0.5",
     "@storybook/addons": "^5.0.5",
     "@storybook/react": "^5.0.5",
+    "@storybook/theming": "^5.0.5",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.0",
     "cross-env": "^5.2.0",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-spring": "^8.0.18",
@@ -47,9 +49,9 @@
   "peerDependencies": {
     "@phobon/base": "^1.x",
     "react": "^16.8.x",
-    "rmdi": "^1.x",
     "react-dom": "^16.8.x",
     "react-spring": "^8.x",
+    "rmdi": "^1.x",
     "styled-components": "^4.x",
     "styled-system": "^4.x"
   }

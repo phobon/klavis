@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 
 import Check from 'rmdi/lib/Check';
 
@@ -112,4 +113,12 @@ storiesOf('Components/Progress', module)
         <ProgressStep label="Fourth Step" />
       </Progress>
     </Box>
+  ))
+  .add('With custom onClicks for steps', () => (
+    <Progress p={8} color="reds.5" completeGlyph={<Check />}>
+      <ProgressStep label="First Step" onClick={action('First Step clicked')} />
+      <ProgressStep label="Second Step" onClick={action('Second Step clicked')} />
+      <ProgressStep label="Third Step" onClick={action('Third Step clicked')} isCurrent />
+      <ProgressStep label="Fourth Step" onClick={action('Fourth Step clicked')} />
+    </Progress>
   ));
