@@ -10,11 +10,6 @@ const TooltipButton = withTooltip(Button);
 const TooltipBox = withTooltip(Box);
 
 storiesOf('Components/Tooltip', module)
-  .add('Basic example', () => (
-    <TooltipButton tooltip="Tooltip text">
-      Any component
-    </TooltipButton>
-  ))
   .add('With positioning', () => (
     <Box fullWidth fullHeight pt={5}>
       <TooltipButton tooltip="Tooltip text" mr={3}>
@@ -41,7 +36,7 @@ storiesOf('Components/Tooltip', module)
       </TooltipButton>
     </Box>
   ))
-  .add('Without tooltip prop', () => (
+  .add('With and without a tooltip prop', () => (
     <Box fullWidth fullHeight flexDirection="column">
       <TooltipButton tooltip="Tooltip text" mb={3}>
         This has a tooltip
@@ -52,7 +47,7 @@ storiesOf('Components/Tooltip', module)
       </TooltipButton>
     </Box>
   ))
-  .add('With offsets', () => {
+  .add('With different offsets', () => {
     const items = Array(7).join().split(',');
     return (
       <Box fullWidth fullHeight pt={8} flexDirection="column" alignItems="flex-start">

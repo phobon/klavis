@@ -153,7 +153,7 @@ const Popup = ({ trigger, children, label, closeAfterAction, className, as, popu
       <Button
         className={className}
         {...passthroughProps}
-        isToggled={isOpen} 
+        toggled={isOpen} 
         onClick={onClick}
         px={1}>
         {trigger}

@@ -7,7 +7,7 @@ const Tag = styled.div`
   ${fontSize}
   ${lineHeight}
 
-  max-width: 200px;
+  max-width: 26rem;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

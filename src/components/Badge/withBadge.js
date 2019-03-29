@@ -73,24 +73,23 @@ const withBadge = WrappedComponent => ({
     );
   }
 
-  const { onClick, color: _color, bg, fullWidth, fullHeight, ...containerProps } = props;
-
-  const [layoutProps, passthroughProps] = destructureLayoutProps(containerProps);
-
-  // If an onClick function is required, add it to the passthroughProps.
-  if (onClick) {
-    passthroughProps.onClick = onClick;
-  }
+  const { onClick, color: _color, bg, ...containerProps } = props;
+  const [{ fullWidth, fullHeight, width, height, position, ...layoutProps}, passthroughProps] = destructureLayoutProps(props);
 
   return (
     <BadgeContainer
+      position={position || 'relative'}
+      width={width}
+      height={height}
+      fullWidth={fullWidth}
+      fullHeight={fullHeight}
       {...layoutProps}
       className={`${badgePosition}`}
       badge={badge}
       badgeBg={badgeBg}
       badgeColor={badgeColor}
       badgeOffset={badgeOffset}>
-      <WrappedComponent color={_color} bg={bg} {...passthroughProps} fullWidth={fullWidth} fullHeight={fullHeight} />
+      <WrappedComponent color={_color} bg={bg} {...passthroughProps} fullWidth={fullWidth || width != null} fullHeight={fullHeight || height != null} onClick={onClick} />
     </BadgeContainer>
   );
 };

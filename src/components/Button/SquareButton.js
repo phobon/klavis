@@ -8,8 +8,8 @@ const SquareButton = styled(Button)`
 SquareButton.displayName = 'SquareButton';
 
 SquareButton.defaultProps = Object.assign({}, Button.defaultProps, {
-  isToggled: false,
-  isDisabled: false,
+  toggled: false,
+  disabled: false,
   alignItems: 'center',
   justifyContent: 'center',
   size: 'm',

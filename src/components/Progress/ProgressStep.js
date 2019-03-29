@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { themeGet } from 'styled-system';
-import { Box } from '@phobon/base';
 import withTooltip from '../Tooltip';
 
 const stepSize = props => {
@@ -9,8 +8,7 @@ const stepSize = props => {
     s: css`
       width: ${props.theme.space[3]}px;
       height: ${props.theme.space[3]}px;
-
-      > svg {
+      > div {
         width: ${props.theme.space[2]}px;
         height: ${props.theme.space[2]}px;
       }
@@ -18,17 +16,15 @@ const stepSize = props => {
     m: css`
       width: ${props.theme.space[4]}px;
       height: ${props.theme.space[4]}px;
-
-      > svg {
+      > div {
         width: ${props.theme.space[3]}px;
-        height: ${props.theme.space[3]}px;        
+        height: ${props.theme.space[3]}px;
       }
     `,
     l: css`
-    width: ${props.theme.space[5]}px;
-    height: ${props.theme.space[5]}px;
-
-    > svg {
+      width: ${props.theme.space[5]}px;
+      height: ${props.theme.space[5]}px;
+      > div {
         width: ${props.theme.space[3]}px;
         height: ${props.theme.space[3]}px;
       }
@@ -39,18 +35,13 @@ const stepSize = props => {
 };
 const current = props => props.isCurrent && css`
   background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
-
   &::before {
     content: '';
     opacity: 1;
   }
-
   &::after {
-    color: ${props => props.theme.colors.grayscale[2]};
+    color: ${props.theme.colors.grayscale[2]};
   }
-`;
-const complete = props => props.isComplete && css`
-  background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
 `;
 
 const labels = props => props.showLabels && css`
@@ -59,21 +50,19 @@ const labels = props => props.showLabels && css`
   }
 `;
 
-const ProgressStep = styled(Box)`
+const ProgressStep = styled.button`
+  border: 0;
+  background-color: ${props => props.theme.colors.grayscale[6]};
   border-radius: 50%;
   position: relative;
   color: white;
   transition: transform 90ms ease-out;
-
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
   ${stepSize}
-
-  > svg {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-  }
-
   &::before {
     content: '';
     background-color: ${props => props.theme.colors.background};
@@ -87,26 +76,22 @@ const ProgressStep = styled(Box)`
     opacity: 0;
     transition: opacity 180ms ease-out;
   }
-
   &::after {
     content: '${props => props.label}';
     display: none;
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     bottom: -${props => props.theme.space[4]}px;
     color: ${props => props.theme.colors.grayscale[3]};
     white-space: pre;
     pointer-events: none;
   }
-
-  &:hover {
-    transform: scale(1.05);
+  &:not(:disabled) {
+    background-color: ${props => themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
+    pointer-events: all;
+    cursor: pointer;
   }
-
   ${labels}
   ${current}
-  ${complete}
 `;
 
 ProgressStep.propTypes = {

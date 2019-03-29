@@ -58,6 +58,7 @@ const Form = ({
   flexDirection,
   alignItems,
   justifyContent,
+  disabled,
   ...props }) => (
     <StyledForm {...props} flexDirection={flexDirection} alignItems={alignItems} justifyContent={justifyContent} density={density}>
       <FormFieldContext.Provider value={{
@@ -66,10 +67,9 @@ const Form = ({
         alignItems,
         justifyContent,
         optionalLabel,
+        formDisabled: disabled,
       }}>
-        <fieldset disabled={isDisabled}>
-          {children}
-        </fieldset>
+        {children}
       </FormFieldContext.Provider>
     </StyledForm>
 );
@@ -94,7 +94,7 @@ Form.propTypes = {
   optionalLabel: PropTypes.func,
 
   /** A value indicating whether the whole form should be disabled, or not. */
-  isDisabled: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 /* eslint react/default-props-match-prop-types: 0 */
@@ -106,7 +106,7 @@ Form.defaultProps = {
   fullHeight: false,
   density: 'normal',
   optionalLabel: () => 'optional',
-  isDisabled: false,
+  disabled: false,
 };
 
 export default Form;

@@ -6,9 +6,6 @@ import { Box, Text } from '@phobon/base';
 import Badge from './Badge';
 
 storiesOf('Components/Badge', module)
-  .add('Basic', () => (
-    <Badge>1</Badge>
-  ))
   .add('With different colours', () => (
     <Box fullWidth fullHeight flexDirection="column" alignItems="flex-start">
       <Badge bg="guidance.warning.1" color="guidance.warning.0" mb={2}>1</Badge>
@@ -25,7 +22,7 @@ storiesOf('Components/Badge', module)
       <Badge mb={2}>Lots of words</Badge>
     </Box>
   ))
-  .add('Composition', () => {
+  .add('With different composition', () => {
     const categoryData = [
       { label: 'Inbox', count: 15, bg: 'reds.3' },
       { label: 'Starred', count: 5, bg: 'blues.3' },

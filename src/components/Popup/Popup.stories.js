@@ -19,7 +19,7 @@ const buttonVariants = [
 ];
 
 storiesOf('Components/Popups', module)
-  .add('Labels', () => (
+  .add('With and without labels', () => (
     <Box>
       <Popup trigger="with label" mr={3}>
         <Content />
@@ -30,7 +30,7 @@ storiesOf('Components/Popups', module)
       </Popup>
     </Box>
   ))
-  .add('Popup alignment', () => (
+  .add('With varying alignment', () => (
     <Box fullWidth justifyContent="space-between" style={{ height: '100vh' }} pb={6}>
       <Box fullHeight flexDirection="column" justifyContent="space-between">
         <Popup trigger="opens down">
@@ -50,7 +50,7 @@ storiesOf('Components/Popups', module)
       </Box>
     </Box>
   ))
-  .add('Set direction popup alignment', () => (
+  .add('With defined directional popup alignment', () => (
     <Box fullWidth justifyContent="space-between" style={{ height: '100vh' }} pb={6}>
       <Box fullHeight flexDirection="column" justifyContent="space-between">
         <Popup trigger="left opens down" popupDirection="left">
@@ -82,7 +82,7 @@ storiesOf('Components/Popups', module)
       </Popup>
     ))
   ))
-  .add('Set directions', () => (
+  .add('With defined directions', () => (
     <Box fullWidth justifyContent="space-between">
       <Popup trigger="opens down" popupDirection="down" mr={3}>
         <Content />

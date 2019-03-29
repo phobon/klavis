@@ -116,7 +116,7 @@ const buttonVariant = props => {
 };
 
 const isToggled = props => {
-  if (!props.isToggled) {
+  if (!props.toggled) {
     return '';
   }
 
@@ -127,7 +127,7 @@ const isToggled = props => {
       background-color: ${props.theme.colors.grayscale[1]};
     }
   `;
-  const isToggledVariants = {
+  const toggledVariants = {
     primary: css`
       background-color: ${props.theme.colors.accent[0]};
       &:hover {
@@ -177,7 +177,7 @@ const isToggled = props => {
     `,
   };
 
-  return isToggledVariants[props.variant];
+  return toggledVariants[props.variant];
 };
 
 const size = props => {
@@ -205,9 +205,7 @@ const size = props => {
   return sizes[props.size];
 };
 
-const Button = styled.button.attrs(props => ({
-  disabled: props.isDisabled,
-}))`
+const Button = styled.button`
   box-sizing: border-box;
   display: flex;
   flex: none;
@@ -259,7 +257,7 @@ const Button = styled.button.attrs(props => ({
 
   ${buttonVariant}
 
-  /* color, border, borderColor, borderRadius and isToggled/disabled need precedence over buttonVariants */
+  /* color, border, borderColor, borderRadius and toggled/disabled need precedence over buttonVariants */
   ${color}
   ${border}
   ${borderColor}
@@ -292,10 +290,7 @@ Button.propTypes = {
   ...fontWeight.propTypes,
 
   /** Whether the button is toggled. or not */
-  isToggled: PropTypes.bool,
-
-  /** Whether the button is disabled. or not */
-  isDisabled: PropTypes.bool,
+  toggled: PropTypes.bool,
 
   /** Sizes to the full width of its parent container, or sizes to content */
   fullWidth: PropTypes.bool,
@@ -318,8 +313,7 @@ Button.defaultProps = {
   fontSize: 1,
   borderRadius: 3,
   borderColor: 'grayscale.5',
-  isToggled: false,
-  isDisabled: false,
+  toggled: false,
   variant: 'secondary',
   alignItems: 'center',
   justifyContent: 'center',

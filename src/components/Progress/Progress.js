@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeGet } from 'styled-system';
+import { themeGet, color as styledColor } from 'styled-system';
 import styled, { css } from 'styled-components';
-import { Flex, BoxList, BoxListItem } from '@phobon/base';
+import { Flex, BoxList, BoxListItem, Box } from '@phobon/base';
 
 import ProgressStep from './ProgressStep';
 
@@ -28,7 +28,6 @@ const PercentageBar = styled(Flex)`
   position: relative;
   pointer-events: none;
   ${barSize}
-
   &::before {
     content: '';
     width: calc(100% + 4px);
@@ -49,7 +48,7 @@ const Progress = ({ children, completeGlyph, showLabels, size, fontSize, color, 
     }
 
     const { label, onClick, isCurrent, ...stepProps } = step.props;
-    
+
     const isLast = i === array.length - 1;
     if (isCurrent) {
       isCurrentShown = true;
@@ -63,18 +62,19 @@ const Progress = ({ children, completeGlyph, showLabels, size, fontSize, color, 
           label={label}
           isCurrent={isCurrent}
           isComplete={isComplete}
+          disabled={isCurrent || !isComplete}
           showLabels={showLabels}
           tooltip={!showLabels && label}
           color={color}
           bg={bg}
           size={size}
           fontSize={fontSize}
-          onClick={() => {
-            if (onClick) {
-              onClick();
-            }
-          }}>
-          {isComplete && completeGlyph}
+          onClick={onClick}>
+          {isComplete && (
+            <Box color="white">
+              {completeGlyph}
+            </Box>
+          )}
         </ProgressStep>
 
         {!isLast && <PercentageBar isComplete={isComplete} size={size} color={color} bg={bg} />}
@@ -90,10 +90,14 @@ const Progress = ({ children, completeGlyph, showLabels, size, fontSize, color, 
 };
 
 Progress.propTypes = {
+  ...styledColor.propTypes,
+
   size: PropTypes.oneOf(['s', 'm', 'l']),
   showLabels: PropTypes.bool,
   color: PropTypes.string,
   fontSize: PropTypes.number,
+
+  bg: PropTypes.string,
 };
 
 Progress.defaultProps = {

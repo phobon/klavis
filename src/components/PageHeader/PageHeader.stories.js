@@ -8,10 +8,10 @@ import Tag from '../Tag';
 import PageHeader from './PageHeader';
 
 storiesOf('Components/PageHeader', module)
-  .add('Basic example', () => (
+  .add('With a simple heading', () => (
     <PageHeader heading="Simple heading" />
   ))
-  .add('With tagline', () => (
+  .add('With a tagline', () => (
     <PageHeader heading="Simple heading" tagLine="Tagline" />
   ))
   .add('With an action', () => (

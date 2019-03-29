@@ -9,8 +9,8 @@ const CircleButton = styled(Button)`
 CircleButton.displayName = 'CircleButton';
 
 CircleButton.defaultProps = Object.assign({}, Button.defaultProps, {
-  isToggled: false,
-  isDisabled: false,
+  toggled: false,
+  disabled: false,
   alignItems: 'center',
   justifyContent: 'center',
   size: 'm',

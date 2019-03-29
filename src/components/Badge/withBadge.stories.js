@@ -8,9 +8,6 @@ import withBadge from './withBadge';
 const BadgeBox = withBadge(Box);
 
 storiesOf('Components/Badge/withBadge', module)
-  .add('Basic', () => (
-    <BadgeBox badge="1" width={48} height={48} bg="grayscale.7" />
-  ))
   .add('With different positioning', () => (
     <Box fullWidth fullHeight flexDirection="column" alignItems="flex-start">
       <BadgeBox badge="1" mb={4} width={48} height={48} bg="grayscale.7" />
@@ -22,9 +19,9 @@ storiesOf('Components/Badge/withBadge', module)
   .add('With different colours', () => (
     <Box fullWidth fullHeight flexDirection="column" alignItems="flex-start">
       <BadgeBox badge="1" mb={4} width={48} height={48} bg="grayscale.7" />
-      <BadgeBox badge="2" badgeBg="blues.1" badgePosition="topright" mb={4} width={48} height={48} bg="grayscale.7" />
-      <BadgeBox badge="3" badgeBg="reds.1" badgePosition="bottomleft" mb={4} width={48} height={48} bg="grayscale.7" />
-      <BadgeBox badge="4" badgeBg="accent.3" badgePosition="bottomright" mb={4} width={48} height={48} bg="grayscale.7" />
+      <BadgeBox badge="2" badgeBg="blues.3" badgePosition="topright" mb={4} width={48} height={48} bg="grayscale.7" />
+      <BadgeBox badge="3" badgeBg="reds.3" badgePosition="bottomleft" mb={4} width={48} height={48} bg="grayscale.7" />
+      <BadgeBox badge="4" badgeBg="purples.3" badgePosition="bottomright" mb={4} width={48} height={48} bg="grayscale.7" />
     </Box>
   ))
   .add('With different text length', () => (

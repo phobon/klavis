@@ -22,9 +22,9 @@ storiesOf('Components/Buttons/CircleButton', module)
     buttonVariants.map(a =>
       <CircleButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} isDisabled></CircleButton>)
   ))
-  .add('isToggled', () => (
+  .add('toggled', () => (
     buttonVariants.map(a =>
-      <CircleButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} isToggled></CircleButton>)
+      <CircleButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} toggled></CircleButton>)
   ))
   .add('Different sizes', () => (
     buttonSizes.map(s =>

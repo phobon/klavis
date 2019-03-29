@@ -5,13 +5,15 @@ import { Flex, Box, Label, Text } from '@phobon/base';
 import FormFieldContext from '../FormFieldContext';
 
 const asField = WrappedComponent => 
-  ({ label, id, required = false, error, hint, visible = true, className, useUnprocessed = false, ...props }) => {
-  const { optionalLabel, density } = useContext(FormFieldContext);
+  ({ label, id, required = false, error, hint, visible = true, className, disabled, useUnprocessed = false, ...props }) => {
+  const { optionalLabel, density, formDisabled } = useContext(FormFieldContext);
 
   // If the field shouldn't be visible, don't render it.
   if (!visible) {
     return null;
   }
+
+  const fieldDisabled = disabled || formDisabled;
 
   // If we want to use an unprocessed component.
   if (useUnprocessed) {
@@ -19,7 +21,8 @@ const asField = WrappedComponent =>
       <WrappedComponent
         id={id}
         {...props}
-        error={error} />
+        error={error}
+        disabled={fieldDisabled} />
     )
   }
 
@@ -59,7 +62,8 @@ const asField = WrappedComponent =>
           {...props}
           density={density}
           className={className}
-          error={error} />
+          error={error}
+          disabled={fieldDisabled} />
       </Box>
       {hintElement}
       {errorElement}
@@ -109,6 +113,7 @@ asField.defaultProps = {
   placeholder: null,
   visible: true,
   className: null,
+  disabled: false,
   useUnprocessed: false,
 };
 

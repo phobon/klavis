@@ -18,7 +18,7 @@ const options = [
 ];
 
 storiesOf('Patterns/Form', module)
-  .add('Default', () => (
+  .add('With several different fields', () => (
     <Form>
       <TextField id="text1" label="text field 1" />
       <TextField id="text2" label="text field 2" />
@@ -27,7 +27,7 @@ storiesOf('Patterns/Form', module)
       <CheckboxField id="checkbox" label="checkbox field" />
     </Form>
   ))
-  .add('Densities', () => (
+  .add('With different densities', () => (
     <React.Fragment>
       <Form density="compact" mr={4} width={1/4}>
         <Heading.H4>Compact density</Heading.H4>
@@ -57,7 +57,7 @@ storiesOf('Patterns/Form', module)
       </Form>
     </React.Fragment>
   ))
-  .add('Inline fields', () => (
+  .add('With inline fields', () => (
     <Form>
       <FieldGroup>
         <TextField id="text1" label="text field" />

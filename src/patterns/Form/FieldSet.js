@@ -55,16 +55,16 @@ const informationDensity = density => {
   return densities[density];
 };
 
-const FieldSet = ({ id, disabled, error, children }) => {
+const FieldSet = ({ id, disabled, error, children, ...props }) => {
   const { density } = useContext(FormFieldContext);
   const mb = informationDensity(density);
 
-  const inputs = children.map((c, i) => {
+  const inputs = children.$$typeof ? React.cloneElement(children, { id: `${id}__option1`, name: id, mb }) : children.map((c, i) => {
     const k = `${id}__option${i}`;
-    return React.cloneElement(c, { id: k, key: k, name: id, mb });
+    return React.cloneElement(c, { id: k, key: k, name: id, mb })
   });
   return (
-    <StyledFieldSet id={id} px={2} my={1} py={2} borderRadius={3} disabled={disabled} error={error} mb={mb}>
+    <StyledFieldSet id={id} px={2} my={1} py={2} borderRadius={3} disabled={disabled} error={error} mb={mb} {...props}>
       {inputs}
     </StyledFieldSet>
   );
