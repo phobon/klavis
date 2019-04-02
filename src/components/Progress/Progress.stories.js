@@ -9,116 +9,77 @@ import { Box } from '@phobon/base';
 import Progress from './Progress';
 import ProgressStep from './ProgressStep';
 
+const TestProgress = props => (
+  <Progress {...props}>
+    <ProgressStep label="First Step" />
+    <ProgressStep label="Second Step" />
+    <ProgressStep label="Third Step" />
+    <ProgressStep label="Fourth Step" isCurrent />
+    <ProgressStep label="Fifth Step" />
+    <ProgressStep label="Sixth Step" />
+  </Progress>
+);
+
 storiesOf('Components/Progress', module)
   .add('With and without labels', () => (
     <Box flexDirection="column" fullWidth p={7}>
-      <Progress mb={8}>
-        <ProgressStep label="First Step" />
-        <ProgressStep label="Second Step" />
-        <ProgressStep label="Third Step" />
-        <ProgressStep label="Fourth Step" isCurrent />
-        <ProgressStep label="Fifth Step" />
-        <ProgressStep label="Sixth Step" />
-      </Progress>
-      <Progress showLabels={false}>
-        <ProgressStep label="First Step" />
-        <ProgressStep label="Second Step" />
-        <ProgressStep label="Third Step" />
-        <ProgressStep label="Fourth Step" isCurrent />
-        <ProgressStep label="Fifth Step" />
-        <ProgressStep label="Sixth Step" />
-      </Progress>
+      <TestProgress mb={8} />
+      <TestProgress showLabels={false} />
     </Box>
   ))
-  .add('With different sizes', () => (
+  .add('With different modes', () => (
     <Box flexDirection="column" fullWidth p={7}>
-      <Progress mb={8} size="s">
-        <ProgressStep label="First Step" />
-        <ProgressStep label="Second Step" />
-        <ProgressStep label="Third Step" />
-        <ProgressStep label="Fourth Step" isCurrent />
-        <ProgressStep label="Fifth Step" />
-        <ProgressStep label="Sixth Step" />
-      </Progress>
+      <TestProgress mb={8} mode="compact" width={150} />
+      <TestProgress />
+    </Box>
+  ))
+  .add('With different background colours', () => (
+    <Box flexDirection="column" fullWidth p={7}>
+      <TestProgress mb={8} bg="grayscale.3" />
+      <TestProgress mb={8} bg="grayscale.4" />
+      <TestProgress mb={8} bg="grayscale.5" />
 
-      <Progress mb={8} size="m">
-        <ProgressStep label="First Step" />
-        <ProgressStep label="Second Step" />
-        <ProgressStep label="Third Step" />
-        <ProgressStep label="Fourth Step" isCurrent />
-        <ProgressStep label="Fifth Step" />
-        <ProgressStep label="Sixth Step" />
-      </Progress>
-
-      <Progress size="l">
-        <ProgressStep label="First Step" />
-        <ProgressStep label="Second Step" />
-        <ProgressStep label="Third Step" />
-        <ProgressStep label="Fourth Step" isCurrent />
-        <ProgressStep label="Fifth Step" />
-        <ProgressStep label="Sixth Step" />
-      </Progress>
+      <TestProgress mb={8} bg="grayscale.3" mode="compact" width={150} />
+      <TestProgress mb={8} bg="grayscale.4" mode="compact" width={150} />
+      <TestProgress mb={8} bg="grayscale.5" mode="compact" width={150} />
     </Box>
   ))
   .add('With different colours', () => (
     <Box flexDirection="column" fullWidth p={7}>
-      <Progress mb={8} color="reds.5">
-        <ProgressStep label="First Step" />
-        <ProgressStep label="Second Step" />
-        <ProgressStep label="Third Step" />
-        <ProgressStep label="Fourth Step" isCurrent />
-        <ProgressStep label="Fifth Step" />
-        <ProgressStep label="Sixth Step" />
-      </Progress>
+      <TestProgress mb={8} color="reds.5" />
+      <TestProgress mb={8} color="purples.5" />
+      <TestProgress mb={8} color="oranges.5" />
 
-      <Progress mb={8} color="purples.4">
-        <ProgressStep label="First Step" />
-        <ProgressStep label="Second Step" />
-        <ProgressStep label="Third Step" />
-        <ProgressStep label="Fourth Step" isCurrent />
-        <ProgressStep label="Fifth Step" />
-        <ProgressStep label="Sixth Step" />
-      </Progress>
-
-      <Progress color="oranges.4">
-        <ProgressStep label="First Step" />
-        <ProgressStep label="Second Step" />
-        <ProgressStep label="Third Step" />
-        <ProgressStep label="Fourth Step" isCurrent />
-        <ProgressStep label="Fifth Step" />
-        <ProgressStep label="Sixth Step" />
-      </Progress>
+      <TestProgress mb={8} color="reds.5" mode="compact" width={150} />
+      <TestProgress mb={8} color="purples.5" mode="compact" width={150} />
+      <TestProgress mb={8} color="oranges.5" mode="compact" width={150} />
     </Box>
   ))
   .add('With custom completed glyph', () => (
     <Box flexDirection="column" fullWidth p={7}>
-      <Progress mb={8} color="reds.5" completeGlyph={<Check />}>
-        <ProgressStep label="First Step" />
-        <ProgressStep label="Second Step" isCurrent />
-        <ProgressStep label="Third Step" />
-        <ProgressStep label="Fourth Step" />
-      </Progress>
+      <TestProgress mb={8} color="reds.5" completeGlyph={<Check />} />
+      <TestProgress mb={8} color="purples.5" completeGlyph={<Check />} />
+      <TestProgress mb={8} color="oranges.5" completeGlyph={<Check />} />
 
-      <Progress mb={8} color="purples.4" completeGlyph={<Check />}>
-        <ProgressStep label="First Step" />
-        <ProgressStep label="Second Step" isCurrent />
-        <ProgressStep label="Third Step" />
-        <ProgressStep label="Fourth Step" />
-      </Progress>
-
-      <Progress color="oranges.4" completeGlyph={<Check />}>
-        <ProgressStep label="First Step" />
-        <ProgressStep label="Second Step" isCurrent />
-        <ProgressStep label="Third Step" />
-        <ProgressStep label="Fourth Step" />
-      </Progress>
+      <TestProgress mb={8} color="reds.5" mode="compact" width={150} completeGlyph={<Check />} />
+      <TestProgress mb={8} color="purples.5" mode="compact" width={150} completeGlyph={<Check />} />
+      <TestProgress mb={8} color="oranges.5" mode="compact" width={150} completeGlyph={<Check />} />
     </Box>
   ))
   .add('With custom onClicks for steps', () => (
-    <Progress p={8} color="reds.5" completeGlyph={<Check />}>
-      <ProgressStep label="First Step" onClick={action('First Step clicked')} />
-      <ProgressStep label="Second Step" onClick={action('Second Step clicked')} />
-      <ProgressStep label="Third Step" onClick={action('Third Step clicked')} isCurrent />
-      <ProgressStep label="Fourth Step" onClick={action('Fourth Step clicked')} />
-    </Progress>
+    <Box flexDirection="column" fullWidth p={7}>
+      <Progress mb={8} completeGlyph={<Check />}>
+        <ProgressStep label="First Step" onClick={action('First Step clicked')} />
+        <ProgressStep label="Second Step" onClick={action('Second Step clicked')} />
+        <ProgressStep label="Third Step" onClick={action('Third Step clicked')} isCurrent />
+        <ProgressStep label="Fourth Step" onClick={action('Fourth Step clicked')} />
+      </Progress>
+
+      <Progress width={150} mode="compact">
+        <ProgressStep label="First Step" onClick={action('First Step clicked')} />
+        <ProgressStep label="Second Step" onClick={action('Second Step clicked')} />
+        <ProgressStep label="Third Step" onClick={action('Third Step clicked')} isCurrent />
+        <ProgressStep label="Fourth Step" onClick={action('Fourth Step clicked')} />
+      </Progress>
+    </Box>
   ));

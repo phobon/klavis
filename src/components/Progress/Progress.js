@@ -9,25 +9,11 @@ import ProgressStep from './ProgressStep';
 const complete = props => props.isComplete && css`
   opacity: 1;
 `;
-const barSize = props => {
-  const barSizes = {
-    s: css`
-      height: ${props.theme.space[1]}px;
-    `,
-    m: css`
-      height: ${props.theme.space[2]}px;
-    `,
-    l: css`
-    height: ${props.theme.space[2]}px;
-  `,
-  };
-
-  return barSizes[props.size];
-};
 const PercentageBar = styled(Flex)`
   position: relative;
   pointer-events: none;
-  ${barSize}
+  height: ${props => props.theme.space[2]}px;
+
   &::before {
     content: '';
     width: calc(100% + 4px);
@@ -40,7 +26,7 @@ const PercentageBar = styled(Flex)`
   }
 `;
 
-const Progress = ({ children, completeGlyph, showLabels, size, fontSize, color, bg, ...props }) => {
+const Progress = ({ children, completeGlyph, showLabels, mode, fontSize, color, bg, ...props }) => {
   let isCurrentShown = false;
   const mappedChildren = children.map((step, i, array) => {
     if (!step) {
@@ -56,7 +42,7 @@ const Progress = ({ children, completeGlyph, showLabels, size, fontSize, color, 
 
     const isComplete = !isCurrentShown;
     return (
-      <BoxListItem key={label} flex={!isLast ? '1 1 auto' : 'none'}>
+      <BoxListItem key={label} flex={!isLast && mode === 'full' ? '1 1 auto' : 'none'}>
         <ProgressStep
           {...stepProps}
           label={label}
@@ -67,23 +53,23 @@ const Progress = ({ children, completeGlyph, showLabels, size, fontSize, color, 
           tooltip={!showLabels && label}
           color={color}
           bg={bg}
-          size={size}
+          mode={mode}
           fontSize={fontSize}
           onClick={onClick}>
-          {isComplete && (
+          {isComplete && mode === 'full' && (
             <Box color="white">
               {completeGlyph}
             </Box>
           )}
         </ProgressStep>
 
-        {!isLast && <PercentageBar isComplete={isComplete} size={size} color={color} bg={bg} />}
+        {!isLast && mode === 'full' && <PercentageBar isComplete={isComplete} color={color} bg={bg} />}
       </BoxListItem>
     );
   }).filter(n => n);
 
   return (
-    <BoxList fullWidth {...props}>
+    <BoxList fullWidth={mode === 'full'} justifyContent={mode === 'compact' ? 'space-between' : 'center'} {...props}>
       {mappedChildren}
     </BoxList>
   )
@@ -92,7 +78,7 @@ const Progress = ({ children, completeGlyph, showLabels, size, fontSize, color, 
 Progress.propTypes = {
   ...styledColor.propTypes,
 
-  size: PropTypes.oneOf(['s', 'm', 'l']),
+  mode: PropTypes.oneOf(['compact', 'full']),
   showLabels: PropTypes.bool,
   color: PropTypes.string,
   fontSize: PropTypes.number,
@@ -101,7 +87,7 @@ Progress.propTypes = {
 };
 
 Progress.defaultProps = {
-  size: 'm',
+  mode: 'full',
   showLabels: true,
   color: 'accent.3',
   fontSize: 0,
