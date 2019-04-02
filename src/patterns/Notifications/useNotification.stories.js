@@ -72,7 +72,7 @@ storiesOf('Patterns/Notifications', module)
     ];
     return (
       <Notifications timeout={3000}>
-        <NotificationsHelper timeout={3000} notificationTypes={notificationTypes} />
+        <NotificationsHelper notificationTypes={notificationTypes} />
       </Notifications>
     );
   })
