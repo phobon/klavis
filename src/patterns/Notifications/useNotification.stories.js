@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { Text } from '@phobon/base';
@@ -8,8 +8,10 @@ import Notifications from './Notifications';
 import useNotifications from './useNotifications';
 import Flag from './Flag';
 
-const NotificationsHelper = ({ notificationTypes }) => {
-  const add = useNotifications();
+const NotificationsHelper = ({ notificationTypes, notificationPosition }) => {
+  const [add, setPosition] = useNotifications();
+
+  useEffect(() => notificationPosition && setPosition(notificationPosition), [notificationPosition]);
 
   const notificationTriggers = notificationTypes.map(n => (
     <Button key={n.label} onClick={() => add(n.notification)} mr={3}>{n.label}</Button>
@@ -73,6 +75,32 @@ storiesOf('Patterns/Notifications', module)
     return (
       <Notifications timeout={3000}>
         <NotificationsHelper notificationTypes={notificationTypes} />
+      </Notifications>
+    );
+  })
+  .add('With different initial position', () => {
+    const notificationTypes = [
+      {
+        label: 'Bottom',
+        notification: { content: <ContentHelper /> },
+      },
+    ];
+    return (
+      <Notifications timeout={3000} notificationPosition="bottom">
+        <NotificationsHelper notificationTypes={notificationTypes} />
+      </Notifications>
+    );
+  })
+  .add('With custom position', () => {
+    const notificationTypes = [
+      {
+        label: 'Top',
+        notification: { content: <ContentHelper /> },
+      },
+    ];
+    return (
+      <Notifications timeout={3000}>
+        <NotificationsHelper notificationTypes={notificationTypes}  notificationPosition="top" />
       </Notifications>
     );
   })

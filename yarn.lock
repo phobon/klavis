@@ -1317,9 +1317,9 @@
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
 "@phobon/base@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-1.5.0.tgz#9be168dcc92685b224c15ef077beab1f22c96af4"
-  integrity sha512-amDsQFOehQKCrRMmUSCvYjs6lixH5MQfSqKZXbk1LovONvZg8rttjK907bPMT7hTZyJLdfLhR0jC8nIhY2BNcQ==
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-1.5.1.tgz#da34a434330f24c5f128b11da93c32d9b3bd8025"
+  integrity sha512-SaGKw7hLRZRPg7l46MLb/MlnT+WY9tY/NOJJvCDtNUhE7M4uRz591ArskyZ7y7hZXkYifaRKoTO94+ITieCzug==
 
 "@reach/router@^1.2.1":
   version "1.2.1"
