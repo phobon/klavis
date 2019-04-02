@@ -100,8 +100,7 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
             gridTemplateRows="auto 1fr auto"
             gridTemplateAreas="'topleft top topright'
                               'left middle right'
-                              'bottomleft bottom bottomright'"
-            notificationPosition={notificationPosition}>
+                              'bottomleft bottom bottomright'">
               <NotificationsBox fullHeight gridArea={notificationPosition} width={width} flexDirection="column" notificationPosition={notificationPosition}>
                 {transitions.map(({ key, item, props: { notificationPosition: pos, ...style } }) => {
                   const { content, canDismiss } = item;
