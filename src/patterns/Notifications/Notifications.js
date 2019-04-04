@@ -158,7 +158,7 @@ Notifications.defaultProps = {
   children: null,
   timeout: 3000,
   config: { tension: 125, friction: 20, precision: 0.1 },
-  notificationPosition: 'bottom',
+  notificationPosition: 'bottomright',
   boxShadowIntensity: 0.7,
   boxShadowSize: 'm',
   width: 350,

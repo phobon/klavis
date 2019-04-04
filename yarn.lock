@@ -1337,10 +1337,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@phobon/base@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-1.6.0.tgz#b769115d574f743edadbab6d25df73b1132f7152"
-  integrity sha512-iFndzs7l0iXS62gDcMEtz+pzek/P2dF2S9F8NRB56BmlgL4omiEfk8PNXaGeQcMaHrba3eK0wGcwj27crEIiOw==
+"@phobon/base@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-1.6.2.tgz#28652248989d335be970bfbeeb25fad35d42c2a2"
+  integrity sha512-oxQvzvFJYXD8rp1GE/+XyUAA+tUIyLe5Ph2UeTPN+/ZhOdtV8JQfVMJbBKLl5E0tTRhtHfnI7CCLUfOhReevdw==
   dependencies:
     "@babel/plugin-transform-modules-commonjs" "^7.4.3"
 

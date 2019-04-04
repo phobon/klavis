@@ -47,7 +47,7 @@ A compositional message component
 */
 const Flag = ({ children, severity, showSeverity, ...props }) => (
   <FlagContainer justifyContent="flex-start" alignItems="flex-start" severity={severity} showSeverity={showSeverity} {...props}>
-    {showSeverity && <SeverityGlyph severity={severity} size={28} alignSelf="flex-start" />}
+    {showSeverity && <SeverityGlyph severity={severity} size={28} />}
     <Flex justifyContent="flex-start" flexDirection="column" alignItems="flex-start" mt="2px">
       {children}
     </Flex>
