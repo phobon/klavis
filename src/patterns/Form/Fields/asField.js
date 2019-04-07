@@ -42,7 +42,8 @@ const asField = WrappedComponent =>
       className="form__field"
       flexDirection="column"
       alignItems="flex-start"
-      fullWidth>
+      fullWidth
+      position="relative">
       <Box
         fullWidth
         flexDirection="column"
@@ -65,8 +66,7 @@ const asField = WrappedComponent =>
           error={error}
           disabled={fieldDisabled} />
       </Box>
-      {hintElement}
-      {errorElement}
+      {errorElement || hintElement}
     </Flex>
   );
 };
