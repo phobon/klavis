@@ -1337,10 +1337,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@phobon/base@^1.6.2":
-  version "1.6.2"
-  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-1.6.2.tgz#28652248989d335be970bfbeeb25fad35d42c2a2"
-  integrity sha512-oxQvzvFJYXD8rp1GE/+XyUAA+tUIyLe5Ph2UeTPN+/ZhOdtV8JQfVMJbBKLl5E0tTRhtHfnI7CCLUfOhReevdw==
+"@phobon/base@^1.6.3":
+  version "1.6.3"
+  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-1.6.3.tgz#58cc0d760ac096f74705a40fbf90ac631bd573e2"
+  integrity sha512-NlAEEKoaZCIomaFonLrArcgM/j12kHBymE0T56gL90rnteyFPnDBhD5MCm1rKptUAPrrzRyBfDcCjgYl320rLw==
   dependencies:
     "@babel/plugin-transform-modules-commonjs" "^7.4.3"
 
@@ -6672,10 +6672,10 @@ react-resize-detector@^3.2.1:
     prop-types "^15.6.2"
     resize-observer-polyfill "^1.5.1"
 
-react-spring@^8.0.18:
-  version "8.0.18"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.18.tgz#f6fa09ab5acdeb37618c0e340d59830171b95c33"
-  integrity sha512-gb1Rtsnez2gxIHtbrbwQsAjE4ir/62m+gI+eT+1E0Uky5L1PbLccbywRIdIpK3W5jiNmU6OlEazVk0tfI8pZrA==
+react-spring@^8.0.19:
+  version "8.0.19"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-8.0.19.tgz#62f4f396b4b73fa402838200a1c80374338cb12e"
+  integrity sha512-DjrwjXqqVEitj6e6GqdW5dUp1BoVyeFQhEcXvPfoQxwyIVSJ9smNt8CNjSvoQqRujVllE7XKaJRWSZO/ewd1/A==
   dependencies:
     "@babel/runtime" "^7.3.1"
 
