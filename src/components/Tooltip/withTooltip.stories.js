@@ -91,8 +91,8 @@ storiesOf('Components/Tooltip', module)
     </Box>
   ))
   .add('With different positions', () => (
-    <Box position="relative" width={500} height={500} justifyContent="flex-start" alignItems="flex-start" flexDirection="column">
-      <TooltipBox position="absolute" left={50} top={80} width={100} height={100} bg="greens.3" tooltip="Absolute positioning" borderRadius={3} />
+    <Box css={{ position: 'relative' }} width={500} height={500} justifyContent="flex-start" alignItems="flex-start" flexDirection="column">
+      <TooltipBox css={{ position: 'absolute' }} left={50} top={80} width={100} height={100} bg="greens.3" tooltip="Absolute positioning" borderRadius={3} />
       <TooltipBox width={100} height={100} bg="purples.3" tooltip="Relative positioning" borderRadius={3} />
     </Box>
   ));

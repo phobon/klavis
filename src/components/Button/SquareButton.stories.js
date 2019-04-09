@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import SquareButton from './SquareButton';
 
-const buttonVariants = ['primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'subtle', 'link', 'clean'];
+const buttonVariants = ['primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'link', 'clean'];
 
 const buttonSizes = [
   's',

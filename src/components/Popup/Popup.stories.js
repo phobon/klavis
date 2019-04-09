@@ -15,7 +15,7 @@ const Content = () => (
 );
 
 const buttonVariants = [
-  'primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'subtle', 'link', 'clean',
+  'primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'link', 'clean',
 ];
 
 storiesOf('Components/Popups', module)

@@ -147,8 +147,8 @@ const Popup = ({ trigger, children, label, closeAfterAction, className, as, popu
 
   return (
     <Box 
-      {...layoutProps} 
-      position="relative"
+      {...layoutProps}
+      css={{ position: 'relative' }}
       ref={container}>
       <Button
         className={className}

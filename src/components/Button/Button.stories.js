@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import Button from './Button';
 
-const buttonVariants = ['primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'subtle', 'link', 'clean'];
+const buttonVariants = ['primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'link', 'clean'];
 
 const buttonSizes = [
   's',

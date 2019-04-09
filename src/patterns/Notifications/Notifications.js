@@ -101,7 +101,7 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
             gridTemplateAreas="'topleft top topright'
                               'left middle right'
                               'bottomleft bottom bottomright'">
-              <NotificationsBox fullHeight gridArea={notificationPosition} width={width} flexDirection="column" notificationPosition={notificationPosition}>
+              <NotificationsBox fullHeight css={{ gridArea: notificationPosition }} width={width} flexDirection="column" notificationPosition={notificationPosition}>
                 {transitions.map(({ key, item, props: { notificationPosition: pos, ...style } }) => {
                   const { content, canDismiss } = item;
                   return (
@@ -117,7 +117,7 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
                           </Flex>
                           {canDismiss && (
                             <SquareButton
-                              variant="subtle"
+                              variant="tertiary"
                               size="s"
                               ml={4}
                               mt={3}

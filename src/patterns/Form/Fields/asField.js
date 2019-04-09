@@ -43,7 +43,7 @@ const asField = WrappedComponent =>
       flexDirection="column"
       alignItems="flex-start"
       fullWidth
-      position="relative">
+      css={{ position: 'relative' }}>
       <Box
         fullWidth
         flexDirection="column"

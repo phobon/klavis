@@ -1,24 +1,17 @@
 import styled, { css } from 'styled-components';
 import {
-  space,
-  color,
-  width,
-  height,
-  borderRadius,
-  alignItems,
-  justifyContent,
-  fontSize,
-  fontWeight,
+  cover,
+  layout,
   border,
-  borderColor,
-} from 'styled-system';
-import { fullWidth, fullHeight } from '@phobon/base';
+  flexbox,
+  typography,
+} from '@phobon/base';
 import PropTypes from 'prop-types';
 import withTooltip from '../Tooltip';
 
 const buttonVariant = props => {
   const tertiary = css`
-    background-color: ${props.theme.colors.background};
+    background-color: transparent;
     border-color: transparent;
     color: ${props.theme.colors.grayscale[1]};
     fill: ${props.theme.colors.grayscale[1]};
@@ -83,7 +76,6 @@ const buttonVariant = props => {
       }
     `,
 
-    subtle: tertiary,
     link: css`
       background-color: transparent;
       border: 0;
@@ -162,7 +154,6 @@ const isToggled = props => {
       }
     `,
 
-    subtle: tertiary,
     link: css`
       color: ${props.theme.colors.accent[1]};
       fill: ${props.theme.colors.accent[1]};
@@ -207,36 +198,23 @@ const size = props => {
 
 const Button = styled.button`
   box-sizing: border-box;
-  display: flex;
-  flex: none;
   position: relative;
-
-  ${alignItems}
-  ${justifyContent}
-
-  border: 0;
 
   cursor: pointer;
 
-  transition:
-    border-color 180ms ease-out,
-    background-color 180ms ease-out,
-    color 180ms ease-out,
-    fill 180ms ease-out,
-    transform 180ms ease-out,
-    opacity 180ms ease-out;
+  transition: all 180ms ease-out;
 
-  ${fontSize}
-  ${fontWeight}
+  ${cover}
+  ${typography}
 
   ${size}
+  ${buttonVariant}
 
-  ${space}
-  ${width}
-  ${height}
+  ${layout}
+  ${border}
+  ${flexbox}
 
-  ${fullWidth}
-  ${fullHeight}
+  ${isToggled}
 
   &:focus {
     outline: 0;
@@ -255,16 +233,6 @@ const Button = styled.button`
     }
   }
 
-  ${buttonVariant}
-
-  /* color, border, borderColor, borderRadius and toggled/disabled need precedence over buttonVariants */
-  ${color}
-  ${border}
-  ${borderColor}
-  ${borderRadius}
-
-  ${isToggled}
-
   &:disabled {
     opacity: 0.5;
     background-color: ${props => props.theme.colors.grayscale[6]};
@@ -278,45 +246,34 @@ const Button = styled.button`
 Button.displayName = 'Button';
 
 Button.propTypes = {
-  ...space.propTypes,
-  ...color.propTypes,
-  ...width.propTypes,
-  ...height.propTypes,
-  ...borderRadius.propTypes,
-  ...borderColor.propTypes,
-  ...alignItems.propTypes,
-  ...justifyContent.propTypes,
-  ...fontSize.propTypes,
-  ...fontWeight.propTypes,
+  ...cover.propTypes,
+  ...layout.propTypes,
+  ...border.propTypes,
+  ...flexbox.propTypes,
+  ...typography.propTypes,
 
   /** Whether the button is toggled. or not */
   toggled: PropTypes.bool,
 
-  /** Sizes to the full width of its parent container, or sizes to content */
-  fullWidth: PropTypes.bool,
-
-  /** Sizes to the full height of its parent container, or sizes to content */
-  fullHeight: PropTypes.bool,
-
   /** Button variant */
-  variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'subtle', 'link', 'clean']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'link', 'clean']),
 
   /** Button size */
   size: PropTypes.oneOf(['s', 'm', 'l']),
-
-  /** Button type */
-  type: PropTypes.string,
 };
 
 Button.defaultProps = {
+  display: 'flex',
+  flex: 'none',
+  alignItems: 'center',
+  justifyContent: 'center',
+  border: 0,
   width: 'initial',
   fontSize: 1,
   borderRadius: 3,
   borderColor: 'grayscale.5',
   toggled: false,
   variant: 'secondary',
-  alignItems: 'center',
-  justifyContent: 'center',
   size: 'm',
   type: 'button',
 };

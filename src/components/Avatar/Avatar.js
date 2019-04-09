@@ -10,9 +10,9 @@ import { Box, Image, Text } from '@phobon/base';
 const statusColor = props => {
   const statusColors = {
     'none': 'transparent',
-    'error': props.theme.colors.reds[3],
-    'warning': props.theme.colors.oranges[3],
-    'success': props.theme.colors.greens[3],
+    'error': props.theme.colors.reds[4],
+    'warning': props.theme.colors.oranges[4],
+    'success': props.theme.colors.greens[4],
   };
 
   return css`background-color: ${statusColors[props.status]};`;
@@ -21,9 +21,9 @@ const presenceColor = props => {
   const presenceColors = {
     'none': 'transparent',
     'unknown': props.theme.colors.grayscale[4],
-    'unavailable': props.theme.colors.reds[3],
-    'busy': props.theme.colors.oranges[3],
-    'available': props.theme.colors.greens[3],
+    'unavailable': props.theme.colors.reds[4],
+    'busy': props.theme.colors.oranges[4],
+    'available': props.theme.colors.greens[4],
   };
 
   return css`background-color: ${presenceColors[props.presence]};`;
