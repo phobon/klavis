@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
@@ -30,8 +31,8 @@ storiesOf('Components/Tooltip', module)
     </Box>
   ))
   .add('With fluid layout', () => (
-    <Box width={500} height={400} flexDirection="column" alignItems="flex-start" bg="grayscale.7">
-      <TooltipButton tooltip="Tooltip text" mb={3} fullWidth bg="white">
+    <Box width={500} height={400} flexDirection="column" alignItems="flex-start">
+      <TooltipButton tooltip="Tooltip text" mb={3} fullWidth>
         Tooltip opens down
       </TooltipButton>
     </Box>
@@ -92,7 +93,7 @@ storiesOf('Components/Tooltip', module)
   ))
   .add('With different positions', () => (
     <Box css={{ position: 'relative' }} width={500} height={500} justifyContent="flex-start" alignItems="flex-start" flexDirection="column">
-      <TooltipBox css={{ position: 'absolute' }} left={50} top={80} width={100} height={100} bg="greens.3" tooltip="Absolute positioning" borderRadius={3} />
+      <TooltipBox position="absolute" left={50} top={80} width={100} height={100} bg="greens.3" tooltip="Absolute positioning" borderRadius={3} />
       <TooltipBox width={100} height={100} bg="purples.3" tooltip="Relative positioning" borderRadius={3} />
     </Box>
   ));

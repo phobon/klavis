@@ -22,11 +22,15 @@ storiesOf('Components/PercentageBar', module)
   ))
   .add('With different headings', () => (
     <Box flexDirection="column" fullWidth>
-      <PercentageBar total={100} complete={20} showPercentage heading={
-        <Box>
-          <Text as="span" fontWeight="bold">20 / 100</Text>
-          <Text as="span" ml={1}>remaining</Text>
-        </Box>
-      }/>
+      <PercentageBar
+        total={100}
+        complete={20}
+        showPercentage
+        heading={(
+          <Box>
+            <Text as="span" fontWeight="bold">20 / 100</Text>
+            <Text as="span" ml={1}>remaining</Text>
+          </Box>
+        )} />
     </Box>
   ));

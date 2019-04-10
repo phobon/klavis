@@ -160,7 +160,7 @@ const Avatar = ({ image, name, size, status, presence, avatarStyle, nameStyle, o
       status={status}
       presence={presence}>
       {image 
-        ? <AvatarIndicatorButton as={onClick ? 'button' : 'div'} onClick={onClick}><Image src={image} responsive round /></AvatarIndicatorButton>
+        ? <AvatarIndicatorButton as={onClick ? 'button' : 'div'} onClick={onClick}><Image src={image} cover round /></AvatarIndicatorButton>
         : <AvatarIndicator onClick={onClick} avatarStyle={avatarStyle} name={name} colourCombination={colourCombination} />
       }
     </AvatarBox>

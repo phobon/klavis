@@ -6,31 +6,25 @@ import SquareButton from './SquareButton';
 
 const buttonVariants = ['primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'link', 'clean'];
 
-const buttonSizes = [
-  's',
-  'm',
-  'l',
-];
-
-const borderColors = ['grayscale.1', 'grayscale.2', 'grayscale.3', 'grayscale.4', 'grayscale.5'];
+const buttonSizes = ['s', 'm', 'l'];
 
 storiesOf('Components/Buttons/SquareButton', module)
   .add('With different variants', () => (
-    buttonVariants.map(a => <SquareButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')}></SquareButton>)
+    buttonVariants.map(a => <SquareButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} />)
   ))
   .add('disabled', () => (
     buttonVariants.map(a =>
-      <SquareButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} disabled></SquareButton>)
+      <SquareButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} disabled />)
   ))
   .add('toggled', () => (
     buttonVariants.map(a =>
-      <SquareButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} toggled></SquareButton>)
+      <SquareButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} toggled />)
   ))
   .add('Different sizes', () => (
     buttonSizes.map(s =>
-      <SquareButton key={s} mr={2} mb={2} size={s} onClick={action('clicked')}></SquareButton>
+      <SquareButton key={s} mr={2} mb={2} size={s} onClick={action('clicked')} />
     )
   ))
   .add('With tooltips', () => (
-    buttonVariants.map(a => <SquareButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} tooltip="This is a tooltip!"></SquareButton>)
+    buttonVariants.map(a => <SquareButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} tooltip="This is a tooltip!" />)
   ));

@@ -1,21 +1,13 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Box, Flex, Radio, Heading } from '@phobon/base';
+import { Radio, Heading } from '@phobon/base';
 
 import Form from './Form';
 import { TextField, TextAreaField, CheckboxField } from './Fields';
 
 import FieldSet from './FieldSet';
 import FieldGroup from './FieldGroup';
-
-const options = [
-  { id: 'option1', name: 'option 1' },
-  { id: 'option2', name: 'option 2' },
-  { id: 'option3', name: 'option 3' },
-  { id: 'option4', name: 'option 4' },
-  { id: 'option5', name: 'option 5' },
-];
 
 storiesOf('Patterns/Form', module)
   .add('With several different fields', () => (
@@ -76,7 +68,6 @@ storiesOf('Patterns/Form', module)
       <FieldGroup>
         <TextField id="text3" label="text field" />
         <TextField id="text4" label="text field" />
-        <TextField id="text5" label="text field" />
       </FieldGroup>
     </Form>
   ));

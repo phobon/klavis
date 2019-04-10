@@ -63,7 +63,7 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
   const [items, setItems] = useState([]);
   const [notificationPosition, setNotificationPosition] = useState(initialNotificationPosition);
 
-  const add = useCallback(props => setItems(state => [...state, { key: id++, ...props }]), []);
+  const add = useCallback(p => setItems(state => [...state, { key: id++, ...p }]), []);
 
   const transitions = useTransition(items, item => item.key, {
     from: { opacity: 0, transform: 'translate(0px, 8px)', life: '0%' },
@@ -101,45 +101,45 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
             gridTemplateAreas="'topleft top topright'
                               'left middle right'
                               'bottomleft bottom bottomright'">
-              <NotificationsBox fullHeight css={{ gridArea: notificationPosition }} width={width} flexDirection="column" notificationPosition={notificationPosition}>
-                {transitions.map(({ key, item, props: { notificationPosition: pos, ...style } }) => {
-                  const { content, canDismiss } = item;
-                  return (
-                    <NotificationContainer
-                      fullWidth
-                      className="grimoire__notifications__instance"
-                      key={key}
-                      style={style}>
-                      <NotificationCard fullWidth {...props}>
-                        <Flex justifyContent="flex-start" alignItems="flex-start" borderRadius="inherit" overflow="hidden">
-                          <Flex justifyContent="flex-start">
-                            {content}
-                          </Flex>
-                          {canDismiss && (
-                            <SquareButton
-                              variant="tertiary"
-                              size="s"
-                              ml={4}
-                              mt={3}
-                              mr={3}
-                              onClick={e => {
-                                e.stopPropagation();
-                                if (cancelMap.has(item)) {
-                                  const x = cancelMap.get(item);
-                                  x();
-                                }
-                              }}>
-                              <Close color="inherit" />
-                            </SquareButton>
-                          )}
+            <NotificationsBox fullHeight css={{ gridArea: notificationPosition }} width={width} flexDirection="column" notificationPosition={notificationPosition}>
+              {transitions.map(({ key, item, props: { notificationPosition: pos, ...style } }) => {
+                const { content, canDismiss } = item;
+                return (
+                  <NotificationContainer
+                    fullWidth
+                    className="grimoire__notifications__instance"
+                    key={key}
+                    style={style}>
+                    <NotificationCard fullWidth {...props}>
+                      <Flex justifyContent="flex-start" alignItems="flex-start" borderRadius="inherit" overflow="hidden">
+                        <Flex justifyContent="flex-start">
+                          {content}
                         </Flex>
-                      </NotificationCard>
-                    </NotificationContainer>
-                  );
-                })}
-              </NotificationsBox>
-            </NotificationsGrid>
-          )}
+                        {canDismiss && (
+                          <SquareButton
+                            variant="tertiary"
+                            size="s"
+                            ml={4}
+                            mt={3}
+                            mr={3}
+                            onClick={e => {
+                              e.stopPropagation();
+                              if (cancelMap.has(item)) {
+                                const x = cancelMap.get(item);
+                                x();
+                              }
+                            }}>
+                            <Close color="inherit" />
+                          </SquareButton>
+                        )}
+                      </Flex>
+                    </NotificationCard>
+                  </NotificationContainer>
+                );
+              })}
+            </NotificationsBox>
+          </NotificationsGrid>
+        )}
       </React.Fragment>
     </NotificationsContext.Provider>
   );
@@ -152,6 +152,7 @@ Notifications.propTypes = {
   notificationPosition: PropTypes.oneOf(['topleft', 'top', 'topright', 'left', 'middle', 'right', 'bottomleft', 'bottom', 'bottomright']),
   boxShadowIntensity: PropTypes.number,
   boxShadowSize: PropTypes.oneOf(['none', 's', 'm', 'l', 'xl']),
+  width: PropTypes.number,
 };
 
 Notifications.defaultProps = {

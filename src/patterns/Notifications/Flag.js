@@ -1,3 +1,4 @@
+/* eslint-disable react/default-props-match-prop-types */
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
@@ -19,7 +20,7 @@ const SeverityGlyph = ({ severity, ...props }) => {
   return severities[severity];
 };
 
-const severity = props => {
+const flagSeverity = props => {
   const severities = {
     info: css`
       border-left: 4px solid ${props.theme.colors.blues[6]};
@@ -38,9 +39,7 @@ const severity = props => {
   return props.showSeverity && severities[props.severity];
 };
 
-const FlagContainer = styled(Flex)`
-  ${severity}
-`;
+const FlagContainer = styled(Flex)({}, flagSeverity);
 
 /**
 A compositional message component

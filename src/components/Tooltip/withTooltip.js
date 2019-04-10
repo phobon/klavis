@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import Tooltip from './Tooltip';
 import { destructureLayoutProps } from '@phobon/base';
+
+import Tooltip from './Tooltip';
 
 const withTooltip = WrappedComponent => ({ tooltip, tooltipDirection, offset, as, ...props }) => {
   // If there is no tooltip to display here, then just render the WrappedComponent.
@@ -12,6 +14,7 @@ const withTooltip = WrappedComponent => ({ tooltip, tooltipDirection, offset, as
   }
 
   const [{ fullWidth, fullHeight, width, height, position, ...layoutProps}, passthroughProps] = destructureLayoutProps(props);
+  console.log(fullWidth, fullHeight);
   return (
     <Tooltip
       tooltip={tooltip}

@@ -1,21 +1,10 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import {
-  space,
-  width,
-  minWidth,
-  maxWidth,
-  height,
-  minHeight,
-  maxHeight,
-  zIndex,
+  cover,
+  layout,
   position,
-  top,
-  left,
-  right,
-  bottom,
-} from 'styled-system';
-import { fullWidth, fullHeight } from '@phobon/base';
+} from '@phobon/base';
 
 const direction = props => {
   const tooltipDirections = {
@@ -73,21 +62,10 @@ const direction = props => {
 };
 
 const Tooltip = styled.div`
-  ${space}
-  ${width}
-  ${minWidth}
-  ${maxWidth}
-  ${height}
-  ${minHeight}
-  ${maxHeight}
-  ${zIndex}
+  ${layout}
   ${position}
-  ${top}
-  ${left}
-  ${right}
-  ${bottom}
-  ${fullWidth}
-  ${fullHeight}
+  ${cover}
+
   --factor: ${props => props.theme.space[1] + props.theme.space[props.offset]}px;
   --minusfactor: -${props => props.theme.space[1] + props.theme.space[props.offset]}px;
   --xfactor: ${props => props.theme.space[2] + props.theme.space[props.offset]}px;
@@ -121,19 +99,9 @@ const Tooltip = styled.div`
 Tooltip.displayName = 'Tooltip';
 
 Tooltip.propTypes = {
-  ...space.propTypes,
-  ...width.propTypes,
-  ...minWidth.propTypes,
-  ...maxWidth.propTypes,
-  ...height.propTypes,
-  ...minHeight.propTypes,
-  ...maxHeight.propTypes,
-  ...zIndex.propTypes,
+  ...cover.propTypes,
+  ...layout.propTypes,
   ...position.propTypes,
-  ...top.propTypes,
-  ...left.propTypes,
-  ...right.propTypes,
-  ...bottom.propTypes,
 
   tooltip: PropTypes.string,
   tooltipDirection: PropTypes.oneOf(['down', 'up', 'left', 'right']),

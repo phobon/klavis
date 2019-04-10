@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Checkbox, Radio } from '@phobon/base';
 
@@ -19,20 +19,6 @@ const SelectOptions = () => (
     <option value="4">Option 4</option>
   </React.Fragment>
 );
-
-const withFormState = (WrappedComponent) => (props) => {
-  const [value, setValue] = useState(null);
-
-  const handleChange = useCallback(e => {
-    setValue(e);
-  });
-
-  return (
-    <React.Fragment>
-      <WrappedComponent {...props} value={value} onChange={handleChange} />
-    </React.Fragment>
-  );
-};
 
 storiesOf('Patterns/Form/Fields', module)
   .addDecorator(story => (

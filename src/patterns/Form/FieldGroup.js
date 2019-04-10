@@ -56,7 +56,6 @@ const FieldGroup = ({ children, childrenPerRow, ...props }) => {
       density={density}
       className="form__fieldgroup"
       flexWrap="wrap"
-      alignItems="flex-start"
       justifyContent="space-between">
       {children}
     </FieldBox>

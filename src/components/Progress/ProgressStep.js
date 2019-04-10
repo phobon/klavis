@@ -19,7 +19,7 @@ const stepMode = props => {
 
     &::before {
       content: '';
-      background-color: ${props => props.theme.colors.background};
+      background-color: ${props.theme.colors.background};
       border-radius: 100%;
       width: 55%;
       height: 55%;
@@ -32,11 +32,11 @@ const stepMode = props => {
     }
 
     &::after {
-      content: '${props => props.label}';
+      content: '${props.label}';
       display: none;
       position: absolute;
-      bottom: -${props => props.theme.space[4]}px;
-      color: ${props => props.theme.colors.grayscale[3]};
+      bottom: -${props.theme.space[4]}px;
+      color: ${props.theme.colors.grayscale[3]};
       white-space: pre;
       pointer-events: none;
     }
@@ -74,10 +74,10 @@ const current = props => {
 const complete = props => {
   const completeStates = {
     full: css`
-      background-color: ${props => themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
+      background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
     `,
     compact: css`
-      background-color: ${props => themeGet(`colors.${props.bg}`, props.theme.colors.grayscale[6])};
+      background-color: ${themeGet(`colors.${props.bg}`, props.theme.colors.grayscale[6])};
     `,
   };
 

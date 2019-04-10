@@ -6,31 +6,25 @@ import CircleButton from './CircleButton';
 
 const buttonVariants = ['primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'link', 'clean'];
 
-const buttonSizes = [
-  's',
-  'm',
-  'l',
-];
-
-const borderColors = ['grayscale.1', 'grayscale.2', 'grayscale.3', 'grayscale.4', 'grayscale.5'];
+const buttonSizes = ['s', 'm', 'l'];
 
 storiesOf('Components/Buttons/CircleButton', module)
   .add('With different variants', () => (
-    buttonVariants.map(a => <CircleButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')}></CircleButton>)
+    buttonVariants.map(a => <CircleButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} />)
   ))
   .add('isDisabled', () => (
     buttonVariants.map(a =>
-      <CircleButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} isDisabled></CircleButton>)
+      <CircleButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} isDisabled />)
   ))
   .add('toggled', () => (
     buttonVariants.map(a =>
-      <CircleButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} toggled></CircleButton>)
+      <CircleButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} toggled />)
   ))
   .add('Different sizes', () => (
     buttonSizes.map(s =>
-      <CircleButton key={s} mr={2} mb={2} size={s} onClick={action('clicked')}></CircleButton>
+      <CircleButton key={s} mr={2} mb={2} size={s} onClick={action('clicked')} />
     )
   ))
   .add('With tooltips', () => (
-    buttonVariants.map(a => <CircleButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} tooltip="This is a tooltip!"></CircleButton>)
+    buttonVariants.map(a => <CircleButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} tooltip="This is a tooltip!" />)
   ));

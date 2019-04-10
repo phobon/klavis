@@ -80,7 +80,9 @@ const useAlignmentTransition = (popupDirection, isOpen, container, childrenCount
   const windowSize = useWindowSize();
   const [align, setAlign] = useState(horizontalDirection(popupDirection));
   const [valign, setValign] = useState(verticalDirection(popupDirection));
+  // eslint-disable-next-line no-unused-vars
   const [enter, setEnter] = useState(enterDirection(popupDirection));
+  // eslint-disable-next-line no-unused-vars
   const [exit, setExit] = useState(exitDirection(popupDirection));
 
   useEffect(() => {
@@ -154,8 +156,7 @@ const Popup = ({ trigger, children, label, closeAfterAction, className, as, popu
         className={className}
         {...passthroughProps}
         toggled={isOpen} 
-        onClick={onClick}
-        px={1}>
+        onClick={onClick}>
         {trigger}
       </Button>
 

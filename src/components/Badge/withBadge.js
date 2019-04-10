@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import { themeGet } from 'styled-system';
@@ -74,7 +75,7 @@ const withBadge = WrappedComponent => ({
   }
 
   const { onClick, color: _color, bg, ...containerProps } = props;
-  const [{ fullWidth, fullHeight, width, height, position, ...layoutProps}, passthroughProps] = destructureLayoutProps(props);
+  const [{ fullWidth, fullHeight, width, height, position, ...layoutProps}, passthroughProps] = destructureLayoutProps(containerProps);
 
   return (
     <BadgeContainer
