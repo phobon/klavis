@@ -13,39 +13,22 @@ const TooltipBox = withTooltip(Box);
 storiesOf('Components/Tooltip', module)
   .add('With positioning', () => (
     <Box fullWidth fullHeight pt={5}>
-      <TooltipButton tooltip="Tooltip text" mr={3}>
-        Tooltip opens down
-      </TooltipButton>
-
-      <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="up">
-        Tooltip opens up
-      </TooltipButton>
-
-      <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="left">
-        Tooltip opens left
-      </TooltipButton>
-
-      <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="right">
-        Tooltip opens right
-      </TooltipButton>
+      <TooltipButton tooltip="Tooltip text" mr={3}>Tooltip opens down</TooltipButton>
+      <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="up">Tooltip opens up</TooltipButton>
+      <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="left">Tooltip opens left</TooltipButton>
+      <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="right">Tooltip opens right</TooltipButton>
     </Box>
   ))
   .add('With fluid layout', () => (
     <Box width={500} height={400} flexDirection="column" alignItems="flex-start">
-      <TooltipButton tooltip="Tooltip text" mb={3} fullWidth>
-        Tooltip opens down
-      </TooltipButton>
+      <TooltipButton tooltip="Tooltip text" mb={3} fullWidth>Tooltip opens down</TooltipButton>
     </Box>
   ))
   .add('With and without a tooltip prop', () => (
     <Box fullWidth fullHeight flexDirection="column">
-      <TooltipButton tooltip="Tooltip text" mb={3}>
-        This has a tooltip
-      </TooltipButton>
+      <TooltipButton tooltip="Tooltip text" mb={3}>This has a tooltip</TooltipButton>
 
-      <TooltipButton>
-        This does not have a tooltip
-      </TooltipButton>
+      <TooltipButton>This does not have a tooltip</TooltipButton>
     </Box>
   ))
   .add('With different offsets', () => {
