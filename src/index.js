@@ -8,6 +8,7 @@ import {
   Progress, ProgressStep,
   Tag,
   withTooltip,
+  Spacer,
 } from './components';
 
 import {
@@ -39,4 +40,5 @@ export {
   NumberField,
   FieldGroup,
   FieldSet,
+  Spacer,
 }

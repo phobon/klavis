@@ -7,6 +7,7 @@ import PercentageBar from './PercentageBar';
 import { Progress, ProgressStep } from './Progress';
 import Tag from './Tag';
 import withTooltip from './Tooltip';
+import Spacer from './Spacer';
 
 export {
   Avatar,
@@ -18,4 +19,5 @@ export {
   Progress, ProgressStep,
   Tag,
   withTooltip,
-}
+  Spacer,
+};
