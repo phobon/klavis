@@ -54,7 +54,7 @@ const asField = WrappedComponent =>
             htmlFor={id}
             mr={2}
             mb={1}>
-            <Text mr={1} color="grayscale.2">{label}</Text>
+            <Text mr={1} color="grayscale.1">{label}</Text>
             {!required && optionalLabel && <Text color="grayscale.4">{`(${optionalLabel()})`}</Text>}
           </Label>
         )}

@@ -12,15 +12,15 @@ storiesOf('Components/Buttons/SquareButton', module)
   .add('With different variants', () => (
     buttonVariants.map(a => <SquareButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} />)
   ))
-  .add('disabled', () => (
+  .add('With a disabled state', () => (
     buttonVariants.map(a =>
       <SquareButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} disabled />)
   ))
-  .add('toggled', () => (
+  .add('With a toggled state', () => (
     buttonVariants.map(a =>
       <SquareButton key={a} variant={a} mr={2} mb={2} onClick={action('clicked')} toggled />)
   ))
-  .add('Different sizes', () => (
+  .add('With different sizes', () => (
     buttonSizes.map(s =>
       <SquareButton key={s} mr={2} mb={2} size={s} onClick={action('clicked')} />
     )

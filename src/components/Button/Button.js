@@ -5,6 +5,7 @@ import {
   border,
   flexbox,
   typography,
+  focus,
 } from '@phobon/base';
 import PropTypes from 'prop-types';
 import withTooltip from '../Tooltip';
@@ -16,7 +17,7 @@ const buttonVariant = props => {
     color: ${props.theme.colors.grayscale[1]};
     fill: ${props.theme.colors.grayscale[1]};
     &:hover {
-      background-color: ${props.theme.colors.grayscale[5]};
+      background-color: ${props.theme.colors.grayscale[6]};
     }
   `;
   const buttonVariants = {
@@ -32,12 +33,12 @@ const buttonVariant = props => {
       }
     `,
     secondary: css`
-      background-color: ${props.theme.colors.grayscale[6]};
+      background-color: ${props.theme.colors.grayscale[7]};
       border-color: ${props.theme.colors.grayscale[5]};
       color: ${props.theme.colors.grayscale[1]};
       fill: ${props.theme.colors.grayscale[1]};
       &:hover {
-        background-color: ${props.theme.colors.grayscale[5]};
+        background-color: ${props.theme.colors.grayscale[6]};
       }
     `,
     tertiary,
@@ -136,19 +137,19 @@ const isToggled = props => {
     tertiary,
 
     warning: css`
-      background-color: ${props.theme.colors.oranges[5]};
+      background-color: ${props.theme.colors.oranges[6]};
       &:hover {
         background-color: ${props.theme.colors.guidance.warning[1]};
       }
     `,
     danger: css`
-      background-color: ${props.theme.colors.reds[5]};
+      background-color: ${props.theme.colors.reds[6]};
       &:hover {
         background-color: ${props.theme.colors.guidance.error[1]};
       }
     `,
     success: css`
-      background-color: ${props.theme.colors.greens[5]};
+      background-color: ${props.theme.colors.greens[6]};
       &:hover {
         background-color: ${props.theme.colors.guidance.success[1]};
       }
@@ -216,22 +217,7 @@ const Button = styled.button`
 
   ${isToggled}
 
-  &:focus {
-    outline: 0;
-
-    &::after {
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      content: "";
-      box-shadow: 0 0 0 2px ${props => props.theme.colors.guidance.focus};
-      border-radius: ${props => props.theme.radii[props.borderRadius]}px;
-      pointer-events: none;
-      z-index: 1;
-    }
-  }
+  ${focus}
 
   &:disabled {
     opacity: 0.5;

@@ -7,7 +7,7 @@ import FormFieldContext from '../FormFieldContext';
 
 const Label = ({ label, required, optionalLabel }) => (
   <Flex justifyContent="flex-start" fullHeight>
-    <Text mr={1} fontWeight="bold" color="grayscale.2" lineHeight={0}>{label}</Text>
+    <Text mr={1} color="grayscale.1" lineHeight={0}>{label}</Text>
     {!required && optionalLabel && (
       <Text color="grayscale.4" lineHeight={0}>
         {`(${optionalLabel()})`}

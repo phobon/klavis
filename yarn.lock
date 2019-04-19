@@ -1517,12 +1517,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@phobon/base@2.0.0-beta.1":
-  version "2.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-2.0.0-beta.1.tgz#62628109c8167e3414e54d31b127a7b48294eb35"
-  integrity sha512-b6KsoM8/xWbvDxB8/1FjRCDPU9/OBwmUlppEGrM5NNKksIkkAlk+3GnpNlNy72HCSV4AXW8BkBz3qUY1qrhxoQ==
-  dependencies:
-    "@babel/plugin-transform-modules-commonjs" "^7.4.3"
+"@phobon/base@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-2.0.6.tgz#cde413dc8aada642486523070f577e5391af7979"
+  integrity sha512-LFXi+DUCS+sAwI/gg8pErYrfCRvVIcoYJmEdR4+M0aZb0SJk9w13Mp8/niZ6yl4EfSXmNRPpYiuMqZLhkhonPg==
 
 "@reach/router@^1.2.1":
   version "1.2.1"

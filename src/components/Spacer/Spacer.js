@@ -43,7 +43,7 @@ Spacer.propTypes = {
 
 Spacer.defaultProps = {
   direction: 'vertical',
-  bg: 'grayscale.6',
+  bg: 'grayscale.8',
   thickness: '2px',
   length: '80%',
 };

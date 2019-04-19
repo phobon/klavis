@@ -28,14 +28,14 @@ const PercentageBar = styled(Flex)`
 
 const Progress = ({ children, completeGlyph, showLabels, mode, fontSize, color, bg, ...props }) => {
   let isCurrentShown = false;
-  const mappedChildren = React.Children.map(children, (step, i, array) => {
+  const mappedChildren = React.Children.map(children, (step, i) => {
     if (!step) {
       return null;
     }
 
     const { label, onClick, isCurrent, ...stepProps } = step.props;
 
-    const isLast = i === array.length - 1;
+    const isLast = i === children.length - 1;
     if (isCurrent) {
       isCurrentShown = true;
     }

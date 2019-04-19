@@ -5,7 +5,7 @@ import { space, color } from 'styled-system';
 
 import Person from 'rmdi/lib/Person';
 
-import { Box, Image, Text } from '@phobon/base';
+import { Box, Image, Text, focus } from '@phobon/base';
 
 const statusColor = props => {
   const statusColors = {
@@ -93,23 +93,7 @@ const AvatarBox = styled.div`
 
 const buttonFocus = props => props.onClick && css`
   cursor: pointer;
-
-  &:focus {
-    outline: 0;
-
-    &::after {
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      content: "";
-      box-shadow: 0 0 0 2px ${props.theme.colors.guidance.focus};
-      border-radius: ${props.theme.radii[props.borderRadius]}px;
-      pointer-events: none;
-      border-radius: inherit;
-    }
-  }
+  ${focus}
 `;
 
 const AvatarIndicatorButton = styled.button`
