@@ -1,7 +1,8 @@
+/* eslint-disable react/default-props-match-prop-types */
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { space, color } from 'styled-system';
+import { space, color as styledColor } from 'styled-system';
 
 import Person from 'rmdi/lib/Person';
 
@@ -58,7 +59,7 @@ const AvatarBox = styled.div`
   justify-content: center;
   position: relative;
   background-color: ${props => props.theme.colors.grayscale[6]};
-  border-radius: 100%;
+  border-radius: 50%;
   pointer-events: none;
 
   ${space} 
@@ -71,7 +72,7 @@ const AvatarBox = styled.div`
     position: absolute;
     width: 20px;
     height: 20px;
-    border-radius: 100%;
+    border-radius: 50%;
     border: solid 3px ${props => props.theme.colors.background};
     pointer-events: none;
     right: -${props => props.theme.space[1]}px;
@@ -96,6 +97,16 @@ const buttonFocus = props => props.onClick && css`
   ${focus}
 `;
 
+const avatarFontSize = props => {
+  const fontSizes = {
+    s: css`font-size: ${props.theme.fontSizes[0]}px;`,
+    m: css`font-size: ${props.theme.fontSizes[2]}px;`,
+    l: css`font-size: ${props.theme.fontSizes[5]}px;`,
+  };
+
+  return fontSizes[props.size];
+};
+
 const AvatarIndicatorButton = styled.button`
   width: inherit;
   height: inherit;
@@ -109,18 +120,19 @@ const AvatarIndicatorButton = styled.button`
   justify-content: center;
   align-items: center;
 
-  ${color}
+  ${styledColor}
   ${space}
+  ${avatarFontSize}
 
   border-radius: 50%;
 
   ${buttonFocus}
 `;
 
-const AvatarIndicator = ({ avatarStyle, name, onClick, colourCombination }) => (
-  <AvatarIndicatorButton as={onClick ? 'button' : 'div'} color={colourCombination[0]} bg={colourCombination[1]} onClick={onClick}>
+const AvatarIndicator = ({ avatarStyle, name, onClick, ...props }) => (
+  <AvatarIndicatorButton as={onClick ? 'button' : 'div'} onClick={onClick} {...props}>
     {avatarStyle === 'initials'
-      ? name.split(' ').reduce((acc, current) => acc.charAt(0) + current.charAt(0)).substr(0, 2)
+      ? <Text fontSize="inherit" color="inherit">{name.split(' ').reduce((acc, current) => acc.charAt(0) + current.charAt(0)).substr(0, 2)}</Text>
       : <Person color="inherit" />
     }
   </AvatarIndicatorButton>
@@ -129,7 +141,6 @@ const AvatarIndicator = ({ avatarStyle, name, onClick, colourCombination }) => (
 AvatarIndicator.propTypes = {
   avatarStyle: PropTypes.oneOf(['initials', 'glyph']).isRequired,
   name: PropTypes.string.isRequired,
-  colourCombination: PropTypes.array.isRequired,
   onClick: PropTypes.func,
 };
 
@@ -137,19 +148,19 @@ AvatarIndicator.defaultProps = {
   onClick: null,
 };
 
-const Avatar = ({ image, name, size, status, presence, avatarStyle, nameStyle, onClick, colourCombination, ...props }) => (
+const Avatar = ({ image, name, size, status, presence, avatarStyle, nameStyle, onClick, bg, color, nameMargin, ...props }) => (
   <Box {...props}>
     <AvatarBox
       size={size}
       status={status}
       presence={presence}>
       {image 
-        ? <AvatarIndicatorButton as={onClick ? 'button' : 'div'} onClick={onClick}><Image src={image} cover round /></AvatarIndicatorButton>
-        : <AvatarIndicator onClick={onClick} avatarStyle={avatarStyle} name={name} colourCombination={colourCombination} />
+        ? <AvatarIndicatorButton as={onClick ? 'button' : 'div'} onClick={onClick}><Image src={image} cover round alt="avatar image" /></AvatarIndicatorButton>
+        : <AvatarIndicator size={size} onClick={onClick} avatarStyle={avatarStyle} name={name} bg={bg} color={color} />
       }
     </AvatarBox>
     {nameStyle !== 'none' && (
-      <Text ml={2} fontSize="inherit" fontWeight="inherit" color="inherit">
+      <Text ml={nameMargin} fontSize="inherit" fontWeight="inherit" color="inherit">
         {nameStyle === 'first' ? name.split(' ')[0] : name}
       </Text>
     )}
@@ -185,11 +196,14 @@ Avatar.propTypes = {
   /** Fontsize for name display */
   fontSize: PropTypes.number,
 
+  /** Font colour for name display */
+  fontColor: PropTypes.string,
+
+  /** Margin between avatar and name display */
+  nameMargin: PropTypes.node,
+
   /** onClick function */
   onClick: PropTypes.func,
-
-  /** A colour combination to use for this Avatar: [foreground, background] */
-  colourCombination: PropTypes.array,
 };
 
 Avatar.defaultProps = {
@@ -199,9 +213,12 @@ Avatar.defaultProps = {
   presence: 'none',
   avatarStyle: 'initials',
   nameStyle: 'none',
+  nameMargin: 2,
   fontSize: 1,
   onClick: null,
-  colourCombination: ['hsl(8, 96%, 27%)', 'hsl(7, 100%, 88%)'],
+  bg: 'accent.8',
+  color: 'accent.1',
+  fontColor: 'foreground',
 };
 
 export default Avatar;

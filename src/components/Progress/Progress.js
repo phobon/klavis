@@ -28,6 +28,7 @@ const PercentageBar = styled(Flex)`
 
 const Progress = ({ children, completeGlyph, showLabels, mode, fontSize, color, bg, ...props }) => {
   let isCurrentShown = false;
+  let currentIndex = 0;
   const mappedChildren = React.Children.map(children, (step, i) => {
     if (!step) {
       return null;
@@ -38,6 +39,7 @@ const Progress = ({ children, completeGlyph, showLabels, mode, fontSize, color, 
     const isLast = i === children.length - 1;
     if (isCurrent) {
       isCurrentShown = true;
+      currentIndex = i;
     }
 
     const isComplete = !isCurrentShown;
@@ -69,7 +71,14 @@ const Progress = ({ children, completeGlyph, showLabels, mode, fontSize, color, 
   }).filter(n => n);
 
   return (
-    <BoxList fullWidth={mode === 'full'} justifyContent={mode === 'compact' ? 'space-between' : 'center'} {...props}>
+    <BoxList
+      fullWidth={mode === 'full'}
+      justifyContent={mode === 'compact' ? 'space-between' : 'center'}
+      {...props}
+      role="progressbar"
+      aria-valuenow={(currentIndex / children.length) * 100}
+      aria-valuemin="0"
+      aria-valuemax="100">
       {mappedChildren}
     </BoxList>
   )

@@ -68,7 +68,15 @@ const PercentageBar = ({
   const percentageString = `${percentage}%`;
 
   return (
-    <Box fullWidth {...props} flexDirection="column" alignItems="flex-start">
+    <Box
+      fullWidth
+      {...props}
+      flexDirection="column"
+      alignItems="flex-start"
+      role="progressbar"
+      aria-valuenow={percentage}
+      aria-valuemin="0"
+      aria-valuemax="100">
       {heading}
       <Box fullWidth>
         <PercentageBarElement

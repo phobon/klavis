@@ -108,14 +108,10 @@ const buttonVariant = props => {
   return buttonVariants[props.variant];
 };
 
-const isToggled = props => {
-  if (!props.toggled) {
-    return '';
-  }
-
+const pressed = props => {
   const tertiary = css`
     background-color: ${props.theme.colors.grayscale[2]};
-      color: ${props.theme.colors.grayscale[6]};
+    color: ${props.theme.colors.grayscale[6]};
     &:hover {
       background-color: ${props.theme.colors.grayscale[1]};
     }
@@ -197,13 +193,15 @@ const size = props => {
   return sizes[props.size];
 };
 
-const Button = styled.button`
+const Button = styled.button.attrs(props => ({
+  'aria-pressed': props.toggled ? 'true' : undefined,
+}))`
   box-sizing: border-box;
   position: relative;
 
   cursor: pointer;
 
-  transition: all 180ms ease-out;
+  transition: all 120ms ease-out;
 
   ${cover}
   ${typography}
@@ -215,7 +213,9 @@ const Button = styled.button`
   ${border}
   ${flexbox}
 
-  ${isToggled}
+  &[aria-pressed="true"] {
+    ${pressed}
+  }
 
   ${focus}
 
