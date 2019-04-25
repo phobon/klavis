@@ -5,23 +5,6 @@ import { Flex, Text, Checkbox } from '@phobon/base';
 
 import FormFieldContext from '../FormFieldContext';
 
-const Label = ({ label, required, optionalLabel }) => (
-  <Flex justifyContent="flex-start" fullHeight>
-    <Text mr={1} color="grayscale.1" lineHeight={0}>{label}</Text>
-    {!required && optionalLabel && (
-      <Text color="grayscale.4" lineHeight={0}>
-        {`(${optionalLabel()})`}
-      </Text>
-    )}
-  </Flex>
-);
-
-Label.propTypes = {
-  label: PropTypes.string.isRequired,
-  required: PropTypes.bool.isRequired,
-  optionalLabel: PropTypes.string.isRequired,
-};
-
 const CheckboxField = ({ label, id, required = false, error, hint, visible = true, className, disabled, useUnprocessed = false, ...props }) => {
   const { optionalLabel, density, formDisabled } = useContext(FormFieldContext);
 
@@ -39,7 +22,8 @@ const CheckboxField = ({ label, id, required = false, error, hint, visible = tru
         id={id}
         {...props}
         error={error}
-        disabled={fieldDisabled} />
+        disabled={fieldDisabled}
+        label={label} />
     )
   }
 
@@ -69,7 +53,16 @@ const CheckboxField = ({ label, id, required = false, error, hint, visible = tru
         className={className}
         error={error}
         disabled={fieldDisabled}
-        label={label && <Label label={label} required={required} optionalLabel={optionalLabel} />} />
+        label={label && (
+          <React.Fragment>
+            {label}
+            {!required && optionalLabel && (
+              <Text as="span" color="grayscale.4" lineHeight={0} ml={1}>
+                {`(${optionalLabel()})`}
+              </Text>
+            )}
+          </React.Fragment>
+        )} />
       {errorElement || hintElement}
     </Flex>
   );
@@ -107,8 +100,6 @@ CheckboxField.propTypes = {
   useUnprocessed: PropTypes.bool,
 
   disabled: PropTypes.bool,
-
-  isDisabled: PropTypes.bool,
 };
 
 CheckboxField.contextTypes = {
@@ -129,8 +120,6 @@ CheckboxField.defaultProps = {
   className: null,
   useUnprocessed: false,
   disabled: false,
-  isDisabled: false,
 };
 
-/** @component */
 export default CheckboxField;

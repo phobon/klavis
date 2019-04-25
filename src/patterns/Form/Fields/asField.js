@@ -6,7 +6,7 @@ import { Flex, Box, Label, Text } from '@phobon/base';
 import FormFieldContext from '../FormFieldContext';
 
 const asField = WrappedComponent => 
-  ({ label, id, required = false, error, hint, visible = true, className, disabled, useUnprocessed = false, ...props }) => {
+  ({ label, id, required = false, invalid, hint, visible = true, className, disabled, useUnprocessed = false, ...props }) => {
   const { optionalLabel, density, formDisabled } = useContext(FormFieldContext);
 
   // If the field shouldn't be visible, don't render it.
@@ -22,20 +22,20 @@ const asField = WrappedComponent =>
       <WrappedComponent
         id={id}
         {...props}
-        error={error}
+        invalid={invalid}
         disabled={fieldDisabled} />
     )
   }
 
   let hintElement = null;
-  let errorElement = null;
+  let invalidElement = null;
   if (hint) {
     hintElement = React.isValidElement(hint)
       ? hint : <Text fontSize={0} mt={1} color="grayscale.3">{hint}</Text>;
   }
-  if (error) {
-    errorElement = React.isValidElement(error)
-      ? error : <Text fontSize={0} mt={1} color="guidance.error.0">{error}</Text>
+  if (invalid) {
+    invalidElement = React.isValidElement(invalid)
+      ? invalid : <Text fontSize={0} mt={1} color="guidance.error.0">{invalid}</Text>
   }
 
   return (
@@ -52,10 +52,10 @@ const asField = WrappedComponent =>
         {label && (
           <Label
             htmlFor={id}
-            mr={2}
-            mb={1}>
-            <Text mr={1} color="grayscale.1">{label}</Text>
-            {!required && optionalLabel && <Text color="grayscale.4">{`(${optionalLabel()})`}</Text>}
+            mb={1}
+            alignItems="baseline">
+            {label}
+            {!required && optionalLabel && <Text as="span" color="grayscale.4" ml={1}>{`(${optionalLabel()})`}</Text>}
           </Label>
         )}
         <WrappedComponent
@@ -64,10 +64,10 @@ const asField = WrappedComponent =>
           {...props}
           density={density}
           className={className}
-          error={error}
+          invalid={invalid}
           disabled={fieldDisabled} />
       </Box>
-      {errorElement || hintElement}
+      {invalidElement || hintElement}
     </Flex>
   );
 };
@@ -85,8 +85,8 @@ asField.propTypes = {
   /** If the field is required, or not */
   required: PropTypes.bool,
 
-  /** If the field has an error to display */
-  error: PropTypes.any,
+  /** If the field has an invalid message to display */
+  invalid: PropTypes.any,
 
   /** If the field has a hint to display */
   hint: PropTypes.string,
@@ -109,7 +109,7 @@ asField.defaultProps = {
   label: null,
   id: null,
   required: false,
-  error: null,
+  invalid: null,
   hint: null,
   placeholder: null,
   visible: true,

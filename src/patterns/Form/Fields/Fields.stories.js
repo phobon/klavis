@@ -30,7 +30,7 @@ storiesOf('Patterns/Form/Fields', module)
     <React.Fragment>
       <CheckboxField label="label" id="checkbox_1" />
       <CheckboxField label="label" hint="hint text" id="checkbox_2" />
-      <CheckboxField label="label" error="error text" id="checkbox_3" />
+      <CheckboxField label="label" invalid="invalid text" id="checkbox_3" />
       <CheckboxField label="required field" required id="checkbox_4" />
       <CheckboxField label="checked field" checked id="checkbox_5" />
       <CheckboxField label="disabled field" disabled id="checkbox_6" />
@@ -40,7 +40,7 @@ storiesOf('Patterns/Form/Fields', module)
     <React.Fragment>
       <NumberField label="label" id="number_1" />
       <NumberField label="label" hint="hint text" id="number_2" />
-      <NumberField label="label" error="error text" id="number_3" />
+      <NumberField label="label" invalid="invalid text" id="number_3" />
       <NumberField label="required field" required id="number_4" />
       <NumberField label="disabled field" disabled id="number_5" />
     </React.Fragment>
@@ -49,7 +49,7 @@ storiesOf('Patterns/Form/Fields', module)
     <React.Fragment>
       <TextAreaField label="label" id="text_1" />
       <TextAreaField label="label" hint="hint text" id="text_2" />
-      <TextAreaField label="label" error="error text" id="text_3" />
+      <TextAreaField label="label" invalid="invalid text" id="text_3" />
       <TextAreaField label="required field" required id="text_4" />
       <TextAreaField label="disabled field" disabled id="text_5" />
     </React.Fragment>
@@ -58,7 +58,7 @@ storiesOf('Patterns/Form/Fields', module)
     <React.Fragment>
       <TextField label="label" id="text_1" />
       <TextField label="label" hint="hint text" id="text_2" />
-      <TextField label="label" error="error text" id="text_3" />
+      <TextField label="label" invalid="invalid text" id="text_3" />
       <TextField label="required field" required id="text_4" />
       <TextField label="disabled field" disabled id="text_5" />
     </React.Fragment>
@@ -71,7 +71,7 @@ storiesOf('Patterns/Form/Fields', module)
       <SelectField label="label" hint="hint text" id="select_2">
         <SelectOptions />
       </SelectField>
-      <SelectField label="label" error="error text" id="select_3">
+      <SelectField label="label" invalid="invalid text" id="select_3">
         <SelectOptions />
       </SelectField>
       <SelectField label="required field" required id="select_4">
@@ -99,7 +99,7 @@ storiesOf('Patterns/Form/Fields', module)
         <Radio label="radio2 label" value="value2" id="radio_5" />
         <Radio label="radio3 label" value="value3" id="radio_6" />
       </FieldSet>
-      <FieldSet id="group4" label="Error Fieldset" hint="Fieldset2 hint" error="Something is wrong">
+      <FieldSet id="group4" label="Invalid Fieldset" hint="Fieldset2 hint" invalid="Something is wrong">
         <Radio label="radio1 label" value="value1" id="radio_7" />
         <Radio label="radio2 label" value="value2" id="radio_8" />
         <Radio label="radio3 label" value="value3" id="radio_9" />
