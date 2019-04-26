@@ -1,4 +1,4 @@
-import { Notifications, useNotifications, Flag } from './Notifications';
+import { Notifications, useNotifications } from './Notifications';
 import {
   Form,
   TextField,
@@ -10,7 +10,7 @@ import {
 } from './Form';
 
 export {
-  Notifications, useNotifications, Flag,
+  Notifications, useNotifications,
   Form,
   TextField,
   TextAreaField,

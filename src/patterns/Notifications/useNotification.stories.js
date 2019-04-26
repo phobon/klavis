@@ -2,11 +2,29 @@ import React, { useEffect } from 'react';
 import { storiesOf } from '@storybook/react';
 
 import { Text } from '@phobon/base';
-import { Button } from '../../components';
+
+import Error from 'rmdi/lib/Error';
+import Warning from 'rmdi/lib/Warning';
+import Help from 'rmdi/lib/Help';
+import CheckCircle from 'rmdi/lib/CheckCircle';
+
+import { Button, Message } from '../../components';
 
 import Notifications from './Notifications';
 import useNotifications from './useNotifications';
-import Flag from './Flag';
+
+const variations = [
+  'info', 'question', 'success', 'warning', 'error', 'neutral', 'dark',
+];
+const glyphs = {
+  neutral: <Help color="inherit" size={20} />,
+  dark: <Help color="inherit" size={20} />,
+  info: <Help color="inherit" size={20} />,
+  question: <Help color="inherit" size={20} />,
+  success: <CheckCircle color="inherit" size={20} />,
+  warning: <Warning color="inherit" size={20} />,
+  error: <Error color="inherit" size={20} />,
+};
 
 const NotificationsHelper = ({ notificationTypes, notificationPosition }) => {
   const [add, setPosition] = useNotifications();
@@ -20,10 +38,11 @@ const NotificationsHelper = ({ notificationTypes, notificationPosition }) => {
   return notificationTriggers;
 };
 
-const ContentHelper = (props) => (
-  <Flag {...props}>
-    <Text color="grayscale.2">{Math.random()}</Text>
-  </Flag>
+const ContentHelper = props => (
+  <Message {...props}>
+    <Text mb={2} fontSize={2} fontWeight="bold" color="inherit">Notification heading Long heading long heading</Text>
+    <Text color="inherit">{Math.random()}</Text>
+  </Message>
 );
 
 storiesOf('Patterns/Notifications', module)
@@ -31,7 +50,7 @@ storiesOf('Patterns/Notifications', module)
     const notificationTypes = [
       {
         label: 'Add 7000ms notification',
-        notification: { content: <ContentHelper heading="Notification heading Long heading long heading" />, timeout: 7000 },
+        notification: { content: <ContentHelper />, timeout: 7000 },
       },
     ];
     return (
@@ -44,7 +63,7 @@ storiesOf('Patterns/Notifications', module)
     const notificationTypes = [
       {
         label: 'Add dismissable notification',
-        notification: { content: <ContentHelper heading="Notification heading Long heading long heading"  />, canDismiss: true },
+        notification: { content:<ContentHelper />, canDismiss: true },
       },
     ];
     return (
@@ -53,25 +72,11 @@ storiesOf('Patterns/Notifications', module)
       </Notifications>
     );
   })
-  .add('With different severities', () => {
-    const notificationTypes = [
-      {
-        label: 'Add info',
-        notification: { content: <ContentHelper severity="info" /> },
-      },
-      {
-        label: 'Add success',
-        notification: { content: <ContentHelper severity="success" /> },
-      },
-      {
-        label: 'Add warning',
-        notification: { content: <ContentHelper severity="warning" /> },
-      },
-      {
-        label: 'Add error',
-        notification: { content: <ContentHelper severity="error" /> },
-      },
-    ];
+  .add('With different variations', () => {
+    const notificationTypes = variations.map(v => ({
+      label: `Add ${v}`,
+      notification: { content: <ContentHelper variation={v} glyph={glyphs[v]} /> },
+    }));
     return (
       <Notifications timeout={3000}>
         <NotificationsHelper notificationTypes={notificationTypes} />
@@ -82,7 +87,7 @@ storiesOf('Patterns/Notifications', module)
     const notificationTypes = [
       {
         label: 'Bottom',
-        notification: { content: <ContentHelper /> },
+        notification: { content:<ContentHelper /> },
       },
     ];
     return (
@@ -95,7 +100,7 @@ storiesOf('Patterns/Notifications', module)
     const notificationTypes = [
       {
         label: 'Top',
-        notification: { content: <ContentHelper /> },
+        notification: { content:<ContentHelper /> },
       },
     ];
     return (
@@ -108,7 +113,7 @@ storiesOf('Patterns/Notifications', module)
     const notificationTypes = [
       {
         label: 'Add notification with promise',
-        notification: { content: <ContentHelper heading="Notification heading Long heading long heading" />, promise: () => new Promise(resolve => setTimeout(() => resolve(true), 10000)) },
+        notification: { content: <ContentHelper />, promise: () => new Promise(resolve => setTimeout(() => resolve(true), 10000)) },
       },
     ];
     return (

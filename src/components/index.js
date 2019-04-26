@@ -8,6 +8,7 @@ import { Progress, ProgressStep } from './Progress';
 import Tag from './Tag';
 import withTooltip from './Tooltip';
 import Spacer from './Spacer';
+import Message from './Message';
 
 export {
   Avatar,
@@ -20,4 +21,5 @@ export {
   Tag,
   withTooltip,
   Spacer,
+  Message,
 };

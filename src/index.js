@@ -9,10 +9,11 @@ import {
   Tag,
   withTooltip,
   Spacer,
+  Message,
 } from './components';
 
 import {
-  Notifications, useNotifications, Flag,
+  Notifications, useNotifications,
   Form,
   TextField,
   TextAreaField,
@@ -32,7 +33,7 @@ export {
   Progress, ProgressStep,
   Tag,
   withTooltip,
-  Notifications, useNotifications, Flag,
+  Notifications, useNotifications,
   Form,
   TextField,
   TextAreaField,
@@ -41,4 +42,5 @@ export {
   FieldGroup,
   FieldSet,
   Spacer,
+  Message
 }

@@ -2,7 +2,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { space, color as styledColor } from 'styled-system';
+import { space, color as styledColor, borderRadius as styledBorderRadius } from 'styled-system';
 
 import Person from 'rmdi/lib/Person';
 
@@ -11,9 +11,9 @@ import { Box, Image, Text, focus } from '@phobon/base';
 const statusColor = props => {
   const statusColors = {
     'none': 'transparent',
-    'error': props.theme.colors.reds[4],
-    'warning': props.theme.colors.oranges[4],
-    'success': props.theme.colors.greens[4],
+    'error': props.theme.colors.reds[5],
+    'warning': props.theme.colors.oranges[5],
+    'success': props.theme.colors.greens[5],
   };
 
   return css`background-color: ${statusColors[props.status]};`;
@@ -21,10 +21,10 @@ const statusColor = props => {
 const presenceColor = props => {
   const presenceColors = {
     'none': 'transparent',
-    'unknown': props.theme.colors.grayscale[4],
-    'unavailable': props.theme.colors.reds[4],
-    'busy': props.theme.colors.oranges[4],
-    'available': props.theme.colors.greens[4],
+    'unknown': props.theme.colors.grayscale[5],
+    'unavailable': props.theme.colors.reds[5],
+    'busy': props.theme.colors.oranges[5],
+    'available': props.theme.colors.greens[5],
   };
 
   return css`background-color: ${presenceColors[props.presence]};`;
@@ -59,10 +59,10 @@ const AvatarBox = styled.div`
   justify-content: center;
   position: relative;
   background-color: ${props => props.theme.colors.grayscale[6]};
-  border-radius: 50%;
   pointer-events: none;
 
-  ${space} 
+  ${space}
+  ${styledBorderRadius}
 
   ${extents}
   ${extentsText}
@@ -123,8 +123,8 @@ const AvatarIndicatorButton = styled.button`
   ${styledColor}
   ${space}
   ${avatarFontSize}
-
-  border-radius: 50%;
+  
+  ${styledBorderRadius}
 
   ${buttonFocus}
 `;
@@ -148,15 +148,34 @@ AvatarIndicator.defaultProps = {
   onClick: null,
 };
 
-const Avatar = ({ image, name, size, status, presence, avatarStyle, nameStyle, onClick, bg, color, nameMargin, ...props }) => (
+const Avatar = ({
+  image,
+  name,
+  size,
+  status,
+  presence,
+  avatarStyle,
+  nameStyle,
+  onClick,
+  bg, 
+  color,
+  nameMargin,
+  borderRadius,
+  ...props
+}) => (
   <Box {...props}>
     <AvatarBox
       size={size}
       status={status}
-      presence={presence}>
+      presence={presence}
+      borderRadius={borderRadius}>
       {image 
-        ? <AvatarIndicatorButton as={onClick ? 'button' : 'div'} onClick={onClick}><Image src={image} cover round alt="avatar image" /></AvatarIndicatorButton>
-        : <AvatarIndicator size={size} onClick={onClick} avatarStyle={avatarStyle} name={name} bg={bg} color={color} />
+        ? (
+          <AvatarIndicatorButton as={onClick ? 'button' : 'div'} onClick={onClick} borderRadius={borderRadius}>
+            <Image src={image} cover borderRadius={borderRadius} alt="avatar image" />
+          </AvatarIndicatorButton>
+        )
+        : <AvatarIndicator size={size} onClick={onClick} avatarStyle={avatarStyle} name={name} bg={bg} color={color} borderRadius={borderRadius} />
       }
     </AvatarBox>
     {nameStyle !== 'none' && (
@@ -219,6 +238,7 @@ Avatar.defaultProps = {
   bg: 'accent.8',
   color: 'accent.1',
   fontColor: 'foreground',
+  borderRadius: 6,
 };
 
 export default Avatar;
