@@ -42,5 +42,5 @@ export {
   FieldGroup,
   FieldSet,
   Spacer,
-  Message
+  Message,
 }

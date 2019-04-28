@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { animated, useTransition } from 'react-spring';
 
-import Close from 'rmdi/lib/Close';
-
 import { Flex, Box, Card, Grid, usePortal } from '@phobon/base';
 import { SquareButton } from '../../components';
+import Remove from '../../icons/Remove';
 
 import NotificationsContext from './NotificationsContext';
 
@@ -129,7 +128,7 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
                                 x();
                               }
                             }}>
-                            <Close color="inherit" />
+                            <Remove color="inherit" size={20} />
                           </SquareButton>
                         )}
                       </Flex>

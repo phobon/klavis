@@ -10,40 +10,47 @@ const variationColour = props => {
     info: css`
       background-color: ${props.theme.colors.blues[9]};
       color: ${props.theme.colors.blues[0]};
+      stroke: ${props.theme.colors.blues[0]};
       /* background-color: ${props.theme.colors.guidance.info[1]};
       color: ${props.theme.colors.guidance.info[0]}; */
     `,
     question: css`
       background-color: ${props.theme.colors.purples[9]};
       color: ${props.theme.colors.purples[0]};
+      stroke: ${props.theme.colors.purples[0]};
       /* background-color: ${props.theme.colors.guidance.info[1]};
       color: ${props.theme.colors.guidance.info[0]}; */
     `,
     success: css`
       background-color: ${props.theme.colors.greens[9]};
       color: ${props.theme.colors.greens[0]};
+      stroke: ${props.theme.colors.greens[0]};
       /* background-color: ${props.theme.colors.guidance.success[1]};
       color: ${props.theme.colors.guidance.success[0]}; */
     `,
     warning: css`
       background-color: ${props.theme.colors.oranges[9]};
       color: ${props.theme.colors.oranges[0]};
+      stroke: ${props.theme.colors.oranges[0]};
       /* background-color: ${props.theme.colors.guidance.warning[1]};
       color: ${props.theme.colors.guidance.warning[0]}; */
     `,
     error: css`
       background-color: ${props.theme.colors.reds[9]};
       color: ${props.theme.colors.reds[0]};
+      stroke: ${props.theme.colors.reds[0]};
       /* background-color: ${props.theme.colors.guidance.error[1]};
       color: ${props.theme.colors.guidance.error[0]}; */
     `,
     neutral: css`
       background-color: ${props.theme.colors.background};
       color: ${props.theme.colors.foreground};
+      stroke: ${props.theme.colors.foreground};
     `,
     dark: css`
       background-color: ${props.theme.colors.grayscale[3]};
       color: ${props.theme.colors.white};
+      stroke: ${props.theme.colors.white};
     `,
   };
 

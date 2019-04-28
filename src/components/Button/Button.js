@@ -16,6 +16,7 @@ const buttonVariant = props => {
     border-color: transparent;
     color: ${props.theme.colors.grayscale[1]};
     fill: ${props.theme.colors.grayscale[1]};
+    stroke: ${props.theme.colors.grayscale[1]};
     &:hover {
       background-color: ${props.theme.colors.grayscale[6]};
     }
@@ -30,6 +31,7 @@ const buttonVariant = props => {
         background-color: ${props.theme.colors.accent[0]};
         color: white;
         fill: white;
+        stroke: white;
       }
     `,
     secondary: css`
@@ -37,6 +39,7 @@ const buttonVariant = props => {
       border-color: ${props.theme.colors.grayscale[5]};
       color: ${props.theme.colors.grayscale[1]};
       fill: ${props.theme.colors.grayscale[1]};
+      stroke: ${props.theme.colors.grayscale[1]};
       &:hover {
         background-color: ${props.theme.colors.grayscale[6]};
       }
@@ -48,10 +51,12 @@ const buttonVariant = props => {
       border-color: ${props.theme.colors.guidance.warning[0]};
       color: ${props.theme.colors.guidance.warning[0]};
       fill: ${props.theme.colors.guidance.warning[0]};
+      stroke: ${props.theme.colors.guidance.warning[0]};
       &:hover {
         background-color: ${props.theme.colors.oranges[5]};
         color: ${props.theme.colors.guidance.warning[0]};
         fill: ${props.theme.colors.guidance.warning[0]};
+        stroke: ${props.theme.colors.guidance.warning[0]};
       }
     `,
     danger: css`
@@ -59,10 +64,12 @@ const buttonVariant = props => {
       border-color: ${props.theme.colors.guidance.error[0]};
       color: ${props.theme.colors.guidance.error[0]};
       fill: ${props.theme.colors.guidance.error[0]};
+      stroke: ${props.theme.colors.guidance.error[0]};
       &:hover {
         background-color: ${props.theme.colors.reds[5]};
         color: ${props.theme.colors.guidance.error[0]};
         fill: ${props.theme.colors.guidance.error[0]};
+        stroke: ${props.theme.colors.guidance.error[0]};
       }
     `,
     success: css`
@@ -70,10 +77,12 @@ const buttonVariant = props => {
       border-color: ${props.theme.colors.guidance.success[0]};
       color: ${props.theme.colors.guidance.success[0]};
       fill: ${props.theme.colors.guidance.success[0]};
+      stroke: ${props.theme.colors.guidance.success[0]};
       &:hover {
         background-color: ${props.theme.colors.greens[5]};
         color: ${props.theme.colors.guidance.success[0]};
         fill: ${props.theme.colors.guidance.success[0]};
+        stroke: ${props.theme.colors.guidance.success[0]};
       }
     `,
 
@@ -82,11 +91,13 @@ const buttonVariant = props => {
       border: 0;
       color: ${props.theme.colors.grayscale[1]};
       fill: ${props.theme.colors.grayscale[1]};
+      stroke: ${props.theme.colors.grayscale[1]};
       padding: 0;
       text-decoration: underline dotted;
       &:hover {
         color: ${props.theme.colors.accent[1]};
         fill: ${props.theme.colors.accent[1]};
+        stroke: ${props.theme.colors.accent[1]};
         text-decoration: underline;
       }
     `,
@@ -154,10 +165,12 @@ const pressed = props => {
     link: css`
       color: ${props.theme.colors.accent[1]};
       fill: ${props.theme.colors.accent[1]};
+      stroke: ${props.theme.colors.accent[1]};
       text-decoration: underline;
       &:hover {
         color: ${props.theme.colors.grayscale[1]};
         fill: ${props.theme.colors.grayscale[1]};
+        stroke: ${props.theme.colors.grayscale[1]};
         text-decoration: underline dotted;
       }
     `,
@@ -225,6 +238,7 @@ const Button = styled.button.attrs(props => ({
     border: 0;
     color: ${props => props.theme.colors.grayscale[4]};
     fill: ${props => props.theme.colors.grayscale[4]};
+    stroke: ${props => props.theme.colors.grayscale[4]};
     pointer-events: none;
   }
 `;

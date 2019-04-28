@@ -2,10 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Box, Truncate, Text } from '@phobon/base';
 
-import Error from 'rmdi/lib/Error';
-import Warning from 'rmdi/lib/Warning';
-import Help from 'rmdi/lib/Help';
-import CheckCircle from 'rmdi/lib/CheckCircle';
+import AlertDiamond from '../../icons/AlertDiamond';
+import AlertTriangle from '../../icons/AlertTriangle';
+import QuestionCircle from '../../icons/QuestionCircle';
+import CheckCircle from '../../icons/CheckCircle';
 
 import Message from './Message';
 
@@ -13,13 +13,13 @@ const variations = [
   'Info', 'Question', 'Success', 'Warning', 'Error', 'Neutral', 'Dark',
 ];
 const glyphs = {
-  neutral: <Help color="inherit" size={20} />,
-  dark: <Help color="inherit" size={20} />,
-  info: <Help color="inherit" size={20} />,
-  question: <Help color="inherit" size={20} />,
+  neutral: <QuestionCircle color="inherit" size={20} />,
+  dark: <QuestionCircle color="inherit" size={20} />,
+  info: <QuestionCircle color="inherit" size={20} />,
+  question: <QuestionCircle color="inherit" size={20} />,
   success: <CheckCircle color="inherit" size={20} />,
-  warning: <Warning color="inherit" size={20} />,
-  error: <Error color="inherit" size={20} />,
+  warning: <AlertTriangle color="inherit" size={20} />,
+  error: <AlertDiamond color="inherit" size={20} />,
 };
 
 storiesOf('Components/Message', module)

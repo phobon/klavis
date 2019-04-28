@@ -4,9 +4,9 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { space, color as styledColor, borderRadius as styledBorderRadius } from 'styled-system';
 
-import Person from 'rmdi/lib/Person';
-
 import { Box, Image, Text, focus } from '@phobon/base';
+
+import User from '../../icons/User';
 
 const statusColor = props => {
   const statusColors = {
@@ -133,7 +133,7 @@ const AvatarIndicator = ({ avatarStyle, name, onClick, ...props }) => (
   <AvatarIndicatorButton as={onClick ? 'button' : 'div'} onClick={onClick} {...props}>
     {avatarStyle === 'initials'
       ? <Text fontSize="inherit" color="inherit">{name.split(' ').reduce((acc, current) => acc.charAt(0) + current.charAt(0)).substr(0, 2)}</Text>
-      : <Person color="inherit" />
+      : <User />
     }
   </AvatarIndicatorButton>
 );
