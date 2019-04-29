@@ -4,7 +4,7 @@ import { action } from '@storybook/addon-actions';
 
 import { Box } from '@phobon/base';
 
-import Remove from '../../icons/Remove';
+import Remove from 'sli/lib/Remove';
 
 import Progress from './Progress';
 import ProgressStep from './ProgressStep';

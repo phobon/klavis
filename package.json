@@ -53,6 +53,7 @@
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.2",
     "rollup-plugin-node-resolve": "^4.0.1",
+    "sli": "ssh://git@github.com:phobon/sli.git",
     "styled-components": "^4.2.0",
     "styled-system": "^4.1.0"
   },

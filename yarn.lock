@@ -8042,6 +8042,10 @@ slash@^2.0.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-2.0.0.tgz#de552851a1759df3a8f206535442f5ec4ddeab44"
   integrity sha512-ZYKh3Wh2z1PpEXWr0MpSBZ0V6mZHAQfYevttO11c51CaWjGTaadiKZ+wVt1PbMlDV5qhMFslpZCemhwOK7C89A==
 
+"sli@ssh://git@github.com:phobon/sli.git":
+  version "0.0.1"
+  resolved "ssh://git@github.com:phobon/sli.git#bad9a9dd4438a16eb8a6362b2313b1058b30b096"
+
 slice-ansi@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/slice-ansi/-/slice-ansi-2.1.0.tgz#cacd7693461a637a5788d92a7dd4fba068e81636"

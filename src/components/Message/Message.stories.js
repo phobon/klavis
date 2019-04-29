@@ -2,10 +2,10 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Box, Truncate, Text } from '@phobon/base';
 
-import AlertDiamond from '../../icons/AlertDiamond';
-import AlertTriangle from '../../icons/AlertTriangle';
-import QuestionCircle from '../../icons/QuestionCircle';
-import CheckCircle from '../../icons/CheckCircle';
+import AlertDiamond from 'sli/lib/AlertDiamond';
+import AlertTriangle from 'sli/lib/AlertTriangle';
+import QuestionCircle from 'sli/lib/QuestionCircle';
+import CheckCircle from 'sli/lib/CheckCircle';
 
 import Message from './Message';
 
