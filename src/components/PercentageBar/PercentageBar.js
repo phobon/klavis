@@ -7,14 +7,14 @@ import Tag from '../Tag';
 
 const thresholdBg = props => {
   if (props.percentage < props.dangerThreshold) {
-    return css`background-color: ${props.theme.colors.reds[4]};`;
+    return css`background-color: ${props.theme.colors.reds[5]};`;
   }
 
   if (props.percentage < props.warningThreshold) {
-    return css`background-color: ${props.theme.colors.oranges[4]};`;
+    return css`background-color: ${props.theme.colors.oranges[5]};`;
   }
 
-  return css`background-color: ${props.theme.colors.greens[4]};`;
+  return css`background-color: ${props.theme.colors.greens[5]};`;
 };
 
 const heights = props => {
@@ -35,7 +35,7 @@ const PercentageBarElement = styled.div.attrs(props => ({
   ${heights}
   display: flex;
   flex: 1 0 0%;
-  background-color: ${props => props.theme.colors.grayscale[6]};
+  background-color: ${props => props.theme.colors.grayscale[7]};
   overflow: hidden;
 
   &::after {

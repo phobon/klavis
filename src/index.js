@@ -10,6 +10,7 @@ import {
   withTooltip,
   Spacer,
   Message,
+  Toggle,
 } from './components';
 
 import {
@@ -33,6 +34,9 @@ export {
   Progress, ProgressStep,
   Tag,
   withTooltip,
+  Spacer,
+  Message,
+  Toggle,
   Notifications, useNotifications,
   Form,
   TextField,
@@ -41,6 +45,4 @@ export {
   NumberField,
   FieldGroup,
   FieldSet,
-  Spacer,
-  Message,
 }

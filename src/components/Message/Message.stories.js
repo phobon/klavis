@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Box, Truncate, Text } from '@phobon/base';
+import { Box, Text } from '@phobon/base';
 
 import AlertDiamond from 'sli/lib/AlertDiamond';
 import AlertTriangle from 'sli/lib/AlertTriangle';
@@ -9,7 +9,7 @@ import CheckCircle from 'sli/lib/CheckCircle';
 
 import Message from './Message';
 
-const variations = [
+const variants = [
   'Info', 'Question', 'Success', 'Warning', 'Error', 'Neutral', 'Dark',
 ];
 const glyphs = {
@@ -23,17 +23,17 @@ const glyphs = {
 };
 
 storiesOf('Components/Message', module)
-  .add('With different variations', () => variations.map(v => (
-    <Message key={v} variation={v.toLowerCase()} mr={3}>{v}</Message>
+  .add('With different variants', () => variants.map(v => (
+    <Message key={v} variant={v.toLowerCase()} mr={3}>{v}</Message>
   )))
-  .add('With different glyphs', () => variations.map(v => (
-    <Message key={v} variation={v.toLowerCase()} mr={3} glyph={glyphs[v.toLowerCase()]}>{v}</Message>
+  .add('With different glyphs', () => variants.map(v => (
+    <Message key={v} variant={v.toLowerCase()} mr={3} glyph={glyphs[v.toLowerCase()]}>{v}</Message>
   )))
   .add('With composed children', () => (
     <Box flexDirection="column" alignItems="flex-start">
-      {variations.map(v => (
-        <Message variation={v.toLowerCase()} key={v} mb={3}>
-          <Truncate fontWeight="bold" fontSize={2} mb={2} color="inherit">Message heading</Truncate>
+      {variants.map(v => (
+        <Message variant={v.toLowerCase()} key={v} mb={3}>
+          <Text fontWeight="bold" fontSize={2} lineHeight={0} mb={2} color="inherit">Message heading</Text>
           <Text color="inherit">Some text to go along with this message</Text>
         </Message>
       ))}
@@ -41,9 +41,9 @@ storiesOf('Components/Message', module)
   ))
   .add('With composed children and glyphs', () => (
     <Box flexDirection="column" alignItems="flex-start">
-      {variations.map(v => (
-        <Message variation={v.toLowerCase()} key={v} mb={3} glyph={glyphs[v.toLowerCase()]}>
-          <Truncate fontWeight="bold" fontSize={2} mb={2} color="inherit" lineHeight={2}>Message heading</Truncate>
+      {variants.map(v => (
+        <Message variant={v.toLowerCase()} key={v} mb={3} glyph={glyphs[v.toLowerCase()]}>
+          <Text fontWeight="bold" fontSize={2} mb={2} lineHeight={0} color="inherit">Message heading</Text>
           <Text color="inherit">Some text to go along with this message</Text>
         </Message>
       ))}

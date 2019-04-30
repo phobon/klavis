@@ -122,7 +122,7 @@ const buttonVariant = props => {
 const pressed = props => {
   const tertiary = css`
     background-color: ${props.theme.colors.grayscale[2]};
-    color: ${props.theme.colors.grayscale[6]};
+    color: ${props.theme.colors.grayscale[8]};
     &:hover {
       background-color: ${props.theme.colors.grayscale[1]};
     }
@@ -136,7 +136,7 @@ const pressed = props => {
     `,
     secondary: css`
       background-color: ${props.theme.colors.grayscale[2]};
-      color: ${props.theme.colors.grayscale[6]};
+      color: ${props.theme.colors.grayscale[8]};
       &:hover {
         background-color: ${props.theme.colors.grayscale[1]};
       }

@@ -9,6 +9,7 @@ import Tag from './Tag';
 import withTooltip from './Tooltip';
 import Spacer from './Spacer';
 import Message from './Message';
+import Toggle from './Toggle';
 
 export {
   Avatar,
@@ -22,4 +23,5 @@ export {
   withTooltip,
   Spacer,
   Message,
+  Toggle,
 };
