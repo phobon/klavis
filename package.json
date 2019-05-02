@@ -1,6 +1,6 @@
 {
   "name": "@phobon/grimoire",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "description": "Component patterns using @phobon/base",
   "main": "dist/index.js",
   "author": "Ben McCormick",
@@ -48,12 +48,10 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-spring": "^8.0.19",
-    "rmdi": "^1.0.1",
     "rollup": "^1.7.4",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.2",
     "rollup-plugin-node-resolve": "^4.0.1",
-    "sli": "ssh://git@github.com:phobon/sli.git",
     "styled-components": "^4.2.0",
     "styled-system": "^4.1.0"
   },
@@ -62,7 +60,6 @@
     "react": "^16.8.x",
     "react-dom": "^16.8.x",
     "react-spring": "^8.x",
-    "rmdi": "^1.x",
     "styled-components": "^4.x",
     "styled-system": "^4.x"
   }

@@ -6,7 +6,7 @@ import { space, color as styledColor, borderRadius as styledBorderRadius } from 
 
 import { Box, Image, Text, focus } from '@phobon/base';
 
-import User from 'sli/lib/User';
+import User from '../../icons/User';
 
 const statusColor = props => {
   const statusColors = {

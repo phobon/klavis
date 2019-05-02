@@ -11,7 +11,7 @@ import {
 } from 'styled-system';
 import { position, focus } from '@phobon/base'
 
-import Remove from 'sli/lib/Remove';
+import Remove from '../../icons/Remove';
 
 import withTooltip from '../Tooltip';
 
