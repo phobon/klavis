@@ -8,7 +8,6 @@ import Avatar from './Avatar';
 const sizes = ['s', 'm', 'l'];
 const statuses = ['none', 'error', 'warning', 'success'];
 const presences = ['none', 'unknown', 'unavailable', 'busy', 'available'];
-const nameStyles = ['none', 'first', 'full'];
 
 storiesOf('Components/Avatar', module)
   .add('With avatar styles', () => (
@@ -18,39 +17,6 @@ storiesOf('Components/Avatar', module)
       <Avatar name="Fake Name" image="https://source.unsplash.com/random/50x50" />
     </Box>
   ))
-  .add('With name styles', () => {
-    const glyphAvatars = Object.values(nameStyles).map(s => (
-      <BoxListItem key={s} mr={3}>
-        <Avatar name="Fake Name" avatarStyle="glyph" nameStyle={s} />
-      </BoxListItem>
-    ));
-
-    const initialsAvatars = Object.values(nameStyles).map(s => (
-      <BoxListItem key={s} mr={3}>
-        <Avatar name="Fake Name" nameStyle={s} />
-      </BoxListItem>
-    ));
-
-    const imageAvatars = Object.values(nameStyles).map(s => (
-      <BoxListItem key={s} mr={3}>
-        <Avatar name="Fake Name" nameStyle={s} image="https://source.unsplash.com/random/50x50" />
-      </BoxListItem>
-    ));
-
-    return (
-      <Box flexDirection="column">
-        <BoxList mb={5}>
-          {glyphAvatars}
-        </BoxList>
-        <BoxList mb={5}>
-          {initialsAvatars}
-        </BoxList>
-        <BoxList>
-          {imageAvatars}
-        </BoxList>
-      </Box>
-    );
-  })
   .add('With different statuses', () => {
     const glyphAvatars = Object.values(statuses).map(s => (
       <BoxListItem key={s} mr={3}>
