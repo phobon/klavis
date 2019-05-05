@@ -1,13 +1,32 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { themeGet } from 'styled-system';
 import withTooltip from '../Tooltip';
+
+const stepOrientation = props => {
+  const orientations = {
+    horizontal: css`
+      &::after {
+        bottom: -${props.theme.space[4]}px;
+      }
+    `,
+    vertical: css`
+      &::after {
+        left: ${props.theme.space[6]}px;
+      }
+    `,
+  };
+
+  return orientations[props.orientation];
+};
 
 const stepMode = props => {
   const stepModes = {
     compact: css`
       width: ${props.theme.space[2]}px;
       height: ${props.theme.space[2]}px;
+      margin: ${props.theme.space[1]}px;
     `,
     full: css`
       width: ${props.theme.space[4]}px;
@@ -31,15 +50,16 @@ const stepMode = props => {
       transition: opacity 180ms ease-out;
     }
 
-    &::after {
+    /* &::after {
       content: '${props.label}';
       display: none;
       position: absolute;
-      bottom: -${props.theme.space[4]}px;
       color: ${props.theme.colors.grayscale[3]};
       white-space: pre;
       pointer-events: none;
     }
+
+    ${stepOrientation} */
     `,
   };
 
@@ -64,7 +84,8 @@ const current = props => {
       background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
       
       border-radius: 12px;
-      width: ${props.theme.space[3]}px;
+      width: ${props.orientation === 'horizontal' && `${props.theme.space[3]}px`};
+      height: ${props.orientation === 'vertical' && `${props.theme.space[3]}px`};
     `,
   }
 
@@ -90,7 +111,7 @@ const labels = props => props.showLabels && css`
   }
 `;
 
-const ProgressStep = styled.button`
+const ProgressStepButton = styled.button`
   border: 0;
   padding: 0;
   background-color: ${props => themeGet(`colors.${props.bg}`, props.theme.colors.grayscale[6])};
@@ -115,6 +136,12 @@ const ProgressStep = styled.button`
   ${complete}
   ${current}
 `;
+
+const ProgressStep = ({ children, ...props }) => (
+  <ProgressStepButton {...props}>
+    {children}
+  </ProgressStepButton>
+)
 
 ProgressStep.propTypes = {
   mode: PropTypes.oneOf(['compact', 'full']),

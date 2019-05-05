@@ -9,15 +9,36 @@ import ProgressStep from './ProgressStep';
 const complete = props => props.isComplete && css`
   opacity: 1;
 `;
+const barOrientation = props => {
+  const orientations = {
+    horizontal: css`
+      height: ${props.theme.space[2]}px;
+
+      &::before {
+        width: calc(100% + 4px);
+        height: 100%;
+      }
+    `,
+    vertical: css`
+      width: ${props.theme.space[2]}px;
+
+      &::before {
+        height: calc(100% + 4px);
+        width: 100%;
+      }
+    `,
+  };
+
+  return orientations[props.orientation];
+};
 const PercentageBar = styled(Flex)`
   position: relative;
   pointer-events: none;
-  height: ${props => props.theme.space[2]}px;
+
+  ${barOrientation}
 
   &::before {
     content: '';
-    width: calc(100% + 4px);
-    height: 100%;
     position: absolute;
     background-color: ${props => themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
     opacity: 0;
@@ -26,7 +47,7 @@ const PercentageBar = styled(Flex)`
   }
 `;
 
-const Progress = ({ children, completeGlyph, showLabels, mode, fontSize, color, bg, ...props }) => {
+const Progress = ({ children, completeGlyph, showLabels, mode, fontSize, color, bg, orientation, ...props }) => {
   let isCurrentShown = false;
   let currentIndex = 0;
   const mappedChildren = React.Children.map(children, (step, i) => {
@@ -44,9 +65,10 @@ const Progress = ({ children, completeGlyph, showLabels, mode, fontSize, color, 
 
     const isComplete = !isCurrentShown;
     return (
-      <BoxListItem key={label} flex={!isLast && mode === 'full' ? '1 1 auto' : 'none'}>
+      <BoxListItem key={label} flex={!isLast && mode === 'full' ? '1 1 auto' : 'none'} flexDirection="inherit">
         <ProgressStep
           {...stepProps}
+          orientation={orientation}
           label={label}
           isCurrent={isCurrent}
           isComplete={isComplete}
@@ -65,14 +87,16 @@ const Progress = ({ children, completeGlyph, showLabels, mode, fontSize, color, 
           )}
         </ProgressStep>
 
-        {!isLast && mode === 'full' && <PercentageBar isComplete={isComplete} color={color} bg={bg} />}
+        {!isLast && mode === 'full' && <PercentageBar isComplete={isComplete} color={color} bg={bg} orientation={orientation} />}
       </BoxListItem>
     );
   }).filter(n => n);
 
   return (
     <BoxList
-      fullWidth={mode === 'full'}
+      flexDirection={orientation === 'horizontal' ? 'row' : 'column'}
+      fullWidth={mode === 'full' && orientation === 'horizontal'}
+      fullHeight={mode === 'full' && orientation === 'vertical'}
       justifyContent={mode === 'compact' ? 'space-between' : 'center'}
       {...props}
       role="progressbar"
@@ -93,6 +117,7 @@ Progress.propTypes = {
   fontSize: PropTypes.number,
 
   bg: PropTypes.string,
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']),
 };
 
 Progress.defaultProps = {
@@ -101,6 +126,7 @@ Progress.defaultProps = {
   color: 'accent.3',
   fontSize: 0,
   bg: 'grayscale.6',
+  orientation: 'horizontal',
 };
 
 export default Progress;
