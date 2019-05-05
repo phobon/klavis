@@ -22,12 +22,12 @@ const buttonVariant = props => {
   `;
   const buttonVariants = {
     primary: css`
-      background-color: ${props.theme.colors.accent[1]};
-      border-color: ${props.theme.colors.accent[1]};
+      background-color: ${props.theme.colors.accent[4]};
+      border-color: ${props.theme.colors.accent[4]};
       color: white;
       fill: white;
       &:hover {
-        background-color: ${props.theme.colors.accent[0]};
+        background-color: ${props.theme.colors.accent[3]};
         color: white;
         fill: white;
       }
@@ -85,8 +85,8 @@ const buttonVariant = props => {
       padding: 0;
       text-decoration: underline dotted;
       &:hover {
-        color: ${props.theme.colors.accent[1]};
-        fill: ${props.theme.colors.accent[1]};
+        color: ${props.theme.colors.accent[4]};
+        fill: ${props.theme.colors.accent[4]};
         text-decoration: underline;
       }
     `,
@@ -118,7 +118,7 @@ const pressed = props => {
   `;
   const toggledVariants = {
     primary: css`
-      background-color: ${props.theme.colors.accent[0]};
+      background-color: ${props.theme.colors.accent[2]};
       &:hover {
         background-color: ${props.theme.colors.accent[1]};
       }
@@ -152,8 +152,8 @@ const pressed = props => {
     `,
 
     link: css`
-      color: ${props.theme.colors.accent[1]};
-      fill: ${props.theme.colors.accent[1]};
+      color: ${props.theme.colors.accent[4]};
+      fill: ${props.theme.colors.accent[4]};
       text-decoration: underline;
       &:hover {
         color: ${props.theme.colors.grayscale[1]};
