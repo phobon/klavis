@@ -57,18 +57,18 @@ storiesOf('Components/Progress', module)
   ))
   .add('With custom completed glyph', () => (
     <Box flexDirection="column" fullWidth p={7}>
-      <TestProgress mb={8} color="reds.5" completeGlyph={<Remove />} />
-      <TestProgress mb={8} color="purples.5" completeGlyph={<Remove />} />
-      <TestProgress mb={8} color="oranges.5" completeGlyph={<Remove />} />
+      <TestProgress mb={8} color="reds.5" completeGlyph={<Remove size={12} />} />
+      <TestProgress mb={8} color="purples.5" completeGlyph={<Remove size={12} />} />
+      <TestProgress mb={8} color="oranges.5" completeGlyph={<Remove size={12} />} />
 
-      <TestProgress mb={8} color="reds.5" mode="compact" width={150} completeGlyph={<Remove />} />
-      <TestProgress mb={8} color="purples.5" mode="compact" width={150} completeGlyph={<Remove />} />
-      <TestProgress mb={8} color="oranges.5" mode="compact" width={150} completeGlyph={<Remove />} />
+      <TestProgress mb={8} color="reds.5" mode="compact" width={150} completeGlyph={<Remove size={12} />} />
+      <TestProgress mb={8} color="purples.5" mode="compact" width={150} completeGlyph={<Remove size={12} />} />
+      <TestProgress mb={8} color="oranges.5" mode="compact" width={150} completeGlyph={<Remove size={12} />} />
     </Box>
   ))
   .add('With custom onClicks for steps', () => (
     <Box flexDirection="column" fullWidth p={7}>
-      <Progress mb={8} completeGlyph={<Remove />}>
+      <Progress mb={8} completeGlyph={<Remove size={12} />}>
         <ProgressStep label="First Step" onClick={action('First Step clicked')} />
         <ProgressStep label="Second Step" onClick={action('Second Step clicked')} />
         <ProgressStep label="Third Step" onClick={action('Third Step clicked')} isCurrent />

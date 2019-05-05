@@ -66,8 +66,6 @@ const ToggleButton = styled.button`
 
   ${toggleSize}
 
-  stroke: ${props => props.theme.colors.background};
-
   &::before {
     content: '';
     border-radius: 50%;
@@ -113,7 +111,6 @@ const ToggleButton = styled.button`
       background-color: ${props => props.theme.colors.grayscale[5]};
     }
 
-    stroke: ${props => props.theme.colors.grayscale[5]};
     pointer-events: none;
   }
 `;
@@ -127,7 +124,7 @@ const Toggle = ({ toggled, disabled, size, ...props }) => (
     size={size}
     role="switch"
     {...props}>
-    {!toggled && <Remove color="inherit" size={size === 'm' ? 16 : 10} css={{ strokeWidth: 3 }} />}
+    {!toggled && <Remove color="white" size={12} />}
   </ToggleButton>
 );
 

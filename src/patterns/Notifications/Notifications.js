@@ -129,7 +129,7 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
                                 x();
                               }
                             }}>
-                            <Remove color="inherit" size={20} />
+                            <Remove color="inherit" size={12} />
                           </SquareButton>
                         )}
                       </Flex>
