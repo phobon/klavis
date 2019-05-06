@@ -5,6 +5,8 @@ import { Flex, Box, Label, Text } from '@phobon/base';
 
 import FormFieldContext from '../FormFieldContext';
 
+import AlertDiamond from '../../../icons/AlertDiamond';
+
 const asField = WrappedComponent => 
   ({ label, id, required = false, invalid, hint, visible = true, className, disabled, useUnprocessed = false, ...props }) => {
   const { optionalLabel, density, formDisabled } = useContext(FormFieldContext);
@@ -43,8 +45,7 @@ const asField = WrappedComponent =>
       className="form__field"
       flexDirection="column"
       alignItems="flex-start"
-      fullWidth
-      css={{ position: 'relative' }}>
+      fullWidth>
       <Box
         fullWidth
         flexDirection="column"
@@ -58,14 +59,20 @@ const asField = WrappedComponent =>
             {!required && optionalLabel && <Text as="span" color="grayscale.4" ml={1}>{`(${optionalLabel()})`}</Text>}
           </Label>
         )}
-        <WrappedComponent
-          id={id}
+        <Box
           fullWidth
-          {...props}
-          density={density}
-          className={className}
-          invalid={invalid}
-          disabled={fieldDisabled} />
+          css={{ position: 'relative' }}
+          color="reds.5">
+          <WrappedComponent
+            id={id}
+            fullWidth
+            {...props}
+            density={density}
+            className={className}
+            invalid={invalid}
+            disabled={fieldDisabled} />
+          {invalidElement && <Box bg="grayscale.8" color="inherit" width={28} height={20} zIndex={1} css={{ position: 'absolute', right: 4 }}><AlertDiamond size={20} /></Box>}
+        </Box>
       </Box>
       {invalidElement || hintElement}
     </Flex>

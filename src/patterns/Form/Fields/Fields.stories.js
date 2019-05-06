@@ -71,9 +71,6 @@ storiesOf('Patterns/Form/Fields', module)
       <SelectField label="label" hint="hint text" id="select_2">
         <SelectOptions />
       </SelectField>
-      <SelectField label="label" invalid="invalid text" id="select_3">
-        <SelectOptions />
-      </SelectField>
       <SelectField label="required field" required id="select_4">
         <SelectOptions />
       </SelectField>
