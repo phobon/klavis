@@ -121,7 +121,7 @@ Progress.propTypes = {
 
 Progress.defaultProps = {
   mode: 'full',
-  color: 'accent.3',
+  color: 'accent.5',
   fontSize: 0,
   bg: 'grayscale.6',
   orientation: 'horizontal',

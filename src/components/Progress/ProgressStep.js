@@ -45,7 +45,7 @@ const stepMode = props => {
 const isCurrent = props => {
   const currentStates = {
     full: css`
-      background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
+      background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[5])};
       
       &::before {
         content: '';
@@ -57,7 +57,7 @@ const isCurrent = props => {
       }
     `,
     compact: css`
-      background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
+      background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[5])};
       
       border-radius: 12px;
       width: ${props.orientation === 'horizontal' && `${props.theme.space[3]}px`};
@@ -71,7 +71,7 @@ const isCurrent = props => {
 const isComplete = props => {
   const completeStates = {
     full: css`
-      background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
+      background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[5])};
     `,
     compact: css`
       background-color: ${themeGet(`colors.${props.bg}`, props.theme.colors.grayscale[6])};
@@ -121,7 +121,7 @@ const ProgressStep = ({ children, orientation, alignItems, justifyContent, curre
       white-space: pre;
       top: ${orientation === 'horizontal' ? '130%' : 'unset'}
       left: ${orientation === 'vertical' ? '150%' : 'unset'}
-      opacity: ${!complete && !current ? 0.5 : 1}`}>
+      opacity: ${!current ? 0.4 : 1}`}>
       {children}
     </span>
   </Box>
@@ -147,7 +147,7 @@ ProgressStep.defaultProps = {
   complete: false,
 
   children: null,
-  color: 'accent.3',
+  color: 'accent.5',
   bg: 'grayscale.6',
   alignItems: 'flex-start',
   justifyContent: 'center',
