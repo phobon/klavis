@@ -9,9 +9,7 @@ import {
   gridArea,
   themeGet,
 } from 'styled-system';
-import { position, focus } from '@phobon/base'
-
-import Remove from '../../icons/Remove';
+import { position, focus, Vector } from '@phobon/base'
 
 import withTooltip from '../Tooltip';
 
@@ -56,6 +54,10 @@ const ToggleButton = styled.button`
   transition:
     opacity 120ms ease-out,
     background-color 120ms ease-out;
+
+  svg {
+    fill: white;
+  }
 
   ${space}
   ${borderRadius}
@@ -105,6 +107,10 @@ const ToggleButton = styled.button`
   &:disabled {
     opacity: 0.5;
 
+    svg {
+      fill: ${props => props.theme.colors.grayscale[4]};
+    }
+
     background-color: ${props => props.theme.colors.grayscale[6]};
 
     &::before {
@@ -124,7 +130,11 @@ const Toggle = ({ toggled, disabled, size, ...props }) => (
     size={size}
     role="switch"
     {...props}>
-    {!toggled && <Remove color="white" size={12} />}
+    {!toggled && (
+      <Vector width={size === 'm' ? 12 : 8} height={size === 'm' ? 12 : 8} viewBox="0 0 16 16">
+        <path d="M15.9999 1.77777L14.2222 0L7.99999 6.22219L1.7778 0L2.46126e-05 1.77777L6.22222 7.99996L0 14.2222L1.77777 16L7.99999 9.77774L14.2222 16L16 14.2222L9.77776 7.99996L15.9999 1.77777Z" />
+      </Vector>
+    )}
   </ToggleButton>
 );
 
