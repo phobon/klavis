@@ -1,12 +1,13 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { themeGet, color as styledColor } from 'styled-system';
 import styled, { css } from 'styled-components';
-import { Flex, BoxList, BoxListItem, Box } from '@phobon/base';
+import { Flex, BoxList, BoxListItem } from '@phobon/base';
 
 import ProgressStep from './ProgressStep';
 
-const complete = props => props.isComplete && css`
+const isComplete = props => props.complete && css`
   opacity: 1;
 `;
 const barOrientation = props => {
@@ -42,52 +43,49 @@ const PercentageBar = styled(Flex)`
     position: absolute;
     background-color: ${props => themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
     opacity: 0;
-    ${complete}
+    ${isComplete}
     transition: opacity 180ms ease-out;
   }
 `;
 
-const Progress = ({ children, completeGlyph, showLabels, mode, fontSize, color, bg, orientation, ...props }) => {
-  let isCurrentShown = false;
+const Progress = ({ id, children, mode, fontSize, color, bg, orientation, ...props }) => {
+  let currentShown = false;
   let currentIndex = 0;
+
   const mappedChildren = React.Children.map(children, (step, i) => {
     if (!step) {
       return null;
     }
 
-    const { label, onClick, isCurrent, ...stepProps } = step.props;
+    const { tooltip, onClick, current, ...stepProps } = step.props;
 
     const isLast = i === children.length - 1;
-    if (isCurrent) {
-      isCurrentShown = true;
+    if (current) {
+      currentShown = true;
       currentIndex = i;
     }
 
-    const isComplete = !isCurrentShown;
+    const complete = !currentShown;
     return (
-      <BoxListItem key={label} flex={!isLast && mode === 'full' ? '1 1 auto' : 'none'} flexDirection="inherit">
+      <BoxListItem key={`${id}__step${i}`} flex={!isLast && mode === 'full' ? '1 1 auto' : 'none'} flexDirection="inherit">
         <ProgressStep
           {...stepProps}
           orientation={orientation}
-          label={label}
-          isCurrent={isCurrent}
-          isComplete={isComplete}
-          disabled={isCurrent || !isComplete}
-          showLabels={showLabels}
-          tooltip={!showLabels && label}
+          current={current}
+          complete={complete}
+          disabled={current || !complete}
+          tooltip={tooltip}
           color={color}
           bg={bg}
           mode={mode}
           fontSize={fontSize}
           onClick={onClick}>
-          {isComplete && mode === 'full' && (
-            <Box color="white">
-              {completeGlyph}
-            </Box>
+          {mode === 'full' && (
+            step.props.children
           )}
         </ProgressStep>
 
-        {!isLast && mode === 'full' && <PercentageBar isComplete={isComplete} color={color} bg={bg} orientation={orientation} />}
+        {!isLast && mode === 'full' && <PercentageBar complete={complete} color={color} bg={bg} orientation={orientation} />}
       </BoxListItem>
     );
   }).filter(n => n);
@@ -111,8 +109,9 @@ const Progress = ({ children, completeGlyph, showLabels, mode, fontSize, color, 
 Progress.propTypes = {
   ...styledColor.propTypes,
 
+  id: PropTypes.string.isRequired,
+
   mode: PropTypes.oneOf(['compact', 'full']),
-  showLabels: PropTypes.bool,
   color: PropTypes.string,
   fontSize: PropTypes.number,
 
@@ -122,7 +121,6 @@ Progress.propTypes = {
 
 Progress.defaultProps = {
   mode: 'full',
-  showLabels: true,
   color: 'accent.3',
   fontSize: 0,
   bg: 'grayscale.6',

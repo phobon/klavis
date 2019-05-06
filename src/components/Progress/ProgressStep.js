@@ -2,24 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { themeGet } from 'styled-system';
+
+import { Box } from '@phobon/base';
+
 import withTooltip from '../Tooltip';
-
-const stepOrientation = props => {
-  const orientations = {
-    horizontal: css`
-      &::after {
-        bottom: -${props.theme.space[4]}px;
-      }
-    `,
-    vertical: css`
-      &::after {
-        left: ${props.theme.space[6]}px;
-      }
-    `,
-  };
-
-  return orientations[props.orientation];
-};
 
 const stepMode = props => {
   const stepModes = {
@@ -31,6 +17,7 @@ const stepMode = props => {
     full: css`
       width: ${props.theme.space[4]}px;
       height: ${props.theme.space[4]}px;
+
       > div {
         width: ${props.theme.space[3]}px;
         height: ${props.theme.space[3]}px;
@@ -49,24 +36,13 @@ const stepMode = props => {
       opacity: 0;
       transition: opacity 180ms ease-out;
     }
-
-    /* &::after {
-      content: '${props.label}';
-      display: none;
-      position: absolute;
-      color: ${props.theme.colors.grayscale[3]};
-      white-space: pre;
-      pointer-events: none;
-    }
-
-    ${stepOrientation} */
     `,
   };
 
   return stepModes[props.mode];
 };
 
-const current = props => {
+const isCurrent = props => {
   const currentStates = {
     full: css`
       background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
@@ -89,10 +65,10 @@ const current = props => {
     `,
   }
 
-  return props.isCurrent && currentStates[props.mode];
+  return props.current && currentStates[props.mode];
 };
 
-const complete = props => {
+const isComplete = props => {
   const completeStates = {
     full: css`
       background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[3])};
@@ -102,7 +78,7 @@ const complete = props => {
     `,
   };
 
-  return props.isComplete && completeStates[props.mode];
+  return props.complete && completeStates[props.mode];
 };
 
 const labels = props => props.showLabels && css`
@@ -133,25 +109,48 @@ const ProgressStepButton = styled.button`
   }
 
   ${labels}
-  ${complete}
-  ${current}
+  ${isComplete}
+  ${isCurrent}
 `;
 
-const ProgressStep = ({ children, ...props }) => (
-  <ProgressStepButton {...props}>
-    {children}
-  </ProgressStepButton>
-)
+const ProgressStep = ({ children, orientation, alignItems, justifyContent, current, complete, ...props }) => (
+  <Box css={{ position: 'relative' }} alignItems={alignItems} justifyContent={justifyContent}>
+    <ProgressStepButton orientation={orientation} complete={complete} current={current} {...props} />
+    <span css={`
+      position: absolute;
+      white-space: pre;
+      top: ${orientation === 'horizontal' ? '130%' : 'unset'}
+      left: ${orientation === 'vertical' ? '150%' : 'unset'}
+      opacity: ${!complete && !current ? 0.5 : 1}`}>
+      {children}
+    </span>
+  </Box>
+);
 
 ProgressStep.propTypes = {
+  orientation: PropTypes.oneOf(['horizontal', 'vertical']),
   mode: PropTypes.oneOf(['compact', 'full']),
+  current: PropTypes.bool,
+  complete: PropTypes.bool,
+
+  children: PropTypes.node,
+  color: PropTypes.string,
+  bg: PropTypes.string,
+  alignItems: PropTypes.string,
+  justifyContent: PropTypes.string,
 };
 
 ProgressStep.defaultProps = {
+  orientation: 'horizontal',
   mode: 'full',
+  current: false,
+  complete: false,
+
+  children: null,
   color: 'accent.3',
   bg: 'grayscale.6',
-  fontSize: 0,
+  alignItems: 'flex-start',
+  justifyContent: 'center',
 };
 
 export default withTooltip(ProgressStep);
