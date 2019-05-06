@@ -24,6 +24,12 @@ const toggleSize = props => {
         width: 10px;
         height: 10px;
       }
+
+      &[aria-checked="true"] {
+        &::before {
+          transform: translateX(16px);
+        }
+      }
     `,
     m: css`
       width: ${props.theme.space[6]}px;
@@ -33,6 +39,12 @@ const toggleSize = props => {
       &::before {
         width: 18px;
         height: 18px;
+      }
+
+      &[aria-checked="true"] {
+        &::before {
+          transform: translateX(24px);
+        }
       }
     `,
   };
@@ -83,10 +95,6 @@ const ToggleButton = styled.button`
 
     &:hover {
       background-color: ${props => themeGet(`colors.${props.bg[1]}`)(props)};
-    }
-
-    &::before {
-      transform: translateX(24px);
     }
   }
 

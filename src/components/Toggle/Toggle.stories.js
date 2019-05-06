@@ -39,6 +39,6 @@ storiesOf('Components/Toggle', module)
   .add('With different sizes', () => (
     <Box>
       <Toggle tooltip="Small (s)" mr={2} size="s" />
-      <Toggle tooltip="Medium (m)" mr={2} />
+      <Toggle tooltip="Small (s)" mr={2} size="s" toggled />
     </Box>
   ));
