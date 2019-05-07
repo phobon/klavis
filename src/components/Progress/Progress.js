@@ -14,7 +14,7 @@ const barOrientation = props => {
   const orientations = {
     horizontal: css`
       height: ${props.theme.space[1]}px;
-      min-width: 80px;
+      min-width: ${props.space}px;
 
       &::before {
         width: calc(100% + 4px);
@@ -23,7 +23,7 @@ const barOrientation = props => {
     `,
     vertical: css`
       width: ${props.theme.space[1]}px;
-      min-height: 80px;
+      min-height: ${props.space}px;
 
       &::before {
         height: calc(100% + 4px);
@@ -50,7 +50,7 @@ const PercentageBar = styled(Flex)`
   }
 `;
 
-const Progress = ({ id, children, mode, fontSize, color, bg, orientation, ...props }) => {
+const Progress = ({ id, children, mode, fontSize, color, bg, orientation, space, ...props }) => {
   let currentShown = false;
   let currentIndex = 0;
 
@@ -87,7 +87,7 @@ const Progress = ({ id, children, mode, fontSize, color, bg, orientation, ...pro
           )}
         </ProgressStep>
 
-        {!isLast && mode === 'full' && <PercentageBar complete={complete} color={color} bg={bg} orientation={orientation} />}
+        {!isLast && mode === 'full' && <PercentageBar complete={complete} color={color} bg={bg} orientation={orientation} space={space} />}
       </BoxListItem>
     );
   }).filter(n => n);
@@ -113,6 +113,8 @@ Progress.propTypes = {
 
   id: PropTypes.string.isRequired,
 
+  space: PropTypes.number,
+
   mode: PropTypes.oneOf(['compact', 'full']),
   color: PropTypes.string,
   fontSize: PropTypes.number,
@@ -123,6 +125,7 @@ Progress.propTypes = {
 
 Progress.defaultProps = {
   mode: 'full',
+  space: 80,
   color: 'accent.5',
   fontSize: 0,
   bg: 'grayscale.6',

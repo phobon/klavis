@@ -76,7 +76,7 @@ const isComplete = props => {
       background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[5])};
     `,
     compact: css`
-      background-color: ${themeGet(`colors.${props.bg}`, props.theme.colors.grayscale[6])};
+      background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[6])};
     `,
   };
 
@@ -115,14 +115,14 @@ const ProgressStepButton = styled.button`
   ${isCurrent}
 `;
 
-const ProgressStep = ({ children, orientation, alignItems, justifyContent, current, complete, ...props }) => (
+const ProgressStep = ({ children, orientation, alignItems, justifyContent, current, complete, childrenPosition, ...props }) => (
   <Box css={{ position: 'relative' }} alignItems={alignItems} justifyContent={justifyContent}>
     <ProgressStepButton orientation={orientation} complete={complete} current={current} {...props} />
     <span css={`
       position: absolute;
       white-space: pre;
       top: ${orientation === 'horizontal' ? '130%' : 'unset'}
-      left: ${orientation === 'vertical' ? '150%' : 'unset'}
+      ${childrenPosition === 'right' ? 'left' : 'right'}: ${orientation === 'vertical' ? '150%' : 'unset'}
       opacity: ${!current ? 0.4 : 1}`}>
       {children}
     </span>
@@ -134,6 +134,7 @@ ProgressStep.propTypes = {
   mode: PropTypes.oneOf(['compact', 'full']),
   current: PropTypes.bool,
   complete: PropTypes.bool,
+  childrenPosition: PropTypes.oneOf(['left', 'right']),
 
   children: PropTypes.node,
   color: PropTypes.string,
@@ -147,6 +148,7 @@ ProgressStep.defaultProps = {
   mode: 'full',
   current: false,
   complete: false,
+  childrenPosition: 'right',
 
   children: null,
   color: 'accent.5',
