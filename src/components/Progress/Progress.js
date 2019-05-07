@@ -14,6 +14,7 @@ const barOrientation = props => {
   const orientations = {
     horizontal: css`
       height: ${props.theme.space[1]}px;
+      min-width: 80px;
 
       &::before {
         width: calc(100% + 4px);
@@ -22,6 +23,7 @@ const barOrientation = props => {
     `,
     vertical: css`
       width: ${props.theme.space[1]}px;
+      min-height: 80px;
 
       &::before {
         height: calc(100% + 4px);

@@ -92,13 +92,13 @@ storiesOf('Components/Progress', module)
     </Box>
   ))
   .add('With vertical orientation', () => (
-    <Box height={500} fullWidth p={7}>
+    <Box fullWidth p={7}>
       <TestProgress orientation="vertical" mr={10} />
       <TestProgress orientation="vertical" mode="compact" />
     </Box>
   ))
   .add('With custom onClicks for steps', () => (
-    <Box flexDirection="column" fullWidth p={7}>
+    <Box flexDirection="column" p={7}>
       <Progress mb={8}>
         <ProgressStep label="First Step" onClick={action('First Step clicked')} />
         <ProgressStep label="Second Step" onClick={action('Second Step clicked')} />
