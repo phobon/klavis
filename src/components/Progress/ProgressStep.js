@@ -15,8 +15,8 @@ const stepMode = props => {
       margin: ${props.theme.space[1]}px;
     `,
     full: css`
-      width: ${props.theme.space[4]}px;
-      height: ${props.theme.space[4]}px;
+      width: ${props.theme.space[3]}px;
+      height: ${props.theme.space[3]}px;
 
       > div {
         width: ${props.theme.space[3]}px;
@@ -27,8 +27,8 @@ const stepMode = props => {
       content: '';
       background-color: ${props.theme.colors.background};
       border-radius: 100%;
-      width: 55%;
-      height: 55%;
+      width: 50%;
+      height: 50%;
       position: absolute;
       left: 50%;
       top: 50%;
@@ -46,7 +46,9 @@ const isCurrent = props => {
   const currentStates = {
     full: css`
       background-color: ${themeGet(`colors.${props.color}`, props.theme.colors.accent[5])};
-      
+      width: ${props.theme.space[4]}px;
+      height: ${props.theme.space[4]}px;
+
       &::before {
         content: '';
         opacity: 1;

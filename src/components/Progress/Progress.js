@@ -13,7 +13,7 @@ const isComplete = props => props.complete && css`
 const barOrientation = props => {
   const orientations = {
     horizontal: css`
-      height: ${props.theme.space[2]}px;
+      height: ${props.theme.space[1]}px;
 
       &::before {
         width: calc(100% + 4px);
@@ -21,7 +21,7 @@ const barOrientation = props => {
       }
     `,
     vertical: css`
-      width: ${props.theme.space[2]}px;
+      width: ${props.theme.space[1]}px;
 
       &::before {
         height: calc(100% + 4px);
