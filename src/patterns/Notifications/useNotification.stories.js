@@ -13,7 +13,7 @@ import { Button, Message } from '../../components';
 import Notifications from './Notifications';
 import useNotifications from './useNotifications';
 
-const variations = [
+const variants = [
   'info', 'question', 'success', 'warning', 'error', 'neutral', 'dark',
 ];
 const glyphs = {
@@ -24,6 +24,15 @@ const glyphs = {
   success: <CheckCircle color="inherit" size={20} />,
   warning: <AlertTriangle color="inherit" size={20} />,
   error: <AlertDiamond color="inherit" size={20} />,
+};
+const colors = {
+  neutral: 'grayscale.3',
+  dark: 'grayscale.7',
+  info: 'blues.5',
+  question: 'purples.5',
+  success: 'greens.5',
+  warning: 'oranges.5',
+  error: 'reds.5',
 };
 
 const NotificationsHelper = ({ notificationTypes, notificationPosition }) => {
@@ -46,15 +55,61 @@ const ContentHelper = props => (
 );
 
 storiesOf('Patterns/Notifications', module)
-  .add('With a defined timeout', () => {
+  .add('With different timeouts', () => {
     const notificationTypes = [
       {
-        label: 'Add 7000ms notification',
+        label: 'Default timeout (10s)',
+        notification: { content: <ContentHelper /> },
+      },
+      {
+        label: '2000ms',
+        notification: { content: <ContentHelper />, timeout: 2000 },
+      },
+      {
+        label: '7000ms',
         notification: { content: <ContentHelper />, timeout: 7000 },
       },
     ];
     return (
       <Notifications>
+        <NotificationsHelper notificationTypes={notificationTypes} />
+      </Notifications>
+    );
+  })
+  .add('With and without lifebars', () => {
+    const notificationTypes = [
+      {
+        label: 'With lifebar',
+        notification: { content: <ContentHelper /> },
+      },
+      {
+        label: 'Without lifebar',
+        notification: { content: <ContentHelper />, showLife: false },
+      },
+    ];
+    return (
+      <Notifications timeout={3000}>
+        <NotificationsHelper notificationTypes={notificationTypes} />
+      </Notifications>
+    );
+  })
+  .add('With different coloured lifebars', () => {
+    const notificationTypes = [
+      {
+        label: 'oranges.5',
+        notification: { content: <ContentHelper />, color: 'oranges.5' },
+      },
+      {
+        label: 'blues.6',
+        notification: { content: <ContentHelper />, color: 'blues.6' },
+      },
+      {
+        label: 'purples.6',
+        notification: { content: <ContentHelper />, color: 'purples.6' },
+      },
+    ];
+    return (
+      <Notifications timeout={2000}>
         <NotificationsHelper notificationTypes={notificationTypes} />
       </Notifications>
     );
@@ -72,10 +127,10 @@ storiesOf('Patterns/Notifications', module)
       </Notifications>
     );
   })
-  .add('With different variations', () => {
-    const notificationTypes = variations.map(v => ({
+  .add('With different variants', () => {
+    const notificationTypes = variants.map(v => ({
       label: `Add ${v}`,
-      notification: { content: <ContentHelper variation={v} glyph={glyphs[v]} /> },
+      notification: { content: <ContentHelper variant={v} glyph={glyphs[v]} />, color: colors[v] },
     }));
     return (
       <Notifications timeout={3000}>
@@ -112,12 +167,12 @@ storiesOf('Patterns/Notifications', module)
   .add('With a provided promise to execute', () => {
     const notificationTypes = [
       {
-        label: 'Add notification with promise',
-        notification: { content: <ContentHelper />, promise: () => new Promise(resolve => setTimeout(() => resolve(true), 10000)) },
+        label: 'Add notification with a 3s promise',
+        notification: { content: <ContentHelper />, promise: () => new Promise(resolve => setTimeout(() => resolve(true), 3000)) },
       },
     ];
     return (
-      <Notifications>
+      <Notifications showLife={false}>
         <NotificationsHelper notificationTypes={notificationTypes} />
       </Notifications>
     );

@@ -16,6 +16,7 @@ let id = 0;
 
 const NotificationCard = styled(Card)`
   pointer-events: all;
+  position: relative;
 
   /* TODO: Add styled-system prop on actual node */
   > div {
@@ -59,8 +60,16 @@ const NotificationsBox = styled(Box)`
   }
 `;
 const NotificationContainer = animated(Box);
+const Lifebar = animated(Box);
 
-const Notifications = ({ children, timeout, config, notificationPosition: initialNotificationPosition, width, ...props }) => {
+const Notifications = ({
+  children,
+  timeout,
+  showLife,
+  config,
+  notificationPosition: initialNotificationPosition,
+  width,
+  ...props }) => {
   const [cancelMap] = useState(() => new WeakMap());
   const [items, setItems] = useState([]);
   const [notificationPosition, setNotificationPosition] = useState(initialNotificationPosition);
@@ -68,25 +77,30 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
   const add = useCallback(p => setItems(state => [...state, { key: id++, ...p }]), []);
 
   const transitions = useTransition(items, item => item.key, {
-    from: { opacity: 0, transform: 'translate(0px, 8px)', life: '0%' },
-    enter: item => async next => {
-      await next({ opacity: 1, transform: 'translate(0px, 0px)', life: '0%' });
+    from: { opacity: 0, transform: 'translate(0px, 8px)', life: '100%' },
+    enter: item => async (next, stop) => {
+      cancelMap.set(item, () => {
+        stop();
+        setItems(state => state.filter(i => i.key !== item.key));
+      });
+
+      await next({
+        opacity: 1,
+        transform: 'translate(0px, 0px)',
+        config,
+      });
+
       if (item.promise) {
         await item.promise();
+      } else {
+        await next({ life: '0%', config: { duration: item.timeout || timeout }});
       }
+
+      cancelMap.get(item)();
     },
-    leave: item => async (next, cancel) => {
-      cancelMap.set(item, cancel);
-      await next({ life: '100%' });
-      await next({ opacity: 0, transform: 'translate(32px, 0px)' });
-    },
-    onRest: item => setItems(state => {
-      return state.filter(i => i.key !== item.key);
-    }),
-    config: (item, state) => {
-      const c = item.config || config;
-      const duration = item.promise ? 1 : item.timeout || timeout;
-      return state === 'leave' ? [{ duration }, c] : c
+    // eslint-disable-next-line no-unused-vars
+    leave: item => async next => {
+      await next({ opacity: 0, transform: 'translate(32px, 0px)', config });
     },
   });
 
@@ -104,8 +118,9 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
                               'left middle right'
                               'bottomleft bottom bottomright'">
             <NotificationsBox fullHeight css={{ gridArea: notificationPosition }} width={width} flexDirection="column" notificationPosition={notificationPosition}>
-              {transitions.map(({ key, item, props: { notificationPosition: pos, ...style } }) => {
-                const { content, canDismiss } = item;
+              {transitions.map(({ key, item, props: { life, ...style } }) => {
+                const { content, canDismiss, color, showLife: showLifeItem } = item;
+                const showLifebar = typeof showLifeItem === 'undefined' ? showLife : showLifeItem;
                 return (
                   <NotificationContainer
                     fullWidth
@@ -113,7 +128,7 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
                     key={key}
                     style={style}>
                     <NotificationCard fullWidth {...props}>
-                      <Flex justifyContent="flex-start" alignItems="flex-start" borderRadius="inherit" overflow="hidden">
+                      <Flex css={{ position: 'relative', overflow: 'hidden' }} justifyContent="flex-start" alignItems="flex-start" borderRadius="inherit" overflow="hidden">
                         <Flex justifyContent="flex-start">
                           {content}
                         </Flex>
@@ -134,6 +149,7 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
                             <Remove color="inherit" size={12} />
                           </SquareButton>
                         )}
+                        {showLifebar && <Lifebar style={{ position: 'absolute', right: life, top: 0 }} height={4} bg={color || 'grayscale.5'} fullWidth />}
                       </Flex>
                     </NotificationCard>
                   </NotificationContainer>
@@ -150,6 +166,7 @@ const Notifications = ({ children, timeout, config, notificationPosition: initia
 Notifications.propTypes = {
   children: PropTypes.node,
   timeout: PropTypes.number,
+  showLife: PropTypes.bool,
   config: PropTypes.object,
   notificationPosition: PropTypes.oneOf(['topleft', 'top', 'topright', 'left', 'middle', 'right', 'bottomleft', 'bottom', 'bottomright']),
   boxShadowIntensity: PropTypes.number,
@@ -159,7 +176,8 @@ Notifications.propTypes = {
 
 Notifications.defaultProps = {
   children: null,
-  timeout: 3000,
+  timeout: 10000,
+  showLife: true,
   config: { tension: 125, friction: 20, precision: 0.1 },
   notificationPosition: 'bottomright',
   boxShadowIntensity: 0.7,
