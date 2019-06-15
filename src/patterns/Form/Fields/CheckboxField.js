@@ -1,11 +1,13 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Flex, Text, Checkbox } from '@phobon/base';
+import { Flex, Text, Checkbox, Box } from '@phobon/base';
 
 import FormFieldContext from '../FormFieldContext';
 
-const CheckboxField = ({ label, id, required = false, error, hint, visible = true, className, disabled, useUnprocessed = false, ...props }) => {
+import AlertDiamond from '../../../icons/AlertDiamond';
+
+const CheckboxField = ({ label, id, required = false, invalid, hint, visible = true, className, disabled, useUnprocessed = false, ...props }) => {
   const { optionalLabel, density, formDisabled } = useContext(FormFieldContext);
 
   // If the field shouldn't be visible, don't render it.
@@ -21,21 +23,25 @@ const CheckboxField = ({ label, id, required = false, error, hint, visible = tru
       <Checkbox
         id={id}
         {...props}
-        error={error}
+        invalid={invalid}
         disabled={fieldDisabled}
         label={label} />
     )
   }
 
   let hintElement = null;
-  let errorElement = null;
+  let invalidElement = null;
   if (hint) {
     hintElement = React.isValidElement(hint)
       ? hint : <Text fontSize={0} mt={1} color="grayscale.3">{hint}</Text>;
   }
-  if (error) {
-    errorElement = React.isValidElement(error)
-      ? error : <Text fontSize={0} mt={1} color="guidance.error.0">{error}</Text>
+  if (invalid) {
+    invalidElement = (
+      <Box mt={2} ml="2px" color="reds.2">
+        <AlertDiamond size={16} />
+        {React.isValidElement(invalid) ? invalid : <Text ml={1} fontSize={0} color="guidance.invalid.0">{invalid}</Text>}
+      </Box>
+    );
   }
 
   return (
@@ -51,7 +57,7 @@ const CheckboxField = ({ label, id, required = false, error, hint, visible = tru
         {...props}
         density={density}
         className={className}
-        error={error}
+        invalid={invalid}
         disabled={fieldDisabled}
         label={label && (
           <React.Fragment>
@@ -63,7 +69,7 @@ const CheckboxField = ({ label, id, required = false, error, hint, visible = tru
             )}
           </React.Fragment>
         )} />
-      {errorElement || hintElement}
+      {invalidElement || hintElement}
     </Flex>
   );
 };
@@ -81,8 +87,8 @@ CheckboxField.propTypes = {
   /** If the field is required, or not */
   required: PropTypes.bool,
 
-  /** If the field has an error to display */
-  error: PropTypes.any,
+  /** If the field has an invalid to display */
+  invalid: PropTypes.any,
 
   /** If the field has a hint to display */
   hint: PropTypes.string,
@@ -113,7 +119,7 @@ CheckboxField.defaultProps = {
   label: null,
   id: null,
   required: false,
-  error: null,
+  invalid: null,
   hint: null,
   placeholder: null,
   visible: true,

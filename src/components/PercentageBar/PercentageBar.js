@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
 import { Box } from '@phobon/base';
+
 import Tag from '../Tag';
 
 const thresholdBg = props => {

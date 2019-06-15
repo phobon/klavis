@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import { space, color, fontSize, lineHeight, borderRadius } from 'styled-system';
+import { compose, space, color, fontSize, lineHeight, borderRadius } from 'styled-system';
+import propTypes from '@styled-system/prop-types';
+
+const tagStyles = compose(space, color, fontSize, lineHeight, borderRadius);
 
 const Tag = styled.div({
   maxWidth: '26rem',
@@ -7,11 +10,7 @@ const Tag = styled.div({
   whiteSpace: 'nowrap',
   textOverflow: 'ellipsis',
 },
-  color,
-  space,
-  fontSize,
-  lineHeight,
-  borderRadius,
+  tagStyles,
 );
 
 Tag.displayName = 'Tag';
@@ -27,11 +26,11 @@ Tag.defaultProps = {
 };
 
 Tag.propTypes = {
-  ...color.propTypes,
-  ...space.propTypes,
-  ...fontSize.propTypes,
-  ...lineHeight.propTypes,
-  ...borderRadius.propTypes,
+  ...propTypes.color,
+  ...propTypes.space,
+  ...propTypes.fontSize,
+  ...propTypes.lineHeight,
+  ...propTypes.borderRadius,
 };
 
 export default Tag;

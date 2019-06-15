@@ -1,6 +1,6 @@
 {
   "name": "@phobon/grimoire",
-  "version": "0.7.6",
+  "version": "0.8.0",
   "description": "Component patterns using @phobon/base",
   "main": "dist/index.js",
   "author": "Ben McCormick",
@@ -27,12 +27,12 @@
     "@babel/plugin-transform-regenerator": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
-    "@phobon/base": "^2.1.6",
-    "@storybook/addon-a11y": "^5.0.10",
-    "@storybook/addon-actions": "^5.0.10",
-    "@storybook/addons": "^5.0.10",
-    "@storybook/react": "^5.0.10",
-    "@storybook/theming": "^5.0.10",
+    "@phobon/base": "^2.2.1",
+    "@storybook/addon-a11y": "^5.1.8",
+    "@storybook/addon-actions": "^5.1.8",
+    "@storybook/addons": "^5.1.8",
+    "@storybook/react": "^5.1.8",
+    "@storybook/theming": "^5.1.8",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.0",
@@ -47,20 +47,25 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-spring": "^9.0.0-beta.5",
+    "react-spring": "^9.0.0-beta.20",
     "rollup": "^1.7.4",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-commonjs": "^9.2.2",
     "rollup-plugin-node-resolve": "^4.0.1",
-    "styled-components": "^4.2.0",
-    "styled-system": "^4.1.0"
+    "styled-components": "^5.0.0-beta.0",
+    "styled-system": "^5.0.6"
   },
   "peerDependencies": {
     "@phobon/base": "^2.x",
     "react": "^16.8.x",
     "react-dom": "^16.8.x",
     "react-spring": "^8.x",
-    "styled-components": "^4.x",
-    "styled-system": "^4.x"
+    "styled-components": "^5.x",
+    "styled-system": "^5.x"
+  },
+  "dependencies": {
+    "@phobon/grimoire": "^0.7.6",
+    "@styled-system/prop-types": "^5.0.8",
+    "@styled-system/theme-get": "^5.0.6"
   }
 }

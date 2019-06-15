@@ -1,41 +1,26 @@
-import styled, { css } from 'styled-components';
-import { color, space, width, height, minWidth, minHeight } from 'styled-system';
+import styled from 'styled-components';
+import { compose, color, space, width, height, minWidth, minHeight } from 'styled-system';
+import propTypes from '@styled-system/prop-types';
 import PropTypes from 'prop-types';
 
-const dimension = props => {
-  const dimensions = {
-    vertical: css`
-      height: ${props.length};
-      width: ${props.thickness};
-    `,
-    horizontal: css`
-      height: ${props.thickness};
-      width: ${props.length};
-    `,
-  };
+const spacerStyles = compose(color, space, width, height, minWidth, minHeight);
 
-  return dimensions[props.direction];
-};
-
-const Spacer = styled.span({
+const Spacer = styled.span(props => ({
   minWidth: 0,
-},
-  color,
-  space,
-  width,
-  height,
-  minWidth,
-  minHeight,
-  dimension,
+  display: 'block',
+  width: props.direction === 'horizontal' ? props.length : props.thickness,
+  height: props.direction === 'vertical' ? props.length : props.thickness,
+}),
+  spacerStyles,
 );
 
 Spacer.propTypes = {
-  ...color.propTypes,
-  ...space.propTypes,
-  ...width.propTypes,
-  ...height.propTypes,
-  ...minWidth.propTypes,
-  ...minHeight.propTypes,
+  ...propTypes.color,
+  ...propTypes.space,
+  ...propTypes.width,
+  ...propTypes.height,
+  ...propTypes.minWidth,
+  ...propTypes.minHeight,
 
   thickness: PropTypes.node,
   length: PropTypes.node,

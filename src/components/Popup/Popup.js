@@ -3,6 +3,7 @@ import { animated, useTransition, config } from 'react-spring';
 import PropTypes from 'prop-types';
 
 import { Box, Card, useWindowSize, destructureLayoutProps } from '@phobon/base';
+
 import { Button } from '../Button';
 
 const horizontalDirection = popupDirection => {

@@ -1,15 +1,10 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import {
-  space,
-  borderRadius,
-  gridColumn,
-  gridRow,
-  gridArea,
-  themeGet,
-} from 'styled-system';
-import { position, focus, Vector } from '@phobon/base'
+import { compose, space, borderRadius, position } from 'styled-system';
+import propTypes from '@styled-system/prop-types';
+import themeGet from '@styled-system/theme-get';
+import { focus, Vector, gridPosition } from '@phobon/base'
 
 import withTooltip from '../Tooltip';
 
@@ -52,6 +47,8 @@ const toggleSize = props => {
   return sizes[props.size];
 };
 
+const toggleButtonStyles = compose(space, borderRadius, position);
+
 const ToggleButton = styled.button`
   display: flex;
   box-sizing: border-box;
@@ -71,12 +68,8 @@ const ToggleButton = styled.button`
     fill: white;
   }
 
-  ${space}
-  ${borderRadius}
-  ${position}
-  ${gridColumn}
-  ${gridRow}
-  ${gridArea}
+  ${toggleButtonStyles}
+  ${gridPosition}
 
   ${toggleSize}
 
@@ -147,12 +140,10 @@ const Toggle = ({ toggled, disabled, size, ...props }) => (
 );
 
 Toggle.propTypes = {
-  ...space.propTypes,
-  ...borderRadius.propTypes,
-  ...position.propTypes,
-  ...gridColumn.propTypes,
-  ...gridRow.propTypes,
-  ...gridArea.propTypes,
+  ...propTypes.space,
+  ...propTypes.borderRadius,
+  ...propTypes.position,
+  ...gridPosition.propTypes,
 
   size: PropTypes.oneOf(['s', 'm']),
   toggled: PropTypes.bool,

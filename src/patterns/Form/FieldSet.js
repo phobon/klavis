@@ -1,26 +1,38 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { space as spacing, color, borderRadius } from 'styled-system';
+import { compose, space as spacing, color, borderRadius } from 'styled-system';
 
 import FormFieldContext from './FormFieldContext';
 import asField from './Fields/asField';
 
+const fieldsetStyles = compose(spacing, color, borderRadius);
+
 const StyledFieldSet = styled.fieldset.attrs(props => ({
   'aria-invalid': props.invalid ? true : undefined,
 }))`
+  position: relative;
   width: 100%;
   display: flex;
   flex: none;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  ${spacing}
-  ${color}
-  ${borderRadius}
+  ${fieldsetStyles}
   border: 0;
-  border-left: ${props => `${props.theme.space[1]}px solid ${props.theme.colors.grayscale[6]}`};
-  transition: border-color 180ms ease-out;
+  transition: border-color 80ms ease-out;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 0;
+    bottom: 0;
+    width: ${props => props.theme.space[1]}px;
+    background-color: ${props => props.theme.colors.grayscale[6]};
+    border-radius: ${props => props.theme.radii[4]}px;
+    transition: background-color 90ms ease-out;
+  }
 
   &:hover {
     border-color: ${props => props.theme.colors.accent[5]};
@@ -33,9 +45,13 @@ const StyledFieldSet = styled.fieldset.attrs(props => ({
   }
 
   &[aria-invalid="true"] {
-    border-color: ${props => props.theme.colors.reds[3]};
+    &::before {
+      background-color: ${props => props.theme.colors.reds[3]};
+    }
     &:hover {
-      border-color: ${props => props.theme.colors.guidance.error[1]};
+      &::before {
+        background-color: ${props => props.theme.colors.reds[4]};
+      }
     }
   }
 
@@ -64,7 +80,7 @@ const FieldSet = ({ id, disabled, invalid, children, ...props }) => {
     return React.cloneElement(c, { id: k, key: k, name: id, mb })
   });
   return (
-    <StyledFieldSet id={id} px={2} my={1} py={2} borderRadius={3} disabled={disabled} invalid={invalid} mb={mb} {...props}>
+    <StyledFieldSet id={id} px={2} my={1} py={2} borderRadius={3} disabled={disabled} invalid={invalid} {...props}>
       {inputs}
     </StyledFieldSet>
   );

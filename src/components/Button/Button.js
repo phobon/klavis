@@ -1,12 +1,7 @@
 import styled, { css } from 'styled-components';
-import {
-  cover,
-  layout,
-  border,
-  flexbox,
-  typography,
-  focus,
-} from '@phobon/base';
+import { cover, focus, gridPosition } from '@phobon/base';
+import { compose, space, layout, border, flexbox, typography, position } from 'styled-system';
+import propTypes from '@styled-system/prop-types';
 import PropTypes from 'prop-types';
 import withTooltip from '../Tooltip';
 
@@ -193,6 +188,8 @@ const size = props => {
   return sizes[props.size];
 };
 
+const buttonStyles = compose(space, layout, border, flexbox, typography, position);
+
 const Button = styled.button.attrs(props => ({
   'aria-pressed': props.toggled ? 'true' : undefined,
 }))`
@@ -203,15 +200,11 @@ const Button = styled.button.attrs(props => ({
 
   transition: all 120ms ease-out;
 
-  ${cover}
-  ${typography}
+  ${buttonStyles}
 
+  ${cover}
   ${size}
   ${buttonVariant}
-
-  ${layout}
-  ${border}
-  ${flexbox}
 
   &[aria-pressed="true"] {
     ${pressed}
@@ -232,11 +225,14 @@ const Button = styled.button.attrs(props => ({
 Button.displayName = 'Button';
 
 Button.propTypes = {
+  ...propTypes.space,
+  ...propTypes.layout,
+  ...propTypes.border,
+  ...propTypes.flexbox,
+  ...propTypes.typography,
+  ...propTypes.position,
+  ...gridPosition.propTypes,
   ...cover.propTypes,
-  ...layout.propTypes,
-  ...border.propTypes,
-  ...flexbox.propTypes,
-  ...typography.propTypes,
 
   /** Whether the button is toggled. or not */
   toggled: PropTypes.bool,

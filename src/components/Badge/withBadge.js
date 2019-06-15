@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
-import { themeGet } from 'styled-system';
+import { compose, space, layout, position as styledPosition } from 'styled-system';
+import themeGet from '@styled-system/theme-get';
 import PropTypes from 'prop-types';
-import { Box, destructureLayoutProps } from '@phobon/base';
+import { destructureLayoutProps, gridPosition } from '@phobon/base';
 
-const BadgeContainer = styled(Box)`
-  position: relative;
+const badgeStyles = compose(space, layout, styledPosition, gridPosition);
+
+const BadgeContainer = styled.div`
+  ${badgeStyles}
 
   &::before {
     content: '${props => props.badge}';

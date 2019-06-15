@@ -1,10 +1,8 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import {
-  cover,
-  layout,
-  position,
-} from '@phobon/base';
+import { compose, space, layout, position } from 'styled-system';
+import propTypes from '@styled-system/prop-types';
+import { cover } from '@phobon/base';
 
 const direction = props => {
   const tooltipDirections = {
@@ -61,10 +59,10 @@ const direction = props => {
   return tooltipDirections[props.tooltipDirection];
 };
 
+const tooltipStyles = compose(layout, position, space);
+
 const Tooltip = styled.div`
-  ${layout}
-  ${position}
-  ${cover}
+  ${tooltipStyles}
 
   --factor: ${props => props.theme.space[1] + props.theme.space[props.offset]}px;
   --minusfactor: -${props => props.theme.space[1] + props.theme.space[props.offset]}px;
@@ -99,9 +97,10 @@ const Tooltip = styled.div`
 Tooltip.displayName = 'Tooltip';
 
 Tooltip.propTypes = {
+  ...propTypes.layout,
+  ...propTypes.position,
+  ...propTypes.space,
   ...cover.propTypes,
-  ...layout.propTypes,
-  ...position.propTypes,
 
   tooltip: PropTypes.string,
   tooltipDirection: PropTypes.oneOf(['down', 'up', 'left', 'right']),

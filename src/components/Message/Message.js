@@ -1,9 +1,10 @@
 /* eslint-disable react/default-props-match-prop-types */
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { space, fontSize, borderRadius } from 'styled-system';
-import React from 'react';
-import { flexbox, Flex } from '@phobon/base'
+import { compose, space, fontSize, borderRadius, flexbox } from 'styled-system';
+import propTypes from '@styled-system/prop-types';
+import { Flex } from '@phobon/base'
 
 const variantColour = props => {
   const variants = {
@@ -47,15 +48,14 @@ const variantColour = props => {
   return variants[props.variant];
 };
 
+const messageStyles = compose(space, fontSize, borderRadius, flexbox);
+
 const MessageContainer = styled.div.attrs(props => ({
   'aria-live': props.variant === 'error' || props.variant === 'warning' ? 'assertive' : 'polite',
 }))`
   display: flex;
 
-  ${flexbox}
-  ${space}
-  ${fontSize}
-  ${borderRadius}
+  ${messageStyles}
   ${variantColour}
 
   > svg {
@@ -78,10 +78,10 @@ const Message = ({ children, variant, glyph, ...props }) => (
 Message.displayName = 'Message';
 
 Message.propTypes = {
-  ...flexbox.propTypes,
-  ...space.propTypes,
-  ...fontSize.propTypes,
-  ...borderRadius.propTypes,
+  ...propTypes.flexbox,
+  ...propTypes.space,
+  ...propTypes.fontSize,
+  ...propTypes.borderRadius,
 
   /** Message variant */
   variant: PropTypes.oneOf(['info', 'question', 'success', 'warning', 'error', 'neutral', 'dark']),

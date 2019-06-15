@@ -1,3 +1,4 @@
+/* eslint-disable react/default-props-match-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -41,9 +42,6 @@ PageHeader.propTypes = {
 
   /** Children */
   children: PropTypes.node,
-
-  px: PropTypes.number,
-  py: PropTypes.number,
 };
 
 PageHeader.defaultProps = {

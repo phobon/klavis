@@ -1,7 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeGet, color as styledColor } from 'styled-system';
+import propTypes from '@styled-system/prop-types';
+import themeGet from '@styled-system/theme-get';
 import styled, { css } from 'styled-components';
 import { Flex, BoxList, BoxListItem } from '@phobon/base';
 
@@ -109,7 +110,7 @@ const Progress = ({ id, children, mode, fontSize, color, bg, orientation, space,
 };
 
 Progress.propTypes = {
-  ...styledColor.propTypes,
+  ...propTypes.color,
 
   id: PropTypes.string.isRequired,
 

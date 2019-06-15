@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-import { color, space } from 'styled-system';
+import { compose, color, space } from 'styled-system';
+import propTypes from '@styled-system/prop-types';
+
+const badgeStyles = compose(space, color);
 
 const Badge = styled.div`
-  ${space}
   min-width: ${props => props.theme.space[4]}px;
   max-width: ${props => props.theme.space[6]}px;
   height: ${props => props.theme.space[4]}px;
@@ -15,14 +17,14 @@ const Badge = styled.div`
   border-radius: ${props => props.theme.radii[5]}px;
   font-size: ${props => props.theme.fontSizes[0]}px;
 
-  ${color}
+  ${badgeStyles}
 `;
 
 Badge.displayName = 'Badge';
 
 Badge.propTypes = {
-  ...space.propTypes,
-  ...color.propTypes,
+  ...propTypes.space,
+  ...propTypes.color,
 };
 
 Badge.defaultProps = {

@@ -8,7 +8,7 @@ import FormFieldContext from '../FormFieldContext';
 import AlertDiamond from '../../../icons/AlertDiamond';
 
 const asField = WrappedComponent => 
-  ({ label, id, required = false, invalid, hint, visible = true, className, disabled, useUnprocessed = false, ...props }) => {
+  ({ label, id, required = false, invalid, hint, visible = true, className, disabled, useUnprocessed = false, flex, flexBasis, ...props }) => {
   const { optionalLabel, density, formDisabled } = useContext(FormFieldContext);
 
   // If the field shouldn't be visible, don't render it.
@@ -36,8 +36,12 @@ const asField = WrappedComponent =>
       ? hint : <Text fontSize={0} mt={1} color="grayscale.3">{hint}</Text>;
   }
   if (invalid) {
-    invalidElement = React.isValidElement(invalid)
-      ? invalid : <Text fontSize={0} mt={1} color="guidance.error.0">{invalid}</Text>
+    invalidElement = (
+      <Box mt={2} color="reds.2">
+        <AlertDiamond size={16} />
+        {React.isValidElement(invalid) ? invalid : <Text ml={1} fontSize={0} color="guidance.error.0">{invalid}</Text>}
+      </Box>
+    );
   }
 
   return (
@@ -45,6 +49,9 @@ const asField = WrappedComponent =>
       className="form__field"
       flexDirection="column"
       alignItems="flex-start"
+      flexGrow={1}
+      flexShrink={0}
+      flex={flex}
       fullWidth>
       <Box
         fullWidth
@@ -59,10 +66,7 @@ const asField = WrappedComponent =>
             {!required && optionalLabel && <Text as="span" color="grayscale.4" ml={1}>{`(${optionalLabel()})`}</Text>}
           </Label>
         )}
-        <Box
-          fullWidth
-          css={{ position: 'relative' }}
-          color="reds.5">
+        <Flex fullWidth>
           <WrappedComponent
             id={id}
             fullWidth
@@ -71,8 +75,7 @@ const asField = WrappedComponent =>
             className={className}
             invalid={invalid}
             disabled={fieldDisabled} />
-          {invalidElement && <Box bg="grayscale.8" color="inherit" width={28} height={20} zIndex={1} css={{ position: 'absolute', right: 4 }}><AlertDiamond size={20} /></Box>}
-        </Box>
+        </Flex>
       </Box>
       {invalidElement || hintElement}
     </Flex>
