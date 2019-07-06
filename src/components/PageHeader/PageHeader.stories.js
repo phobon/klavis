@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Box } from '@phobon/base';
+import { Stack } from '@phobon/base';
 import { Button } from '../Button';
 import Tag from '../Tag';
 
@@ -27,11 +27,11 @@ storiesOf('Components/PageHeader', module)
       heading="Simple heading"
       tagLine="Tagline"
       actions={(
-        <Box>
-          <Button mr={2}>Secondary</Button>
-          <Button mr={2}>Secondary</Button>
+        <Stack flexDirection="row" space={2}>
+          <Button>Secondary</Button>
+          <Button>Secondary</Button>
           <Button variant="primary">Primary</Button>
-        </Box>
+        </Stack>
       )} />
   ))
   .add('With children', () => (
@@ -39,15 +39,15 @@ storiesOf('Components/PageHeader', module)
       heading="Simple heading"
       tagLine="Tagline"
       actions={(
-        <Box>
-          <Button mr={2}>Secondary</Button>
-          <Button mr={2}>Secondary</Button>
+        <Stack flexDirection="row" space={2}>
+          <Button>Secondary</Button>
+          <Button>Secondary</Button>
           <Button variant="primary">Primary</Button>
-        </Box>
+        </Stack>
       )}>
-      <Box>
-        <Tag mr={3}>A child tag</Tag>
+      <Stack flexDirection="row" space={3}>
+        <Tag>A child tag</Tag>
         <Tag>Another child tag</Tag>
-      </Box>
+      </Stack>
     </PageHeader>
   ));

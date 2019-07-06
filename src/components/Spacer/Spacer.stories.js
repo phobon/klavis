@@ -1,39 +1,39 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 
-import { Box } from '@phobon/base';
+import { Stack, Box } from '@phobon/base';
 
 import Spacer from './Spacer';
 
 storiesOf('Components/Spacer', module)
   .add('With different lengths', () => (
-    <Box fullWidth height={100}>
-      <Spacer mr={5} />
-      <Spacer mr={5} length="50%" />
+    <Stack fullWidth space={5}>
+      <Spacer />
+      <Spacer length="50%" />
       <Spacer length="100%" />
-    </Box>
+    </Stack>
   ))
   .add('With different thicknesses', () => (
-    <Box fullWidth height={100}>
-      <Spacer mr={5} />
-      <Spacer mr={5} thickness="1px" />
+    <Stack fullWidth space={5}>
+      <Spacer />
+      <Spacer thickness="1px" />
       <Spacer thickness="4px" />
-    </Box>
+    </Stack>
   ))
   .add('With different background colours', () => (
-    <Box fullWidth height={100}>
-      <Spacer mr={5} bg="grayscale.3" />
-      <Spacer mr={5} bg="grayscale.7" />
+    <Stack fullWidth space={5}>
+      <Spacer bg="grayscale.3" />
+      <Spacer bg="grayscale.7" />
       <Spacer bg="oranges.4" />
-    </Box>
+    </Stack>
   ))
   .add('With different directions', () => (
-    <React.Fragment>
-      <Box height={100} mr={7}>
-        <Spacer mb={3} />
+    <Stack fullWidth space={5}>
+      <Box width={100} mr={7}>
+        <Spacer bg="grayscale.3" />
       </Box>
-      <Box width={100}>
-        <Spacer direction="horizontal" />
+      <Box height={100}>
+        <Spacer direction="vertical" bg="grayscale.3" />
       </Box>
-    </React.Fragment>
+    </Stack>
   ));

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { animated, useTransition } from 'react-spring';
 
-import { Flex, Box, Card, Grid, usePortal } from '@phobon/base';
+import { Flex, Box, Stack, Card, Grid, usePortal } from '@phobon/base';
 
 import Remove from '../../icons/Remove';
 
@@ -47,16 +47,8 @@ const NotificationsGrid = styled(Grid)`
   padding: ${props => props.theme.space[4]}px;
 `;
 
-const NotificationsBox = styled(Box)`
+const NotificationsBox = styled(Stack)`
   ${notificationPositions}
-
-  .grimoire__notifications__instance {
-    margin-bottom: ${props => props.theme.space[3]}px;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
 `;
 const NotificationContainer = animated(Box);
 const Lifebar = animated(Box);
@@ -116,7 +108,7 @@ const Notifications = ({
             gridTemplateAreas="'topleft top topright'
                               'left middle right'
                               'bottomleft bottom bottomright'">
-            <NotificationsBox fullHeight css={{ gridArea: notificationPosition }} width={width} flexDirection="column" notificationPosition={notificationPosition}>
+            <NotificationsBox space={3} fullHeight css={{ gridArea: notificationPosition }} width={width} flexDirection="column" notificationPosition={notificationPosition}>
               {transitions.map(({ key, item, props: { life, ...style } }) => {
                 const { content, canDismiss, color, showLife: showLifeItem } = item;
                 const showLifebar = typeof showLifeItem === 'undefined' ? showLife : showLifeItem;

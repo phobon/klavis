@@ -2,7 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 
-import { Box, BoxList, BoxListItem } from '@phobon/base';
+import { Stack, BoxList, BoxListItem } from '@phobon/base';
 import Avatar from './Avatar';
 
 const sizes = ['s', 'm', 'l'];
@@ -11,118 +11,118 @@ const presences = ['none', 'unknown', 'unavailable', 'busy', 'available'];
 
 storiesOf('Components/Avatar', module)
   .add('With avatar styles', () => (
-    <Box>
-      <Avatar name="Fake Name" mr={3} />
-      <Avatar name="Fake Name" avatarStyle="glyph" mr={3} />
+    <Stack space={3} flexDirection="row">
+      <Avatar name="Fake Name" />
+      <Avatar name="Fake Name" avatarStyle="glyph" />
       <Avatar name="Fake Name" image="https://source.unsplash.com/random/50x50" />
-    </Box>
+    </Stack>
   ))
   .add('With different statuses', () => {
     const glyphAvatars = Object.values(statuses).map(s => (
-      <BoxListItem key={s} mr={3}>
+      <BoxListItem key={s}>
         <Avatar name="Fake Name" avatarStyle="glyph" status={s} />
       </BoxListItem>
     ));
 
     const initialsAvatars = Object.values(statuses).map(s => (
-      <BoxListItem key={s} mr={3}>
+      <BoxListItem key={s}>
         <Avatar name="Fake Name" status={s} />
       </BoxListItem>
     ));
 
     const imageAvatars = Object.values(statuses).map(s => (
-      <BoxListItem key={s} mr={3}>
+      <BoxListItem key={s}>
         <Avatar name="Fake Name" status={s} image="https://source.unsplash.com/random/50x50" />
       </BoxListItem>
     ));
 
     return (
-      <Box flexDirection="column">
-        <BoxList mb={5}>
+      <Stack space={5}>
+        <BoxList space={3} flexDirection="row">
           {glyphAvatars}
         </BoxList>
-        <BoxList mb={5}>
+        <BoxList space={3} flexDirection="row">
           {initialsAvatars}
         </BoxList>
-        <BoxList>
+        <BoxList space={3} flexDirection="row">
           {imageAvatars}
         </BoxList>
-      </Box>
+      </Stack>
     );
   })
   .add('With different presences', () => {
     const glyphAvatars = Object.values(presences).map(p => (
-      <BoxListItem key={p} mr={3}>
+      <BoxListItem key={p}>
         <Avatar name="Fake Name" avatarStyle="glyph" presence={p} />
       </BoxListItem>
     ));
 
     const initialsAvatars = Object.values(presences).map(p => (
-      <BoxListItem key={p} mr={3}>
+      <BoxListItem key={p}>
         <Avatar name="Fake Name" presence={p} />
       </BoxListItem>
     ));
 
     const imageAvatars = Object.values(presences).map(p => (
-      <BoxListItem key={p} mr={3}>
+      <BoxListItem key={p}>
         <Avatar name="Fake Name" presence={p} image="https://source.unsplash.com/random/50x50" />
       </BoxListItem>
     ));
 
     return (
-      <Box flexDirection="column">
-        <BoxList mb={5}>
+      <Stack space={5}>
+        <BoxList space={3} flexDirection="row">
           {glyphAvatars}
         </BoxList>
-        <BoxList mb={5}>
+        <BoxList space={3} flexDirection="row">
           {initialsAvatars}
         </BoxList>
-        <BoxList>
+        <BoxList space={3} flexDirection="row">
           {imageAvatars}
         </BoxList>
-      </Box>
+      </Stack>
     );
   })
   .add('With different sizes', () => {
     const glyphAvatars = Object.values(sizes).map(s => (
-      <BoxListItem key={s} mr={3}>
+      <BoxListItem key={s}>
         <Avatar name="Fake Name" avatarStyle="glyph" size={s} />
       </BoxListItem>
     ));
 
     const initialsAvatars = Object.values(sizes).map(s => (
-      <BoxListItem key={s} mr={3}>
+      <BoxListItem key={s}>
         <Avatar name="Fake Name" size={s} />
       </BoxListItem>
     ));
 
     const imageAvatars = Object.values(sizes).map(s => (
-      <BoxListItem key={s} mr={3}>
+      <BoxListItem key={s}>
         <Avatar name="Fake Name" size={s} image="https://source.unsplash.com/random/50x50" />
       </BoxListItem>
     ));
 
     const statusPresenceAvatars = Object.values(sizes).map(s => (
-      <BoxListItem key={s} mr={3}>
+      <BoxListItem key={s}>
         <Avatar name="Fake Name" size={s} status="warning" presence="unknown" />
       </BoxListItem>
     ));
 
     return (
-      <Box flexDirection="column">
-        <BoxList mb={5}>
+      <Stack space={5}>
+        <BoxList space={3} flexDirection="row">
           {glyphAvatars}
         </BoxList>
-        <BoxList mb={5}>
+        <BoxList space={3} flexDirection="row">
           {initialsAvatars}
         </BoxList>
-        <BoxList mb={5}>
+        <BoxList space={3} flexDirection="row">
           {imageAvatars}
         </BoxList>
-        <BoxList>
+        <BoxList space={3} flexDirection="row">
           {statusPresenceAvatars}
         </BoxList>
-      </Box>
+      </Stack>
     );
   })
   .add('With custom onClick', () => (

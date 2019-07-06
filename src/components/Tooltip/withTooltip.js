@@ -14,6 +14,7 @@ const withTooltip = WrappedComponent => ({ tooltip, tooltipDirection, offset, as
   }
 
   const [{ fullWidth, fullHeight, width, height, position, ...layoutProps}, passthroughProps] = destructureLayoutProps(props);
+  console.log(destructureLayoutProps(props));
   return (
     <Tooltip
       tooltip={tooltip}
@@ -24,8 +25,9 @@ const withTooltip = WrappedComponent => ({ tooltip, tooltipDirection, offset, as
       width={width}
       height={height}
       fullWidth={fullWidth}
-      fullHeight={fullHeight}
-      {...layoutProps}>
+      fullHeight={fullHeight}      
+      {...layoutProps}
+      mr={2}>
       <WrappedComponent {...passthroughProps} fullWidth={fullWidth || width != null} fullHeight={fullHeight || height != null} />
     </Tooltip>
   );
