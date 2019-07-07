@@ -1804,10 +1804,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@phobon/base@^2.2.9":
-  version "2.2.9"
-  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-2.2.9.tgz#62f35dffb88dbcaead4b27c8df2646a07df7c2d9"
-  integrity sha512-Lu5fd47v2BNfXDv5KOzzu1xCKHoCmAeI8TVGytgHjRVRH03/QQAo84po34KRr+cY428OqoNczgyYj8SDbyeDsw==
+"@phobon/base@^2.2.10":
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-2.2.10.tgz#b0ef0e72f91cf76b57ab00dc3c1498ebf616f54e"
+  integrity sha512-1OXAGLpy/cJlu5b4BhNvWfur/FifRFMv8ktR7C5vvHAAmGEFAi5ffrqr67aS3Mov2FAp8aMomc8S+1l2PtQ+6Q==
   dependencies:
     "@styled-system/prop-types" "^5.0.8"
     "@styled-system/theme-get" "^5.0.6"

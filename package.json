@@ -27,7 +27,7 @@
     "@babel/plugin-transform-regenerator": "^7.4.0",
     "@babel/preset-env": "^7.4.2",
     "@babel/preset-react": "^7.0.0",
-    "@phobon/base": "^2.2.9",
+    "@phobon/base": "^2.2.10",
     "@storybook/addon-a11y": "^5.1.9",
     "@storybook/addon-actions": "^5.1.9",
     "@storybook/addons": "^5.1.9",
