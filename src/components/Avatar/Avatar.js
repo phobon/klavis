@@ -131,6 +131,7 @@ const AvatarIndicatorButton = styled.button`
   justify-content: center;
   align-items: center;
   line-height: 0;
+  overflow: hidden;
 
   ${styledColor}
   ${space}
