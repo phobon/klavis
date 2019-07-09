@@ -24,9 +24,8 @@ const withTooltip = WrappedComponent => ({ tooltip, tooltipDirection, offset, as
       width={width}
       height={height}
       fullWidth={fullWidth}
-      fullHeight={fullHeight}      
-      {...layoutProps}
-      mr={2}>
+      fullHeight={fullHeight}
+      {...layoutProps}>
       <WrappedComponent {...passthroughProps} fullWidth={fullWidth || width != null} fullHeight={fullHeight || height != null} />
     </Tooltip>
   );

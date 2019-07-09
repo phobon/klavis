@@ -168,7 +168,6 @@ const Avatar = ({
   status,
   presence,
   avatarStyle,
-  nameStyle,
   onClick,
   bg, 
   color,
