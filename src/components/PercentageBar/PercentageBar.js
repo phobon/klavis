@@ -1,6 +1,8 @@
+/* eslint-disable react/default-props-match-prop-types */
 import React from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+import { color } from 'styled-system';
 
 import { Box } from '@phobon/base';
 
@@ -31,12 +33,12 @@ const heights = props => {
 const PercentageBarElement = styled.div.attrs(props => ({
   progressTranslate: `translateX(-${100 - props.percentage}%)`,
 }))`
+  ${color}
   position: relative;
   border-radius: ${props => props.theme.radii[4]}px;
   ${heights}
   display: flex;
   flex: 1 0 0%;
-  background-color: ${props => props.theme.colors.grayscale[7]};
   overflow: hidden;
 
   &::after {
@@ -62,6 +64,7 @@ const PercentageBar = ({
   warningThreshold,
   showPercentage,
   size,
+  bg,
   ...props
 }) => {
   const rawPercentage = complete / total;
@@ -85,7 +88,8 @@ const PercentageBar = ({
           percentage={percentage}
           dangerThreshold={dangerThreshold}
           warningThreshold={warningThreshold}
-          size={size} />
+          size={size}
+          bg={bg} />
         {showPercentage && (
           <Tag ml={2} bg="grayscale.1" color="background">{percentageString}</Tag>
         )}
@@ -123,6 +127,7 @@ PercentageBar.defaultProps = {
   warningThreshold: 70,
   size: 'm',
   showPercentage: false,
+  bg: 'grayscale.7',
 };
 
 export default PercentageBar;
