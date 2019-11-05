@@ -12,12 +12,12 @@ import SelectField from './SelectField';
 import FieldSet from '../FieldSet';
 
 const SelectOptions = () => (
-  <React.Fragment>
+  <>
     <option value="1">Option 1</option>
     <option value="2">Option 2</option>
     <option value="3">Option 3</option>
     <option value="4">Option 4</option>
-  </React.Fragment>
+  </>
 );
 
 storiesOf('Patterns/Form/Fields', module)
@@ -27,44 +27,44 @@ storiesOf('Patterns/Form/Fields', module)
     </Form>
   ))
   .add('CheckboxField', () => (
-    <React.Fragment>
+    <>
       <CheckboxField label="label" id="checkbox_1" />
       <CheckboxField label="label" hint="hint text" id="checkbox_2" />
       <CheckboxField label="label" invalid="invalid text" id="checkbox_3" />
       <CheckboxField label="required field" required id="checkbox_4" />
       <CheckboxField label="checked field" checked id="checkbox_5" />
       <CheckboxField label="disabled field" disabled id="checkbox_6" />
-    </React.Fragment>
+    </>
   ))
   .add('NumberField', () => (
-    <React.Fragment>
+    <>
       <NumberField label="label" id="number_1" />
       <NumberField label="label" hint="hint text" id="number_2" />
       <NumberField label="label" invalid="invalid text" id="number_3" />
       <NumberField label="required field" required id="number_4" />
       <NumberField label="disabled field" disabled id="number_5" />
-    </React.Fragment>
+    </>
   ))
   .add('TextAreaField', () => (
-    <React.Fragment>
+    <>
       <TextAreaField label="label" id="text_1" />
       <TextAreaField label="label" hint="hint text" id="text_2" />
       <TextAreaField label="label" invalid="invalid text" id="text_3" />
       <TextAreaField label="required field" required id="text_4" />
       <TextAreaField label="disabled field" disabled id="text_5" />
-    </React.Fragment>
+    </>
   ))
   .add('TextField', () => (
-    <React.Fragment>
+    <>
       <TextField label="label" id="text_1" />
       <TextField label="label" hint="hint text" id="text_2" />
       <TextField label="label" invalid="invalid text" id="text_3" />
       <TextField label="required field" required id="text_4" />
       <TextField label="disabled field" disabled id="text_5" />
-    </React.Fragment>
+    </>
   ))
   .add('SelectField', () => (
-    <React.Fragment>
+    <>
       <SelectField label="label" id="select_1">
         <SelectOptions />
       </SelectField>
@@ -77,10 +77,10 @@ storiesOf('Patterns/Form/Fields', module)
       <SelectField label="disabled field" disabled id="select_5">
         <SelectOptions />
       </SelectField>
-    </React.Fragment>
+    </>
   ))
   .add('FieldSet', () => (
-    <React.Fragment>
+    <>
       <FieldSet id="group1" label="Fieldset1 label" hint="Fieldset1 hint">
         <Checkbox label="checkbox1 label" value="value1" id="checkbox_1" />
         <Checkbox label="checkbox2 label" value="value2" id="checkbox_2" />
@@ -101,5 +101,5 @@ storiesOf('Patterns/Form/Fields', module)
         <Radio label="radio2 label" value="value2" id="radio_8" />
         <Radio label="radio3 label" value="value3" id="radio_9" />
       </FieldSet>
-    </React.Fragment>
+    </>
   ));

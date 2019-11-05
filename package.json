@@ -34,6 +34,8 @@
     "@storybook/addons": "^5.2.5",
     "@storybook/react": "^5.2.5",
     "@storybook/theming": "^5.2.5",
+    "@styled-system/prop-types": "^5.0.8",
+    "@styled-system/theme-get": "^5.0.6",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-styled-components": "^1.10.0",
@@ -45,6 +47,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-react": "^7.12.4",
+    "framer-motion": "^1.6.15",
     "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
@@ -62,10 +65,5 @@
     "react-dom": "^16.x",
     "styled-components": "^5.x",
     "styled-system": "^5.x"
-  },
-  "dependencies": {
-    "@phobon/grimoire": "^0.7.6",
-    "@styled-system/prop-types": "^5.0.8",
-    "@styled-system/theme-get": "^5.0.6"
   }
 }

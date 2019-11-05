@@ -20,7 +20,7 @@ storiesOf('Patterns/Form', module)
     </Form>
   ))
   .add('With different densities', () => (
-    <React.Fragment>
+    <>
       <Form density="compact" mr={4} width={1/4}>
         <Heading.H4>Compact density</Heading.H4>
         <TextField id="text1" label="text field 1" />
@@ -47,7 +47,7 @@ storiesOf('Patterns/Form', module)
         <TextAreaField id="textarea" label="text area" />
         <CheckboxField id="checkbox" label="checkbox field" />
       </Form>
-    </React.Fragment>
+    </>
   ))
   .add('With inline fields', () => (
     <Form>

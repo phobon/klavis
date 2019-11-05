@@ -60,14 +60,14 @@ const CheckboxField = ({ label, id, required = false, invalid, hint, visible = t
         invalid={invalid}
         disabled={fieldDisabled}
         label={label && (
-          <React.Fragment>
+          <>
             {label}
             {!required && optionalLabel && (
               <Text as="span" color="grayscale.4" lineHeight={0} ml={1}>
                 {`(${optionalLabel()})`}
               </Text>
             )}
-          </React.Fragment>
+          </>
         )} />
       {invalidElement || hintElement}
     </Flex>
