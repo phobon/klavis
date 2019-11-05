@@ -12,7 +12,7 @@ const statusColor = props => {
   const statusColors = {
     none: 'transparent',
     error: props.theme.colors.reds[5],
-    warning: props.theme.colors.oranges[5],
+    warning: props.theme.colors.oranges[6],
     success: props.theme.colors.greens[5],
   };
 
@@ -23,7 +23,7 @@ const presenceColor = props => {
     none: 'transparent',
     unknown: props.theme.colors.grayscale[5],
     unavailable: props.theme.colors.reds[5],
-    busy: props.theme.colors.oranges[5],
+    busy: props.theme.colors.oranges[6],
     available: props.theme.colors.greens[5],
   };
 

@@ -84,11 +84,11 @@ storiesOf('Components/Progress', module)
     <Box flexDirection="column" fullWidth p={7}>
       <TestProgress mb={8} color="reds.5" />
       <TestProgress mb={8} color="purples.5" />
-      <TestProgress mb={8} color="oranges.5" />
+      <TestProgress mb={8} color="oranges.6" />
 
       <TestProgress mb={4} color="reds.5" mode="compact" />
       <TestProgress mb={4} color="purples.5" mode="compact" />
-      <TestProgress color="oranges.5" mode="compact" />
+      <TestProgress color="oranges.6" mode="compact" />
     </Box>
   ))
   .add('With vertical orientation', () => (

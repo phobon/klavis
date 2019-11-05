@@ -14,7 +14,7 @@ const variantColour = props => {
       fill: ${props.theme.colors.guidance.info[0]};
     `,
     question: css`
-      background-color: ${props.theme.colors.purples[9]};
+      background-color: ${props.theme.colors.purples[8]};
       color: ${props.theme.colors.purples[0]};
       fill: ${props.theme.colors.purples[0]};
     `,

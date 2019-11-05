@@ -15,7 +15,7 @@ const thresholdBg = props => {
   }
 
   if (props.percentage < props.warningThreshold) {
-    return css`background-color: ${props.theme.colors.oranges[5]};`;
+    return css`background-color: ${props.theme.colors.oranges[6]};`;
   }
 
   return css`background-color: ${props.theme.colors.greens[5]};`;

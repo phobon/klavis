@@ -44,7 +44,7 @@ const buttonVariant = props => {
       color: ${props.theme.colors.guidance.warning[0]};
       fill: ${props.theme.colors.guidance.warning[0]};
       &:hover {
-        background-color: ${props.theme.colors.oranges[5]};
+        background-color: ${props.theme.colors.oranges[6]};
         color: ${props.theme.colors.guidance.warning[0]};
         fill: ${props.theme.colors.guidance.warning[0]};
       }
