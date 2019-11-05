@@ -7,7 +7,7 @@ import {
   CheckboxField,
   NumberField,
   SelectField,
-} from './fields';
+} from './Fields';
 
 import FieldGroup from './FieldGroup';
 import FieldSet from './FieldSet';
