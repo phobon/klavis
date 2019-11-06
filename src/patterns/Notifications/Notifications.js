@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { animated, useTransition } from 'react-spring';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { Flex, Box, Stack, Card, Grid, usePortal } from '@phobon/base';
 
@@ -50,8 +50,8 @@ const NotificationsGrid = styled(Grid)`
 const NotificationsBox = styled(Stack)`
   ${notificationPositions}
 `;
-const NotificationContainer = animated(Box);
-const Lifebar = animated(Box);
+const NotificationContainer = motion.custom(Box);
+const Lifebar = motion.custom(Box);
 
 const Notifications = ({
   children,
@@ -61,43 +61,24 @@ const Notifications = ({
   notificationPosition: initialNotificationPosition,
   width,
   ...props }) => {
-  const [cancelMap] = useState(() => new WeakMap());
   const [items, setItems] = useState([]);
   const [notificationPosition, setNotificationPosition] = useState(initialNotificationPosition);
 
-  const add = useCallback(p => setItems(state => [...state, { key: id++, ...p }]), []);
-
-  const transitions = useTransition(items, item => item.key, {
-    from: { opacity: 0, transform: 'translate(0px, 8px)', life: '100%' },
-    enter: item => async (next, stop) => {
-      cancelMap.set(item, () => {
-        stop();
-        setItems(state => state.filter(i => i.key !== item.key));
-      });
-
-      await next({
-        opacity: 1,
-        transform: 'translate(0px, 0px)',
-        config,
-      });
-
-      if (item.promise) {
-        await item.promise();
-      } else {
-        await next({ life: '0%', config: { duration: item.timeout || timeout }});
-      }
-
-      cancelMap.get(item)();
-    },
-    // eslint-disable-next-line no-unused-vars
-    leave: item => async next => {
-      await next({ opacity: 0, transform: 'translate(32px, 0px)', config });
-    },
-  });
+  const add = useCallback(async ({ promise, ...p }) => {
+    const k = id++;
+    const to = p.timeout || timeout;
+    setItems(state => [...state, { key: k, ...p }]);
+    if (promise) {
+      await promise();
+      setItems(state => state.filter(i => i.key !== k));
+    } else if (to) {
+      setTimeout(() => setItems(state => state.filter(i => i.key !== k)), to);
+    }
+  }, []);
 
   return (
     <NotificationsContext.Provider value={[add, setNotificationPosition]}>
-      <React.Fragment>
+      <>
         {children}
         
         {usePortal(
@@ -109,47 +90,59 @@ const Notifications = ({
                               'left middle right'
                               'bottomleft bottom bottomright'">
             <NotificationsBox space={3} fullHeight css={{ gridArea: notificationPosition }} width={width} flexDirection="column" notificationPosition={notificationPosition}>
-              {transitions.map(({ key, item, props: { life, ...style } }) => {
-                const { content, canDismiss, color, showLife: showLifeItem } = item;
-                const showLifebar = typeof showLifeItem === 'undefined' ? showLife : showLifeItem;
-                return (
-                  <NotificationContainer
-                    fullWidth
-                    className="grimoire__notifications__instance"
-                    key={key}
-                    style={style}>
-                    <NotificationCard fullWidth {...props}>
-                      <Flex css={{ position: 'relative', overflow: 'hidden' }} justifyContent="flex-start" alignItems="flex-start" borderRadius="inherit" overflow="hidden">
-                        <Flex justifyContent="flex-start">
-                          {content}
+              <AnimatePresence>
+                {items.map(({ key, content, canDismiss, color, showLife: showLifeItem, ...rest }) => {
+                  const showLifebar = typeof showLifeItem === 'undefined' ? showLife : showLifeItem;
+                  const to = rest.timeout || timeout;
+                  const seconds = ((to % 60000) / 1000).toFixed(0);
+                  return (
+                    <NotificationContainer
+                      fullWidth
+                      className="grimoire__notifications__instance"
+                      key={key}
+                      positionTransition
+                      initial={{ opacity: 0, translateY: 24 }}
+                      animate={{ opacity: 1, translateY: 0 }}
+                      exit={{ opacity: 0, translateX: 24, transition: { duration: 0.2 } }}>
+                      <NotificationCard fullWidth {...props}>
+                        <Flex css={{ position: 'relative', overflow: 'hidden' }} justifyContent="flex-start" alignItems="flex-start" borderRadius="inherit" overflow="hidden">
+                          <Flex justifyContent="flex-start">
+                            {content}
+                          </Flex>
+                          {canDismiss && (
+                            <SquareButton
+                              variant="tertiary"
+                              size="s"
+                              ml={4}
+                              mt={3}
+                              mr={3}
+                              onClick={e => {
+                                e.stopPropagation();
+                                setItems(state => state.filter(i => i.key !== key));
+                              }}>
+                              <Remove color="inherit" size={12} />
+                            </SquareButton>
+                          )}
+                          {showLifebar && (
+                            <Lifebar
+                              css={{ position: 'absolute', top: 0, left: '-100%' }}
+                              positionTransition
+                              animate={{ translateX: '100%' }}
+                              transition={{ duration: seconds, ease: 'linear' }}
+                              height={4}
+                              bg={color || 'grayscale.5'}
+                              fullWidth />
+                            )}
                         </Flex>
-                        {canDismiss && (
-                          <SquareButton
-                            variant="tertiary"
-                            size="s"
-                            ml={4}
-                            mt={3}
-                            mr={3}
-                            onClick={e => {
-                              e.stopPropagation();
-                              if (cancelMap.has(item)) {
-                                const x = cancelMap.get(item);
-                                x();
-                              }
-                            }}>
-                            <Remove color="inherit" size={12} />
-                          </SquareButton>
-                        )}
-                        {showLifebar && <Lifebar style={{ position: 'absolute', right: life, top: 0 }} height={4} bg={color || 'grayscale.5'} fullWidth />}
-                      </Flex>
-                    </NotificationCard>
-                  </NotificationContainer>
-                );
-              })}
+                      </NotificationCard>
+                    </NotificationContainer>
+                  );
+                })}
+              </AnimatePresence>
             </NotificationsBox>
           </NotificationsGrid>
         )}
-      </React.Fragment>
+      </>
     </NotificationsContext.Provider>
   );
 };

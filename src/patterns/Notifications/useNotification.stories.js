@@ -26,13 +26,13 @@ const glyphs = {
   error: <AlertDiamond color="inherit" size={20} />,
 };
 const colors = {
-  neutral: 'grayscale.3',
-  dark: 'grayscale.7',
-  info: 'blues.5',
-  question: 'purples.5',
-  success: 'greens.5',
-  warning: 'oranges.5',
-  error: 'reds.5',
+  neutral: 'grayscale.9',
+  dark: 'grayscale.9',
+  info: 'blues.9',
+  question: 'purples.9',
+  success: 'greens.9',
+  warning: 'oranges.9',
+  error: 'reds.9',
 };
 
 const NotificationsHelper = ({ notificationTypes, notificationPosition }) => {

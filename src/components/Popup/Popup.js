@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { animated, useTransition, config } from 'react-spring';
 import PropTypes from 'prop-types';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { Box, Card, useWindowSize, destructureLayoutProps } from '@phobon/base';
 
@@ -39,11 +39,11 @@ const reverseVerticalDirection = popupDirection => {
 
 const enterDirection = popupDirection => {
   const directions = {
-    down: { transform: 'translate(0, -4px)' },
-    up: { transform: 'translate(0, 4px)' },
-    left: { transform: 'translate(4px, 0)' },
-    right: { transform: 'translate(-4px, 0)' },
-    auto: { transform: 'translate(0, -4px)' },
+    down: { translateY: -4 },
+    up: { translateY: 4 },
+    left: { translateX: 4 },
+    right: { translateX: -4 },
+    auto: { translateY: -4 },
   };
 
   return directions[popupDirection];
@@ -51,11 +51,11 @@ const enterDirection = popupDirection => {
 
 const exitDirection = popupDirection => {
   const directions = {
-    down: { transform: 'translate(0, -4px)' },
-    up: { transform: 'translate(0, 4px)' },
-    left: { transform: 'translate(4px, 0)' },
-    right: { transform: 'translate(-4px, 0)' },
-    auto: { transform: 'translate(0, -4px)' },
+    down: { translateY: -4 },
+    up: { translateY: 4 },
+    left: { translateX: 4 },
+    right: { translateX: -4 },
+    auto: { translateY: -4 },
   };
 
   return directions[popupDirection];
@@ -101,21 +101,14 @@ const useAlignmentTransition = (popupDirection, isOpen, container, childrenCount
     }
   }, [isOpen]);
 
-  const transitions = useTransition(isOpen, null, {
-    from: {
-      opacity: 0,
-      position: 'absolute',
-      zIndex: 1,
+  return {
+    style: {
       ...align,
       ...valign,
       ...enter,
     },
-    enter: { opacity: 1, transform: 'translate(0, 0)' },
-    leave: { opacity: 0, ...exit },
-    config: config.stiff,
-  });
-
-  return transitions;
+    exit: { opacity: 0, ...exit },
+  };
 };
 
 const Popup = ({ trigger, children, label, closeAfterAction, className, as, popupDirection, ...props }) => {
@@ -143,7 +136,7 @@ const Popup = ({ trigger, children, label, closeAfterAction, className, as, popu
   }, [isOpen]);
   const containerClick = closeAfterAction ? useCallback(() => setIsOpen(false), []) : null;
 
-  const transitions = useAlignmentTransition(popupDirection, isOpen, container, children.$$typeof ? 1 : children.length);
+  const motionCardProps = useAlignmentTransition(popupDirection, isOpen, container, children.$$typeof ? 1 : children.length);
 
   // Destructure layout props here.
   const [layoutProps, passthroughProps] = destructureLayoutProps(props);
@@ -162,9 +155,13 @@ const Popup = ({ trigger, children, label, closeAfterAction, className, as, popu
         {trigger}
       </Button>
 
-      {transitions.map(({ item, key, props: transitionProps }) =>
-        item && (
-          <animated.div style={transitionProps} key={key}>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            css={{ position: 'absolute', zIndex: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+            {...motionCardProps}>
             <Card
               boxShadowSize="m"
               as={as}
@@ -172,9 +169,9 @@ const Popup = ({ trigger, children, label, closeAfterAction, className, as, popu
               onClick={containerClick}>
               {children}
             </Card>
-          </animated.div>
-        )
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Box>
   );
 }
