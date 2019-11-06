@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { storiesOf } from '@storybook/react';
 
 import { Text } from '@phobon/base';
 
@@ -12,6 +11,11 @@ import { Button, Message } from '../../components';
 
 import Notifications from './Notifications';
 import useNotifications from './useNotifications';
+
+export default {
+  component: Notifications,
+  title: 'Patterns/Notifications',
+};
 
 const variants = [
   'info', 'question', 'success', 'warning', 'error', 'neutral', 'dark',
@@ -54,126 +58,130 @@ const ContentHelper = props => (
   </Message>
 );
 
-storiesOf('Patterns/Notifications', module)
-  .add('With different timeouts', () => {
-    const notificationTypes = [
-      {
-        label: 'Default timeout (10s)',
-        notification: { content: <ContentHelper /> },
-      },
-      {
-        label: '2000ms',
-        notification: { content: <ContentHelper />, timeout: 2000 },
-      },
-      {
-        label: '7000ms',
-        notification: { content: <ContentHelper />, timeout: 7000 },
-      },
-    ];
-    return (
-      <Notifications>
-        <NotificationsHelper notificationTypes={notificationTypes} />
-      </Notifications>
-    );
-  })
-  .add('With and without lifebars', () => {
-    const notificationTypes = [
-      {
-        label: 'With lifebar',
-        notification: { content: <ContentHelper /> },
-      },
-      {
-        label: 'Without lifebar',
-        notification: { content: <ContentHelper />, showLife: false },
-      },
-    ];
-    return (
-      <Notifications timeout={3000}>
-        <NotificationsHelper notificationTypes={notificationTypes} />
-      </Notifications>
-    );
-  })
-  .add('With different coloured lifebars', () => {
-    const notificationTypes = [
-      {
-        label: 'oranges.5',
-        notification: { content: <ContentHelper />, color: 'oranges.5' },
-      },
-      {
-        label: 'blues.6',
-        notification: { content: <ContentHelper />, color: 'blues.6' },
-      },
-      {
-        label: 'purples.6',
-        notification: { content: <ContentHelper />, color: 'purples.6' },
-      },
-    ];
-    return (
-      <Notifications timeout={2000}>
-        <NotificationsHelper notificationTypes={notificationTypes} />
-      </Notifications>
-    );
-  })
-  .add('With the ability to dismiss early', () => {
-    const notificationTypes = [
-      {
-        label: 'Add dismissable notification',
-        notification: { content:<ContentHelper />, canDismiss: true },
-      },
-    ];
-    return (
-      <Notifications timeout={30000}>
-        <NotificationsHelper notificationTypes={notificationTypes} />
-      </Notifications>
-    );
-  })
-  .add('With different variants', () => {
-    const notificationTypes = variants.map(v => ({
-      label: `Add ${v}`,
-      notification: { content: <ContentHelper variant={v} glyph={glyphs[v]} />, color: colors[v] },
-    }));
-    return (
-      <Notifications timeout={3000}>
-        <NotificationsHelper notificationTypes={notificationTypes} />
-      </Notifications>
-    );
-  })
-  .add('With different initial position', () => {
-    const notificationTypes = [
-      {
-        label: 'Bottom',
-        notification: { content:<ContentHelper /> },
-      },
-    ];
-    return (
-      <Notifications timeout={3000} notificationPosition="bottom">
-        <NotificationsHelper notificationTypes={notificationTypes} />
-      </Notifications>
-    );
-  })
-  .add('With custom position', () => {
-    const notificationTypes = [
-      {
-        label: 'Top',
-        notification: { content:<ContentHelper /> },
-      },
-    ];
-    return (
-      <Notifications timeout={3000}>
-        <NotificationsHelper notificationTypes={notificationTypes} notificationPosition="top" />
-      </Notifications>
-    );
-  })
-  .add('With a provided promise to execute', () => {
-    const notificationTypes = [
-      {
-        label: 'Add notification with a 3s promise',
-        notification: { content: <ContentHelper />, promise: () => new Promise(resolve => setTimeout(() => resolve(true), 3000)) },
-      },
-    ];
-    return (
-      <Notifications showLife={false}>
-        <NotificationsHelper notificationTypes={notificationTypes} />
-      </Notifications>
-    );
-  });
+export const withDifferentTimeouts = () => {
+  const notificationTypes = [
+    {
+      label: 'Default timeout (10s)',
+      notification: { content: <ContentHelper /> },
+    },
+    {
+      label: '2000ms',
+      notification: { content: <ContentHelper />, timeout: 2000 },
+    },
+    {
+      label: '7000ms',
+      notification: { content: <ContentHelper />, timeout: 7000 },
+    },
+  ];
+  return (
+    <Notifications>
+      <NotificationsHelper notificationTypes={notificationTypes} />
+    </Notifications>
+  );
+};
+
+export const withAndWithoutLifebars = () => {
+  const notificationTypes = [
+    {
+      label: 'With lifebar',
+      notification: { content: <ContentHelper /> },
+    },
+    {
+      label: 'Without lifebar',
+      notification: { content: <ContentHelper />, showLife: false },
+    },
+  ];
+  return (
+    <Notifications timeout={3000}>
+      <NotificationsHelper notificationTypes={notificationTypes} />
+    </Notifications>
+  );
+};
+
+export const withDifferentColouredLifebars = () => {
+  const notificationTypes = [
+    {
+      label: 'oranges.5',
+      notification: { content: <ContentHelper />, color: 'oranges.5' },
+    },
+    {
+      label: 'blues.6',
+      notification: { content: <ContentHelper />, color: 'blues.6' },
+    },
+    {
+      label: 'purples.6',
+      notification: { content: <ContentHelper />, color: 'purples.6' },
+    },
+  ];
+  return (
+    <Notifications timeout={2000}>
+      <NotificationsHelper notificationTypes={notificationTypes} />
+    </Notifications>
+  );
+};
+
+export const withTheAbilityToDismissEarly = () => {
+  const notificationTypes = [
+    {
+      label: 'Add dismissable notification',
+      notification: { content:<ContentHelper />, canDismiss: true },
+    },
+  ];
+  return (
+    <Notifications timeout={30000}>
+      <NotificationsHelper notificationTypes={notificationTypes} />
+    </Notifications>
+  );
+};
+
+export const withDifferentVariants = () => {
+  const notificationTypes = variants.map(v => ({
+    label: `Add ${v}`,
+    notification: { content: <ContentHelper variant={v} glyph={glyphs[v]} />, color: colors[v] },
+  }));
+  return (
+    <Notifications timeout={3000}>
+      <NotificationsHelper notificationTypes={notificationTypes} />
+    </Notifications>
+  );
+};
+
+export const withDifferentInitialPosition = () => {
+  const notificationTypes = [
+    {
+      label: 'Bottom',
+      notification: { content:<ContentHelper /> },
+    },
+  ];
+  return (
+    <Notifications timeout={3000} notificationPosition="bottom">
+      <NotificationsHelper notificationTypes={notificationTypes} />
+    </Notifications>
+  );
+};
+export const withCustomPosition = () => {
+  const notificationTypes = [
+    {
+      label: 'Top',
+      notification: { content:<ContentHelper /> },
+    },
+  ];
+  return (
+    <Notifications timeout={3000}>
+      <NotificationsHelper notificationTypes={notificationTypes} notificationPosition="top" />
+    </Notifications>
+  );
+};
+export const withAProvidedPromiseToExecute = () => {
+  const notificationTypes = [
+    {
+      label: 'Add notification with a 3s promise',
+      notification: { content: <ContentHelper />, promise: () => new Promise(resolve => setTimeout(() => resolve(true), 3000)) },
+    },
+  ];
+  return (
+    <Notifications showLife={false}>
+      <NotificationsHelper notificationTypes={notificationTypes} />
+    </Notifications>
+  );
+};
