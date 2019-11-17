@@ -115,21 +115,34 @@ const ProgressStepButton = styled.button`
   ${isCurrent}
 `;
 
-const ProgressStep = ({ children, orientation, alignItems, justifyContent, current, complete, childrenPosition, ...props }) => (
-  <Box css={{ position: 'relative' }} alignItems={alignItems} justifyContent={justifyContent}>
-    <ProgressStepButton orientation={orientation} complete={complete} current={current} {...props} />
-    <span css={`
-      position: absolute;
-      white-space: pre;
-      top: ${orientation === 'horizontal' ? '130%' : 'unset'}
-      ${childrenPosition === 'right' ? 'left' : 'right'}: ${orientation === 'vertical' ? '150%' : 'unset'}
-      opacity: ${!current ? 0.4 : 1}`}>
-      {children}
-    </span>
-  </Box>
-);
+const ProgressStep = ({ children, orientation, alignItems, justifyContent, current, complete, childrenPosition, ...props }) => {
+  let top = '50%';  
+  if (orientation === 'horizontal') {
+    top = current ? 'calc(130% - 6px)' : '130%';
+  }
+
+  return (
+    <Box css={{ position: 'relative' }} alignItems={alignItems} justifyContent={justifyContent}>
+      <ProgressStepButton
+        orientation={orientation}
+        complete={complete}
+        current={current}
+        {...props} />
+      <span css={`
+        position: absolute;
+        white-space: pre;
+        top: ${top};
+        transform: ${orientation === 'vertical' ? 'translateY(-50%)' : null};
+        ${childrenPosition === 'right' ? 'left' : 'right'}: ${orientation === 'vertical' ? '150%' : 'unset'};
+        opacity: ${!current ? 0.4 : 1};`}>
+        {children}
+      </span>
+    </Box>
+  );
+};
 
 ProgressStep.propTypes = {
+  'aria-label': PropTypes.string.isRequired,
   orientation: PropTypes.oneOf(['horizontal', 'vertical']),
   mode: PropTypes.oneOf(['compact', 'full']),
   current: PropTypes.bool,

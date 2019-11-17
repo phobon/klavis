@@ -14,37 +14,37 @@ export default {
 
 const TestProgress = props => (
   <Progress id={uuidv4()} {...props}>
-    <ProgressStep>
+    <ProgressStep aria-label="step1">
       <Box flexDirection="column">
         <Text>First Step</Text>
         <Text fontSize={0} color="grayscale.2">Additional content</Text>
       </Box>
     </ProgressStep>
-    <ProgressStep>
+    <ProgressStep aria-label="step2">
       <Box flexDirection="column">
         <Text>Second Step</Text>
         <Text fontSize={0} color="grayscale.2">Additional content</Text>
       </Box>
     </ProgressStep>
-    <ProgressStep>
+    <ProgressStep aria-label="step3">
       <Box flexDirection="column">
         <Text>Third Step</Text>
         <Text fontSize={0} color="grayscale.2">Additional content</Text>
       </Box>
     </ProgressStep>
-    <ProgressStep current>
+    <ProgressStep aria-label="step4" current>
       <Box flexDirection="column">
         <Text>Fourth Step</Text>
         <Text fontSize={0} color="grayscale.2">Additional content</Text>
       </Box>
     </ProgressStep>
-    <ProgressStep>
+    <ProgressStep aria-label="step5">
       <Box flexDirection="column">
         <Text>Fifth Step</Text>
         <Text fontSize={0} color="grayscale.2">Additional content</Text>
       </Box>
     </ProgressStep>
-    <ProgressStep>
+    <ProgressStep aria-label="step6">
       <Box flexDirection="column">
         <Text>Sixth Step</Text>
         <Text fontSize={0} color="grayscale.2">Additional content</Text>
@@ -57,12 +57,12 @@ export const withAndWithoutLabels = () => (
   <Box flexDirection="column" fullWidth p={7}>
     <TestProgress mb={8} />
     <Progress>
-      <ProgressStep tooltip="First Step" />
-      <ProgressStep tooltip="Second Step" />
-      <ProgressStep tooltip="Third Step" />
-      <ProgressStep tooltip="Fourth Step" current />
-      <ProgressStep tooltip="Fifth Step" />
-      <ProgressStep tooltip="Sixth Step" />
+      <ProgressStep aria-label="step1" tooltip="First Step" />
+      <ProgressStep aria-label="step2" tooltip="Second Step" />
+      <ProgressStep aria-label="step3" tooltip="Third Step" />
+      <ProgressStep aria-label="step4" tooltip="Fourth Step" current />
+      <ProgressStep aria-label="step5" tooltip="Fifth Step" />
+      <ProgressStep aria-label="step6" tooltip="Sixth Step" />
     </Progress>
   </Box>
 );
@@ -108,17 +108,17 @@ export const withVerticalOrientation = () => (
 export const withCustomOnClicksForSteps = () => (
   <Box flexDirection="column" p={7}>
     <Progress mb={8}>
-      <ProgressStep label="First Step" onClick={action('First Step clicked')} />
-      <ProgressStep label="Second Step" onClick={action('Second Step clicked')} />
-      <ProgressStep label="Third Step" onClick={action('Third Step clicked')} current />
-      <ProgressStep label="Fourth Step" onClick={action('Fourth Step clicked')} />
+      <ProgressStep aria-label="step1" label="First Step" onClick={action('First Step clicked')} />
+      <ProgressStep aria-label="step1" label="Second Step" onClick={action('Second Step clicked')} />
+      <ProgressStep aria-label="step1" label="Third Step" onClick={action('Third Step clicked')} current />
+      <ProgressStep aria-label="step1" label="Fourth Step" onClick={action('Fourth Step clicked')} />
     </Progress>
 
     <Progress mode="compact">
-      <ProgressStep label="First Step" onClick={action('First Step clicked')} />
-      <ProgressStep label="Second Step" onClick={action('Second Step clicked')} />
-      <ProgressStep label="Third Step" onClick={action('Third Step clicked')} current />
-      <ProgressStep label="Fourth Step" onClick={action('Fourth Step clicked')} />
+      <ProgressStep aria-label="step1" label="First Step" onClick={action('First Step clicked')} />
+      <ProgressStep aria-label="step1" label="Second Step" onClick={action('Second Step clicked')} />
+      <ProgressStep aria-label="step1" label="Third Step" onClick={action('Third Step clicked')} current />
+      <ProgressStep aria-label="step1" label="Fourth Step" onClick={action('Fourth Step clicked')} />
     </Progress>
   </Box>
 );
