@@ -32,9 +32,9 @@ const presenceColor = props => {
 
 const extents = props => {
   const sizes = {
-    s: props.theme.space[5],
-    m: props.theme.space[6],
-    l: props.theme.space[7],
+    s: props.theme.space[4],
+    m: props.theme.space[5],
+    l: props.theme.space[6],
   };
 
   return css`
@@ -48,17 +48,17 @@ const statusElements = props => {
     s: css`
       width: 16px;
       height: 16px;
-      right: -${props.theme.space[2]}px;
+      right: -10px;
     `,
     m: css`
       width: 20px;
       height: 20px;
-      right: -${props.theme.space[1]}px;
+      right: -12px;
     `,
     l: css`
       width: 24px;
       height: 24px;
-      right: -${props.theme.space[1]}px;
+      right: -14px;
     `,
   };
 
@@ -111,8 +111,8 @@ const buttonFocus = props => props.onClick && css`
 const avatarFontSize = props => {
   const fontSizes = {
     s: css`font-size: ${props.theme.fontSizes[0]}px;`,
-    m: css`font-size: ${props.theme.fontSizes[3]}px;`,
-    l: css`font-size: ${props.theme.fontSizes[6]}px;`,
+    m: css`font-size: ${props.theme.fontSizes[2]}px;`,
+    l: css`font-size: ${props.theme.fontSizes[5]}px;`,
   };
 
   return fontSizes[props.size];
@@ -146,7 +146,7 @@ const AvatarIndicator = ({ avatarStyle, name, onClick, ...props }) => (
   <AvatarIndicatorButton as={onClick ? 'button' : 'div'} onClick={onClick} {...props}>
     {avatarStyle === 'initials'
       ? <Text fontSize="inherit" color="inherit" lineHeight={0}>{name.split(' ').reduce((acc, current) => acc.charAt(0) + current.charAt(0)).substr(0, 2)}</Text>
-      : <User size={20} />
+      : <User size={16} />
     }
   </AvatarIndicatorButton>
 );
