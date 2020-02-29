@@ -146,8 +146,7 @@ const AvatarIndicator = ({ avatarStyle, name, onClick, ...props }) => (
   <AvatarIndicatorButton as={onClick ? 'button' : 'div'} onClick={onClick} {...props}>
     {avatarStyle === 'initials'
       ? <Text fontSize="inherit" color="inherit" lineHeight={0}>{name.split(' ').reduce((acc, current) => acc.charAt(0) + current.charAt(0)).substr(0, 2)}</Text>
-      : <User size={16} />
-    }
+      : <User size={16} />}
   </AvatarIndicatorButton>
 );
 
@@ -187,8 +186,7 @@ const Avatar = ({
             <Image src={image} cover borderRadius={borderRadius} alt="avatar image" />
           </AvatarIndicatorButton>
         )
-        : <AvatarIndicator size={size} onClick={onClick} avatarStyle={avatarStyle} name={name} bg={bg} color={color} borderRadius={borderRadius} />
-      }
+        : <AvatarIndicator size={size} onClick={onClick} avatarStyle={avatarStyle} name={name} bg={bg} color={color} borderRadius={borderRadius} />}
     </AvatarBox>
   </Box>
 );

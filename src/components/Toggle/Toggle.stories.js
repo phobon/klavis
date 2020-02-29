@@ -9,9 +9,13 @@ export default {
 };
 
 class ToggleHelper extends React.Component {
-  state = {
-    toggled: false,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      toggled: false,
+    };
+  }
 
   render() {
     const { toggled } = this.state;

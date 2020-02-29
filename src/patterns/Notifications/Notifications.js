@@ -140,8 +140,7 @@ const Notifications = ({
                 })}
               </AnimatePresence>
             </NotificationsBox>
-          </NotificationsGrid>
-        )}
+          </NotificationsGrid>)}
       </>
     </NotificationsContext.Provider>
   );

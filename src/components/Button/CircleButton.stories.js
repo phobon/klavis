@@ -28,8 +28,7 @@ export const withAToggledState = () => (
 
 export const withDifferentSizes = () => (
   buttonSizes.map(s =>
-    <CircleButton key={s} mr={2} mb={2} size={s} onClick={action('clicked')} />
-  )
+    <CircleButton key={s} mr={2} mb={2} size={s} onClick={action('clicked')} />)
 );
 
 export const withTooltips = () => (

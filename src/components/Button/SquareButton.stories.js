@@ -28,8 +28,7 @@ export const withAToggledState = () => (
 
 export const withDifferentSizes = () => (
   buttonSizes.map(s =>
-    <SquareButton key={s} mr={2} mb={2} size={s} onClick={action('clicked')} />
-  )
+    <SquareButton key={s} mr={2} mb={2} size={s} onClick={action('clicked')} />)
 );
 
 export const withTooltips = () => (
