@@ -35,7 +35,7 @@ export const withDifferentStates = () => (
 );
 
 export const withTheAbilityToToggle = () => (
-  <ToggleHelper tooltip="cCick to toggle" />
+  <ToggleHelper tooltip="Click to toggle" />
 );
 
 export const withDifferentColours = () => (

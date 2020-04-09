@@ -11,14 +11,14 @@ import Tag from '../Tag';
 
 const thresholdBg = props => {
   if (props.percentage < props.dangerThreshold) {
-    return css`background-color: ${props.theme.colors.reds[5]};`;
+    return css`background-color: ${props.theme.colors.reds[6]};`;
   }
 
   if (props.percentage < props.warningThreshold) {
     return css`background-color: ${props.theme.colors.oranges[6]};`;
   }
 
-  return css`background-color: ${props.theme.colors.greens[5]};`;
+  return css`background-color: ${props.theme.colors.greens[6]};`;
 };
 
 const heights = props => {

@@ -27,9 +27,9 @@ export const withDifferentThicknesses = () => (
 
 export const withDifferentBackgroundColours = () => (
   <Stack fullWidth space={5}>
-    <Spacer bg="grayscale.3" />
+    <Spacer bg="grayscale.2" />
     <Spacer bg="grayscale.7" />
-    <Spacer bg="oranges.4" />
+    <Spacer bg="oranges.7" />
   </Stack>
 );
 

@@ -12,7 +12,7 @@ const buttonVariant = props => {
     color: ${props.theme.colors.grayscale[1]};
     fill: ${props.theme.colors.grayscale[1]};
     &:hover {
-      background-color: ${props.theme.colors.grayscale[6]};
+      background-color: ${props.theme.colors.grayscale[7]};
     }
   `;
   const buttonVariants = {
@@ -22,18 +22,18 @@ const buttonVariant = props => {
       color: white;
       fill: white;
       &:hover {
-        background-color: ${props.theme.colors.accent[3]};
+        background-color: ${props.theme.colors.accent[2]};
         color: white;
         fill: white;
       }
     `,
     secondary: css`
-      background-color: ${props.theme.colors.grayscale[7]};
-      border-color: ${props.theme.colors.grayscale[5]};
+      background-color: ${props.theme.colors.grayscale[8]};
+      border-color: ${props.theme.colors.grayscale[7]};
       color: ${props.theme.colors.grayscale[1]};
       fill: ${props.theme.colors.grayscale[1]};
       &:hover {
-        background-color: ${props.theme.colors.grayscale[6]};
+        background-color: ${props.theme.colors.grayscale[7]};
       }
     `,
     tertiary,
@@ -44,7 +44,7 @@ const buttonVariant = props => {
       color: ${props.theme.colors.guidance.warning[0]};
       fill: ${props.theme.colors.guidance.warning[0]};
       &:hover {
-        background-color: ${props.theme.colors.oranges[6]};
+        background-color: ${props.theme.colors.oranges[7]};
         color: ${props.theme.colors.guidance.warning[0]};
         fill: ${props.theme.colors.guidance.warning[0]};
       }
@@ -55,7 +55,7 @@ const buttonVariant = props => {
       color: ${props.theme.colors.guidance.error[0]};
       fill: ${props.theme.colors.guidance.error[0]};
       &:hover {
-        background-color: ${props.theme.colors.reds[5]};
+        background-color: ${props.theme.colors.reds[7]};
         color: ${props.theme.colors.guidance.error[0]};
         fill: ${props.theme.colors.guidance.error[0]};
       }
@@ -66,7 +66,7 @@ const buttonVariant = props => {
       color: ${props.theme.colors.guidance.success[0]};
       fill: ${props.theme.colors.guidance.success[0]};
       &:hover {
-        background-color: ${props.theme.colors.greens[5]};
+        background-color: ${props.theme.colors.greens[7]};
         color: ${props.theme.colors.guidance.success[0]};
         fill: ${props.theme.colors.guidance.success[0]};
       }
@@ -80,8 +80,8 @@ const buttonVariant = props => {
       padding: 0;
       text-decoration: underline dotted;
       &:hover {
-        color: ${props.theme.colors.accent[4]};
-        fill: ${props.theme.colors.accent[4]};
+        color: ${props.theme.colors.accent[2]};
+        fill: ${props.theme.colors.accent[2]};
         text-decoration: underline;
       }
     `,
@@ -106,23 +106,23 @@ const buttonVariant = props => {
 const pressed = props => {
   const tertiary = css`
     background-color: ${props.theme.colors.grayscale[2]};
-    color: ${props.theme.colors.grayscale[8]};
+    color: ${props.theme.colors.grayscale[9]};
     &:hover {
-      background-color: ${props.theme.colors.grayscale[1]};
+      background-color: ${props.theme.colors.grayscale[4]};
     }
   `;
   const toggledVariants = {
     primary: css`
       background-color: ${props.theme.colors.accent[2]};
       &:hover {
-        background-color: ${props.theme.colors.accent[1]};
+        background-color: ${props.theme.colors.accent[4]};
       }
     `,
     secondary: css`
       background-color: ${props.theme.colors.grayscale[2]};
-      color: ${props.theme.colors.grayscale[8]};
+      color: ${props.theme.colors.grayscale[9]};
       &:hover {
-        background-color: ${props.theme.colors.grayscale[1]};
+        background-color: ${props.theme.colors.grayscale[4]};
       }
     `,
     tertiary,
@@ -130,19 +130,19 @@ const pressed = props => {
     warning: css`
       background-color: ${props.theme.colors.oranges[6]};
       &:hover {
-        background-color: ${props.theme.colors.guidance.warning[1]};
+        background-color: ${props.theme.colors.oranges[7]};
       }
     `,
     danger: css`
       background-color: ${props.theme.colors.reds[6]};
       &:hover {
-        background-color: ${props.theme.colors.guidance.error[1]};
+        background-color: ${props.theme.colors.reds[7]};
       }
     `,
     success: css`
       background-color: ${props.theme.colors.greens[6]};
       &:hover {
-        background-color: ${props.theme.colors.guidance.success[1]};
+        background-color: ${props.theme.colors.greens[7]};
       }
     `,
 
