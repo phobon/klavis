@@ -18,21 +18,27 @@ const extents = ({ theme, size }) => {
   };
 };
 
-const appearance = ({ variant, size, theme }) => {
+const appearance = ({ variant, size, theme, dataLength }) => {
   const sizes = {
     s: theme.space[4],
     m: theme.space[5],
     l: theme.space[6],
   };
 
+  const s = sizes[size];
+
+  // This width calculation is here to handle overflow and layout correctly
+  const width = (dataLength * s) - (dataLength * 6);
+
   const appearances = {
     'stack': {
       display: 'flex',
-      height: sizes[size],
+      height: s,
+      width, 
     },
     'grid': {
       display: 'grid',
-      gridTemplateColumns: `repeat(auto-fill, minmax(${sizes[size]}px, 1fr))`,
+      gridTemplateColumns: `repeat(auto-fill, minmax(${s}px, 1fr))`,
       gridAutoRows: 'auto',
     },
   };
@@ -69,12 +75,13 @@ const avatarPropTypes = {
 const AvatarGroup = ({ size, maxCount, data, variant, ...props }) => {
   const remainder = data.length - maxCount;
   const avatarData = remainder > 0 ? data.slice(0, maxCount) : data;
-  
+
   return (
     <Box
       position="relative"
       variant={variant}
       size={size}
+      dataLength={avatarData.length + (remainder > 0 ? 1 : 0)}
       css={appearance}
       {...props}>
       

@@ -144,13 +144,13 @@ const AvatarIndicator = ({ size, variant, name, onClick, ...props }) => {
   let width;
   let height;
   switch (size) {
-    case 'm':
-      width = 16;
-      height = 19;
+    case 's':
+      width = 9;
+      height = 10;
       break;
     case 'l':
-      width = 25;
-      height = 29;
+      width = 18;
+      height = 21;
       break;
     default:
       width = 12;
