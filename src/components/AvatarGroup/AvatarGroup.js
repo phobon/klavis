@@ -90,7 +90,7 @@ const AvatarGroup = ({ size, maxCount, data, variant, ...props }) => {
           length={avatarData.length}
           {...rest} />
       ))}
-      {remainder && (
+      {remainder > 0 && (
         <Box
           bg="grayscale.8"
           borderRadius={6}

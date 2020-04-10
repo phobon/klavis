@@ -144,3 +144,26 @@ export const withDifferentGridSizes = () => {
   );
 };
 
+export const withFewerThanMaxCount = () => {
+  const data = [{
+    name: 'First Person',
+    variant: 'glyph',
+    bg: 'cyans.6',
+    color: 'cyans.0',
+  }, {
+    name: 'Second Person',
+    variant: 'initials',
+    bg: 'oranges.6',
+    color: 'oranges.0',
+  }, {
+    name: 'Third Person',
+    variant: 'glyph',
+    bg: 'purples.6',
+  }]
+
+  return (
+    <AvatarGroup data={data} />
+  );
+};
+
+
