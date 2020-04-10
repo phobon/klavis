@@ -1,4 +1,5 @@
 import Avatar from './Avatar';
+import AvatarGroup from './AvatarGroup';
 import { Badge, withBadge } from './Badge';
 import { Button, SquareButton, CircleButton } from './Button';
 import PageHeader from './PageHeader';
@@ -13,6 +14,7 @@ import Toggle from './Toggle';
 
 export {
   Avatar,
+  AvatarGroup,
   Badge, withBadge,
   Button, SquareButton, CircleButton,
   PageHeader,

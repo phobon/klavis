@@ -14,18 +14,26 @@ const sizes = ['s', 'm', 'l'];
 const statuses = ['none', 'error', 'warning', 'success'];
 const presences = ['none', 'unknown', 'unavailable', 'busy', 'available'];
 
-export const withAvatarStyles = () => (
+export const withVariants = () => (
   <Stack space={3} flexDirection="row">
     <Avatar name="Fake Name" />
-    <Avatar name="Fake Name" avatarStyle="glyph" />
+    <Avatar name="Fake Name" variant="glyph" />
     <Avatar name="Fake Name" image="https://source.unsplash.com/random/50x50" />
+  </Stack>
+);
+
+export const withDifferentColours = () => (
+  <Stack space={3} flexDirection="row">
+    <Avatar name="Fake Name" variant="glyph" bg="violets.6" color="white" />
+    <Avatar name="Fake Name" variant="glyph" bg="cyans.6" color="cyans.2" />
+    <Avatar name="Fake Name" variant="glyph" bg="oranges.6" color="white" />
   </Stack>
 );
 
 export const withDifferentStatuses = () => {
   const glyphAvatars = Object.values(statuses).map(s => (
     <BoxListItem key={s}>
-      <Avatar name="Fake Name" avatarStyle="glyph" status={s} />
+      <Avatar name="Fake Name" variant="glyph" status={s} />
     </BoxListItem>
   ));
 
@@ -59,7 +67,7 @@ export const withDifferentStatuses = () => {
 export const withDifferentPresences = () => {
   const glyphAvatars = Object.values(presences).map(p => (
     <BoxListItem key={p}>
-      <Avatar name="Fake Name" avatarStyle="glyph" presence={p} />
+      <Avatar name="Fake Name" variant="glyph" presence={p} />
     </BoxListItem>
   ));
 
@@ -93,7 +101,7 @@ export const withDifferentPresences = () => {
 export const withDifferentSizes = () => {
   const glyphAvatars = Object.values(sizes).map(s => (
     <BoxListItem key={s}>
-      <Avatar name="Fake Name" avatarStyle="glyph" size={s} />
+      <Avatar name="Fake Name" variant="glyph" size={s} />
     </BoxListItem>
   ));
 

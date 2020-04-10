@@ -1,5 +1,6 @@
 import {
   Avatar,
+  AvatarGroup,
   Badge, withBadge,
   Button, SquareButton, CircleButton,
   PageHeader,
@@ -26,6 +27,7 @@ import {
 
 export {
   Avatar,
+  AvatarGroup,
   Badge, withBadge,
   Button, SquareButton, CircleButton,
   PageHeader,
