@@ -3,9 +3,6 @@ import React from 'react';
 import { Box } from '@phobon/base';
 import PropTypes from 'prop-types';
 
-// eslint-disable-next-line no-unused-vars
-import styled from 'styled-components/macro'
-
 import Avatar from '../Avatar';
 
 const extents = ({ theme, size }) => {
