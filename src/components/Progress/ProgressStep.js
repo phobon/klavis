@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import themeGet from '@styled-system/theme-get';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 import { Box } from '@phobon/base';
 
@@ -89,7 +90,9 @@ const labels = props => props.showLabels && css`
   }
 `;
 
-const ProgressStepButton = styled.button`
+const ProgressStepButton = styled('button').withConfig({
+  shouldForwardProp,
+})`
   border: 0;
   padding: 0;
   background-color: ${props => themeGet(`colors.${props.bg}`, props.theme.colors.grayscale[6])};

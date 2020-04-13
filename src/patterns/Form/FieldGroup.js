@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { Box } from '@phobon/base';
@@ -44,12 +44,13 @@ const FieldBox = styled(Box)`
   }
 `; 
 
-const FieldGroup = ({ children, childrenPerRow, ...props }) => {
+const FieldGroup = forwardRef(({ children, childrenPerRow, ...props }, ref) => {
   const { density } = useContext(FormFieldContext);
   const noMargin = children.length <= childrenPerRow;
 
   return (
     <FieldBox
+      ref={ref}
       {...props}
       childrenPerRow={childrenPerRow}
       removeBottomMargin={noMargin}
@@ -60,7 +61,7 @@ const FieldGroup = ({ children, childrenPerRow, ...props }) => {
       {children}
     </FieldBox>
   )
-};
+});
 
 FieldGroup.propTypes = {
   ...Box.propTypes,

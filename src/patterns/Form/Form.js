@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled, { css }  from 'styled-components';
 import { space as styledSpace, width, height, alignItems as styledAlignItems, justifyContent as styledJustifyContent } from 'styled-system';
 import PropTypes from 'prop-types';
 import { fullWidth, fullHeight } from '@phobon/base';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 import FormFieldContext from './FormFieldContext';
 
@@ -22,7 +23,9 @@ const informationDensity = props => {
   return densities[props.density];
 };
 
-const StyledForm = styled.form`
+const StyledForm = styled('form').withConfig({
+  shouldForwardProp,
+})`
   box-sizing: border-box;
   display: flex;
   flex: none;
@@ -51,7 +54,7 @@ const StyledForm = styled.form`
   }
 `;
 
-const Form = ({
+const Form = forwardRef(({
   children,
   density,
   optionalLabel,
@@ -59,8 +62,8 @@ const Form = ({
   alignItems,
   justifyContent,
   disabled,
-  ...props }) => (
-    <StyledForm {...props} flexDirection={flexDirection} alignItems={alignItems} justifyContent={justifyContent} density={density}>
+  ...props }, ref) => (
+    <StyledForm ref={ref} {...props} flexDirection={flexDirection} alignItems={alignItems} justifyContent={justifyContent} density={density}>
       <FormFieldContext.Provider value={{
         density,
         flexDirection,
@@ -72,7 +75,7 @@ const Form = ({
         {children}
       </FormFieldContext.Provider>
     </StyledForm>
-);
+));
 
 Form.propTypes = {
   ...styledSpace.propTypes,

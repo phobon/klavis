@@ -1,10 +1,13 @@
 /* eslint-disable react/default-props-match-prop-types */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { space, border as styledBorder, color as styledColor, borderRadius as styledBorderRadius } from 'styled-system';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
-import { Box, Image, Text, focus, Vector } from '@phobon/base';
+import { Box, Image, Text, focus } from '@phobon/base';
+
+import User from '../../icons/User';
 
 const statusColor = props => {
   const statusColors = {
@@ -63,7 +66,9 @@ const statusElements = props => {
   return sizes[props.size];
 };
 
-const AvatarBox = styled.div`
+const AvatarBox = styled('div').withConfig({
+  shouldForwardProp,
+})`
   display: flex;
   flex: none;
   align-items: center;
@@ -115,7 +120,9 @@ const avatarFontSize = props => {
   return fontSizes[props.size];
 };
 
-const AvatarIndicatorButton = styled.button`
+const AvatarIndicatorButton = styled('button').withConfig({
+  shouldForwardProp,
+})`
   width: inherit;
   height: inherit;
   font-size: inherit;
@@ -162,9 +169,7 @@ const AvatarIndicator = ({ size, variant, name, onClick, ...props }) => {
       {variant === 'initials'
         ? <Text fontSize="inherit" color="inherit" lineHeight={0}>{name.split(' ').reduce((acc, current) => acc.charAt(0) + current.charAt(0)).substr(0, 2)}</Text>
         : (
-          <Vector width={width} height={height} viewBox="0 0 12 14" fill="none">
-            <path fillRule="evenodd" clipRule="evenodd" d="M8.00963 7.38803C9.13468 6.68014 9.88232 5.42738 9.88232 4C9.88232 1.79086 8.09146 0 5.88232 0C3.67319 0 1.88232 1.79086 1.88232 4C1.88232 5.42739 2.62998 6.68016 3.75504 7.38805C1.85046 8.11041 0.409278 9.77449 0 11.8118C1.57752 13.1753 3.63362 14 5.88236 14C8.13109 14 10.1872 13.1753 11.7647 11.8118C11.3554 9.77448 9.91424 8.11038 8.00963 7.38803Z" fill="white" />
-          </Vector>
+          <User width={width} height={height} fill="white" />
         )}
     </AvatarIndicatorButton>
   );
@@ -181,7 +186,7 @@ AvatarIndicator.defaultProps = {
   onClick: null,
 };
 
-const Avatar = ({
+const Avatar = forwardRef(({
   image,
   name,
   size,
@@ -194,11 +199,12 @@ const Avatar = ({
   border,
   borderColor,
   ...props
-}) => (
+}, ref) => (
   <AvatarBox
+    ref={ref}
     size={size}
     borderRadius={borderRadius}
-    className={`grimoire__avatar ${className}`}
+    className={`grimoire__avatar ${className ?? ''}`}
     {...props}>
     {image 
       ? (
@@ -208,7 +214,7 @@ const Avatar = ({
       )
       : <AvatarIndicator size={size} onClick={onClick} variant={variant} name={name} bg={bg} color={color} borderRadius={borderRadius} border={border} borderColor={borderColor} />}
   </AvatarBox>
-);
+));
 
 Avatar.displayName = 'Avatar';
 

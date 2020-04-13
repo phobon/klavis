@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import { compose, space, color, fontSize, lineHeight, borderRadius } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 const tagStyles = compose(space, color, fontSize, lineHeight, borderRadius);
 
-const Tag = styled.div({
+const Tag = styled('div').withConfig({
+  shouldForwardProp,
+})({
   maxWidth: '26rem',
   overflow: 'hidden',
   whiteSpace: 'nowrap',

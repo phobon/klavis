@@ -1,5 +1,5 @@
 /* eslint-disable react/default-props-match-prop-types */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import { Box } from '@phobon/base';
 import PropTypes from 'prop-types';
 
@@ -72,7 +72,7 @@ const avatarPropTypes = {
   color: PropTypes.string,
 };
 
-const AvatarGroup = ({ size, maxCount, data, variant, ...props }) => {
+const AvatarGroup = forwardRef(({ size, maxCount, data, variant, ...props }, ref) => {
   const remainder = data.length - maxCount;
   const avatarData = remainder > 0 ? data.slice(0, maxCount) : data;
 
@@ -83,6 +83,7 @@ const AvatarGroup = ({ size, maxCount, data, variant, ...props }) => {
       size={size}
       dataLength={avatarData.length + (remainder > 0 ? 1 : 0)}
       css={appearance}
+      ref={ref}
       {...props}>
       
       {avatarData.map(({ name, variant: avatarVariant, ...rest }, i) => (
@@ -115,7 +116,7 @@ const AvatarGroup = ({ size, maxCount, data, variant, ...props }) => {
       )}
     </Box>
   );
-};
+});
 
 AvatarGroup.displayName = 'AvatarGroup';
 

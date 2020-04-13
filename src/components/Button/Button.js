@@ -3,6 +3,8 @@ import { cover, focus, gridPosition } from '@phobon/base';
 import { compose, space, layout, border, flexbox, typography, position } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
 import PropTypes from 'prop-types';
+import shouldForwardProp from '@styled-system/should-forward-prop';
+
 import withTooltip from '../Tooltip';
 
 const buttonVariant = props => {
@@ -190,7 +192,9 @@ const size = props => {
 
 const buttonStyles = compose(space, layout, border, flexbox, typography, position);
 
-const Button = styled.button.attrs(props => ({
+const Button = styled('button').withConfig({
+  shouldForwardProp,
+}).attrs(props => ({
   'aria-pressed': props.toggled ? 'true' : undefined,
 }))`
   box-sizing: border-box;

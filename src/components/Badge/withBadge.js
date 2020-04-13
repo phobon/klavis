@@ -1,14 +1,17 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled from 'styled-components';
 import { compose, space, layout, position as styledPosition } from 'styled-system';
 import themeGet from '@styled-system/theme-get';
 import PropTypes from 'prop-types';
 import { destructureLayoutProps, gridPosition } from '@phobon/base';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 const badgeStyles = compose(space, layout, styledPosition, gridPosition);
 
-const BadgeContainer = styled.div`
+const BadgeContainer = styled('div').withConfig({
+  shouldForwardProp,
+})`
   ${badgeStyles}
 
   &::before {
@@ -63,17 +66,17 @@ const BadgeContainer = styled.div`
   }
 `;
 
-const withBadge = WrappedComponent => ({
+const withBadge = WrappedComponent => forwardRef(({
   badge,
   badgePosition = 'topleft',
   badgeBg = 'grayscale.2',
   badgeColor = 'white',
   badgeOffset = 2,
-  ...props }) => {
+  ...props }, ref) => {
   // If there is no badge to display here, then just render the Wrapped component.
   if (!badge) {
     return (
-      <WrappedComponent {...props} />
+      <WrappedComponent {...props} ref={ref} />
     );
   }
 
@@ -93,10 +96,10 @@ const withBadge = WrappedComponent => ({
       badgeBg={badgeBg}
       badgeColor={badgeColor}
       badgeOffset={badgeOffset}>
-      <WrappedComponent color={_color} bg={bg} {...passthroughProps} fullWidth={fullWidth || width != null} fullHeight={fullHeight || height != null} onClick={onClick} />
+      <WrappedComponent ref={ref} color={_color} bg={bg} {...passthroughProps} fullWidth={fullWidth || width != null} fullHeight={fullHeight || height != null} onClick={onClick} />
     </BadgeContainer>
   );
-};
+});
 
 withBadge.propTypes = {
   /** Badge background colour */

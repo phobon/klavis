@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -53,14 +53,14 @@ const NotificationsBox = styled(Stack)`
 const NotificationContainer = motion.custom(Box);
 const Lifebar = motion.custom(Box);
 
-const Notifications = ({
+const Notifications = forwardRef(({
   children,
   timeout,
   showLife,
   config,
   notificationPosition: initialNotificationPosition,
   width,
-  ...props }) => {
+  ...props }, ref) => {
   const [items, setItems] = useState([]);
   const [notificationPosition, setNotificationPosition] = useState(initialNotificationPosition);
 
@@ -89,7 +89,7 @@ const Notifications = ({
             gridTemplateAreas="'topleft top topright'
                               'left middle right'
                               'bottomleft bottom bottomright'">
-            <NotificationsBox space={3} fullHeight css={{ gridArea: notificationPosition }} width={width} flexDirection="column" notificationPosition={notificationPosition}>
+            <NotificationsBox ref={ref} space={3} fullHeight css={{ gridArea: notificationPosition }} width={width} flexDirection="column" notificationPosition={notificationPosition}>
               <AnimatePresence>
                 {items.map(({ key, content, canDismiss, color, showLife: showLifeItem, ...rest }) => {
                   const showLifebar = typeof showLifeItem === 'undefined' ? showLife : showLifeItem;
@@ -144,7 +144,7 @@ const Notifications = ({
       </>
     </NotificationsContext.Provider>
   );
-};
+});
 
 Notifications.propTypes = {
   children: PropTypes.node,

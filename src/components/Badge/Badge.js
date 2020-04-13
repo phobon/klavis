@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import { compose, color, space } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 const badgeStyles = compose(space, color);
 
-const Badge = styled.div`
+const Badge = styled('div').withConfig({
+  shouldForwardProp,
+})`
   min-width: ${props => props.theme.space[4]}px;
   max-width: ${props => props.theme.space[6]}px;
   height: ${props => props.theme.space[4]}px;

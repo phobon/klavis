@@ -1,10 +1,10 @@
 /* eslint-disable react/default-props-match-prop-types */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 import { Box, Heading, Text } from '@phobon/base';
 
-const PageHeader = ({ heading, tagLine, actions, children, ...props }) => {
+const PageHeader = forwardRef(({ heading, tagLine, actions, children, ...props }, ref) => {
   let tagLineControl = null;
   if (tagLine) {
     tagLineControl = React.isValidElement(tagLine) ? tagLine : (
@@ -13,7 +13,7 @@ const PageHeader = ({ heading, tagLine, actions, children, ...props }) => {
   }
 
   return (
-    <Box fullWidth flexDirection="column" alignItems="flex-start" {...props}>
+    <Box ref={ref} fullWidth flexDirection="column" alignItems="flex-start" {...props}>
       {tagLineControl}
 
       <Box fullWidth justifyContent="space-between" mb={children && 2} alignItems="flex-start">
@@ -24,7 +24,7 @@ const PageHeader = ({ heading, tagLine, actions, children, ...props }) => {
       {children}
     </Box>
   );
-};
+});
 
 PageHeader.displayName = 'PageHeader';
 

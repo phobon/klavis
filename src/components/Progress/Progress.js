@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import propTypes from '@styled-system/prop-types';
 import themeGet from '@styled-system/theme-get';
@@ -51,7 +51,7 @@ const PercentageBar = styled(Flex)`
   }
 `;
 
-const Progress = ({ id, children, mode, fontSize, color, bg, orientation, space, ...props }) => {
+const Progress = forwardRef(({ id, children, mode, fontSize, color, bg, orientation, space, ...props }, ref) => {
   let currentShown = false;
   let currentIndex = 0;
 
@@ -95,6 +95,7 @@ const Progress = ({ id, children, mode, fontSize, color, bg, orientation, space,
 
   return (
     <BoxList
+      ref={ref}
       flexDirection={orientation === 'horizontal' ? 'row' : 'column'}
       fullWidth={mode === 'full' && orientation === 'horizontal'}
       fullHeight={mode === 'full' && orientation === 'vertical'}
@@ -107,7 +108,7 @@ const Progress = ({ id, children, mode, fontSize, color, bg, orientation, space,
       {mappedChildren}
     </BoxList>
   )
-};
+});
 
 Progress.propTypes = {
   ...propTypes.color,

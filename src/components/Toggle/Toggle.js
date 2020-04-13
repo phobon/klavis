@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { compose, space, borderRadius, position } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
 import themeGet from '@styled-system/theme-get';
 import { focus, Vector, gridPosition } from '@phobon/base'
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 import withTooltip from '../Tooltip';
 
@@ -49,7 +50,9 @@ const toggleSize = props => {
 
 const toggleButtonStyles = compose(space, borderRadius, position);
 
-const ToggleButton = styled.button`
+const ToggleButton = styled('button').withConfig({
+  shouldForwardProp,
+})`
   display: flex;
   box-sizing: border-box;
   position: relative;
@@ -122,13 +125,14 @@ const ToggleButton = styled.button`
   }
 `;
 
-const Toggle = ({ toggled, disabled, size, ...props }) => (
+const Toggle = forwardRef(({ toggled, disabled, size, ...props }, ref) => (
   <ToggleButton
     aria-checked={toggled}
     aria-readonly={disabled}
     disabled={disabled}
     borderRadius={5}
     size={size}
+    ref={ref}
     role="switch"
     {...props}>
     {!toggled && (
@@ -137,7 +141,7 @@ const Toggle = ({ toggled, disabled, size, ...props }) => (
       </Vector>
     )}
   </ToggleButton>
-);
+));
 
 Toggle.propTypes = {
   ...propTypes.space,

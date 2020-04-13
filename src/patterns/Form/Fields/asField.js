@@ -5,7 +5,7 @@ import { Flex, Box, Label, Text } from '@phobon/base';
 
 import FormFieldContext from '../FormFieldContext';
 
-import AlertDiamond from '../../../icons/AlertDiamond';
+import AlertCircle from '../../../icons/AlertCircle';
 
 const asField = WrappedComponent => 
   ({ label, id, required = false, invalid, hint, visible = true, className, disabled, useUnprocessed = false, flex, flexBasis, ...props }) => {
@@ -38,7 +38,7 @@ const asField = WrappedComponent =>
   if (invalid) {
     invalidElement = (
       <Box mt={2} color="reds.2">
-        <AlertDiamond size={16} />
+        <AlertCircle width={16} height={16} />
         {React.isValidElement(invalid) ? invalid : <Text ml={1} fontSize={0} color="guidance.error.0">{invalid}</Text>}
       </Box>
     );

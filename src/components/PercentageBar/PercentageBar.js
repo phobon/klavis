@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/default-props-match-prop-types */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { color } from 'styled-system';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 import { Box } from '@phobon/base';
 
@@ -31,7 +32,9 @@ const heights = props => {
   return heightValues[props.size];
 };
 
-const PercentageBarElement = styled.div.attrs(props => ({
+const PercentageBarElement = styled('div').withConfig({
+  shouldForwardProp,
+}).attrs(props => ({
   progressTranslate: `translateX(-${100 - props.percentage}%)`,
 }))`
   ${color}
@@ -57,7 +60,7 @@ const PercentageBarElement = styled.div.attrs(props => ({
   }
 `;
 
-const PercentageBar = ({
+const PercentageBar = forwardRef(({
   heading,
   total,
   complete,
@@ -67,7 +70,7 @@ const PercentageBar = ({
   size,
   bg,
   ...props
-}) => {
+}, ref) => {
   const rawPercentage = complete / total;
   const percentage = rawPercentage * 100;
   const percentageString = `${percentage}%`;
@@ -75,6 +78,7 @@ const PercentageBar = ({
   return (
     <Box
       fullWidth
+      ref={ref}
       {...props}
       flexDirection="column"
       alignItems="flex-start"
@@ -97,7 +101,7 @@ const PercentageBar = ({
       </Box>
     </Box>
   )
-};
+});
 
 PercentageBar.propTypes = {
   /** Optional heading slot */

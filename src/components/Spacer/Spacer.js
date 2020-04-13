@@ -2,10 +2,13 @@ import styled from 'styled-components';
 import { compose, color, space, width, height, minWidth, minHeight } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
 import PropTypes from 'prop-types';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 const spacerStyles = compose(color, space, width, height, minWidth, minHeight);
 
-const Spacer = styled.span(props => ({
+const Spacer = styled('span').withConfig({
+  shouldForwardProp,
+})(props => ({
   minWidth: 0,
   display: 'block',
   width: props.direction === 'horizontal' ? props.length : props.thickness,

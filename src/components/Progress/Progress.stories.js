@@ -56,7 +56,7 @@ const TestProgress = props => (
 export const withAndWithoutLabels = () => (
   <Box flexDirection="column" fullWidth p={7}>
     <TestProgress mb={8} />
-    <Progress>
+    <Progress id={uuidv4()}>
       <ProgressStep aria-label="step1" tooltip="First Step" />
       <ProgressStep aria-label="step2" tooltip="Second Step" />
       <ProgressStep aria-label="step3" tooltip="Third Step" />
@@ -107,14 +107,14 @@ export const withVerticalOrientation = () => (
 
 export const withCustomOnClicksForSteps = () => (
   <Box flexDirection="column" p={7}>
-    <Progress mb={8}>
+    <Progress id={uuidv4()} mb={8}>
       <ProgressStep aria-label="step1" label="First Step" onClick={action('First Step clicked')} />
       <ProgressStep aria-label="step1" label="Second Step" onClick={action('Second Step clicked')} />
       <ProgressStep aria-label="step1" label="Third Step" onClick={action('Third Step clicked')} current />
       <ProgressStep aria-label="step1" label="Fourth Step" onClick={action('Fourth Step clicked')} />
     </Progress>
 
-    <Progress mode="compact">
+    <Progress id={uuidv4()} mode="compact">
       <ProgressStep aria-label="step1" label="First Step" onClick={action('First Step clicked')} />
       <ProgressStep aria-label="step1" label="Second Step" onClick={action('Second Step clicked')} />
       <ProgressStep aria-label="step1" label="Third Step" onClick={action('Third Step clicked')} current />

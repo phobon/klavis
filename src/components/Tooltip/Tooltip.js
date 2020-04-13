@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { compose, space, layout, position } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
 import { cover } from '@phobon/base';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 const direction = props => {
   const tooltipDirections = {
@@ -61,7 +62,9 @@ const direction = props => {
 
 const tooltipStyles = compose(layout, position, space);
 
-const Tooltip = styled.div`
+const Tooltip = styled('div').withConfig({
+  shouldForwardProp,
+})`
   ${tooltipStyles}
 
   --factor: ${props => props.theme.space[1] + props.theme.space[props.offset]}px;

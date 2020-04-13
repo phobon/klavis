@@ -1,26 +1,23 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { forwardRef } from 'react';
+import { Vector } from '@phobon/base';
 
-const User = ({
-  size,
-  color,
-  ...props
-}) => (
-  <svg
+const User = forwardRef((props, ref) => (
+  <Vector
+    ref={ref}
     {...props}
-    viewBox="0 0 22 24"
-    width={size}
-    height={size}
-    fill={color}>
-    <path d="M0.5 23.25C0.5 23.6642 0.835786 24 1.25 24C1.66421 24 2 23.6642 2 23.25H0.5ZM20 23.25C20 23.6642 20.3358 24 20.75 24C21.1642 24 21.5 23.6642 21.5 23.25H20ZM11 1.5C13.4848 1.5 15.5 3.51521 15.5 6H17C17 2.68679 14.3132 0 11 0V1.5ZM15.5 6C15.5 8.48479 13.4848 10.5 11 10.5V12C14.3132 12 17 9.31321 17 6H15.5ZM11 10.5C8.51521 10.5 6.5 8.48479 6.5 6H5C5 9.31321 7.68679 12 11 12V10.5ZM6.5 6C6.5 3.51521 8.51521 1.5 11 1.5V0C7.68679 0 5 2.68679 5 6H6.5ZM2 23.25C2 18.2792 6.02921 14.25 11 14.25V12.75C5.20079 12.75 0.5 17.4508 0.5 23.25H2ZM11 14.25C15.9708 14.25 20 18.2792 20 23.25H21.5C21.5 17.4508 16.7992 12.75 11 12.75V14.25Z" />
-  </svg>
-);
+    viewBox="0 0 12 14">
+    <path fillRule="evenodd" clipRule="evenodd" d="M8.00963 7.38803C9.13468 6.68014 9.88232 5.42738 9.88232 4C9.88232 1.79086 8.09146 0 5.88232 0C3.67319 0 1.88232 1.79086 1.88232 4C1.88232 5.42739 2.62998 6.68016 3.75504 7.38805C1.85046 8.11041 0.409278 9.77449 0 11.8118C1.57752 13.1753 3.63362 14 5.88236 14C8.13109 14 10.1872 13.1753 11.7647 11.8118C11.3554 9.77448 9.91424 8.11038 8.00963 7.38803Z" />
+  </Vector>
+));
 
 User.displayName = 'User';
 
 User.defaultProps = {
-  size: 24,
-  color: 'currentcolor',
+  width: 21,
+  height: 24,
+  fill: 'currentcolor',
+  stroke: 'none',
 };
 
-export default User
+export default User;

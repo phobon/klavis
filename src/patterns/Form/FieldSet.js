@@ -1,14 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, forwardRef } from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { compose, space as spacing, color, borderRadius } from 'styled-system';
+import shouldForwardProp from '@styled-system/should-forward-prop';
 
 import FormFieldContext from './FormFieldContext';
 import asField from './Fields/asField';
 
 const fieldsetStyles = compose(spacing, color, borderRadius);
 
-const StyledFieldSet = styled.fieldset.attrs(props => ({
+const StyledFieldSet = styled('fieldset').withConfig({
+  shouldForwardProp,
+}).attrs(props => ({
   'aria-invalid': props.invalid ? true : undefined,
 }))`
   position: relative;
@@ -71,7 +74,7 @@ const informationDensity = density => {
   return densities[density];
 };
 
-const FieldSet = ({ id, disabled, invalid, children, ...props }) => {
+const FieldSet = forwardRef(({ id, disabled, invalid, children, ...props }, ref) => {
   const { density } = useContext(FormFieldContext);
   const mb = informationDensity(density);
 
@@ -80,11 +83,11 @@ const FieldSet = ({ id, disabled, invalid, children, ...props }) => {
     return React.cloneElement(c, { id: k, key: k, name: id, mb })
   });
   return (
-    <StyledFieldSet id={id} px={2} my={1} py={2} borderRadius={3} disabled={disabled} invalid={invalid} {...props}>
+    <StyledFieldSet ref={ref} id={id} px={2} my={1} py={2} borderRadius={3} disabled={disabled} invalid={invalid} {...props}>
       {inputs}
     </StyledFieldSet>
   );
-};
+});
 
 FieldSet.propTypes = {
   /** Field id */

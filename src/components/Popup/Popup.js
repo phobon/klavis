@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef, forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -111,7 +111,7 @@ const useAlignmentTransition = (popupDirection, isOpen, container, childrenCount
   };
 };
 
-const Popup = ({ trigger, children, label, closeAfterAction, className, as, popupDirection, ...props }) => {
+const Popup = forwardRef(({ trigger, children, label, closeAfterAction, className, as, popupDirection, ...props }, forwardedRef) => {
   // Set up state and refs.
   const [isOpen, setIsOpen] = useState(false);
   const container = useRef(null);
@@ -150,6 +150,7 @@ const Popup = ({ trigger, children, label, closeAfterAction, className, as, popu
         className={className}
         {...passthroughProps}
         toggled={isOpen}
+        ref={forwardedRef}
         aria-expanded={isOpen}
         onClick={onClick}>
         {trigger}
@@ -174,7 +175,7 @@ const Popup = ({ trigger, children, label, closeAfterAction, className, as, popu
       </AnimatePresence>
     </Box>
   );
-}
+});
 
 Popup.propTypes = {
   ...Button.propTypes,

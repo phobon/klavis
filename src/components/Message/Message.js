@@ -1,10 +1,9 @@
 /* eslint-disable react/default-props-match-prop-types */
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
-import { compose, space, fontSize, borderRadius, flexbox } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
-import { Flex } from '@phobon/base'
+import { Box, Flex } from '@phobon/base'
 
 const variantColour = props => {
   const variants = {
@@ -48,14 +47,9 @@ const variantColour = props => {
   return variants[props.variant];
 };
 
-const messageStyles = compose(space, fontSize, borderRadius, flexbox);
-
-const MessageContainer = styled.div.attrs(props => ({
+const MessageContainer = styled(Box).attrs(props => ({
   'aria-live': props.variant === 'error' || props.variant === 'warning' ? 'assertive' : 'polite',
 }))`
-  display: flex;
-
-  ${messageStyles}
   ${variantColour}
 
   > svg {
@@ -63,17 +57,18 @@ const MessageContainer = styled.div.attrs(props => ({
   }
 `;
 
-const Message = ({ children, variant, glyph, ...props }) => (
+const Message = forwardRef(({ children, variant, glyph, ...props }, ref) => (
   <MessageContainer
     variant={variant}
     role="alert"
+    ref={ref}
     {...props}>
     {glyph}
     <Flex color="inherit" bg="inherit" justifyContent="flex-start" flexDirection="column" alignItems="flex-start">
       {children}
     </Flex>
   </MessageContainer>
-);
+));
 
 Message.displayName = 'Message';
 
