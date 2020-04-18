@@ -1924,11 +1924,12 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@phobon/base@^2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-2.4.0.tgz#7e6ef424d559aa8361bc5ba65354baf9558cb87e"
-  integrity sha512-+Z9Rji40nFMVuS3QWXsQ0N1qVXV5DO26vpmzeERyKukORboFvcVrxJPMCKdW7syvkngLbVc48du8I4b30RMGUg==
+"@phobon/base@^2.5.0":
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-2.5.0.tgz#0014f9bb85439aeef3b0335014c69748b23c7071"
+  integrity sha512-SBd0YlUesj+hS5TQdPFjdcZInnHNiF5kHQgIKAs11W5oFi8pTpS7g5CDZG6WErQebJx7/bkcjFAckpjGlhun0g==
   dependencies:
+    "@phobon/hooks" "^1.1.0"
     "@storybook/addon-info" "^5.3.18"
     "@storybook/addon-knobs" "^5.3.18"
     "@styled-system/prop-types" "^5.0.8"
@@ -1936,10 +1937,10 @@
     "@styled-system/theme-get" "^5.0.6"
     react-test-render "^1.1.2"
 
-"@phobon/hooks@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@phobon/hooks/-/hooks-1.0.0.tgz#767a5f1f99bb12f6c5d5b929895a60d731535d4b"
-  integrity sha512-4Ply6oqHNxz3wjNmKRcDtsyKlEZy1KViU6X05pdZ+Gwd+XSL01I3eIaFsDncHHlV6QwUSL6+4hqf1WruVmJLcg==
+"@phobon/hooks@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@phobon/hooks/-/hooks-1.1.0.tgz#aadbe5afccc6d875aeedf06efa92551c56210f8d"
+  integrity sha512-EVl00qM/Jq2It/vZkze1Q4Vcth9pV80OZhlTwFZKw/0BN46WiR+Im7orQnnPAenOHX706quvU4R7z+LmyO2r7w==
 
 "@popmotion/easing@^1.0.1", "@popmotion/easing@^1.0.2":
   version "1.0.2"
