@@ -1,7 +1,7 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
 
-import { Stack, BoxList, BoxListItem } from '@phobon/base';
+import { Stack, Box } from '@phobon/base';
 
 import Avatar from './Avatar';
 
@@ -32,111 +32,111 @@ export const withDifferentColours = () => (
 
 export const withDifferentStatuses = () => {
   const glyphAvatars = Object.values(statuses).map(s => (
-    <BoxListItem key={s}>
+    <Box as="li" key={s}>
       <Avatar name="Fake Name" variant="glyph" status={s} />
-    </BoxListItem>
+    </Box>
   ));
 
   const initialsAvatars = Object.values(statuses).map(s => (
-    <BoxListItem key={s}>
+    <Box as="li" key={s}>
       <Avatar name="Fake Name" status={s} />
-    </BoxListItem>
+    </Box>
   ));
 
   const imageAvatars = Object.values(statuses).map(s => (
-    <BoxListItem key={s}>
+    <Box as="li" key={s}>
       <Avatar name="Fake Name" status={s} image="https://source.unsplash.com/random/50x50" />
-    </BoxListItem>
+    </Box>
   ));
 
   return (
     <Stack space={5}>
-      <BoxList space={3} flexDirection="row">
+      <Stack as="ul" space={3} flexDirection="row">
         {glyphAvatars}
-      </BoxList>
-      <BoxList space={3} flexDirection="row">
+      </Stack>
+      <Stack as="ul" space={3} flexDirection="row">
         {initialsAvatars}
-      </BoxList>
-      <BoxList space={3} flexDirection="row">
+      </Stack>
+      <Stack as="ul" space={3} flexDirection="row">
         {imageAvatars}
-      </BoxList>
+      </Stack>
     </Stack>
   );
 };
 
 export const withDifferentPresences = () => {
   const glyphAvatars = Object.values(presences).map(p => (
-    <BoxListItem key={p}>
+    <Box as="li" key={p}>
       <Avatar name="Fake Name" variant="glyph" presence={p} />
-    </BoxListItem>
+    </Box>
   ));
 
   const initialsAvatars = Object.values(presences).map(p => (
-    <BoxListItem key={p}>
+    <Box as="li" key={p}>
       <Avatar name="Fake Name" presence={p} />
-    </BoxListItem>
+    </Box>
   ));
 
   const imageAvatars = Object.values(presences).map(p => (
-    <BoxListItem key={p}>
+    <Box as="li" key={p}>
       <Avatar name="Fake Name" presence={p} image="https://source.unsplash.com/random/50x50" />
-    </BoxListItem>
+    </Box>
   ));
 
   return (
     <Stack space={5}>
-      <BoxList space={3} flexDirection="row">
+      <Stack as="ul" space={3} flexDirection="row">
         {glyphAvatars}
-      </BoxList>
-      <BoxList space={3} flexDirection="row">
+      </Stack>
+      <Stack as="ul" space={3} flexDirection="row">
         {initialsAvatars}
-      </BoxList>
-      <BoxList space={3} flexDirection="row">
+      </Stack>
+      <Stack as="ul" space={3} flexDirection="row">
         {imageAvatars}
-      </BoxList>
+      </Stack>
     </Stack>
   );
 };
 
 export const withDifferentSizes = () => {
   const glyphAvatars = Object.values(sizes).map(s => (
-    <BoxListItem key={s}>
+    <Box as="li" key={s}>
       <Avatar name="Fake Name" variant="glyph" size={s} />
-    </BoxListItem>
+    </Box>
   ));
 
   const initialsAvatars = Object.values(sizes).map(s => (
-    <BoxListItem key={s}>
+    <Box as="li" key={s}>
       <Avatar name="Fake Name" size={s} />
-    </BoxListItem>
+    </Box>
   ));
 
   const imageAvatars = Object.values(sizes).map(s => (
-    <BoxListItem key={s}>
+    <Box as="li" key={s}>
       <Avatar name="Fake Name" size={s} image="https://source.unsplash.com/random/50x50" />
-    </BoxListItem>
+    </Box>
   ));
 
   const statusPresenceAvatars = Object.values(sizes).map(s => (
-    <BoxListItem key={s}>
+    <Box as="li" key={s}>
       <Avatar name="Fake Name" size={s} status="warning" presence="unknown" />
-    </BoxListItem>
+    </Box>
   ));
 
   return (
     <Stack space={5}>
-      <BoxList space={3} flexDirection="row">
+      <Stack as="ul" space={3} flexDirection="row">
         {glyphAvatars}
-      </BoxList>
-      <BoxList space={3} flexDirection="row">
+      </Box>
+      <Stack as="ul" space={3} flexDirection="row">
         {initialsAvatars}
-      </BoxList>
-      <BoxList space={3} flexDirection="row">
+      </Box>
+      <Stack as="ul" space={3} flexDirection="row">
         {imageAvatars}
-      </BoxList>
-      <BoxList space={3} flexDirection="row">
+      </Box>
+      <Stack as="ul" space={3} flexDirection="row">
         {statusPresenceAvatars}
-      </BoxList>
+      </Box>
     </Stack>
   );
 };

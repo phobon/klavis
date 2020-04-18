@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import propTypes from '@styled-system/prop-types';
 import themeGet from '@styled-system/theme-get';
 import styled, { css } from 'styled-components';
-import { Flex, BoxList, BoxListItem } from '@phobon/base';
+import { Flex, Stack, Box } from '@phobon/base';
 
 import ProgressStep from './ProgressStep';
 
@@ -70,7 +70,7 @@ const Progress = forwardRef(({ id, children, mode, fontSize, color, bg, orientat
 
     const complete = !currentShown;
     return (
-      <BoxListItem key={`${id}__step${i}`} flex={!isLast && mode === 'full' ? '1 1 auto' : 'none'} flexDirection="inherit">
+      <Box as="li" key={`${id}__step${i}`} flex={!isLast && mode === 'full' ? '1 1 auto' : 'none'} flexDirection="inherit">
         <ProgressStep
           {...stepProps}
           orientation={orientation}
@@ -89,12 +89,13 @@ const Progress = forwardRef(({ id, children, mode, fontSize, color, bg, orientat
         </ProgressStep>
 
         {!isLast && mode === 'full' && <PercentageBar complete={complete} color={color} bg={bg} orientation={orientation} space={space} />}
-      </BoxListItem>
+      </Box>
     );
   }).filter(n => n);
 
   return (
-    <BoxList
+    <Stack
+      as="ul"
       ref={ref}
       flexDirection={orientation === 'horizontal' ? 'row' : 'column'}
       fullWidth={mode === 'full' && orientation === 'horizontal'}
@@ -106,8 +107,8 @@ const Progress = forwardRef(({ id, children, mode, fontSize, color, bg, orientat
       aria-valuemin="0"
       aria-valuemax="100">
       {mappedChildren}
-    </BoxList>
-  )
+    </Stack>
+  );
 });
 
 Progress.propTypes = {
