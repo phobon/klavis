@@ -2,7 +2,8 @@ import React, { useState, useEffect, useCallback, useRef, forwardRef } from 'rea
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { Box, Card, useWindowSize, destructureLayoutProps } from '@phobon/base';
+import { Box, Card, destructureLayoutProps } from '@phobon/base';
+import { useWindowSize } from '@phobon/hooks';
 
 import { Button } from '../Button';
 
