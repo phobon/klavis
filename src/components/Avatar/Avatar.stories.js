@@ -127,16 +127,16 @@ export const withDifferentSizes = () => {
     <Stack space={5}>
       <Stack as="ul" space={3} flexDirection="row">
         {glyphAvatars}
-      </Box>
+      </Stack>
       <Stack as="ul" space={3} flexDirection="row">
         {initialsAvatars}
-      </Box>
+      </Stack>
       <Stack as="ul" space={3} flexDirection="row">
         {imageAvatars}
-      </Box>
+      </Stack>
       <Stack as="ul" space={3} flexDirection="row">
         {statusPresenceAvatars}
-      </Box>
+      </Stack>
     </Stack>
   );
 };
