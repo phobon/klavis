@@ -1,7 +1,7 @@
 /* eslint-disable react/prefer-stateless-function */
 import React, { useContext, forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import { Flex, Text, Checkbox, Box } from '@phobon/base';
+import { Text, Checkbox, Box } from '@phobon/base';
 
 import FormFieldContext from '../FormFieldContext';
 
@@ -46,7 +46,8 @@ const CheckboxField = forwardRef(({ label, id, required = false, invalid, hint, 
   }
 
   return (
-    <Flex
+    <Box
+      flex={1}
       className="form__field"
       flexDirection="column"
       alignItems="flex-start"
@@ -72,7 +73,7 @@ const CheckboxField = forwardRef(({ label, id, required = false, invalid, hint, 
           </>
         )} />
       {invalidElement || hintElement}
-    </Flex>
+    </Box>
   );
 });
 

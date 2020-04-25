@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
-import { Flex, Box, Label, Text } from '@phobon/base';
+import { Box, Label, Text } from '@phobon/base';
 
 import FormFieldContext from '../FormFieldContext';
 
@@ -45,7 +45,7 @@ const asField = WrappedComponent =>
   }
 
   return (
-    <Flex
+    <Box
       className="form__field"
       flexDirection="column"
       alignItems="flex-start"
@@ -66,7 +66,7 @@ const asField = WrappedComponent =>
             {!required && optionalLabel && <Text as="span" color="grayscale.4" ml={1}>{`(${optionalLabel()})`}</Text>}
           </Label>
         )}
-        <Flex fullWidth>
+        <Box flex={1} fullWidth>
           <WrappedComponent
             id={id}
             fullWidth
@@ -75,10 +75,10 @@ const asField = WrappedComponent =>
             className={className}
             invalid={invalid}
             disabled={fieldDisabled} />
-        </Flex>
+        </Box>
       </Box>
       {invalidElement || hintElement}
-    </Flex>
+    </Box>
   );
 };
 

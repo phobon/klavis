@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import propTypes from '@styled-system/prop-types';
-import { Box, Flex } from '@phobon/base'
+import { Box } from '@phobon/base'
 
 const variantColour = props => {
   const variants = {
@@ -64,9 +64,9 @@ const Message = forwardRef(({ children, variant, glyph, ...props }, ref) => (
     ref={ref}
     {...props}>
     {glyph}
-    <Flex color="inherit" bg="inherit" justifyContent="flex-start" flexDirection="column" alignItems="flex-start">
+    <Box flex={1} color="inherit" bg="inherit" justifyContent="flex-start" flexDirection="column" alignItems="flex-start">
       {children}
-    </Flex>
+    </Box>
   </MessageContainer>
 ));
 

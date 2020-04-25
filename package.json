@@ -1,6 +1,6 @@
 {
   "name": "@phobon/grimoire",
-  "version": "0.12.3",
+  "version": "0.12.4",
   "description": "Component patterns using @phobon/base",
   "main": "dist/index.js",
   "author": "Ben McCormick",
@@ -27,7 +27,7 @@
     "@babel/plugin-transform-regenerator": "^7.8.3",
     "@babel/preset-env": "^7.8.6",
     "@babel/preset-react": "^7.8.3",
-    "@phobon/base": "^2.6.0",
+    "@phobon/base": "^2.7.0",
     "@phobon/hooks": "^1.1.0",
     "@storybook/addon-a11y": "^5.3.18",
     "@storybook/addon-actions": "^5.3.18",

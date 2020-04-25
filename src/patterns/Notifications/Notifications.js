@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { Flex, Box, Stack, Card, Grid, usePortal } from '@phobon/base';
+import { Box, Stack, Card, Grid, usePortal } from '@phobon/base';
 
 import Remove from '../../icons/Remove';
 
@@ -105,10 +105,10 @@ const Notifications = forwardRef(({
                       animate={{ opacity: 1, translateY: 0 }}
                       exit={{ opacity: 0, translateX: 24, transition: { duration: 0.2 } }}>
                       <NotificationCard fullWidth {...props}>
-                        <Flex css={{ position: 'relative', overflow: 'hidden' }} justifyContent="flex-start" alignItems="flex-start" borderRadius="inherit" overflow="hidden">
-                          <Flex justifyContent="flex-start">
+                        <Box flex={1} css={{ position: 'relative', overflow: 'hidden' }} justifyContent="flex-start" alignItems="flex-start" borderRadius="inherit" overflow="hidden">
+                          <Box flex={1} justifyContent="flex-start">
                             {content}
-                          </Flex>
+                          </Box>
                           {canDismiss && (
                             <SquareButton
                               variant="tertiary"
@@ -133,7 +133,7 @@ const Notifications = forwardRef(({
                               bg={color || 'grayscale.5'}
                               fullWidth />
                             )}
-                        </Flex>
+                        </Box>
                       </NotificationCard>
                     </NotificationContainer>
                   );

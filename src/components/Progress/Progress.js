@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import propTypes from '@styled-system/prop-types';
 import themeGet from '@styled-system/theme-get';
 import styled, { css } from 'styled-components';
-import { Flex, Stack, Box } from '@phobon/base';
+import { Stack, Box } from '@phobon/base';
 
 import ProgressStep from './ProgressStep';
 
@@ -35,7 +35,7 @@ const barOrientation = props => {
 
   return orientations[props.orientation];
 };
-const PercentageBar = styled(Flex)`
+const PercentageBar = styled(Box)`
   position: relative;
   pointer-events: none;
 
@@ -88,7 +88,7 @@ const Progress = forwardRef(({ id, children, mode, fontSize, color, bg, orientat
           )}
         </ProgressStep>
 
-        {!isLast && mode === 'full' && <PercentageBar complete={complete} color={color} bg={bg} orientation={orientation} space={space} />}
+        {!isLast && mode === 'full' && <PercentageBar flex={1} complete={complete} color={color} bg={bg} orientation={orientation} space={space} />}
       </Box>
     );
   }).filter(n => n);
