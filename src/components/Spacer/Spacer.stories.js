@@ -42,4 +42,10 @@ export const withDifferentDirections = () => (
       <Spacer direction="vertical" bg="grayscale.3" />
     </Box>
   </Stack>
-);;
+);
+
+export const withResponsiveDisplays = () => (
+  <Box height={100}>
+    <Spacer direction="vertical" bg="grayscale.3" display={['none', 'block']} />
+  </Box>
+);
