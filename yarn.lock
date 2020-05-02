@@ -1924,10 +1924,10 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@phobon/base@^2.7.1":
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-2.7.1.tgz#c3a106d26c5158e06ed0a24ffef7441d2562c04d"
-  integrity sha512-HGjTGTHM3G0myARcWM3E3y9nHGdsyIWkSTsZR1pWX94bHhKTzWlLanBNzLyWZUQKCUMKx/GZfmzrdx6Dg+0I/Q==
+"@phobon/base@^2.7.2":
+  version "2.7.2"
+  resolved "https://registry.yarnpkg.com/@phobon/base/-/base-2.7.2.tgz#d2221d4b421e56a0ef25aa8e5e6666aaa26e4a42"
+  integrity sha512-iBCvtuYGKrJqjHfiQIeEFok7glhoCww58Hg/pzlfAaXxkn+Jp3s3qj/B+doQkK5PyhAscNn9WlwYE15VosHRcQ==
   dependencies:
     "@phobon/hooks" "^1.1.1"
     "@storybook/addon-info" "^5.3.18"
