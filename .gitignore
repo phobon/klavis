@@ -1,4 +1,2 @@
+# Dependency directories
 node_modules
-yarn-error.log
-.out
-dist

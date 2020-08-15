@@ -1,23 +1,51 @@
-name: Yarn Publish
+name: Publish Packages
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v1
-      - uses: Borales/actions-yarn@v2.0.1
+      - uses: actions/setup-node@v1
         with:
-          cmd: install
-      - uses: Borales/actions-yarn@v2.0.1
+          node-version: 12
+      - run: yarn
+      - run: yarn build
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
         with:
-          cmd: build
-      - uses: Borales/actions-yarn@v2.0.1
+          node-version: 12
+
+      - name: Install Dependencies
+        run: yarn
+
+      - name: Create Release Pull Request
+        uses: changesets/action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+publish-npm:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
-          auth-token: ${{ secrets.NPM_TOKEN }}
-          cmd: publish
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - run: yarn
+      - run: yarn publish-ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
