@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useCachedState } from '@phobon/hooks';
-
 import { theme } from '@phobon/tokens';
 
 type PaletteType = 'grayscale' | 'blues' | 'cyans' | 'greens' | 'yellows' | 'oranges' | 'reds' | 'purples' | 'violets';
