@@ -17,7 +17,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c",
-    "prepare": "yarn clean && yarn build",
+    "prepare": "yarn build",
     "storybook": "start-storybook",
     "test": "jest -c jest.tsc.config.js",
     "lint": "eslint ./src"

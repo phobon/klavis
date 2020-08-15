@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
-    "prepare": "npm run clean && npm run build",
+    "prepare": "yarn build",
     "test": "jest -c jest.tsc.config.js"
   },
   "peerDependencies": {
