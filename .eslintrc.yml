@@ -15,7 +15,6 @@ rules:
   no-plusplus: off
   react/jsx-closing-bracket-location: off
   react/jsx-filename-extension: off
-  react/jsx-props-no-spreading: off
   import/extensions: off
   import/no-unresolved: off
   import/no-extraneous-dependencies: off
@@ -30,4 +29,5 @@ rules:
     - error
     - single
   max-len: off
+  react/jsx-props-no-spreading: off
   

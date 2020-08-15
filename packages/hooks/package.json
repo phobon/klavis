@@ -1,0 +1,19 @@
+{
+  "name": "@phobon/hooks",
+  "version": "2.0.1",
+  "description": "Handy React Hooks",
+  "main": "dist/index.js",
+  "types": "types.d.ts",
+  "repository": "git@github.com:phobon/hooks.git",
+  "author": "Ben McCormick <exponen7@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c",
+    "clean": "npx shx rm -rf dist && mkdir dist",
+    "prepare": "npm run clean && npm run build",
+    "test": "jest -c jest.tsc.config.js"
+  },
+  "peerDependencies": {
+    "react": "16.9.x"
+  }
+}

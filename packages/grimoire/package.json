@@ -1,0 +1,32 @@
+{
+  "name": "@phobon/grimoire",
+  "version": "0.12.7",
+  "description": "Component patterns using @phobon/base",
+  "main": "dist/index.js",
+  "author": "Ben McCormick",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "css-in-js",
+    "styled-components",
+    "styled-system"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rollup -c",
+    "clean": "npx shx rm -rf dist && mkdir dist",
+    "prepare": "npm run clean && npm run build && npm run lint",
+    "lint": "eslint ./src",
+    "storybook": "start-storybook"
+  },
+  "dependencies": {
+    "@phobon/base": "file:../base"
+  },
+  "peerDependencies": {
+    "framer-motion": "^1.x",
+    "react": "^16.x",
+    "react-dom": "^16.x",
+    "styled-components": "^5.x",
+    "styled-system": "^5.x"
+  }
+}

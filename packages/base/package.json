@@ -1,0 +1,53 @@
+{
+  "name": "@phobon/base",
+  "version": "3.0.1",
+  "description": "Essential compositional components using styled-components and styled-system",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "author": "Ben McCormick",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "css-in-js",
+    "styled-components",
+    "styled-system"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "rollup -c",
+    "clean": "npx shx rm -rf dist && mkdir dist",
+    "prepare": "yarn clean && yarn build",
+    "storybook": "start-storybook",
+    "test": "jest -c jest.tsc.config.js",
+    "lint": "eslint ./src"
+  },
+  "devDependencies": {
+    "@phobon/hooks": "file:../hooks"
+  },
+  "peerDependencies": {
+    "@styled-system/prop-types": "^5.0.x",
+    "@styled-system/should-forward-prop": "^5.1.x",
+    "@styled-system/theme-get": "^5.0.x",
+    "react": "^16.13.x",
+    "react-dom": "^16.13.x",
+    "styled-components": "^5.1.x",
+    "styled-system": "^5.1.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phobon/base.git"
+  },
+  "bugs": {
+    "url": "https://github.com/phobon/base/issues"
+  },
+  "homepage": "https://github.com/phobon/base#readme",
+  "jest": {
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ]
+  }
+}
