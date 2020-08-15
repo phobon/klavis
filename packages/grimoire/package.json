@@ -14,7 +14,6 @@
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c",
-    "clean": "npx shx rm -rf dist && mkdir dist",
     "prepare": "npm run clean && npm run build && npm run lint",
     "lint": "eslint ./src",
     "storybook": "start-storybook"

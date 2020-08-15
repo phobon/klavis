@@ -9,7 +9,6 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup -c",
-    "clean": "npx shx rm -rf dist && mkdir dist",
     "prepare": "npm run clean && npm run build",
     "test": "jest -c jest.tsc.config.js"
   },

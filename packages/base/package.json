@@ -17,7 +17,6 @@
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c",
-    "clean": "npx shx rm -rf dist && mkdir dist",
     "prepare": "yarn clean && yarn build",
     "storybook": "start-storybook",
     "test": "jest -c jest.tsc.config.js",
