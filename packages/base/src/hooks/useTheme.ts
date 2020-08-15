@@ -1,7 +1,15 @@
 import { useEffect } from 'react';
 import { useCachedState } from '@phobon/hooks';
 
-import { getTheme, ThemeType, IThemeDefinition } from '../tokens/palettes';
+import { getTheme } from '@phobon/tokens';
+
+export type ThemeType = 'light' | 'dark';
+
+export interface IThemeDefinition {
+  foreground: string;
+  background: string;
+  grayscale: string[];
+}
 
 type UseThemeType = [ThemeType, React.Dispatch<React.SetStateAction<ThemeType>>];
 export const useTheme = (initial: ThemeType = 'light', themeFunction: (type: ThemeType) => IThemeDefinition = getTheme): UseThemeType => {

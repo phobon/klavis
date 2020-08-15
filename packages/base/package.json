@@ -4,7 +4,9 @@
   "description": "Essential compositional components using styled-components and styled-system",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "types": "dist/index.d.ts",
   "author": "Ben McCormick",
   "license": "MIT",
@@ -22,8 +24,9 @@
     "test": "jest -c jest.tsc.config.js",
     "lint": "eslint ./src"
   },
-  "devDependencies": {
-    "@phobon/hooks": "file:../hooks"
+  "dependencies": {
+    "@phobon/hooks": "file:../hooks",
+    "@phobon/tokens": "file:../tokens"
   },
   "peerDependencies": {
     "@styled-system/prop-types": "^5.0.x",

@@ -3,10 +3,9 @@
 /* eslint-disable prefer-spread */
 import React from 'react';
 import { contrast } from 'chroma-js';
+import { theme } from '@phobon/tokens';
 
 import { Stack, Box, Grid, Heading, Text } from '../components';
-
-import { colour, focus } from './palettes';
 
 export default {
   title: 'Tokens/Palettes',
@@ -14,7 +13,7 @@ export default {
 
 const guidance = ['success', 'error', 'warning', 'info'];
 
-const colourSet = {...colour};
+const colourSet = {...theme.colors};
 delete colourSet.accent;
 
 const SmallColourBox = ({ children, ...props }: any) => (
@@ -22,7 +21,7 @@ const SmallColourBox = ({ children, ...props }: any) => (
 );
 
 export const withLightTheme = () => {
-  const { lightGrayscale } = colourSet;
+  const { grayscale } = colourSet;
 
   return (
     <Box fullWidth flexDirection="column" alignItems="flex-start" bg="background">
@@ -33,7 +32,7 @@ export const withLightTheme = () => {
         ))}
       </Grid>
       <Grid fullWidth fullHeight gridTemplateColumns="1fr 1fr" gridAutoRows="auto" gridGap={8} p={5}>
-        {lightGrayscale.map((g, i) => (
+        {grayscale.map((g, i) => (
           <Box fullWidth fullHeight key={g}>
             <Box flexDirection="column" alignItems="flex-start" mr={3}>
               <Heading as="h1" color={g} mb={3}>Heading.H1</Heading>

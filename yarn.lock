@@ -2436,15 +2436,21 @@
     "@types/node" ">= 8"
 
 "@phobon/base@file:packages/base":
-  version "3.0.1"
+  version "3.0.2"
+  dependencies:
+    "@phobon/hooks" "file:C:/Users/noume/AppData/Local/Yarn/Cache/v6/npm-@phobon-base-3.0.2-e3b8b9e1-a029-489c-939a-cd46e912e5b6-1597478951067/node_modules/@phobon/hooks"
+    "@phobon/tokens" "file:C:/Users/noume/AppData/Local/Yarn/Cache/v6/npm-@phobon-base-3.0.2-e3b8b9e1-a029-489c-939a-cd46e912e5b6-1597478951067/node_modules/@phobon/tokens"
 
 "@phobon/grimoire@file:packages/grimoire":
-  version "0.12.7"
+  version "0.12.8"
   dependencies:
-    "@phobon/base" "file:C:/Users/noume/AppData/Local/Yarn/Cache/v6/npm-@phobon-grimoire-0.12.7-6d86a500-5ddf-406f-a51d-26f5104be9ff-1597474897848/node_modules/@phobon/base"
+    "@phobon/base" "file:C:/Users/noume/AppData/Local/Yarn/Cache/v6/npm-@phobon-grimoire-0.12.8-6bc22175-fe79-41b9-9377-d35bd360db0d-1597478951072/node_modules/@phobon/base"
 
 "@phobon/hooks@file:packages/hooks":
-  version "2.0.1"
+  version "2.0.2"
+
+"@phobon/tokens@file:packages/tokens":
+  version "1.0.0"
 
 "@popmotion/easing@^1.0.1", "@popmotion/easing@^1.0.2":
   version "1.0.2"

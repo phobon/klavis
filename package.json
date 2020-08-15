@@ -75,6 +75,7 @@
   "dependencies": {
     "@phobon/base": "file:packages\\base",
     "@phobon/grimoire": "file:packages\\grimoire",
-    "@phobon/hooks": "file:packages\\hooks"
+    "@phobon/hooks": "file:packages\\hooks",
+    "@phobon/tokens": "file:packages\\tokens"
   }
 }

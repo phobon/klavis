@@ -110,4 +110,4 @@ export const theme: BaseTheme = {
   ...tokens,
   colors: { ...lightColors },
 };
-export { randomA11y, randomColor } from './palettes';
+export { randomA11y, randomColor, getTheme, themeDefinitions } from './palettes';
