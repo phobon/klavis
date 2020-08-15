@@ -2441,7 +2441,7 @@
 "@phobon/grimoire@file:packages/grimoire":
   version "0.12.7"
   dependencies:
-    "@phobon/base" "file:C:/Users/noume/AppData/Local/Yarn/Cache/v6/npm-@phobon-grimoire-0.12.7-ee11ddb9-5056-4c27-a63d-6538d4b149a1-1597474081021/node_modules/@phobon/base"
+    "@phobon/base" "file:C:/Users/noume/AppData/Local/Yarn/Cache/v6/npm-@phobon-grimoire-0.12.7-6d86a500-5ddf-406f-a51d-26f5104be9ff-1597474897848/node_modules/@phobon/base"
 
 "@phobon/hooks@file:packages/hooks":
   version "2.0.1"
@@ -9442,7 +9442,7 @@ lazy-universal-dotenv@^3.0.1:
     dotenv "^8.0.0"
     dotenv-expand "^5.1.0"
 
-lerna@^3.21.0:
+lerna@^3.22.1:
   version "3.22.1"
   resolved "https://registry.yarnpkg.com/lerna/-/lerna-3.22.1.tgz#82027ac3da9c627fd8bf02ccfeff806a98e65b62"
   integrity sha512-vk1lfVRFm+UuEFA7wkLKeSF7Iz13W+N/vFd48aW2yuS7Kv0RbNm2/qcDPV863056LMfkRlsEe+QYOw3palj5Lg==
