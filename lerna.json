@@ -8,8 +8,7 @@
   "command": {
     "publish": {
       "conventionalCommits": true,
-      "message": "chore(release): publish",
-      "allowBranch": "feature/lerna"
+      "message": "chore(release): publish"
     }
   }
 }
