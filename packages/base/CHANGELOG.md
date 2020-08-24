@@ -1,5 +1,14 @@
 # Change Log
 
+## 3.0.6
+
+### Patch Changes
+
+- b308802: Cleaning up yarn.lock
+- Updated dependencies [b308802]
+  - @phobon/hooks@2.0.6
+  - @phobon/tokens@1.0.3
+
 ## 3.0.5
 
 ### Patch Changes

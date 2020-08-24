@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.12.12
+
+### Patch Changes
+
+- b308802: Cleaning up yarn.lock
+- Updated dependencies [b308802]
+  - @phobon/base@3.0.6
+
 ## 0.12.11
 
 ### Patch Changes

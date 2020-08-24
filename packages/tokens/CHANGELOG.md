@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.3
+
+### Patch Changes
+
+- b308802: Cleaning up yarn.lock
+
 ## 1.0.2
 
 ### Patch Changes
