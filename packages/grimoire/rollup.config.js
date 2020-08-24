@@ -9,7 +9,12 @@ export default {
     file: 'dist/index.js',
     format: 'cjs',
   },
-  external: id => /^react|react-|styled-components|styled-system|@phobon/.test(id),
+  external: [
+    'react',
+    'react-dom',
+    'styled-components',
+    'styled-system',
+  ],
   plugins: [
     babel({
       exclude: ['node_modules/**'],

@@ -6,7 +6,12 @@ import pkg from './package.json'
 
 export default [{
   input: 'src/index.ts',
-  external: id => /^react|react-|styled-components|styled-system/.test(id),
+  external: [
+    'react',
+    'react-dom',
+    'styled-components',
+    'styled-system',
+  ],
   plugins: [
     typescript({
       declaration: true,
@@ -24,7 +29,12 @@ export default [{
   },
 }, {
   input: 'src/index.ts',
-  external: id => /^react|react-|styled-components|styled-system/.test(id),
+  external: [
+    'react',
+    'react-dom',
+    'styled-components',
+    'styled-system',
+  ],
   plugins: [
     typescript(),
     resolve(),

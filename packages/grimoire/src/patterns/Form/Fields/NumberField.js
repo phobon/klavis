@@ -1,10 +1,10 @@
 import React, { forwardRef } from 'react';
-import { NumberInput } from '@phobon/base';
+import { Input } from '@phobon/base';
 
 import asField from './asField';
 
 const NumberField = forwardRef((props, ref) => (
-  <NumberInput ref={ref} {...props} />
+  <Input variant="number" ref={ref} {...props} />
 ));
 
 export default asField(NumberField);

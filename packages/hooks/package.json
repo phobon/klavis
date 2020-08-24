@@ -13,6 +13,6 @@
     "test": "jest -c jest.tsc.config.js"
   },
   "peerDependencies": {
-    "react": "16.9.x"
+    "react": "16.13.x"
   }
 }

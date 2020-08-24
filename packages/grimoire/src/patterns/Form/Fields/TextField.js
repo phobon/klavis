@@ -1,4 +1,4 @@
-import { TextInput } from '@phobon/base';
+import { Input } from '@phobon/base';
 import asField from './asField';
 
-export default asField(TextInput);
+export default asField(Input);

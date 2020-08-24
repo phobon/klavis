@@ -1,8 +1,8 @@
 
 import babel from 'rollup-plugin-babel';
 import typescript from '@rollup/plugin-typescript';
-import resolve from "rollup-plugin-node-resolve";
-import commonjs from "rollup-plugin-commonjs";
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 
 export default {
   input: 'src/index.ts',
@@ -11,7 +11,7 @@ export default {
       file: 'dist/index.js',
       format: 'cjs',
       globals: {
-        "react": "React",
+        'react': 'React',
       },
     },
     {
@@ -19,17 +19,19 @@ export default {
       format: 'umd',
       name: 'Hooks',
       globals: {
-        "react": "React",
+        'react': 'React',
       },
     },
   ],
-  external: id => /^react/.test(id),
+  external: [
+    'react',
+  ],
   plugins: [
     babel({
       exclude: ['node_modules/**'],
     }),
     typescript({
-      exclude: '*.test.ts'
+      exclude: '*.test.ts',
     }),
     resolve(),
     commonjs(),
