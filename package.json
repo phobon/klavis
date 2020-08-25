@@ -19,6 +19,9 @@
     "@babel/preset-react": "^7.9.4",
     "@babel/preset-typescript": "^7.9.0",
     "@changesets/cli": "^2.10.0",
+    "@rollup/plugin-babel": "^5.2.0",
+    "@rollup/plugin-commonjs": "^15.0.0",
+    "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-typescript": "^4.1.1",
     "@storybook/addon-a11y": "^5.3.18",
     "@storybook/addon-actions": "^5.3.18",
@@ -62,10 +65,7 @@
     "react-dom": "^17.0.0-rc.0",
     "react-test-render": "^1.1.2",
     "react-test-renderer": "^16.13.1",
-    "rollup": "^2.6.1",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup": "^2.26.5",
     "styled-components": "^5.1.0",
     "styled-system": "^5.1.5",
     "ts-loader": "^7.0.4",
@@ -73,9 +73,9 @@
     "typescript": "^3.9.2"
   },
   "dependencies": {
-    "@phobon/base": "file:packages\\base",
-    "@phobon/grimoire": "file:packages\\grimoire",
-    "@phobon/hooks": "file:packages\\hooks",
-    "@phobon/tokens": "file:packages\\tokens"
+    "@phobon/base": "file:packages/base",
+    "@phobon/grimoire": "file:packages/grimoire",
+    "@phobon/hooks": "file:packages/hooks",
+    "@phobon/tokens": "file:packages/tokens"
   }
 }

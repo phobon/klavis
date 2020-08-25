@@ -26,7 +26,14 @@
   },
   "dependencies": {
     "@phobon/hooks": "file:../hooks",
-    "@phobon/tokens": "file:../tokens"
+    "@phobon/tokens": "file:../tokens",
+    "@styled-system/prop-types": "^5.0.x",
+    "@styled-system/should-forward-prop": "^5.1.x",
+    "@styled-system/theme-get": "^5.0.x",
+    "react": "^16.13.x",
+    "react-dom": "^16.13.x",
+    "styled-components": "^5.1.x",
+    "styled-system": "^5.1.x"
   },
   "peerDependencies": {
     "@styled-system/prop-types": "^5.0.x",
