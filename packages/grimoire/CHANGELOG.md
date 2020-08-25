@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.12.14
+
+### Patch Changes
+
+- 585a556: Attempting to fix build
+- Updated dependencies [585a556]
+  - @phobon/base@3.0.8
+
 ## 0.12.13
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@phobon/grimoire",
-  "version": "0.12.13",
+  "version": "0.12.14",
   "description": "Component patterns using @phobon/base",
   "main": "dist/index.js",
   "author": "Ben McCormick",

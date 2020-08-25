@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.0.8
+
+### Patch Changes
+
+- 585a556: Attempting to fix build
+
 ## 2.0.7
 
 ### Patch Changes

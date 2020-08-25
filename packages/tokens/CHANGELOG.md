@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.5
+
+### Patch Changes
+
+- 585a556: Attempting to fix build
+
 ## 1.0.4
 
 ### Patch Changes
