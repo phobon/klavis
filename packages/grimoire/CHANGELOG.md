@@ -1,15 +1,21 @@
 # Change Log
 
+## 0.12.13
+
+### Patch Changes
+
+- 15fbbab: Build updates
+- b308802: Cleaning up yarn.lock
+- Updated dependencies [15fbbab]
+- Updated dependencies [b308802]
+  - @phobon/base@3.0.7
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [0.12.12](https://github.com/phobon/grimoire/compare/@phobon/grimoire@0.12.10...@phobon/grimoire@0.12.12) (2020-08-24)
 
 **Note:** Version bump only for package @phobon/grimoire
-
-
-
-
 
 ## 0.12.10 (2020-08-15)
 
