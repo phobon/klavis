@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.0.8
+
+### Patch Changes
+
+- 585a556: Attempting to fix build
+- Updated dependencies [585a556]
+  - @phobon/tokens@1.0.5
+
 ## 3.0.7
 
 ### Patch Changes
