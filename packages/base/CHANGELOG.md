@@ -1,15 +1,22 @@
 # Change Log
 
+## 3.0.7
+
+### Patch Changes
+
+- 15fbbab: Build updates
+- b308802: Cleaning up yarn.lock
+- Updated dependencies [15fbbab]
+- Updated dependencies [b308802]
+  - @phobon/hooks@2.0.7
+  - @phobon/tokens@1.0.4
+
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
 ## [3.0.6](https://github.com/phobon/base/compare/@phobon/base@3.0.4...@phobon/base@3.0.6) (2020-08-24)
 
 **Note:** Version bump only for package @phobon/base
-
-
-
-
 
 ## 3.0.4 (2020-08-15)
 
