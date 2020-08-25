@@ -18,8 +18,13 @@
     "lint": "eslint ./src",
     "storybook": "start-storybook"
   },
+  "devDependencies": {
+    "@phobon/base": "file:../base",
+    "@phobon/tokens": "file:../tokens"
+  },
   "peerDependencies": {
     "@phobon/base": "file:../base",
+    "@phobon/tokens": "file:../tokens",
     "framer-motion": "^1.x",
     "react": "^16.x",
     "react-dom": "^16.x",

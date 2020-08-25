@@ -3,6 +3,7 @@
   "version": "2.0.7",
   "description": "Handy React Hooks",
   "main": "dist/index.js",
+  "module": "dist/index.esm.js",
   "types": "types.d.ts",
   "repository": "git@github.com:phobon/hooks.git",
   "author": "Ben McCormick <exponen7@gmail.com>",
@@ -13,6 +14,7 @@
     "test": "jest -c jest.tsc.config.js"
   },
   "peerDependencies": {
-    "react": "^16.13.x || ^17.x"
+    "react": "^16.13.x || ^17.x",
+    "react-dom": "^16.13.x || ^17.x"
   }
 }
