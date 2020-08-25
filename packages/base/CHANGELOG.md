@@ -1,5 +1,15 @@
 # Change Log
 
+## 3.0.8
+
+### Patch Changes
+
+- 585a556: Attempting to fix build
+- ca0b6a9: Implementing shouldForwardProp
+- Updated dependencies [585a556]
+- Updated dependencies [ca0b6a9]
+  - @phobon/tokens@1.0.5
+
 ## 3.0.7
 
 ### Patch Changes

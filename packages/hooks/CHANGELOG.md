@@ -1,5 +1,12 @@
 # Change Log
 
+## 2.0.8
+
+### Patch Changes
+
+- 585a556: Attempting to fix build
+- ca0b6a9: Implementing shouldForwardProp
+
 ## 2.0.7
 
 ### Patch Changes
