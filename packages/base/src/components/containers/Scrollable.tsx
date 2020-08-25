@@ -82,7 +82,7 @@ export const ScrollableContainer: StyledComponent<'div', DefaultTheme, Scrollabl
   minimalStyle,
 );
 
-export const Scrollable: React.FunctionComponent<ScrollableProps> = ({ minimal, scrollDirection, scrollbarColor, children, ...props }: ScrollableProps & { children?: React.ReactNode }) => {
+export const Scrollable: React.FunctionComponent<ScrollableProps> = ({ minimal, scrollDirection, scrollbarColor, children, ...props }: ScrollableProps & { children?: any }) => {
   const [layoutProps, passthroughProps] = destructureLayoutProps(props);
 
   const { width, height, fullWidth, fullHeight, flex, gridArea, ...rest } = layoutProps;

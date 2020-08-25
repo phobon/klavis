@@ -10,8 +10,8 @@ import {
   LayoutProps,
   WidthProps,
 } from 'styled-system';
-import shouldForwardProp from '@styled-system/should-forward-prop';
 
+import { shouldForwardProp } from '../../utils/shouldForwardProp';
 import { gridPosition, GridPositionProps, DensityType } from '../../utils';
 
 const density = (props: any) => {

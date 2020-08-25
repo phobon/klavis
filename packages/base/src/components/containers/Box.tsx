@@ -3,7 +3,7 @@ import {
   compose, space, layout, flexbox, border, color, position, background,
   SpaceProps, LayoutProps, FlexboxProps, BorderProps, ColorProps, PositionProps, BackgroundProps,
 } from 'styled-system';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { shouldForwardProp } from '../../utils/shouldForwardProp';
 
 import {
   gridPosition,

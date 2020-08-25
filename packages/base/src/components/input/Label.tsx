@@ -16,7 +16,7 @@ import {
   TextStyleProps,
   FlexboxProps,
 } from 'styled-system';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { shouldForwardProp } from '../../utils/shouldForwardProp';
 
 import { cover, gridPosition, CoverProps, GridPositionProps } from '../../utils';
 

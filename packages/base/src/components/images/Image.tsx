@@ -9,7 +9,7 @@ import {
   position,
   SpaceProps, LayoutProps, BorderRadiusProps, BackgroundProps, PositionProps,
 } from 'styled-system';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { shouldForwardProp } from '../../utils/shouldForwardProp';
 
 import {
   fullWidth, fullHeight, round, gridPosition,

@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { Box, Stack, Card, Grid, usePortal } from '@phobon/base';
+import { Box, Stack, Card, Grid } from '@phobon/base';
+import { usePortal } from '@phobon/hooks';
 
 import Remove from '../../icons/Remove';
 

@@ -12,7 +12,7 @@ import {
   FontSizeProps,
   WidthProps,
 } from 'styled-system';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { shouldForwardProp } from '../../utils/shouldForwardProp';
 
 import {
   density,

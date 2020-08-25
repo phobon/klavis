@@ -9,7 +9,7 @@ import {
   TypographyProps,
 } from 'styled-system';
 import themeGet from '@styled-system/theme-get';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { shouldForwardProp } from '../../utils/shouldForwardProp';
 
 import { Label } from './Label';
 
