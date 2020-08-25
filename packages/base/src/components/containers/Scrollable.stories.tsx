@@ -11,7 +11,7 @@ export default {
 };
 
 const generatedItems = (height: number | string = 100, width: number | string = '100%', colour = 'purples', prefix = 'scrollable') => {
-  const items = [];
+  const items: any[] = [];
   let counter = 2;
   let increment = true;
   for (let i = 0; i < 15; i++) {

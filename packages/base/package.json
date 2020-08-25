@@ -4,7 +4,9 @@
   "description": "Essential compositional components using styled-components and styled-system",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "types": "dist/index.d.ts",
   "author": "Ben McCormick",
   "license": "MIT",
@@ -22,23 +24,14 @@
     "test": "jest -c jest.tsc.config.js",
     "lint": "eslint ./src"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@phobon/hooks": "file:../hooks",
     "@phobon/tokens": "file:../tokens",
     "@styled-system/prop-types": "^5.0.x",
     "@styled-system/should-forward-prop": "^5.1.x",
     "@styled-system/theme-get": "^5.0.x",
-    "react": "^16.13.x",
-    "react-dom": "^16.13.x",
-    "styled-components": "^5.1.x",
-    "styled-system": "^5.1.x"
-  },
-  "peerDependencies": {
-    "@styled-system/prop-types": "^5.0.x",
-    "@styled-system/should-forward-prop": "^5.1.x",
-    "@styled-system/theme-get": "^5.0.x",
-    "react": "^16.13.x",
-    "react-dom": "^16.13.x",
+    "react": "^16.13.x || ^17.x",
+    "react-dom": "^16.13.x || ^17.x",
     "styled-components": "^5.1.x",
     "styled-system": "^5.1.x"
   },

@@ -45,7 +45,7 @@ export const withLightTheme = () => {
             </Box>
           
             <Box flex={1} fullWidth fullHeight borderRadius={4} bg={g}>
-              <Heading as="h1" color="foreground" css={{ textAlign: 'center' }}>{`grayscale.${lightGrayscale.length - 1 - i}`}</Heading>
+              <Heading as="h1" color="foreground" css={{ textAlign: 'center' }}>{`grayscale.${grayscale.length - 1 - i}`}</Heading>
             </Box>
           </Box>
         ))}
@@ -54,7 +54,7 @@ export const withLightTheme = () => {
 )}
 
 export const withDarkTheme = () => {
-  const { darkGrayscale } = colourSet;
+  const { grayscale } = colourSet;
 
   return (
     <Box fullWidth flexDirection="column" alignItems="flex-start" bg="hsl(221, 20%, 22%)">
@@ -65,7 +65,7 @@ export const withDarkTheme = () => {
         ))}
       </Grid>
       <Grid fullWidth fullHeight gridTemplateColumns="1fr 1fr" gridAutoRows="auto" gridGap={8} p={5}>
-        {darkGrayscale.map((g, i) => (
+        {grayscale.map((g, i) => (
           <Box fullWidth fullHeight key={g}>
             <Box flexDirection="column" alignItems="flex-start" mr={3}>
               <Heading as="h1" color={g} mb={3}>Heading.H1</Heading>
@@ -78,7 +78,7 @@ export const withDarkTheme = () => {
             </Box>
           
             <Box flex={1} fullWidth fullHeight borderRadius={4} bg={g}>
-              <Heading as="h1" color="hsl(228, 62%, 95%)" css={{ textAlign: 'center' }}>{`grayscale.${darkGrayscale.length - 1 - i}`}</Heading>
+              <Heading as="h1" color="hsl(228, 62%, 95%)" css={{ textAlign: 'center' }}>{`grayscale.${grayscale.length - 1 - i}`}</Heading>
             </Box>
           </Box>
         ))}

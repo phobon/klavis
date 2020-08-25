@@ -30,7 +30,7 @@ export const withWrappingText = () => {
     { label: 'Column 3' },
   ];
 
-  const rows = [];
+  const rows: any[] = [];
   for (let i = 0; i < 3; i += 1) {
     rows.push({ cells: [...row1] });
   }
@@ -49,7 +49,7 @@ export const withTruncatedText = () => {
     { label: 'Column 3' },
   ];
 
-  const firstRows = [];
+  const firstRows: any[] = [];
   for (let i = 0; i < 3; i += 1) {
     firstRows.push({ cells: row1 });
   }
@@ -59,7 +59,7 @@ export const withTruncatedText = () => {
     { label: 'Column 2', truncate: true },
     { label: 'Column 3', truncate: true, fill: true },
   ];
-  const secondRows = [];
+  const secondRows: any[] = [];
   for (let i = 0; i < 3; i += 1) {
     secondRows.push({ cells: row2 });
   }
@@ -85,7 +85,7 @@ export const withDifferentInformationDensities = () => {
     { label: 'Column 3' },
   ];
 
-  const firstRows = [];
+  const firstRows: any[] = [];
   for (let i = 0; i < 3; i += 1) {
     firstRows.push({ cells: row1 });
   }
@@ -122,7 +122,7 @@ export const withNumericColumns = () => {
     { label: 'Column 4', textAlign: 'right' },
   ];
 
-  const rows = [];
+  const rows: any[] = [];
   for (let i = 0; i < 3; i += 1) {
     rows.push({ cells: [...row1, { content: 25 }]});
   }
@@ -142,7 +142,7 @@ export const withDifferentColumnWidths = () => {
     { label: 'Column 4', width: 50, truncate: true },
   ];
 
-  const rows = [];
+  const rows: any[] = [];
   for (let i = 0; i < 3; i += 1) {
     rows.push({
       cells: [

@@ -29,6 +29,7 @@ export default {
   plugins: [
     babel({
       exclude: ['node_modules/**'],
+      babelHelpers: 'bundled',
     }),
     typescript({
       exclude: '*.test.ts',

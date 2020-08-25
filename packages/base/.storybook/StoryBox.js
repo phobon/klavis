@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { ThemeProvider } from 'styled-components';
-import { theme, Normalize, Box } from '../src';
+import { theme } from '@phobon/tokens';
+import { Normalize, Box } from '../src';
 
 const StoryBox = ({ children, ...props }) => (
   <ThemeProvider theme={theme}>
