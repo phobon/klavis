@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.0
+
+### Minor Changes
+
+- 40d352c: Updating hooks
+
 ## 2.0.8
 
 ### Patch Changes
