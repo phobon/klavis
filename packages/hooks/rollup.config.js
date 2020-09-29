@@ -18,28 +18,28 @@ export default [
       dir: "dist",
     },
   },
+  {
+    input: "src/index.ts",
+    external: ["react", "react-dom"],
+    plugins: [
+      typescript(),
+      resolve(),
+      commonjs(),
+      babel({
+        exclude: ["node_modules/**"],
+        extensions: [".ts", ".tsx"],
+        babelHelpers: "bundled",
+      }),
+    ],
+    output: [
+      {
+        file: pkg.main,
+        format: "cjs",
+      },
+      {
+        file: pkg.module,
+        format: "esm",
+      },
+    ],
+  },
 ];
-// }, {
-//   input: 'src/index.ts',
-//   external: [
-//     'react',
-//     'react-dom',
-//   ],
-//   plugins: [
-//     typescript(),
-//     resolve(),
-//     commonjs(),
-//     babel({
-//       exclude: ['node_modules/**'],
-//       extensions: ['.ts', '.tsx'],
-//       babelHelpers: 'bundled',
-//     }),
-//   ],
-//   output: [{
-//     file: pkg.main,
-//     format: 'cjs',
-//   }, {
-//     file: pkg.module,
-//     format: 'esm',
-//   }],
-// }];
