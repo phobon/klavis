@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.1
+
+### Patch Changes
+
+- 9d9a07f: Updating hooks package
+
 ## 2.1.0
 
 ### Minor Changes
