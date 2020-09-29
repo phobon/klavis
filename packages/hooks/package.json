@@ -4,7 +4,7 @@
   "description": "Handy React Hooks",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
-  "types": "types.d.ts",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:phobon/hooks.git",
   "author": "Ben McCormick <exponen7@gmail.com>",
   "license": "MIT",
