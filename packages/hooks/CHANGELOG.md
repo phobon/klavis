@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.1.2
+
+### Patch Changes
+
+- 77f88e4: Reinstating build
+
 ## 2.1.1
 
 ### Patch Changes
