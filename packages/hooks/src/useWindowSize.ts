@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect } from "react";
 
 export interface WindowSize {
   innerWidth?: number;
@@ -20,8 +20,8 @@ export const useWindowSize = (): WindowSize => {
   const handleResize = useCallback(() => setWindowSize(getWindowSize()), []);
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return (() => window.removeEventListener('resize', handleResize));
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return windowSize;

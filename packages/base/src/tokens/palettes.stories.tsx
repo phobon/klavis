@@ -160,15 +160,22 @@ export const withContrastRatios = () => {
 };
 
 export const withRawValues = () => {
-  const t = Object.keys(colourSet).map(c => colourSet[c]);
+  const t = Object.keys(colourSet).map(c => {
+    const palette = colourSet[c];
+    if (Array.isArray(palette)) {
+      return palette;
+    }
+
+    return null;
+  }).filter(x => x);
   return (
     <Box fullWidth fullHeight p={6}>
       <Grid fullWidth fullHeight gridTemplateColumns="repeat(10, 1fr)" gridColumnGap={4}>
         {t.map((i, count) => (
           <Stack fullWidth key={`palette_${count}`}>
-            {i.map(c => (
+            {i?.map(c => (
               <Box key={c} fullWidth height={40} bg={c}>
-                {`"${c}",`}
+                {`${c}`}
               </Box>
             ))}
           </Stack>

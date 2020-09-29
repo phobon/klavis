@@ -89,11 +89,11 @@ const saturations: { [key: string]: number[] } = {
 
 const lightnesses: { [key: string]: number[] } = {
   lightGrayscale: [
+    10,
     17,
-    20,
-    25,
-    35,
-    49,
+    22,
+    31,
+    44,
     65,
     79,
     90,
