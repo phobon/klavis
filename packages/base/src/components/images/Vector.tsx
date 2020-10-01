@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import React from "react";
+import styled from "@emotion/styled";
 import {
   compose,
   space,
@@ -31,10 +32,14 @@ export type VectorProps =
   & GridPositionProps
   & PaintProps;
 
-export const Vector = styled('svg').attrs(() => ({
-    xmlns: 'http://www.w3.org/2000/svg',
-  })).withConfig({ shouldForwardProp })<VectorProps>(
+export const StyledVector = styled('svg', { shouldForwardProp })<VectorProps>(
   vectorSystem,
+);
+
+export const Vector = ({ ...props }) => (
+  <StyledVector
+    xmlns="http://www.w3.org/2000/svg"
+    {...props} />
 );
 
 Vector.displayName = 'Vector';

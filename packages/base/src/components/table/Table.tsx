@@ -1,14 +1,12 @@
 /* eslint-disable react/no-array-index-key */
-import React, { forwardRef } from 'react';
-import styled, { css } from 'styled-components';
+import React, { forwardRef, TableHTMLAttributes } from 'react';
+import styled from "@emotion/styled";
 import {
   compose,
   space,
   layout,
-  width,
   SpaceProps,
   LayoutProps,
-  WidthProps,
 } from 'styled-system';
 
 import { shouldForwardProp } from '../../utils/shouldForwardProp';
@@ -23,46 +21,37 @@ const density = (props: any) => {
 
   const d = densityValues[props.density];
 
-  return css`
-    thead {
-      th {
-        padding-top: ${props.theme.space[d]}px;
-        padding-bottom: ${props.theme.space[d]}px;
+  return {
+    thead: {
+      th: {
+        paddingTop: props.theme.space[d],
+        paddingBottom: props.theme.space[d],
       }
-    }
-
-    tbody {
-      tr {
-        td {
-          padding-top: ${props.theme.space[d]}px;
-          padding-bottom: ${props.theme.space[d]}px;
-          padding-right: ${props.theme.space[props.horizontalCellPadding]}px;
-        }
-
-        &:first-child {
-          td { 
-            padding-top: ${props.theme.space[d]}px;
+    },
+    tbody: {
+      tr: {
+        td: {
+          paddingTop: props.theme.space[d],
+          paddingBottom: props.theme.space[d],
+          paddingRight: props.theme.space[props.horizontalCellPadding],
+        },
+        "&:first-child": {
+          td: {
+            paddingTop: props.theme.space[d],
           }
-        }
-
-        &:last-child {
-          td {
-            border-bottom: 0;
-            padding-bottom: ${props.theme.space[d]}px;
+        },
+        "&:last-child": {
+          td: {
+            borderBottom: 0,
+            paddingBottom: props.theme.space[d],
           }
         }
       }
     }
-  `;
+  };
 };
 
-const showSeparator = (props: any) => props.showSeparator ? css`
-  border-bottom: 1px dashed ${props.theme.colors.grayscale[7]};
-`: css`
-  border-bottom: 1px solid transparent;
-`;
-
-const tableSystem = compose(space, layout, width, gridPosition);
+const tableSystem = compose(space, layout, gridPosition);
 
 interface IColumn {
   fill?: boolean;
@@ -71,7 +60,7 @@ interface IColumn {
   variant?: 'numeric' | 'other';
   label?: string;
 }
-type Column = IColumn & SpaceProps & WidthProps;
+type Column = IColumn & SpaceProps & TableHTMLAttributes<HTMLTableColElement>;
 
 interface IRow {
   id?: string | number;
@@ -79,111 +68,104 @@ interface IRow {
   disabled?: boolean;
 }
 
-export interface ITableProps {
+export interface ITableCoreProps {
   id?: string | number;
   columns: IColumn[];
   rows: IRow[];
+}
+export interface ITableProps {
   horizontalCellPadding?: number;
   showSeparator?: boolean;
   density?: DensityType;
 }
+
 export type TableProps =
+  ITableCoreProps
+  & ITableProps
+  & SpaceProps
+  & LayoutProps
+  & GridPositionProps
+  & React.TableHTMLAttributes<HTMLTableElement>;
+
+type StyledTableProps =
   ITableProps
   & SpaceProps
   & LayoutProps
-  & WidthProps
-  & GridPositionProps;
+  & GridPositionProps
+  & React.TableHTMLAttributes<HTMLTableElement>;
 
-type StyledTableProps = SpaceProps & LayoutProps & WidthProps & GridPositionProps;
-const StyledTable = styled('table').withConfig({ shouldForwardProp })<StyledTableProps & any>`
-  width: 100%;
-  border-spacing: 0;
-  border-collapse: separate;
-  color: ${props => props.theme.colors.foreground};
-  box-sizing: border-box;
-  border-bottom: 2px solid ${props => props.theme.colors.grayscale[7]};
+const StyledTable = styled('table', { shouldForwardProp })<StyledTableProps>(props => ({
+  width: "100%",
+  borderSpacing: 0,
+  borderCollapse: "separate",
+  color: props.theme.colors.foreground,
+  boxSizing: "border-box",
+  borderBottom: `2px solid ${props.theme.colors.grayscale[7]}`,
+  "th, td": {
+    verticalAlign: "top",
+    textAlign: "left",
+    boxSizing: "border-box",
+    "&:last-child": {
+      paddingRight: 0,
+    },
+    "&.cell--numeric": {
+      textAlign: "right",
+    },
+    "&.cell--fill": {
+      width: "100%",
+    },
+    "&.cell--truncate": {
+      position: "relative",
+      "> *": {
+        overflow: "hidden",
+        display: "-webkit-box",
+        "-webkit-box-orient": "vertical",
+      },
+    },
+    "&.cell--disabled": {
+      opacity: 0.3,
+    },
+  },
+  thead: {
+    th: {
+      fontSize: props.theme.fontSizes[1],
+      color: props.theme.colors.grayscale[2],
+      fontWeight: props.theme.fontWeights.normal,
+      whiteSpace: "pre",
+      backgroundColor: props.theme.colors.grayscale[8],
+      paddingRght: props.theme.space[3],
+      borderBottom: `2px solid ${props.theme.colors.grayscale[7]}`,
+      "&:first-child": {
+        paddingLeft: props.theme.space[3],
+        borderRadius: `${props.theme.radii[3]}px 0 0 0`,
+      },
+      "&:last-child": {
+        paddingRight: props.theme.space[3],
+        borderRadius: `0 ${props.theme.radii[3]}px 0 0`,
+      },
+    },
+  },
+  tbody: {
+    tr: {
+      td: {
+        "text-align": "left",
+        borderBottom: props.showSeparator ? `1px dashed ${props.theme.colors.grayscale[7]}` : "1px solid transparent",
+        "&:first-child": {
+          paddingLeft: props.theme.space[3],
+        },
+        "&:last-child": {
+          paddingRight: props.theme.space[3],
+        },
+      },
+    },
+  },
+}),
+  tableSystem,
+  gridPosition,
+  density,
+);
 
-  ${tableSystem}
-  ${gridPosition}
-  
-  th, td {
-    vertical-align: top;
-    text-align: left;
-    box-sizing: border-box;
-
-    &:last-child {
-      padding-right: 0;
-    }
-
-    &.cell--numeric {
-      text-align: right;
-    }
-
-    &.cell--fill {
-      width: 100%;
-    }
-
-    &.cell--truncate {
-      position: relative;
-
-      > * {
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-      }
-    }
-
-    &.cell--disabled {
-      opacity: 0.3;
-    }
-  }
-
-  thead {
-    th {
-      font-size: ${props => props.theme.fontSizes[1]}px;
-      color: ${props => props.theme.colors.grayscale[2]};
-      font-weight: ${props => props.theme.fontWeights.normal};
-      white-space: pre;
-      background-color: ${props => props.theme.colors.grayscale[8]};
-
-      padding-right: ${props => props.theme.space[3]}px;
-
-      border-bottom: 2px solid ${props => props.theme.colors.grayscale[7]};
-
-      &:first-child {
-        padding-left: ${props => props.theme.space[3]}px;
-        border-radius: ${props => props.theme.radii[3]}px 0 0 0;
-      }
-
-      &:last-child {
-        padding-right: ${props => props.theme.space[3]}px;
-        border-radius: 0 ${props => props.theme.radii[3]}px 0 0;
-      }
-    }
-  }
-
-  tbody {
-    tr {
-      td {
-        text-align: left;
-
-        ${showSeparator}
-
-        &:first-child {
-          padding-left: ${props => props.theme.space[3]}px;
-        }
-
-        &:last-child {
-          padding-right: ${props => props.theme.space[3]}px;
-        }
-      }
-    }
-  }
-
-  ${density}
-`;
-
-const colSystem = compose(width, space);
+const colSystem = compose(space);
 const Col = styled('col')<Column>(
   colSystem,
 );
@@ -260,8 +242,8 @@ const defaultProps: any = {
   id: Math.random() * 100,
   showSeparator: true,
   horizontalCellPadding: 5,
-  columns: null,
-  rows: null,
+  columns: [],
+  rows: [],
   density: 'normal',
 };
 Table.defaultProps = defaultProps;

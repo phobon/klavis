@@ -1,4 +1,4 @@
-import styled, { StyledComponent, DefaultTheme } from 'styled-components';
+import styled from "@emotion/styled";
 import { get, system, ResponsiveValue, ThemeValue, RequiredTheme, ObjectOrArray } from 'styled-system';
 
 import { Box, BoxProps } from './Box';
@@ -38,7 +38,7 @@ export interface IStackProps {
 }
 export type StackProps = IStackProps & BoxProps;
 
-export const Stack: StyledComponent<'div', DefaultTheme, StackProps, never> = styled(Box)<StackProps>(
+export const Stack = styled(Box)<StackProps>(
   stackSpace,
 );
 

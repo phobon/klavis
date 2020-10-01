@@ -1,11 +1,11 @@
 /* eslint-disable react/default-props-match-prop-types */
 import React, { forwardRef } from 'react';
-import styled, { css } from 'styled-components';
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 import PropTypes from 'prop-types';
 import { space, border as styledBorder, color as styledColor, borderRadius as styledBorderRadius } from 'styled-system';
-import shouldForwardProp from '@styled-system/should-forward-prop';
 
-import { Box, Image, Text, focus } from '@phobon/base';
+import { Box, Image, Text, focus, shouldForwardProp } from '@phobon/base';
 
 import User from '../../icons/User';
 
@@ -66,7 +66,7 @@ const statusElements = props => {
   return sizes[props.size];
 };
 
-const AvatarBox = styled('div').withConfig({
+const AvatarBox = styled('div', {
   shouldForwardProp,
 })`
   display: flex;
@@ -120,7 +120,7 @@ const avatarFontSize = props => {
   return fontSizes[props.size];
 };
 
-const AvatarIndicatorButton = styled('button').withConfig({
+const AvatarIndicatorButton = styled('button', {
   shouldForwardProp,
 })`
   width: inherit;

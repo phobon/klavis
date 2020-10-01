@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 import themeGet from '@styled-system/theme-get';
-import shouldForwardProp from '@styled-system/should-forward-prop';
 
-import { Box } from '@phobon/base';
+import { Box, shouldForwardProp } from '@phobon/base';
 
 import withTooltip from '../Tooltip';
 
@@ -90,7 +90,7 @@ const labels = props => props.showLabels && css`
   }
 `;
 
-const ProgressStepButton = styled('button').withConfig({
+const ProgressStepButton = styled('button', {
   shouldForwardProp,
 })`
   border: 0;

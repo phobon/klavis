@@ -9,7 +9,9 @@ export default [{
   external: [
     'react',
     'react-dom',
-    'styled-components',
+    '@emotion/core',
+    '@emotion/styled',
+    'emotion-theming',
     'styled-system',
   ],
   plugins: [
@@ -33,7 +35,9 @@ export default [{
   external: [
     'react',
     'react-dom',
-    'styled-components',
+    '@emotion/core',
+    '@emotion/styled',
+    'emotion-theming',
     'styled-system',
   ],
   plugins: [

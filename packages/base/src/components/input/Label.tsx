@@ -1,4 +1,4 @@
-import styled, { StyledComponent, DefaultTheme } from 'styled-components';
+import styled from "@emotion/styled";
 import {
   compose,
   space,
@@ -35,8 +35,9 @@ export type LabelProps =
   & CoverProps
   & GridPositionProps
   & FlexboxProps;
-export const Label: StyledComponent<'label', DefaultTheme, LabelProps, never> =
-  styled('label').withConfig({ shouldForwardProp })<LabelProps>({
+
+export const Label =
+  styled('label', { shouldForwardProp })<LabelProps & React.InputHTMLAttributes<HTMLLabelElement>>({
     boxSizing: 'border-box',
     display: 'flex',
   },

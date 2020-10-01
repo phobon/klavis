@@ -44,14 +44,17 @@ const headingProps = (heading: string): TextProps => {
   return headings[heading];
 };
 
-export type HeadingProps = TextProps & { children?: React.ReactNode };
-export const Heading = ({ children, as = 'h3', ...props }: HeadingProps) => {  
+export const Heading: React.PropsWithChildren<TextProps & any> = ({ children, as, ...props }) => {  
   const rest = headingProps(as.toString());
   return (
     <Text as={as} {...rest} {...props}>
       {children}
     </Text>
   );
+};
+
+Heading.defaultProps = {
+  as: "h3",
 };
 
 Heading.displayName = 'Heading';

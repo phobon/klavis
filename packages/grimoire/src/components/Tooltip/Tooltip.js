@@ -1,9 +1,9 @@
-import styled, { css } from 'styled-components';
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 import PropTypes from 'prop-types';
 import { compose, space, layout, position } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
-import { cover } from '@phobon/base';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { cover, shouldForwardProp } from '@phobon/base';
 
 const direction = props => {
   const tooltipDirections = {
@@ -62,7 +62,7 @@ const direction = props => {
 
 const tooltipStyles = compose(layout, position, space);
 
-const Tooltip = styled('div').withConfig({
+const Tooltip = styled('div', {
   shouldForwardProp,
 })`
   ${tooltipStyles}

@@ -1,6 +1,6 @@
 /* eslint-disable react/default-props-match-prop-types */
 import React, { forwardRef } from 'react';
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import {
   compose,
   space,
@@ -22,16 +22,14 @@ export interface ICheckboxProps {
   size?: number;
   invalid?: boolean;
   borderThickness?: number;
-  'aria-invalid'?: string;
 }
 type CheckboxContainerProps =
   ICheckboxProps
   & SpaceProps
   & BorderProps
   & TypographyProps;
-const CheckboxContainer = styled('div').withConfig({ shouldForwardProp }).attrs((props: CheckboxProps) => ({
-  'aria-invalid': props.invalid ? true : undefined,
-}))<CheckboxProps>(
+
+const CheckboxContainer = styled('div', { shouldForwardProp })<CheckboxProps>(
   checkboxSystem,
   (props: any) => {
     const { theme, size, borderThickness = 2, borderStyle, color, borderColor } = props;
@@ -142,7 +140,12 @@ export const Checkbox = forwardRef(({
   className,
   ...props
 }: CheckboxProps, ref: any) => (
-  <CheckboxContainer {...props} size={size} disabled={disabled} invalid={invalid} className={className}>
+  <CheckboxContainer
+    aria-invalid={invalid ? "true" : undefined}
+    {...props}
+    size={size}
+    disabled={disabled}
+    className={className}>
     <input
       ref={ref}
       type="checkbox"

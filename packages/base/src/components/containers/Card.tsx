@@ -1,6 +1,6 @@
-import styled, { StyledComponent, DefaultTheme } from 'styled-components';
+import styled from "@emotion/styled";
 
-import { Stack, StackProps } from './Stack';
+import { StackProps } from './Stack';
 
 const boxShadow = ({ boxShadowSize = 'l', theme }: any) => {
   const boxShadows = {
@@ -20,13 +20,14 @@ const boxShadow = ({ boxShadowSize = 'l', theme }: any) => {
 };
 
 export type BoxShadowSize = 'none' | 's' | 'm' | 'l' | 'xl' | 'xxl';
+
 interface ICardProps {
   boxShadowIntensity?: number;
   boxShadowSize?: BoxShadowSize;
 }
 export type CardProps = ICardProps & StackProps;
 
-export const Card: StyledComponent<'div', DefaultTheme, CardProps, never> = styled(Stack)<CardProps>(
+export const Card = styled('div')<CardProps>(
   ({ boxShadowIntensity }) => ({
     position: 'relative',
     '&::before': {

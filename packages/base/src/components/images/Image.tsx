@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import {
   system,
   compose,
@@ -46,7 +46,7 @@ export type ImageProps =
   & RoundProps
   & GridPositionProps;
 
-export const Image = styled('img').withConfig({ shouldForwardProp })<ImageProps>({
+export const Image = styled('img', { shouldForwardProp })<ImageProps>({
   display: 'block',
 },
   imageSystem,

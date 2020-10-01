@@ -1,9 +1,9 @@
 import React, { forwardRef } from 'react';
-import styled, { css }  from 'styled-components';
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 import { space as styledSpace, width, height, alignItems as styledAlignItems, justifyContent as styledJustifyContent } from 'styled-system';
 import PropTypes from 'prop-types';
-import { fullWidth, fullHeight } from '@phobon/base';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { fullWidth, fullHeight, shouldForwardProp } from '@phobon/base';
 
 import FormFieldContext from './FormFieldContext';
 
@@ -23,7 +23,7 @@ const informationDensity = props => {
   return densities[props.density];
 };
 
-const StyledForm = styled('form').withConfig({
+const StyledForm = styled('form', {
   shouldForwardProp,
 })`
   box-sizing: border-box;

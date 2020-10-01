@@ -6,3 +6,4 @@ export * from './round';
 export * from './density';
 export * from './Normalize';
 export * from './destructureLayoutProps';
+export * from './shouldForwardProp';

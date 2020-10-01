@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import React from "react";
+import styled from "@emotion/styled";
 
 import { Text, TextProps } from '../typography/Text';
-import { focus } from '../../utils';
 
 export interface ILinkProps {
   href?: string;
@@ -9,8 +9,7 @@ export interface ILinkProps {
   active?: boolean;
 }
 export type LinkProps = ILinkProps & TextProps;
-export const Link = styled(Text).attrs(() => ({ as: 'a' }))<LinkProps>(
-  focus,
+const StyledLink = styled(Text)<LinkProps>(
   ({ clean, theme }) => ({
     textDecoration: clean ? 'none' : 'underline dashed',
     position: 'relative',
@@ -24,6 +23,14 @@ export const Link = styled(Text).attrs(() => ({ as: 'a' }))<LinkProps>(
     },
   }),
 );
+
+export const Link = ({ children, ...props }) => (
+  <StyledLink
+    as="a"
+    {...props}>
+    {children}
+  </StyledLink>
+)
 
 Link.displayName = 'Link';
 

@@ -1,6 +1,6 @@
 /* eslint-disable react/default-props-match-prop-types */
 import React, { forwardRef } from 'react';
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import {
   compose,
   space,
@@ -22,16 +22,13 @@ export interface IRadioProps {
   size?: number;
   invalid?: boolean;
   borderThickness?: number;
-  'aria-invalid'?: string;
 }
 type RadioContainerProps =
   IRadioProps
   & SpaceProps
   & BorderProps
   & TypographyProps;
-const RadioContainer = styled('div').withConfig({ shouldForwardProp }).attrs((props: RadioProps) => ({
-  'aria-invalid': props.invalid ? true : undefined,
-}))<RadioProps>(
+const RadioContainer = styled('div', { shouldForwardProp })<RadioProps>(
   radioSystem,
   (props: any) => {
     const { theme, size, borderThickness = 2, borderStyle, color, borderColor } = props;
@@ -143,7 +140,13 @@ export const Radio = forwardRef(({
   className,
   ...props
 }: RadioProps, ref: any) => (
-  <RadioContainer {...props} size={size} disabled={disabled} invalid={invalid} className={className}>
+  <RadioContainer
+    aria-invalid={invalid ? "true" : undefined}
+    {...props}
+    size={size}
+    disabled={disabled}
+    invalid={invalid}
+    className={className}>
     <input
       ref={ref}
       type="radio"

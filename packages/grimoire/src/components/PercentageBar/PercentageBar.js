@@ -1,12 +1,13 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/default-props-match-prop-types */
-import React, { forwardRef } from 'react';
-import styled, { css } from 'styled-components';
+/** @jsx jsx */
+import { forwardRef } from 'react';
+import styled from "@emotion/styled";
+import { css, jsx } from "@emotion/core";
 import PropTypes from 'prop-types';
 import { color } from 'styled-system';
-import shouldForwardProp from '@styled-system/should-forward-prop';
 
-import { Box } from '@phobon/base';
+import { Box, shouldForwardProp } from '@phobon/base';
 
 import Tag from '../Tag';
 
@@ -32,11 +33,9 @@ const heights = props => {
   return heightValues[props.size];
 };
 
-const PercentageBarElement = styled('div').withConfig({
+const PercentageBarElement = styled('div', {
   shouldForwardProp,
-}).attrs(props => ({
-  progressTranslate: `translateX(-${100 - props.percentage}%)`,
-}))`
+})`
   ${color}
   position: relative;
   border-radius: ${props => props.theme.radii[4]}px;
@@ -94,7 +93,10 @@ const PercentageBar = forwardRef(({
           dangerThreshold={dangerThreshold}
           warningThreshold={warningThreshold}
           size={size}
-          bg={bg} />
+          bg={bg}
+          css={{
+            translateX: -100 - percentage,
+          }} />
         {showPercentage && (
           <Tag ml={2} bg="grayscale.1" color="background">{percentageString}</Tag>
         )}

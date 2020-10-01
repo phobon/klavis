@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import {
   compose, space, layout, flexbox, border, color, position, background,
   SpaceProps, LayoutProps, FlexboxProps, BorderProps, ColorProps, PositionProps, BackgroundProps,
@@ -47,7 +47,7 @@ export type BoxProps =
   & FullHeightProps
   & RoundProps;
 
-export const Box = styled('div').withConfig({ shouldForwardProp })<BoxProps>({
+export const Box = styled('div', { shouldForwardProp })<BoxProps>({
   display: 'flex',
   boxSizing: 'border-box',
   minWidth: 0,

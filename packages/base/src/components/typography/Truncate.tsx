@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/default-props-match-prop-types */
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import { system } from 'styled-system';
 
 import { Text, TextProps } from './Text'

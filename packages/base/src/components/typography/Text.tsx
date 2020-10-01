@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import {
   compose,
   space,
@@ -20,11 +20,7 @@ import { cover, fullWidth, fullHeight, gridPosition, CoverProps, FullWidthProps,
 
 const textSystem = compose(space, color, layout, typography, position, textStyle, gridPosition, cover, fullWidth, fullHeight);
 
-export interface ITextProps {
-  as?: React.ElementType | keyof JSX.IntrinsicElements
-}
 export type TextProps =
-  ITextProps
   & SpaceProps
   & ColorProps
   & LayoutProps
@@ -34,8 +30,10 @@ export type TextProps =
   & CoverProps
   & FullWidthProps
   & FullHeightProps
-  & GridPositionProps;
-export const Text = styled('span').withConfig({ shouldForwardProp })<TextProps>({
+  & GridPositionProps
+  & React.HTMLAttributes<HTMLSpanElement>;
+
+export const Text = styled('span', { shouldForwardProp })<TextProps>({
   boxSizing: 'border-box',
   display: 'block',
 },

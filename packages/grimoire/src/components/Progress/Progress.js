@@ -3,7 +3,8 @@ import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import propTypes from '@styled-system/prop-types';
 import themeGet from '@styled-system/theme-get';
-import styled, { css } from 'styled-components';
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 import { Stack, Box } from '@phobon/base';
 
 import ProgressStep from './ProgressStep';

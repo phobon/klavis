@@ -1,11 +1,11 @@
 import React, { forwardRef } from 'react';
-import styled, { css } from 'styled-components';
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 import PropTypes from 'prop-types';
 import { compose, space, borderRadius, position } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
 import themeGet from '@styled-system/theme-get';
-import { focus, Vector, gridPosition } from '@phobon/base'
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { focus, Vector, gridPosition, shouldForwardProp } from '@phobon/base'
 
 import withTooltip from '../Tooltip';
 
@@ -50,7 +50,7 @@ const toggleSize = props => {
 
 const toggleButtonStyles = compose(space, borderRadius, position);
 
-const ToggleButton = styled('button').withConfig({
+const ToggleButton = styled('button', {
   shouldForwardProp,
 })`
   display: flex;

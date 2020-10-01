@@ -1,9 +1,10 @@
-import styled from 'styled-components';
-import { cover, focus, gridPosition } from '@phobon/base';
+/* eslint-disable react/default-props-match-prop-types */
+import React from "react";
+import styled from "@emotion/styled";
+import { cover, focus, gridPosition, shouldForwardProp } from '@phobon/base';
 import { variant, compose, space, layout, border, flexbox, typography, position } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
 import PropTypes from 'prop-types';
-import shouldForwardProp from '@styled-system/should-forward-prop';
 
 import withTooltip from '../Tooltip';
 
@@ -166,9 +167,7 @@ const disabled = ({ theme }) => ({
 
 const buttonStyles = compose(space, layout, border, flexbox, typography, position, cover);
 
-const Button = styled('button').attrs(props => ({
-  'aria-pressed': props.toggled ? 'true' : undefined,
-})).withConfig({
+const StyledButton = styled('button', {
   shouldForwardProp,
 })({
     boxSizing: 'border-box',
@@ -181,6 +180,15 @@ const Button = styled('button').attrs(props => ({
   focus,
   variant({ variants }),
   disabled,
+);
+
+const Button = ({ children, toggled, ...props }) => (
+  <StyledButton
+    aria-pressed={toggled ? 'true' : undefined}
+    toggled={toggled}
+    {...props}>
+    {children}
+  </StyledButton>
 );
 
 Button.displayName = 'Button';

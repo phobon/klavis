@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import { compose, color, space } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { shouldForwardProp } from "@phobon/base";
 
 const badgeStyles = compose(space, color);
 
-const Badge = styled('div').withConfig({
+const Badge = styled('div', {
   shouldForwardProp,
 })`
   min-width: ${props => props.theme.space[4]}px;

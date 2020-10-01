@@ -1,7 +1,7 @@
 {
   "name": "@phobon/base",
   "version": "3.0.8",
-  "description": "Essential compositional components using styled-components and styled-system",
+  "description": "Essential compositional components using CSS-in-JS and styled-system",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": ["dist"],
@@ -11,7 +11,7 @@
   "keywords": [
     "react",
     "css-in-js",
-    "styled-components",
+    "emotion",
     "styled-system"
   ],
   "sideEffects": false,
@@ -22,17 +22,15 @@
     "test": "jest -c jest.tsc.config.js",
     "lint": "eslint ./src"
   },
-  "devDependencies": {
-    "@phobon/tokens": "file:../tokens"
-  },
   "peerDependencies": {
     "@phobon/tokens": "file:../tokens",
     "@styled-system/prop-types": "^5.0.x",
-    "@styled-system/should-forward-prop": "^5.1.x",
     "@styled-system/theme-get": "^5.0.x",
     "react": "^16.13.x || ^17.x",
     "react-dom": "^16.13.x || ^17.x",
-    "styled-components": "^5.1.x",
+    "@emotion/core": "^11.x",
+    "@emotion/styled": "^11.x",
+    "emotion-theming": "^10.x",
     "styled-system": "^5.1.x"
   },
   "repository": {

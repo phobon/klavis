@@ -1,12 +1,12 @@
 /* eslint-disable quotes */
 import React, { forwardRef } from 'react';
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 
 import { Input, InputProps } from './Input';
 import { Box, BoxProps } from '../containers';
 import { destructureLayoutProps } from '../../utils';
 
-const SelectInput = styled(Input).attrs(() => ({ as: 'select' }))({
+const SelectInput = styled(Input)({
   '-webkit-appearance': 'none',
   minWidth: 150,
 });
@@ -33,7 +33,7 @@ export const Select: React.FunctionComponent<SelectProps> = forwardRef((props: S
   const [layoutProps, passthroughProps] = destructureLayoutProps(props);
   return (
     <SelectContainer {...layoutProps}>
-      <SelectInput ref={ref} fullWidth {...passthroughProps} />
+      <SelectInput as="select" ref={ref} fullWidth {...passthroughProps} />
     </SelectContainer>
   );
 });

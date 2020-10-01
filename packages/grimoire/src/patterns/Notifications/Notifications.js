@@ -1,6 +1,7 @@
 import React, { useState, useCallback, forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import styled, { css } from 'styled-components';
+import styled from "@emotion/styled";
+import { css } from "@emotion/core";
 import { motion, AnimatePresence } from 'framer-motion';
 
 import { Box, Stack, Card, Grid } from '@phobon/base';

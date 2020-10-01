@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { StyledComponent, DefaultTheme } from 'styled-components';
+import styled from "@emotion/styled";
 import themeGet from '@styled-system/theme-get';
 
 import { Box, BoxProps } from './Box';
@@ -72,7 +72,7 @@ export interface IScrollableProps {
 export type ScrollableProps =
   IScrollableProps
   & BoxProps;
-export const ScrollableContainer: StyledComponent<'div', DefaultTheme, ScrollableProps, never> = styled(Box)<ScrollableProps>({
+export const ScrollableContainer = styled(Box)<ScrollableProps>({
   position: 'relative',
   overflow: 'hidden',
   alignItems: 'flex-start',

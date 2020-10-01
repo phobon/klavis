@@ -1,4 +1,5 @@
-import styled, { StyledComponent, DefaultTheme } from 'styled-components';
+import React from "react";
+import styled from "@emotion/styled";
 import {
   compose,
   color,
@@ -53,39 +54,43 @@ export type InputProps =
   & FullHeightProps
   & CoverProps;
 
-export const Input: StyledComponent<'input', DefaultTheme, InputProps, never> = styled('input').withConfig({ shouldForwardProp }).attrs((props: InputProps) => ({
-  'aria-invalid': props.invalid ? true : undefined,
-  type: props.variant === 'text' ? undefined : props.variant,
-}))<InputProps & React.InputHTMLAttributes<HTMLInputElement>>(
-  ({ theme, fontSize }) => ({
+const StyledInput = styled('input', { shouldForwardProp })<InputProps & React.InputHTMLAttributes<HTMLInputElement>>(
+  (props: any) => ({
     boxSizing: 'border-box',
     position: 'relative',
     overflow: 'hidden',
-    padding: theme.space[2],
-    lineHeight: `${theme.fontSizes[fontSize as number]}px`,
+    padding: props.theme.space[2],
+    lineHeight: `${props.theme.fontSizes[props.fontSize as number]}px`,
     transition: 'border-color 90ms ease-out',
     '&::-webkit-input-placeholder': {
-      color: theme.colors.grayscale[5],
+      color: props.theme.colors.grayscale[5],
     },  
     '&:focus': {
       outline: 0,
-      borderColor: theme.colors.guidance.focus,
+      borderColor: props.theme.colors.guidance.focus,
     },
     '&:disabled': {
       opacity: 0.2,
       pointerEvents: 'none',
-      backgroundColor: theme.colors.grayscale[7],
-      borderColor: theme.colors.grayscale[6],
+      backgroundColor: props.theme.colors.grayscale[7],
+      borderColor: props.theme.colors.grayscale[6],
     },
     '&[aria-invalid="true"]': {
-      borderColor: theme.colors.reds[5],
+      borderColor: props.theme.colors.reds[5],
       '&:hover': {
-        borderColor: theme.colors.reds[7],
+        borderColor: props.theme.colors.reds[7],
       },
     },
   }),
   textInputSystem,
   browserChrome,
+);
+
+export const Input = ({ invalid, variant, ...props }) => (
+  <StyledInput
+    aria-invalid={invalid ? true : undefined}
+    type={variant === "text" ? undefined : variant}
+    {...props} />
 );
 
 Input.displayName = 'Input';
