@@ -14,8 +14,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c",
-    "prepare": "yarn build && yarn lint",
-    "lint": "eslint ./src",
+    "prepare": "yarn build",
     "storybook": "start-storybook"
   },
   "peerDependencies": {

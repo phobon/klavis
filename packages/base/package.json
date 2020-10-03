@@ -21,8 +21,7 @@
     "build": "rollup -c",
     "prepare": "yarn build",
     "storybook": "start-storybook",
-    "test": "jest -c jest.tsc.config.js",
-    "lint": "eslint ./src"
+    "test": "jest -c jest.tsc.config.js"
   },
   "peerDependencies": {
     "@phobon/tokens": "file:../tokens",
