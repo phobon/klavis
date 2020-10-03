@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import {
   compose,
   space,
+  typography,
   SpaceProps,
   BorderProps,
   TypographyProps,
@@ -13,7 +14,7 @@ import { shouldForwardProp } from "../../utils/shouldForwardProp";
 
 import { Label } from "./Label";
 
-const checkboxSystem = compose(space);
+const checkboxSystem = compose(space, typography);
 
 export interface ICheckboxProps {
   id?: string;
@@ -36,6 +37,7 @@ const CheckboxContainer = styled("div", { shouldForwardProp })<CheckboxProps>(
       theme,
       size,
       borderThickness = 2,
+      borderRadius,
       borderStyle,
       color,
       borderColor,
@@ -64,6 +66,7 @@ const CheckboxContainer = styled("div", { shouldForwardProp })<CheckboxProps>(
           )(props)}`,
           backgroundColor: theme.colors.grayscale[9],
           "box-sizing": "content-box",
+          borderRadius: theme.radii[borderRadius],
         },
         "&::after": {
           content: '""',

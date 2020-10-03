@@ -3,11 +3,7 @@
 import styled from "@emotion/styled";
 import { compose, system } from "styled-system";
 
-import {
-  TypographyProps,
-  typographySystem,
-  typographyStyles,
-} from "./typographyProps";
+import { TypographyProps, typographySystem } from "./typographyProps";
 
 const wordBreak = system({
   wordBreak: true,
@@ -40,12 +36,12 @@ export type TruncateProps = ITruncateProps & TypographyProps;
 
 export const Truncate = styled("span")<TruncateProps>(
   ({ lines }: ITruncateProps) => ({
+    boxSizing: "border-box",
     overflow: "hidden",
     display: "-webkit-box",
     "-webkit-box-orient": "vertical",
     "-webkit-line-clamp": `${lines}`,
   }),
-  typographyStyles,
   truncateSystem,
   boxAlign
 );

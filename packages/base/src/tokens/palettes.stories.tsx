@@ -23,7 +23,7 @@ const SmallColourBox = ({ children, ...props }: any) => (
 );
 
 export const withLightTheme = () => {
-  const { grayscale } = colourSet;
+  const { grayscale, guidance } = colourSet;
 
   return (
     <Box
@@ -42,7 +42,7 @@ export const withLightTheme = () => {
         <SmallColourBox bg={focus} color="white">
           focus
         </SmallColourBox>
-        {guidance.map((g) => (
+        {Object.keys(guidance).map((g) => (
           <SmallColourBox
             key={g}
             bg={`guidance.${g}.1`}
@@ -179,7 +179,17 @@ export const withDarkTheme = () => {
 };
 
 export const withLightSecondaryPalettes = () => {
-  const t = Object.keys(colourSet).map((c) => colourSet[c]);
+  const t: any = Object.keys(colourSet)
+    .map((c) => {
+      const v = colourSet[c];
+      if (v && Array.isArray(v)) {
+        return v;
+      }
+
+      return null;
+    })
+    .filter((n) => n);
+
   return (
     <Box fullWidth fullHeight p={6}>
       <Grid
@@ -188,20 +198,33 @@ export const withLightSecondaryPalettes = () => {
         gridTemplateColumns="repeat(10, 1fr)"
         gridColumnGap={4}
       >
-        {t.map((i, count) => (
-          <Stack fullWidth key={`palette_${count}`}>
-            {i.map((c) => (
-              <Box key={c} fullWidth height={40} bg={c} />
-            ))}
-          </Stack>
-        ))}
+        {t.map((i, count) => {
+          console.log(i);
+          return (
+            <Stack fullWidth key={`palette_${count}`}>
+              {i.map((c) => (
+                <Box key={c} fullWidth height={40} bg={c} />
+              ))}
+            </Stack>
+          );
+        })}
       </Grid>
     </Box>
   );
 };
 
 export const withDarkSecondaryPalettes = () => {
-  const t = Object.keys(colourSet).map((c) => colourSet[c]);
+  const t: any = Object.keys(colourSet)
+    .map((c) => {
+      const v = colourSet[c];
+      if (v && Array.isArray(v)) {
+        return v;
+      }
+
+      return null;
+    })
+    .filter((n) => n);
+
   return (
     <Box fullWidth fullHeight bg="grayscale.0" p={6}>
       <Grid
@@ -223,8 +246,24 @@ export const withDarkSecondaryPalettes = () => {
 };
 
 export const withContrastRatios = () => {
-  const o = Object.keys(colourSet).map((c) => colourSet[c]);
+  const fixedColourSet = { ...colourSet };
+  delete fixedColourSet.guidance;
+  delete fixedColourSet.grayscale;
+
+  const o: any = Object.keys(fixedColourSet)
+    .map((c) => {
+      const v = colourSet[c];
+      if (v && Array.isArray(v)) {
+        return v;
+      }
+
+      return null;
+    })
+    .filter((n) => n);
   const merged = [].concat.apply([], o);
+
+  console.log(merged);
+
   return (
     <Stack space={4} fullWidth>
       <Grid fullWidth gridTemplateColumns="repeat(10, 1fr)" gridAutoRows="50px">
