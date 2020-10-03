@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import {
+  compose,
   get,
   system,
   ResponsiveValue,
@@ -8,7 +9,9 @@ import {
   ObjectOrArray,
 } from "styled-system";
 
-import { Box, BoxProps } from "./Box";
+import { BoxProps, boxSystem } from "./Box";
+
+import { containerStyles } from "./containerProps";
 
 const isNumber = (n: any) => typeof n === "number" && !isNaN(n);
 
@@ -44,16 +47,25 @@ const space: any = {
 };
 const stackSpace = system({ space });
 
+export const stackSystem = compose(stackSpace, boxSystem);
+
 export interface IStackProps {
   space?: ResponsiveValue<ThemeValue<"space", RequiredTheme>>;
 }
+
 export type StackProps = IStackProps & BoxProps;
 
-export const Stack = styled(Box)<StackProps>(stackSpace);
+export const Stack = styled("div")<StackProps>(
+  {
+    display: "flex",
+    flexDirection: "column",
+  },
+  containerStyles,
+  stackSystem
+);
 
-const defaultProps: any = {
+Stack.displayName = "Stack";
+
+Stack.defaultProps = {
   space: 0,
-  flexDirection: "column",
 };
-
-Stack.defaultProps = defaultProps;

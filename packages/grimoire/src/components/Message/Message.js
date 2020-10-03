@@ -1,12 +1,12 @@
 /* eslint-disable react/default-props-match-prop-types */
-import React, { forwardRef } from 'react';
-import PropTypes from 'prop-types';
+import React, { forwardRef } from "react";
+import PropTypes from "prop-types";
 import styled from "@emotion/styled";
-import { css } from "@emotion/core";
-import propTypes from '@styled-system/prop-types';
-import { Box } from '@phobon/base'
+import { css } from "@emotion/react";
+import propTypes from "@styled-system/prop-types";
+import { Box } from "@phobon/base";
 
-const variantColour = props => {
+const variantColour = (props) => {
   const variants = {
     info: css`
       background-color: ${props.theme.colors.guidance.info[1]};
@@ -48,30 +48,36 @@ const variantColour = props => {
   return variants[props.variant];
 };
 
-const MessageContainer = styled(Box).attrs(props => ({
-  'aria-live': props.variant === 'error' || props.variant === 'warning' ? 'assertive' : 'polite',
+const MessageContainer = styled(Box).attrs((props) => ({
+  "aria-live":
+    props.variant === "error" || props.variant === "warning"
+      ? "assertive"
+      : "polite",
 }))`
   ${variantColour}
 
   > svg {
-    margin-right: ${props => props.theme.space[3]}px;
+    margin-right: ${(props) => props.theme.space[3]}px;
   }
 `;
 
 const Message = forwardRef(({ children, variant, glyph, ...props }, ref) => (
-  <MessageContainer
-    variant={variant}
-    role="alert"
-    ref={ref}
-    {...props}>
+  <MessageContainer variant={variant} role="alert" ref={ref} {...props}>
     {glyph}
-    <Box flex={1} color="inherit" bg="inherit" justifyContent="flex-start" flexDirection="column" alignItems="flex-start">
+    <Box
+      flex={1}
+      color="inherit"
+      bg="inherit"
+      justifyContent="flex-start"
+      flexDirection="column"
+      alignItems="flex-start"
+    >
       {children}
     </Box>
   </MessageContainer>
 ));
 
-Message.displayName = 'Message';
+Message.displayName = "Message";
 
 Message.propTypes = {
   ...propTypes.flexbox,
@@ -80,7 +86,15 @@ Message.propTypes = {
   ...propTypes.borderRadius,
 
   /** Message variant */
-  variant: PropTypes.oneOf(['info', 'question', 'success', 'warning', 'error', 'neutral', 'dark']),
+  variant: PropTypes.oneOf([
+    "info",
+    "question",
+    "success",
+    "warning",
+    "error",
+    "neutral",
+    "dark",
+  ]),
 
   /** An optional glyph */
   glyph: PropTypes.node,
@@ -90,10 +104,10 @@ Message.defaultProps = {
   fontSize: 1,
   p: 3,
   borderRadius: 3,
-  flex: '1',
-  alignItems: 'flex-start',
-  justifyContent: 'flex-start',
-  variant: 'neutral',
+  flex: "1",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
+  variant: "neutral",
   glyph: null,
 };
 

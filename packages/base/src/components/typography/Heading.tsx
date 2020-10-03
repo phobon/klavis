@@ -1,7 +1,9 @@
 import React from "react";
-import { Text, TextProps } from "./Text";
+import { Text } from "./Text";
 
-const defaultProps: TextProps = {
+import { TypographyProps } from "./typographyProps";
+
+const defaultProps: TypographyProps = {
   color: "grayscale.1",
   fontWeight: "light",
   lineHeight: 0,
@@ -9,7 +11,7 @@ const defaultProps: TextProps = {
   textAlign: "left",
 };
 
-const headingProps = (heading: string): TextProps => {
+const headingProps = (heading: string): TypographyProps => {
   const headings: any = {
     h1: {
       ...defaultProps,
@@ -44,7 +46,7 @@ const headingProps = (heading: string): TextProps => {
   return headings[heading];
 };
 
-export const Heading: React.PropsWithChildren<TextProps & any> = ({
+export const Heading: React.PropsWithChildren<TypographyProps & any> = ({
   children,
   as,
   ...props

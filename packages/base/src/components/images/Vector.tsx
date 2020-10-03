@@ -1,56 +1,18 @@
 import React from "react";
 import styled from "@emotion/styled";
-import {
-  compose,
-  space,
-  layout,
-  borderRadius,
-  background,
-  position,
-  SpaceProps,
-  LayoutProps,
-  BorderRadiusProps,
-  BackgroundProps,
-  PositionProps,
-} from "styled-system";
+import { compose } from "styled-system";
 import { shouldForwardProp } from "../../utils/shouldForwardProp";
 
-import {
-  fullWidth,
-  fullHeight,
-  gridPosition,
-  paint,
-  FullWidthProps,
-  FullHeightProps,
-  GridPositionProps,
-  PaintProps,
-} from "../../utils";
+import { imageStyles, imageSystem, ImageProps } from "./imageProps";
 
-const vectorSystem = compose(
-  space,
-  layout,
-  borderRadius,
-  background,
-  position,
-  fullWidth,
-  fullHeight,
-  gridPosition,
-  paint
-);
+import { paint, PaintProps } from "../../utils";
 
-export interface IVectorProps {}
-export type VectorProps = IVectorProps &
-  SpaceProps &
-  LayoutProps &
-  BorderRadiusProps &
-  BackgroundProps &
-  PositionProps &
-  FullWidthProps &
-  FullHeightProps &
-  GridPositionProps &
-  PaintProps;
+const vectorSystem = compose(imageSystem, paint);
+
+export type VectorProps = ImageProps & PaintProps;
 
 export const StyledVector = styled("svg", { shouldForwardProp })<VectorProps>(
+  imageStyles,
   vectorSystem
 );
 
@@ -60,8 +22,7 @@ export const Vector = ({ ...props }) => (
 
 Vector.displayName = "Vector";
 
-const defaultProps: any = {
+Vector.defaultProps = {
   fill: "foreground",
   stroke: "none",
 };
-Vector.defaultProps = defaultProps;

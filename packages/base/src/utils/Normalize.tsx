@@ -1,8 +1,8 @@
 import React from "react";
-import { Global } from "@emotion/core";
+import { Global } from "@emotion/react";
 
 export const Normalize = () => {
-  const styles = {
+  const styles: any = {
     ":root, body": {
       width: "100%",
       margin: 0,

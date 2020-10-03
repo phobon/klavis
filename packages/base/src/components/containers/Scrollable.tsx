@@ -2,9 +2,10 @@ import React from "react";
 import styled from "@emotion/styled";
 import themeGet from "@styled-system/theme-get";
 
-import { Box, BoxProps } from "./Box";
+import { Box, BoxProps, boxSystem } from "./Box";
 
 import { destructureLayoutProps } from "../../utils";
+import { containerStyles } from "./containerProps";
 
 const scrollDirectionProps = ({ scrollDirection = "vertical" }) => {
   const scrollDirections = {
@@ -71,15 +72,17 @@ export interface IScrollableProps {
   scrollbarColor?: string;
 }
 export type ScrollableProps = IScrollableProps & BoxProps;
-export const ScrollableContainer = styled(Box)<ScrollableProps>(
+export const ScrollableContainer = styled("div")<ScrollableProps>(
   {
     position: "relative",
     overflow: "hidden",
     alignItems: "flex-start",
     justifycontent: "flex-start",
   },
+  containerStyles,
   scrollDirectionProps,
-  minimalStyle
+  minimalStyle,
+  boxSystem
 );
 
 export const Scrollable: React.FunctionComponent<ScrollableProps> = ({
@@ -130,7 +133,7 @@ export const Scrollable: React.FunctionComponent<ScrollableProps> = ({
 
 Scrollable.displayName = "Scrollable";
 
-const defaultProps: any = {
+Scrollable.defaultProps = {
   minimal: false,
   scrollDirection: "vertical",
   scrollbarColor: "hsla(0, 0%, 0%, 0.4)",
@@ -138,4 +141,3 @@ const defaultProps: any = {
   width: "inherit",
   height: "inherit",
 };
-Scrollable.defaultProps = defaultProps;

@@ -23,6 +23,7 @@ export interface ICheckboxProps {
   invalid?: boolean;
   borderThickness?: number;
 }
+
 type CheckboxContainerProps = ICheckboxProps &
   SpaceProps &
   BorderProps &
@@ -135,6 +136,7 @@ const CheckboxContainer = styled("div", { shouldForwardProp })<CheckboxProps>(
 
 export type CheckboxProps = CheckboxContainerProps &
   React.InputHTMLAttributes<HTMLInputElement>;
+
 export const Checkbox = forwardRef(
   (
     {
@@ -189,7 +191,7 @@ export const Checkbox = forwardRef(
 
 Checkbox.displayName = "Checkbox";
 
-const defaultProps: any = {
+Checkbox.defaultProps = {
   label: null,
   labelColor: "foreground",
   color: "accent.3",
@@ -200,4 +202,3 @@ const defaultProps: any = {
   size: 3,
   invalid: false,
 };
-Checkbox.defaultProps = defaultProps;

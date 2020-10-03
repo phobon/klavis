@@ -63,7 +63,7 @@ interface IRow {
 }
 
 export interface ITableCoreProps {
-  id?: string | number;
+  id?: any;
   columns: IColumn[];
   rows: IRow[];
 }
@@ -87,7 +87,7 @@ type StyledTableProps = ITableProps &
   React.TableHTMLAttributes<HTMLTableElement>;
 
 const StyledTable = styled("table", { shouldForwardProp })<StyledTableProps>(
-  (props) => ({
+  (props: any) => ({
     width: "100%",
     borderSpacing: 0,
     borderCollapse: "separate",
@@ -226,7 +226,7 @@ export const Table: React.FunctionComponent<TableProps> = forwardRef(
 
 Table.displayName = "Table";
 
-const defaultProps: any = {
+Table.defaultProps = {
   id: Math.random() * 100,
   showSeparator: true,
   horizontalCellPadding: 5,
@@ -234,4 +234,3 @@ const defaultProps: any = {
   rows: [],
   density: "normal",
 };
-Table.defaultProps = defaultProps;

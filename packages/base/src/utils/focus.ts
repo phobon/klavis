@@ -1,5 +1,5 @@
 // TODO: theme typing
-export const focus = ({ theme }: any) => ({
+export const focus = ({ theme }: any): any => ({
   "&:focus": {
     outline: 0,
     "&::after": {

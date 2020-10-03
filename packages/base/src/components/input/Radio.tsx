@@ -23,10 +23,12 @@ export interface IRadioProps {
   invalid?: boolean;
   borderThickness?: number;
 }
+
 type RadioContainerProps = IRadioProps &
   SpaceProps &
   BorderProps &
   TypographyProps;
+
 const RadioContainer = styled("div", { shouldForwardProp })<RadioProps>(
   radioSystem,
   (props: any) => {
@@ -190,7 +192,7 @@ export const Radio = forwardRef(
 
 Radio.displayName = "Radio";
 
-const defaultProps: any = {
+Radio.defaultProps = {
   label: null,
   labelColor: "foreground",
   color: "accent.3",
@@ -201,4 +203,3 @@ const defaultProps: any = {
   size: 3,
   invalid: false,
 };
-Radio.defaultProps = defaultProps;

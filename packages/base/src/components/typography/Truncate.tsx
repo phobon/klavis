@@ -1,13 +1,19 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/default-props-match-prop-types */
 import styled from "@emotion/styled";
-import { system } from "styled-system";
+import { compose, system } from "styled-system";
 
-import { Text, TextProps } from "./Text";
+import {
+  TypographyProps,
+  typographySystem,
+  typographyStyles,
+} from "./typographyProps";
 
 const wordBreak = system({
   wordBreak: true,
 });
+
+const truncateSystem = compose(wordBreak, typographySystem);
 
 const boxAlign = ({ textAlign }: any) => {
   const boxAlignments = {
@@ -29,24 +35,26 @@ interface ITruncateProps {
   lines?: number;
   wordBreak?: string;
 }
-export type TruncateProps = ITruncateProps & TextProps;
-export const Truncate = styled(Text)<TruncateProps>(
-  boxAlign,
-  wordBreak,
+
+export type TruncateProps = ITruncateProps & TypographyProps;
+
+export const Truncate = styled("span")<TruncateProps>(
   ({ lines }: ITruncateProps) => ({
     overflow: "hidden",
     display: "-webkit-box",
     "-webkit-box-orient": "vertical",
     "-webkit-line-clamp": `${lines}`,
-  })
+  }),
+  typographyStyles,
+  truncateSystem,
+  boxAlign
 );
 
 Truncate.displayName = "Truncate";
 
-const defaultProps: any = {
+Truncate.defaultProps = {
   lines: 1,
   lineHeight: 4,
   textAlign: "left",
   wordBreak: "break-word",
 };
-Truncate.defaultProps = defaultProps;

@@ -1,15 +1,15 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from "react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/core";
-import PropTypes from 'prop-types';
-import { compose, space, borderRadius, position } from 'styled-system';
-import propTypes from '@styled-system/prop-types';
-import themeGet from '@styled-system/theme-get';
-import { focus, Vector, gridPosition, shouldForwardProp } from '@phobon/base'
+import { css } from "@emotion/react";
+import PropTypes from "prop-types";
+import { compose, space, borderRadius, position } from "styled-system";
+import propTypes from "@styled-system/prop-types";
+import themeGet from "@styled-system/theme-get";
+import { focus, Vector, gridPosition, shouldForwardProp } from "@phobon/base";
 
-import withTooltip from '../Tooltip';
+import withTooltip from "../Tooltip";
 
-const toggleSize = props => {
+const toggleSize = (props) => {
   const sizes = {
     s: css`
       width: ${props.theme.space[5]}px;
@@ -50,7 +50,7 @@ const toggleSize = props => {
 
 const toggleButtonStyles = compose(space, borderRadius, position);
 
-const ToggleButton = styled('button', {
+const ToggleButton = styled("button", {
   shouldForwardProp,
 })`
   display: flex;
@@ -79,7 +79,7 @@ const ToggleButton = styled('button', {
   &::before {
     content: '';
     border-radius: 50%;
-    background-color: ${props => props.theme.colors.background};
+    background-color: ${(props) => props.theme.colors.background};
     position: absolute;
     top: 3px;
     left: 3px;
@@ -87,18 +87,18 @@ const ToggleButton = styled('button', {
   }
 
   &[aria-checked="true"] {
-    background-color: ${props => themeGet(`colors.${props.bg[0]}`)(props)};
+    background-color: ${(props) => themeGet(`colors.${props.bg[0]}`)(props)};
 
     &:hover {
-      background-color: ${props => themeGet(`colors.${props.bg[1]}`)(props)};
+      background-color: ${(props) => themeGet(`colors.${props.bg[1]}`)(props)};
     }
   }
 
   &[aria-checked="false"] {
-    background-color: ${props => props.theme.colors.grayscale[4]};
+    background-color: ${(props) => props.theme.colors.grayscale[4]};
 
     &:hover {
-      background-color: ${props => props.theme.colors.grayscale[3]};
+      background-color: ${(props) => props.theme.colors.grayscale[3]};
     }
 
     &::before {
@@ -112,13 +112,13 @@ const ToggleButton = styled('button', {
     opacity: 0.5;
 
     svg {
-      fill: ${props => props.theme.colors.grayscale[4]};
+      fill: ${(props) => props.theme.colors.grayscale[4]};
     }
 
-    background-color: ${props => props.theme.colors.grayscale[6]};
+    background-color: ${(props) => props.theme.colors.grayscale[6]};
 
     &::before {
-      background-color: ${props => props.theme.colors.grayscale[5]};
+      background-color: ${(props) => props.theme.colors.grayscale[5]};
     }
 
     pointer-events: none;
@@ -134,9 +134,14 @@ const Toggle = forwardRef(({ toggled, disabled, size, ...props }, ref) => (
     size={size}
     ref={ref}
     role="switch"
-    {...props}>
+    {...props}
+  >
     {!toggled && (
-      <Vector width={size === 'm' ? 12 : 8} height={size === 'm' ? 12 : 8} viewBox="0 0 16 16">
+      <Vector
+        width={size === "m" ? 12 : 8}
+        height={size === "m" ? 12 : 8}
+        viewBox="0 0 16 16"
+      >
         <path d="M15.9999 1.77777L14.2222 0L7.99999 6.22219L1.7778 0L2.46126e-05 1.77777L6.22222 7.99996L0 14.2222L1.77777 16L7.99999 9.77774L14.2222 16L16 14.2222L9.77776 7.99996L15.9999 1.77777Z" />
       </Vector>
     )}
@@ -149,17 +154,17 @@ Toggle.propTypes = {
   ...propTypes.position,
   ...gridPosition.propTypes,
 
-  size: PropTypes.oneOf(['s', 'm']),
+  size: PropTypes.oneOf(["s", "m"]),
   toggled: PropTypes.bool,
   bg: PropTypes.arrayOf(PropTypes.string),
 };
 
 Toggle.defaultProps = {
-  size: 'm',
+  size: "m",
   toggled: false,
-  bg: ['greens.6', 'greens.5'],
+  bg: ["greens.6", "greens.5"],
 };
 
-Toggle.displayName = 'Toggle';
+Toggle.displayName = "Toggle";
 
 export default withTooltip(Toggle);

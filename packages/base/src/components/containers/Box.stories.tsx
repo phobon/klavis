@@ -1,14 +1,10 @@
 import React from "react";
-import styled from "@emotion/styled";
 
 import { Box } from "./Box";
 
-const TestBox = styled(Box)``;
-TestBox.defaultProps = {
-  ...Box.defaultProps,
-  bg: "grayscale.8",
-  borderRadius: 2,
-};
+const TestBox = ({ bg = "grayscale.8", borderRadius = 2, ...props }) => (
+  <Box bg={bg} borderRadius={borderRadius} {...props} />
+);
 
 export default {
   component: Box,
