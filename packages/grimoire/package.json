@@ -8,7 +8,7 @@
   "keywords": [
     "react",
     "css-in-js",
-    "styled-components",
+    "emotion",
     "styled-system"
   ],
   "sideEffects": false,
@@ -18,17 +18,15 @@
     "lint": "eslint ./src",
     "storybook": "start-storybook"
   },
-  "devDependencies": {
-    "@phobon/base": "file:../base",
-    "@phobon/tokens": "file:../tokens"
-  },
   "peerDependencies": {
     "@phobon/base": "file:../base",
     "@phobon/tokens": "file:../tokens",
     "framer-motion": "^1.x",
     "react": "^16.x",
     "react-dom": "^16.x",
-    "styled-components": "^5.x",
+    "@emotion/react": "^11.x",
+    "@emotion/styled": "^11.x",
+    "emotion-theming": "^10.x",
     "styled-system": "^5.x"
   }
 }

@@ -1,19 +1,17 @@
 import React, { useContext, forwardRef } from 'react';
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import PropTypes from 'prop-types';
 import { compose, space as spacing, color, borderRadius } from 'styled-system';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { shouldForwardProp } from "@phobon/base";
 
 import FormFieldContext from './FormFieldContext';
 import asField from './Fields/asField';
 
 const fieldsetStyles = compose(spacing, color, borderRadius);
 
-const StyledFieldSet = styled('fieldset').withConfig({
+const StyledFieldSet = styled('fieldset', {
   shouldForwardProp,
-}).attrs(props => ({
-  'aria-invalid': props.invalid ? true : undefined,
-}))`
+})`
   position: relative;
   width: 100%;
   display: flex;
@@ -83,7 +81,16 @@ const FieldSet = forwardRef(({ id, disabled, invalid, children, ...props }, ref)
     return React.cloneElement(c, { id: k, key: k, name: id, mb })
   });
   return (
-    <StyledFieldSet ref={ref} id={id} px={2} my={1} py={2} borderRadius={3} disabled={disabled} invalid={invalid} {...props}>
+    <StyledFieldSet
+      ref={ref}
+      id={id}
+      px={2}
+      my={1}
+      py={2}
+      borderRadius={3}
+      disabled={disabled}
+      aria-invalid={invalid ? "true" : undefined}
+      {...props}>
       {inputs}
     </StyledFieldSet>
   );

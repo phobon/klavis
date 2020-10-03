@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import { compose, space, color, fontSize, lineHeight, borderRadius } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { shouldForwardProp } from "@phobon/base";
 
 const tagStyles = compose(space, color, fontSize, lineHeight, borderRadius);
 
-const Tag = styled('div').withConfig({
+const Tag = styled('div', {
   shouldForwardProp,
 })({
   maxWidth: '26rem',

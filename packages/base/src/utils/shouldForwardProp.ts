@@ -1,5 +1,5 @@
-import memoize from '@emotion/memoize';
-import isPropValid from '@emotion/is-prop-valid';
+import memoize from "@emotion/memoize";
+import isPropValid from "@emotion/is-prop-valid";
 import {
   compose,
   space,
@@ -14,8 +14,8 @@ import {
   shadow,
   buttonStyle,
   textStyle,
-  colorStyle
-} from 'styled-system';
+  colorStyle,
+} from "styled-system";
 
 const all = compose(
   space,
@@ -36,8 +36,8 @@ const all = compose(
 export const props = all.propNames;
 
 export const createShouldForwardProp = (props: any) => {
-  const regex = new RegExp(`^(${props.join('|')})$`)
-  return memoize(prop => isPropValid(prop) && !regex.test(prop))
+  const regex = new RegExp(`^(${props.join("|")})$`);
+  return memoize((prop) => isPropValid(prop) && !regex.test(prop));
 };
 
 export const shouldForwardProp = createShouldForwardProp(props);

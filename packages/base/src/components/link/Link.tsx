@@ -1,36 +1,44 @@
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 
-import { Text, TextProps } from '../typography/Text';
-import { focus } from '../../utils';
+import {
+  TypographyProps,
+  typographyStyles,
+  typographySystem,
+} from "../typography/typographyProps";
+
+import { focus } from "../../utils";
 
 export interface ILinkProps {
   href?: string;
   clean?: boolean;
   active?: boolean;
 }
-export type LinkProps = ILinkProps & TextProps;
-export const Link = styled(Text).attrs(() => ({ as: 'a' }))<LinkProps>(
-  focus,
-  ({ clean, theme }) => ({
-    textDecoration: clean ? 'none' : 'underline dashed',
-    position: 'relative',
-    borderRadius: theme.radii[3],
-    '&:hover': {
-      color: theme.colors.accent[3],
-      textDecoration: 'underline',
+
+export type LinkProps = ILinkProps & TypographyProps;
+
+export const Link = styled("a")<LinkProps>(
+  (props: any) => ({
+    textDecoration: props.clean ? "none" : "underline dashed",
+    position: "relative",
+    borderRadius: props.theme.radii[3],
+    "&:hover": {
+      color: props.theme.colors.accent[3],
+      textDecoration: "underline",
     },
-    '&:visited, &:focus': {
-      textDecoration: 'none',
+    "&:visited, &:focus": {
+      textDecoration: "none",
     },
   }),
+  typographyStyles,
+  typographySystem,
+  focus
 );
 
-Link.displayName = 'Link';
+Link.displayName = "Link";
 
-const defaultProps: any = {
-  color: 'accent.1',
+Link.defaultProps = {
+  color: "accent.1",
   fontSize: 1,
-  textAlign: 'left',
+  textAlign: "left",
   active: false,
 };
-Link.defaultProps = defaultProps;

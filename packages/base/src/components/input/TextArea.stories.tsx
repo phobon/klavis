@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { Stack } from '../containers';
-import { TextArea } from './TextArea';
+import { Stack } from "../containers";
+import { TextArea } from "./TextArea";
 
 export default {
   component: TextArea,
-  title: 'Input/TextArea',
+  title: "Input/TextArea",
 };
 
 export const withDifferentHeights = () => (
@@ -16,7 +16,7 @@ export const withDifferentHeights = () => (
 );
 
 export const withDifferentStates = () => (
-  <Stack space={3} width={1 / 2}  alignItems="flex-start">
+  <Stack space={3} width={1 / 2} alignItems="flex-start">
     <TextArea mb={3} placeholder="invalid" invalid />
     <TextArea mb={3} fullWidth placeholder="disabled" disabled />
   </Stack>

@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { Stack } from '../containers';
-import { Select } from './Select';
+import { Stack } from "../containers";
+import { Select } from "./Select";
 
 export default {
   component: Select,
-  title: 'Input/Select',
+  title: "Input/Select",
 };
 
 const TestSelect = (props: any) => (

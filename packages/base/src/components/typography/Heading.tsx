@@ -1,15 +1,17 @@
-import React from 'react';
-import { Text, TextProps } from './Text';
+import React from "react";
+import { Text } from "./Text";
 
-const defaultProps: TextProps = {
-  color: 'grayscale.1',
-  fontWeight: 'light',
+import { TypographyProps } from "./typographyProps";
+
+const defaultProps: TypographyProps = {
+  color: "grayscale.1",
+  fontWeight: "light",
   lineHeight: 0,
   fontSize: [6, 8],
-  textAlign: 'left',
+  textAlign: "left",
 };
 
-const headingProps = (heading: string): TextProps => {
+const headingProps = (heading: string): TypographyProps => {
   const headings: any = {
     h1: {
       ...defaultProps,
@@ -44,8 +46,11 @@ const headingProps = (heading: string): TextProps => {
   return headings[heading];
 };
 
-export type HeadingProps = TextProps & { children?: React.ReactNode };
-export const Heading = ({ children, as = 'h3', ...props }: HeadingProps) => {  
+export const Heading: React.PropsWithChildren<TypographyProps & any> = ({
+  children,
+  as,
+  ...props
+}) => {
   const rest = headingProps(as.toString());
   return (
     <Text as={as} {...rest} {...props}>
@@ -54,4 +59,8 @@ export const Heading = ({ children, as = 'h3', ...props }: HeadingProps) => {
   );
 };
 
-Heading.displayName = 'Heading';
+Heading.defaultProps = {
+  as: "h3",
+};
+
+Heading.displayName = "Heading";

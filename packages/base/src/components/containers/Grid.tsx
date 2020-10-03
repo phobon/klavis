@@ -1,22 +1,27 @@
-import styled, { StyledComponent, DefaultTheme } from 'styled-components';
-import { grid, GridProps as SystemGridProps } from 'styled-system';
+import styled from "@emotion/styled";
+import { compose, grid, GridProps as SystemGridProps } from "styled-system";
 
-import { Box, BoxProps } from './Box';
+import { shouldForwardProp } from "../../utils/shouldForwardProp";
 
-export type GridProps = BoxProps & SystemGridProps;
+import {
+  containerSystem,
+  ContainerProps,
+  containerStyles,
+} from "./containerProps";
 
-export const Grid: StyledComponent<'div', DefaultTheme, GridProps, never> = styled(Box)<GridProps>({
-    display: 'grid',
+export type GridProps = ContainerProps & SystemGridProps;
+
+export const Grid = styled("div", { shouldForwardProp })<GridProps>(
+  {
+    display: "grid",
+    boxSizing: "border-box",
   },
-  grid,
+  containerStyles,
+  compose(containerSystem, grid)
 );
 
-Grid.displayName = 'Grid';
+Grid.displayName = "Grid";
 
-const defaultProps: any = {
-  flex: 'none',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: 'foreground',
+Grid.defaultProps = {
+  color: "foreground",
 };
-Grid.defaultProps = defaultProps;

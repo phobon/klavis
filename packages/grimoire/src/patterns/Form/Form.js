@@ -1,13 +1,19 @@
-import React, { forwardRef } from 'react';
-import styled, { css }  from 'styled-components';
-import { space as styledSpace, width, height, alignItems as styledAlignItems, justifyContent as styledJustifyContent } from 'styled-system';
-import PropTypes from 'prop-types';
-import { fullWidth, fullHeight } from '@phobon/base';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import React, { forwardRef } from "react";
+import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+import {
+  space as styledSpace,
+  width,
+  height,
+  alignItems as styledAlignItems,
+  justifyContent as styledJustifyContent,
+} from "styled-system";
+import PropTypes from "prop-types";
+import { fullWidth, fullHeight, shouldForwardProp } from "@phobon/base";
 
-import FormFieldContext from './FormFieldContext';
+import FormFieldContext from "./FormFieldContext";
 
-const informationDensity = props => {
+const informationDensity = (props) => {
   const densities = {
     compact: css`
       margin-bottom: ${props.theme.space[3]}px;
@@ -23,7 +29,7 @@ const informationDensity = props => {
   return densities[props.density];
 };
 
-const StyledForm = styled('form').withConfig({
+const StyledForm = styled("form", {
   shouldForwardProp,
 })`
   box-sizing: border-box;
@@ -50,32 +56,47 @@ const StyledForm = styled('form').withConfig({
   }
 
   h1, h2, h3, h4, h5, h6 {
-    margin-bottom: ${props => props.theme.space[props.space - 1]}px;
+    margin-bottom: ${(props) => props.theme.space[props.space - 1]}px;
   }
 `;
 
-const Form = forwardRef(({
-  children,
-  density,
-  optionalLabel,
-  flexDirection,
-  alignItems,
-  justifyContent,
-  disabled,
-  ...props }, ref) => (
-    <StyledForm ref={ref} {...props} flexDirection={flexDirection} alignItems={alignItems} justifyContent={justifyContent} density={density}>
-      <FormFieldContext.Provider value={{
-        density,
-        flexDirection,
-        alignItems,
-        justifyContent,
-        optionalLabel,
-        formDisabled: disabled,
-      }}>
+const Form = forwardRef(
+  (
+    {
+      children,
+      density,
+      optionalLabel,
+      flexDirection,
+      alignItems,
+      justifyContent,
+      disabled,
+      ...props
+    },
+    ref
+  ) => (
+    <StyledForm
+      ref={ref}
+      {...props}
+      flexDirection={flexDirection}
+      alignItems={alignItems}
+      justifyContent={justifyContent}
+      density={density}
+    >
+      <FormFieldContext.Provider
+        value={{
+          density,
+          flexDirection,
+          alignItems,
+          justifyContent,
+          optionalLabel,
+          formDisabled: disabled,
+        }}
+      >
         {children}
       </FormFieldContext.Provider>
     </StyledForm>
-));
+  )
+);
 
 Form.propTypes = {
   ...styledSpace.propTypes,
@@ -91,7 +112,7 @@ Form.propTypes = {
   fullHeight: PropTypes.bool,
 
   /** Information density for this form */
-  density: PropTypes.oneOf(['compact', 'normal', 'spacious']),
+  density: PropTypes.oneOf(["compact", "normal", "spacious"]),
 
   /** Callback to set the optional label in fields */
   optionalLabel: PropTypes.func,
@@ -102,13 +123,13 @@ Form.propTypes = {
 
 /* eslint react/default-props-match-prop-types: 0 */
 Form.defaultProps = {
-  flexDirection: 'column',
-  alignItems: 'flex-start',
-  justifyContent: 'flex-start',
+  flexDirection: "column",
+  alignItems: "flex-start",
+  justifyContent: "flex-start",
   fullWidth: true,
   fullHeight: false,
-  density: 'normal',
-  optionalLabel: () => 'optional',
+  density: "normal",
+  optionalLabel: () => "optional",
   disabled: false,
 };
 

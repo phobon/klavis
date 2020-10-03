@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { Box } from '../containers';
-import { Image } from './Image';
+import { Box } from "../containers";
+import { Image } from "./Image";
 
 export default {
   component: Image,
-  title: 'Images/Image',
+  title: "Images/Image",
 };
 
 export const withDifferentBoxProps = () => (

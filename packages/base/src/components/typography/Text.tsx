@@ -1,53 +1,22 @@
-import styled from 'styled-components';
+import styled from "@emotion/styled";
+
+import { shouldForwardProp } from "../../utils/shouldForwardProp";
+
 import {
-  compose,
-  space,
-  color,
-  layout,
-  typography,
-  position,
-  textStyle,
-  SpaceProps,
-  ColorProps,
-  LayoutProps,
   TypographyProps,
-  PositionProps,
-  TextStyleProps,
-} from 'styled-system';
-import { shouldForwardProp } from '../../utils/shouldForwardProp';
+  typographyStyles,
+  typographySystem,
+} from "./typographyProps";
 
-import { cover, fullWidth, fullHeight, gridPosition, CoverProps, FullWidthProps, FullHeightProps, GridPositionProps } from '../../utils';
+export const Text = styled("span", { shouldForwardProp })<
+  TypographyProps & any
+>(typographyStyles, typographySystem);
 
-const textSystem = compose(space, color, layout, typography, position, textStyle, gridPosition, cover, fullWidth, fullHeight);
+Text.displayName = "Text";
 
-export interface ITextProps {
-  as?: React.ElementType | keyof JSX.IntrinsicElements
-}
-export type TextProps =
-  ITextProps
-  & SpaceProps
-  & ColorProps
-  & LayoutProps
-  & TypographyProps
-  & PositionProps
-  & TextStyleProps
-  & CoverProps
-  & FullWidthProps
-  & FullHeightProps
-  & GridPositionProps;
-export const Text = styled('span').withConfig({ shouldForwardProp })<TextProps>({
-  boxSizing: 'border-box',
-  display: 'block',
-},
-  textSystem,
-);
-
-Text.displayName = 'Text';
-
-const defaultProps: any = {
-  color: 'foreground',
+Text.defaultProps = {
+  color: "foreground",
   fontSize: 1,
-  textAlign: 'left',
+  textAlign: "left",
   lineHeight: 4,
 };
-Text.defaultProps = defaultProps;

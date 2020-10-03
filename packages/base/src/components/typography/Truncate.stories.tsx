@@ -1,15 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import { Stack } from '../containers';
+import { Stack } from "../containers";
 
-import { Truncate } from './Truncate';
+import { Truncate } from "./Truncate";
 
 export default {
   component: Truncate,
-  title: 'Typography/Truncate',
+  title: "Typography/Truncate",
 };
 
-const text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id sodales lectus. Nulla condimentum in turpis nec posuere. Cras ac mollis ligula, vitae volutpat risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id sodales lectus. Nulla condimentum in turpis nec posuere. Cras ac mollis ligula, vitae volutpat risus.';
+const text =
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id sodales lectus. Nulla condimentum in turpis nec posuere. Cras ac mollis ligula, vitae volutpat risus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque id sodales lectus. Nulla condimentum in turpis nec posuere. Cras ac mollis ligula, vitae volutpat risus.";
 
 export const withWidthConstraints = () => (
   <Stack fullWidth alignItems="flex-start" space={4}>
@@ -49,11 +50,25 @@ export const withDifferentNumbersOfLines = () => (
       {text}
     </Truncate>
 
-    <Truncate bg="background" p={0} color="grayscale.2" textStyle="monospace" fullWidth lines={2}>
+    <Truncate
+      bg="background"
+      p={0}
+      color="grayscale.2"
+      textStyle="monospace"
+      fullWidth
+      lines={2}
+    >
       {text}
     </Truncate>
 
-    <Truncate bg="background" p={0} color="grayscale.2" textStyle="caps" fullWidth lines={3}>
+    <Truncate
+      bg="background"
+      p={0}
+      color="grayscale.2"
+      textStyle="caps"
+      fullWidth
+      lines={3}
+    >
       {text}
     </Truncate>
   </Stack>
@@ -64,12 +79,26 @@ export const withDifferentBackgroundColours = () => (
     <Truncate p={0} color="reds.0" fullWidth bg="reds.5">
       {text}
     </Truncate>
-  
-    <Truncate p={0} color="greens.0" textStyle="monospace" fullWidth lines={2} bg="greens.6">
+
+    <Truncate
+      p={0}
+      color="greens.0"
+      textStyle="monospace"
+      fullWidth
+      lines={2}
+      bg="greens.6"
+    >
       {text}
     </Truncate>
 
-    <Truncate p={0} color="oranges.0" textStyle="caps" fullWidth lines={3} bg="oranges.6">
+    <Truncate
+      p={0}
+      color="oranges.0"
+      textStyle="caps"
+      fullWidth
+      lines={3}
+      bg="oranges.6"
+    >
       {text}
     </Truncate>
   </Stack>
@@ -80,7 +109,7 @@ export const withDifferentAlignments = () => (
     <Truncate textAlign="left" fullWidth>
       Shorter Text
     </Truncate>
-  
+
     <Truncate textAlign="center" fullWidth>
       Shorter Text
     </Truncate>

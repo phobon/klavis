@@ -1,15 +1,14 @@
 /* eslint-disable react/prop-types */
 import React, { forwardRef } from 'react';
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import { compose, space, layout, position as styledPosition } from 'styled-system';
 import themeGet from '@styled-system/theme-get';
 import PropTypes from 'prop-types';
-import { destructureLayoutProps, gridPosition } from '@phobon/base';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { destructureLayoutProps, gridPosition, shouldForwardProp } from '@phobon/base';
 
 const badgeStyles = compose(space, layout, styledPosition, gridPosition);
 
-const BadgeContainer = styled('div').withConfig({
+const BadgeContainer = styled('div', {
   shouldForwardProp,
 })`
   ${badgeStyles}

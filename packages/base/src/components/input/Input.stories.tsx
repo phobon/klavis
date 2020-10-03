@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { Stack } from '../containers';
-import { Input } from './Input';
+import { Stack } from "../containers";
+import { Input } from "./Input";
 
 export default {
   component: Input,
-  title: 'Input/Input',
+  title: "Input/Input",
 };
 
 export const withDifferentPaddings = () => (
@@ -25,10 +25,19 @@ export const withDifferentStates = () => (
 );
 
 export const withDifferentVariants = () => {
-  const variants: ('text' | 'number' | 'password')[] = ['text', 'number', 'password'];
+  const variants: ("text" | "number" | "password")[] = [
+    "text",
+    "number",
+    "password",
+  ];
   return (
-    <Stack width={1 / 2} flexDirection="column" alignItems="flex-start" space={3}>
-      {variants.map(v => (
+    <Stack
+      width={1 / 2}
+      flexDirection="column"
+      alignItems="flex-start"
+      space={3}
+    >
+      {variants.map((v) => (
         <Input key={v} placeholder={v} variant={v} />
       ))}
     </Stack>

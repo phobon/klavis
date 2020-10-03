@@ -1,45 +1,56 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/default-props-match-prop-types */
-import React, { forwardRef } from 'react';
-import styled, { css } from 'styled-components';
-import PropTypes from 'prop-types';
-import { color } from 'styled-system';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+/** @jsx jsx */
+import { forwardRef } from "react";
+import styled from "@emotion/styled";
+import { css, jsx } from "@emotion/react";
+import PropTypes from "prop-types";
+import { color } from "styled-system";
 
-import { Box } from '@phobon/base';
+import { Box, shouldForwardProp } from "@phobon/base";
 
-import Tag from '../Tag';
+import Tag from "../Tag";
 
-const thresholdBg = props => {
+const thresholdBg = (props) => {
   if (props.percentage < props.dangerThreshold) {
-    return css`background-color: ${props.theme.colors.reds[6]};`;
+    return css`
+      background-color: ${props.theme.colors.reds[6]};
+    `;
   }
 
   if (props.percentage < props.warningThreshold) {
-    return css`background-color: ${props.theme.colors.oranges[6]};`;
+    return css`
+      background-color: ${props.theme.colors.oranges[6]};
+    `;
   }
 
-  return css`background-color: ${props.theme.colors.greens[6]};`;
+  return css`
+    background-color: ${props.theme.colors.greens[6]};
+  `;
 };
 
-const heights = props => {
+const heights = (props) => {
   const heightValues = {
-    s: css`height: ${props.theme.space[1]}px;`,
-    m: css`height: ${props.theme.space[2]}px;`,
-    l: css`height: ${props.theme.space[3]}px;`,
+    s: css`
+      height: ${props.theme.space[1]}px;
+    `,
+    m: css`
+      height: ${props.theme.space[2]}px;
+    `,
+    l: css`
+      height: ${props.theme.space[3]}px;
+    `,
   };
 
   return heightValues[props.size];
 };
 
-const PercentageBarElement = styled('div').withConfig({
+const PercentageBarElement = styled("div", {
   shouldForwardProp,
-}).attrs(props => ({
-  progressTranslate: `translateX(-${100 - props.percentage}%)`,
-}))`
+})`
   ${color}
   position: relative;
-  border-radius: ${props => props.theme.radii[4]}px;
+  border-radius: ${(props) => props.theme.radii[4]}px;
   ${heights}
   display: flex;
   flex: 1 0 0%;
@@ -47,12 +58,12 @@ const PercentageBarElement = styled('div').withConfig({
 
   &::after {
     position: absolute;
-    content: '';
+    content: "";
     height: 100%;
     width: 100%;
     left: 0;
-    border-radius: ${props => props.theme.radii[4]}px;
-    transform: ${props => props.progressTranslate};
+    border-radius: ${(props) => props.theme.radii[4]}px;
+    transform: ${(props) => props.progressTranslate};
     transform-origin: 0 50%;
     transition: transform 100ms ease-out;
     ${thresholdBg}
@@ -60,48 +71,60 @@ const PercentageBarElement = styled('div').withConfig({
   }
 `;
 
-const PercentageBar = forwardRef(({
-  heading,
-  total,
-  complete,
-  dangerThreshold,
-  warningThreshold,
-  showPercentage,
-  size,
-  bg,
-  ...props
-}, ref) => {
-  const rawPercentage = complete / total;
-  const percentage = rawPercentage * 100;
-  const percentageString = `${percentage}%`;
+const PercentageBar = forwardRef(
+  (
+    {
+      heading,
+      total,
+      complete,
+      dangerThreshold,
+      warningThreshold,
+      showPercentage,
+      size,
+      bg,
+      ...props
+    },
+    ref
+  ) => {
+    const rawPercentage = complete / total;
+    const percentage = rawPercentage * 100;
+    const percentageString = `${percentage}%`;
 
-  return (
-    <Box
-      fullWidth
-      ref={ref}
-      {...props}
-      flexDirection="column"
-      alignItems="flex-start"
-      role="progressbar"
-      aria-valuenow={percentage}
-      aria-valuemin="0"
-      aria-valuemax="100">
-      {heading}
-      <Box fullWidth>
-        <PercentageBarElement
-          rawPercentage={rawPercentage}
-          percentage={percentage}
-          dangerThreshold={dangerThreshold}
-          warningThreshold={warningThreshold}
-          size={size}
-          bg={bg} />
-        {showPercentage && (
-          <Tag ml={2} bg="grayscale.1" color="background">{percentageString}</Tag>
-        )}
+    return (
+      <Box
+        fullWidth
+        ref={ref}
+        {...props}
+        flexDirection="column"
+        alignItems="flex-start"
+        role="progressbar"
+        aria-valuenow={percentage}
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        {heading}
+        <Box fullWidth>
+          <PercentageBarElement
+            rawPercentage={rawPercentage}
+            percentage={percentage}
+            dangerThreshold={dangerThreshold}
+            warningThreshold={warningThreshold}
+            size={size}
+            bg={bg}
+            css={{
+              translateX: -100 - percentage,
+            }}
+          />
+          {showPercentage && (
+            <Tag ml={2} bg="grayscale.1" color="background">
+              {percentageString}
+            </Tag>
+          )}
+        </Box>
       </Box>
-    </Box>
-  )
-});
+    );
+  }
+);
 
 PercentageBar.propTypes = {
   /** Optional heading slot */
@@ -120,7 +143,7 @@ PercentageBar.propTypes = {
   warningThreshold: PropTypes.number,
 
   /** Size of the progress bar */
-  size: PropTypes.oneOf(['s', 'm', 'l']),
+  size: PropTypes.oneOf(["s", "m", "l"]),
 
   /** Show associated percentage */
   showPercentage: PropTypes.bool,
@@ -130,9 +153,9 @@ PercentageBar.defaultProps = {
   heading: null,
   dangerThreshold: 30,
   warningThreshold: 70,
-  size: 'm',
+  size: "m",
   showPercentage: false,
-  bg: 'grayscale.7',
+  bg: "grayscale.7",
 };
 
 export default PercentageBar;

@@ -1,21 +1,33 @@
-import styled, { StyledComponent, DefaultTheme } from 'styled-components';
+import React from "react";
+import styled from "@emotion/styled";
+import { compose, height, HeightProps } from "styled-system";
+
+import { Input } from "./Input";
+
 import {
-  height,
-  HeightProps,
-} from 'styled-system';
+  InputProps,
+  inputStyles,
+  defaultProps,
+  inputSystem,
+} from "./inputProps";
 
-import { Input, InputProps } from './Input';
+export type TextAreaProps = InputProps & HeightProps;
 
-export type TextAreaProps = InputProps & HeightProps & React.InputHTMLAttributes<HTMLTextAreaElement>;
+const textAreaSystem = compose(inputSystem, height);
 
-export const TextArea: StyledComponent<any, DefaultTheme, TextAreaProps, never> = styled(Input).attrs(() => ({ as: 'textarea' }))<TextAreaProps>(
-  height,
+const StyledTextArea = styled(Input)<TextAreaProps>(
+  inputStyles,
+  textAreaSystem
 );
 
-TextArea.displayName = 'TextArea';
+export const TextArea: React.FunctionComponent<TextAreaProps & any> = ({
+  ...props
+}) => <StyledTextArea as="textarea" {...props} />;
 
-const defaultProps: any = {
-  height: 'auto',
+TextArea.displayName = "TextArea";
+
+TextArea.defaultProps = {
+  ...defaultProps,
+  height: "auto",
   py: 2,
 };
-TextArea.defaultProps = defaultProps;

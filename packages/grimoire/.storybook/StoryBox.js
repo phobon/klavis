@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { ThemeProvider } from 'styled-components';
-import { theme, Normalize, Box } from '@phobon/base';
+import React from "react";
+import PropTypes from "prop-types";
+import { ThemeProvider } from "@emotion/react";
+import { theme, Normalize, Box } from "@phobon/base";
 
 const StoryBox = ({ children, ...props }) => (
   <ThemeProvider theme={theme}>
@@ -12,7 +12,8 @@ const StoryBox = ({ children, ...props }) => (
         justifyContent="flex-start"
         alignItems="flex-start"
         {...props}
-        fullWidth>
+        fullWidth
+      >
         {children}
       </Box>
       <Normalize />

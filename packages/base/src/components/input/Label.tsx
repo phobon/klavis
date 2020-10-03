@@ -1,55 +1,29 @@
-import styled, { StyledComponent, DefaultTheme } from 'styled-components';
+import styled from "@emotion/styled";
+import { compose, flexbox, FlexboxProps } from "styled-system";
+
+import { shouldForwardProp } from "../../utils/shouldForwardProp";
+
 import {
-  compose,
-  space,
-  color,
-  layout,
-  typography,
-  position,
-  textStyle,
-  flexbox,
-  SpaceProps,
-  ColorProps,
-  LayoutProps,
+  typographyStyles,
   TypographyProps,
-  PositionProps,
-  TextStyleProps,
-  FlexboxProps,
-} from 'styled-system';
-import { shouldForwardProp } from '../../utils/shouldForwardProp';
+  typographySystem,
+} from "../typography/typographyProps";
 
-import { cover, gridPosition, CoverProps, GridPositionProps } from '../../utils';
+const labelSystem = compose(flexbox, typographySystem);
 
-const labelSystem = compose(space, color, layout, typography, position, textStyle, gridPosition, cover, flexbox);
+export type LabelProps = TypographyProps & FlexboxProps;
 
-export interface ILabelProps {
-}
-export type LabelProps =
-  ILabelProps
-  & SpaceProps
-  & ColorProps
-  & LayoutProps
-  & TypographyProps
-  & PositionProps
-  & TextStyleProps
-  & CoverProps
-  & GridPositionProps
-  & FlexboxProps;
-export const Label: StyledComponent<'label', DefaultTheme, LabelProps, never> =
-  styled('label').withConfig({ shouldForwardProp })<LabelProps>({
-    boxSizing: 'border-box',
-    display: 'flex',
-  },
-  labelSystem,
+export const Label = styled("label", { shouldForwardProp })<LabelProps>(
+  typographyStyles,
+  labelSystem
 );
 
-Label.displayName = 'Text';
+Label.displayName = "Label";
 
-const defaultProps: any = {
-  color: 'grayscale.2',
+Label.defaultProps = {
+  color: "grayscale.2",
   fontSize: 1,
-  justifyContent: 'center',
-  alignItems: 'baseline',
-  flex: 'none',
+  justifyContent: "center",
+  alignItems: "baseline",
+  flex: "none",
 };
-Label.defaultProps = defaultProps;

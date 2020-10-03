@@ -1,12 +1,12 @@
-import styled from 'styled-components';
+import styled from "@emotion/styled";
 import { compose, color, space, minWidth, minHeight, display } from 'styled-system';
 import propTypes from '@styled-system/prop-types';
 import PropTypes from 'prop-types';
-import shouldForwardProp from '@styled-system/should-forward-prop';
+import { shouldForwardProp } from "@phobon/base";
 
 const spacerStyles = compose(color, space, minWidth, minHeight, display);
 
-const Spacer = styled('span').withConfig({
+const Spacer = styled('span', {
   shouldForwardProp,
 })(props => ({
   width: props.direction === 'horizontal' ? props.length : props.thickness,

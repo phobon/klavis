@@ -1,8 +1,10 @@
-import styled, { StyledComponent, DefaultTheme } from 'styled-components';
+import styled from "@emotion/styled";
 
-import { Stack, StackProps } from './Stack';
+import { containerStyles } from "./containerProps";
 
-const boxShadow = ({ boxShadowSize = 'l', theme }: any) => {
+import { stackSystem, StackProps } from "./Stack";
+
+const boxShadow = ({ boxShadowSize = "l", theme }: any) => {
   const boxShadows = {
     none: 0,
     s: 0,
@@ -13,42 +15,47 @@ const boxShadow = ({ boxShadowSize = 'l', theme }: any) => {
   };
 
   return {
-    '&::before': {
+    "&::before": {
       boxShadow: theme.boxShadows[boxShadows[boxShadowSize]],
     },
   };
 };
 
-export type BoxShadowSize = 'none' | 's' | 'm' | 'l' | 'xl' | 'xxl';
+export type BoxShadowSize = "none" | "s" | "m" | "l" | "xl" | "xxl";
+
 interface ICardProps {
   boxShadowIntensity?: number;
   boxShadowSize?: BoxShadowSize;
 }
 export type CardProps = ICardProps & StackProps;
 
-export const Card: StyledComponent<'div', DefaultTheme, CardProps, never> = styled(Stack)<CardProps>(
+export const Card = styled("div")<CardProps>(
   ({ boxShadowIntensity }) => ({
-    position: 'relative',
-    '&::before': {
-      position: 'absolute',
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    "&::before": {
+      position: "absolute",
       content: '""',
-      width: '100%',
-      height: '100%',
-      pointerEvents: 'none',
-      borderRadius: 'inherit',
+      width: "100%",
+      height: "100%",
+      pointerEvents: "none",
+      borderRadius: "inherit",
       opacity: boxShadowIntensity,
       left: 0,
       top: 0,
-      transition: 'opacity 180ms ease-out',
+      transition: "opacity 180ms ease-out",
     },
   }),
+  containerStyles,
   boxShadow,
+  stackSystem
 );
 
-Card.displayName = 'Card';
+Card.displayName = "Card";
 
-const defaultProps: any = {
-  boxShadowSize: 'l',
+Card.defaultProps = {
+  space: 0,
+  boxShadowSize: "l",
   boxShadowIntensity: 1,
-}
-Card.defaultProps = defaultProps;
+};

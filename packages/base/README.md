@@ -1,2 +1,2 @@
 # base
-Essential compositional components using styled-components and styled-system
+Essential compositional components using CSS-in-JS and styled-system

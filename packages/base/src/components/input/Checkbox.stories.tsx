@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { Box } from '../containers';
-import { Checkbox } from './Checkbox';
+import { Box } from "../containers";
+import { Checkbox } from "./Checkbox";
 
 export default {
   component: Checkbox,
-  title: 'Input/Checkbox',
+  title: "Input/Checkbox",
 };
 
 export const withDifferentSizes = () => (

@@ -1,46 +1,28 @@
-import styled from 'styled-components';
-import {
-  compose,
-  space,
-  layout,
-  borderRadius,
-  background,
-  position,
-  SpaceProps, LayoutProps, BorderRadiusProps, BackgroundProps, PositionProps,
-} from 'styled-system';
-import { shouldForwardProp } from '../../utils/shouldForwardProp';
+import React from "react";
+import styled from "@emotion/styled";
+import { compose } from "styled-system";
+import { shouldForwardProp } from "../../utils/shouldForwardProp";
 
-import {
-  fullWidth, fullHeight, gridPosition, paint,
-  FullWidthProps, FullHeightProps, GridPositionProps, PaintProps,
-} from '../../utils';
+import { imageStyles, imageSystem, ImageProps } from "./imageProps";
 
-const vectorSystem = compose(space, layout, borderRadius, background, position, fullWidth, fullHeight, gridPosition, paint);
+import { paint, PaintProps } from "../../utils";
 
-export interface IVectorProps {
-}
-export type VectorProps =
-  IVectorProps
-  & SpaceProps
-  & LayoutProps
-  & BorderRadiusProps
-  & BackgroundProps
-  & PositionProps
-  & FullWidthProps
-  & FullHeightProps
-  & GridPositionProps
-  & PaintProps;
+const vectorSystem = compose(imageSystem, paint);
 
-export const Vector = styled('svg').attrs(() => ({
-    xmlns: 'http://www.w3.org/2000/svg',
-  })).withConfig({ shouldForwardProp })<VectorProps>(
-  vectorSystem,
+export type VectorProps = ImageProps & PaintProps;
+
+export const StyledVector = styled("svg", { shouldForwardProp })<VectorProps>(
+  imageStyles,
+  vectorSystem
 );
 
-Vector.displayName = 'Vector';
+export const Vector = ({ ...props }) => (
+  <StyledVector xmlns="http://www.w3.org/2000/svg" {...props} />
+);
 
-const defaultProps: any = {
-  fill: 'foreground',
-  stroke: 'none',
+Vector.displayName = "Vector";
+
+Vector.defaultProps = {
+  fill: "foreground",
+  stroke: "none",
 };
-Vector.defaultProps = defaultProps;

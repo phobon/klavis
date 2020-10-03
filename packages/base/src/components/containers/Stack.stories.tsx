@@ -1,12 +1,12 @@
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React from "react";
 
-import { Stack } from './Stack';
-import { Text } from '../typography';
+import { Stack } from "./Stack";
+import { Text } from "../typography";
 
 export default {
   component: Stack,
-  title: 'Containers/Stack',
+  title: "Containers/Stack",
 };
 
 export const withDifferentVerticalSpacings = () => (

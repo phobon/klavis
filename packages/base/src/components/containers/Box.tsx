@@ -1,66 +1,31 @@
-import styled from 'styled-components';
-import {
-  compose, space, layout, flexbox, border, color, position, background,
-  SpaceProps, LayoutProps, FlexboxProps, BorderProps, ColorProps, PositionProps, BackgroundProps,
-} from 'styled-system';
-import { shouldForwardProp } from '../../utils/shouldForwardProp';
+import styled from "@emotion/styled";
+import { compose, flexbox, FlexboxProps } from "styled-system";
 
 import {
-  gridPosition,
-  cover,
-  fullWidth,
-  fullHeight,
-  round,
-  GridPositionProps,
-  CoverProps,
-  FullWidthProps,
-  FullHeightProps,
-  RoundProps,
-} from '../../utils';
+  containerSystem,
+  ContainerProps,
+  containerStyles,
+} from "./containerProps";
 
-const boxSystem = compose(
-  space,
-  layout,
-  flexbox,
-  border,
-  color,
-  position,
-  background,
-  round,
-  cover,
-  fullWidth,
-  fullHeight,
-  gridPosition,
+import { shouldForwardProp } from "../../utils/shouldForwardProp";
+
+export const boxSystem = compose(containerSystem, flexbox);
+
+export type BoxProps = ContainerProps & FlexboxProps;
+
+export const Box = styled("div", { shouldForwardProp })<BoxProps>(
+  {
+    display: "flex",
+    flex: "none",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  containerStyles,
+  boxSystem
 );
 
-export type BoxProps =
-  SpaceProps
-  & LayoutProps
-  & FlexboxProps
-  & BorderProps
-  & ColorProps
-  & PositionProps
-  & BackgroundProps
-  & GridPositionProps
-  & CoverProps
-  & FullWidthProps
-  & FullHeightProps
-  & RoundProps;
+Box.displayName = "Box";
 
-export const Box = styled('div').withConfig({ shouldForwardProp })<BoxProps>({
-  display: 'flex',
-  boxSizing: 'border-box',
-  minWidth: 0,
-},
-  boxSystem,
-);
-
-Box.displayName = 'Box';
-
-const defaultProps: any = {
-  flex: 'none',
-  color: 'foreground',
-  alignItems: 'center',
-  justifyContent: 'center',
+Box.defaultProps = {
+  color: "foreground",
 };
-Box.defaultProps = defaultProps;

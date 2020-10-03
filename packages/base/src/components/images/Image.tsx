@@ -1,57 +1,13 @@
-import styled from 'styled-components';
-import {
-  system,
-  compose,
-  space,
-  layout,
-  borderRadius,
-  background,
-  position,
-  SpaceProps, LayoutProps, BorderRadiusProps, BackgroundProps, PositionProps,
-} from 'styled-system';
-import { shouldForwardProp } from '../../utils/shouldForwardProp';
+import styled from "@emotion/styled";
 
-import {
-  fullWidth, fullHeight, round, gridPosition,
-  FullWidthProps, FullHeightProps, RoundProps, GridPositionProps,
-} from '../../utils';
+import { shouldForwardProp } from "../../utils/shouldForwardProp";
 
-const cover = system({
-  cover: {
-    property: 'backgroundSize',
-    transform: n => n ? 'cover' : 'auto',
-  },
-});
+import { imageStyles, ImageProps, imageSystem, responsive } from "./imageProps";
 
-const responsive = ({ responsive }: IImageProps) => responsive ? {
-  width: '100%',
-  height: 'auto',
-} : null;
-
-const imageSystem = compose(space, layout, borderRadius, background, position, fullWidth, fullHeight, round, gridPosition, cover);
-
-export interface IImageProps {
-  cover?: boolean;
-  responsive?: boolean;
-}
-export type ImageProps =
-  IImageProps
-  & SpaceProps
-  & LayoutProps
-  & BorderRadiusProps
-  & BackgroundProps
-  & PositionProps
-  & FullWidthProps
-  & FullHeightProps
-  & RoundProps
-  & GridPositionProps;
-
-export const Image = styled('img').withConfig({ shouldForwardProp })<ImageProps>({
-  display: 'block',
-},
+export const Image = styled("img", { shouldForwardProp })<ImageProps>(
+  imageStyles,
   imageSystem,
-  cover,
-  responsive,
+  responsive
 );
 
-Image.displayName = 'Image';
+Image.displayName = "Image";
