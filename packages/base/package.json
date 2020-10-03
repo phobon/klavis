@@ -1,12 +1,10 @@
 {
   "name": "@phobon/base",
-  "version": "3.0.8",
+  "version": "3.1.0",
   "description": "Essential compositional components using CSS-in-JS and styled-system",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "types": "dist/index.d.ts",
   "author": "Ben McCormick",
   "license": "MIT",
