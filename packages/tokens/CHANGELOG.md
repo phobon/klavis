@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.0
+
+### Minor Changes
+
+- 59d6e92: Converting to emotion
+
 ## 1.0.5
 
 ### Patch Changes
