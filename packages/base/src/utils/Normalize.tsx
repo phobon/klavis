@@ -10,7 +10,8 @@ export const Normalize = () => {
       fontSize: 8,
     },
     body: {
-      fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
+      fontFamily:
+        "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif",
       fontSize: 14,
       fontStyle: "normal",
       fontWeight: 400,
@@ -28,7 +29,8 @@ export const Normalize = () => {
       listStyleType: "none",
     },
     "code, kbd": {
-      fontFamily: "'SF Mono', 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Mono', Menlo, Courier, monospace",
+      fontFamily:
+        "'SF Mono', 'Segoe UI Mono', 'Roboto Mono', 'Ubuntu Mono', Menlo, Courier, monospace",
     },
     template: {
       display: "none",
@@ -42,9 +44,7 @@ export const Normalize = () => {
     },
     "img, fieldset": {
       border: 0,
-    }
+    },
   };
-  return (
-    <Global styles={styles} />
-  );
+  return <Global styles={styles} />;
 };

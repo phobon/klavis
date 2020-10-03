@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
-import { Box } from '../containers';
-import { Radio } from './Radio';
+import { Box } from "../containers";
+import { Radio } from "./Radio";
 
 export default {
   component: Radio,
-  title: 'Input/Radio',
+  title: "Input/Radio",
 };
 
 export const withDifferentSizes = () => (

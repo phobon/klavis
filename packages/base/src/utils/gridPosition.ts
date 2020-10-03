@@ -6,11 +6,7 @@ import {
   GridRowProps,
   GridColumnProps,
   GridAreaProps,
-} from 'styled-system';
+} from "styled-system";
 
 export type GridPositionProps = GridRowProps & GridColumnProps & GridAreaProps;
-export const gridPosition = compose(
-  gridRow,
-  gridColumn,
-  gridArea,
-);
+export const gridPosition = compose(gridRow, gridColumn, gridArea);

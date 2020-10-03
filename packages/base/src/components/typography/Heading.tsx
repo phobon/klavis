@@ -1,12 +1,12 @@
-import React from 'react';
-import { Text, TextProps } from './Text';
+import React from "react";
+import { Text, TextProps } from "./Text";
 
 const defaultProps: TextProps = {
-  color: 'grayscale.1',
-  fontWeight: 'light',
+  color: "grayscale.1",
+  fontWeight: "light",
   lineHeight: 0,
   fontSize: [6, 8],
-  textAlign: 'left',
+  textAlign: "left",
 };
 
 const headingProps = (heading: string): TextProps => {
@@ -44,7 +44,11 @@ const headingProps = (heading: string): TextProps => {
   return headings[heading];
 };
 
-export const Heading: React.PropsWithChildren<TextProps & any> = ({ children, as, ...props }) => {  
+export const Heading: React.PropsWithChildren<TextProps & any> = ({
+  children,
+  as,
+  ...props
+}) => {
   const rest = headingProps(as.toString());
   return (
     <Text as={as} {...rest} {...props}>
@@ -57,4 +61,4 @@ Heading.defaultProps = {
   as: "h3",
 };
 
-Heading.displayName = 'Heading';
+Heading.displayName = "Heading";

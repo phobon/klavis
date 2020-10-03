@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/default-props-match-prop-types */
 import styled from "@emotion/styled";
-import { system } from 'styled-system';
+import { system } from "styled-system";
 
-import { Text, TextProps } from './Text'
+import { Text, TextProps } from "./Text";
 
 const wordBreak = system({
   wordBreak: true,
@@ -12,17 +12,17 @@ const wordBreak = system({
 const boxAlign = ({ textAlign }: any) => {
   const boxAlignments = {
     left: {
-      '-webkit-box-align': 'start',
+      "-webkit-box-align": "start",
     },
     center: {
-      '-webkit-box-align': 'center',
+      "-webkit-box-align": "center",
     },
     right: {
-      '-webkit-box-align': 'end',
+      "-webkit-box-align": "end",
     },
   };
 
-  return boxAlignments[textAlign || 'center'];
+  return boxAlignments[textAlign || "center"];
 };
 
 interface ITruncateProps {
@@ -34,19 +34,19 @@ export const Truncate = styled(Text)<TruncateProps>(
   boxAlign,
   wordBreak,
   ({ lines }: ITruncateProps) => ({
-    overflow: 'hidden',
-    display: '-webkit-box',
-    '-webkit-box-orient': 'vertical',
-    '-webkit-line-clamp': `${lines}`,
-  }),
+    overflow: "hidden",
+    display: "-webkit-box",
+    "-webkit-box-orient": "vertical",
+    "-webkit-line-clamp": `${lines}`,
+  })
 );
 
-Truncate.displayName = 'Truncate';
+Truncate.displayName = "Truncate";
 
 const defaultProps: any = {
   lines: 1,
   lineHeight: 4,
-  textAlign: 'left',
-  wordBreak: 'break-word',
+  textAlign: "left",
+  wordBreak: "break-word",
 };
 Truncate.defaultProps = defaultProps;

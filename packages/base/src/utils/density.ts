@@ -1,13 +1,13 @@
-import { system } from 'styled-system';
+import { system } from "styled-system";
 
-export type DensityType = 'compact' | 'normal' | 'spacious';
+export type DensityType = "compact" | "normal" | "spacious";
 export interface DensityProps {
   density?: DensityType;
 }
 export const density = system({
   density: {
-    property: 'height',
-    transform: n => {
+    property: "height",
+    transform: (n) => {
       const densities = {
         compact: {
           height: 32,
@@ -19,7 +19,7 @@ export const density = system({
           height: 48,
         },
       };
-    
+
       return densities[n];
     },
   },

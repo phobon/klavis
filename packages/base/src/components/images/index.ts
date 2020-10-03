@@ -1,2 +1,2 @@
-export * from './Image';
-export * from './Vector';
+export * from "./Image";
+export * from "./Vector";
