@@ -2,17 +2,21 @@
 import React, { forwardRef } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import PropTypes from "prop-types";
 import {
+  compose,
   space,
   border as styledBorder,
   color as styledColor,
   borderRadius as styledBorderRadius,
+  SpaceProps,
+  BorderProps,
+  ColorProps,
+  BorderRadiusProps,
 } from "styled-system";
 
 import { Box, Image, Text, focus, shouldForwardProp } from "@phobon/base";
 
-import User from "../../icons/User";
+import { User } from "../../icons/User";
 
 const statusColor = (props) => {
   const statusColors = {
@@ -75,51 +79,68 @@ const statusElements = (props) => {
   return sizes[props.size];
 };
 
+const avatarSystem = compose(
+  space,
+  styledBorder,
+  styledColor,
+  styledBorderRadius
+);
+
+interface IAvatarProps {
+  image?: string;
+  name?: string;
+  size?: "s" | "m" | "l";
+  status?: "none" | "error" | "warning" | "success";
+  presence?: "none" | "unknown" | "unavailable" | "busy" | "available";
+  variant?: "initials" | "glyph";
+  onClick?: () => void;
+}
+
+type AvatarProps = IAvatarProps &
+  SpaceProps &
+  BorderProps &
+  ColorProps &
+  BorderRadiusProps;
+
 const AvatarBox = styled("div", {
   shouldForwardProp,
-})`
-  display: flex;
-  flex: none;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  pointer-events: none;
-
-  ${space}
-  ${styledBorderRadius}
-
-  ${extents}
-
-  &:before, &:after {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    border: solid 3px ${(props) => props.theme.colors.background};
-    pointer-events: none;
-    z-index: 1;
-    ${statusElements}
-  }
-
-  &:before {
-    top: -${(props) => props.theme.space[1]}px;
-    opacity: ${(props) => (props.status !== "none" ? 1 : 0)};
-    ${statusColor}
-  }
-
-  &:after {
-    bottom: -${(props) => props.theme.space[1]}px;
-    opacity: ${(props) => (props.presence !== "none" ? 1 : 0)};
-    ${presenceColor}
-  }
-
-`;
+})<AvatarProps>(
+  avatarSystem,
+  extents,
+  statusElements,
+  statusColor,
+  presenceColor,
+  (props: any) => ({
+    display: "flex",
+    flex: "none",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "relative",
+    pointerEvents: "none",
+    "&:before, &:after": {
+      content: "''",
+      position: "absolute",
+      borderRadius: "50%",
+      border: `solid 3px ${props.theme.colors.background}`,
+      pointerEvents: "none",
+      zIndex: 1,
+    },
+    "&:before": {
+      top: ` -${props.theme.space[1]}px`,
+      opacity: `${props.status !== "none" ? 1 : 0}`,
+    },
+    "&:after": {
+      bottom: `-${props.theme.space[1]}px`,
+      opacity: `${props.presence !== "none" ? 1 : 0}`,
+    },
+  })
+);
 
 const buttonFocus = (props) =>
-  props.onClick &&
-  css`
-    cursor: pointer;
-    ${focus}
-  `;
+  props.onClick && {
+    cursor: "pointer",
+    ...focus,
+  };
 
 const avatarFontSize = (props) => {
   const fontSizes = {
@@ -139,30 +160,21 @@ const avatarFontSize = (props) => {
 
 const AvatarIndicatorButton = styled("button", {
   shouldForwardProp,
-})`
-  width: inherit;
-  height: inherit;
-  font-size: inherit;
-  border: 0;
-  padding: 0;
-  background: 0;
-  pointer-events: all;
-  display: flex;
-  flex: none;
-  justify-content: center;
-  align-items: center;
-  line-height: 0;
-  overflow: hidden;
-
-  ${styledColor}
-  ${styledBorder}
-  ${space}
-  ${avatarFontSize}
-  
-  ${styledBorderRadius}
-
-  ${buttonFocus}
-`;
+})(avatarSystem, avatarFontSize, buttonFocus, {
+  width: "inherit",
+  height: "inherit",
+  fontSize: "inherit",
+  border: 0,
+  padding: 0,
+  background: 0,
+  pointerEvents: "all",
+  display: "flex",
+  flex: "none",
+  justifyContent: "center",
+  alignItems: "center",
+  lineHeight: 0,
+  overflow: "hidden",
+});
 
 const AvatarIndicator = ({ size, variant, name, onClick, ...props }) => {
   let width;
@@ -202,18 +214,11 @@ const AvatarIndicator = ({ size, variant, name, onClick, ...props }) => {
   );
 };
 
-AvatarIndicator.propTypes = {
-  size: PropTypes.oneOf(["s", "m", "l"]).isRequired,
-  variant: PropTypes.oneOf(["initials", "glyph"]).isRequired,
-  name: PropTypes.string.isRequired,
-  onClick: PropTypes.func,
-};
-
 AvatarIndicator.defaultProps = {
   onClick: null,
 };
 
-const Avatar = forwardRef(
+export const Avatar: React.FunctionComponent<AvatarProps & any> = forwardRef(
   (
     {
       image,
@@ -272,37 +277,6 @@ const Avatar = forwardRef(
 
 Avatar.displayName = "Avatar";
 
-Avatar.propTypes = {
-  ...Box.propTypes,
-
-  /** Image to display */
-  image: PropTypes.string,
-
-  /** User name */
-  name: PropTypes.string.isRequired,
-
-  /** Size of avatar */
-  size: PropTypes.oneOf(["s", "m", "l"]),
-
-  /** Current status of user */
-  status: PropTypes.oneOf(["none", "error", "warning", "success"]),
-
-  /** Current user presence */
-  presence: PropTypes.oneOf([
-    "none",
-    "unknown",
-    "unavailable",
-    "busy",
-    "available",
-  ]),
-
-  /** Style to display avatar when no image is present */
-  variant: PropTypes.oneOf(["initials", "glyph"]),
-
-  /** onClick function */
-  onClick: PropTypes.func,
-};
-
 Avatar.defaultProps = {
   image: null,
   size: "m",
@@ -317,5 +291,3 @@ Avatar.defaultProps = {
   border: "3px solid",
   borderColor: "white",
 };
-
-export default Avatar;

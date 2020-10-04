@@ -1,18 +1,18 @@
-import React from 'react';
-import { action } from '@storybook/addon-actions';
+import React from "react";
+import { action } from "@storybook/addon-actions";
 
-import { Stack, Box } from '@phobon/base';
+import { Stack, Box } from "@phobon/base";
 
-import Avatar from './Avatar';
+import { Avatar } from "./Avatar";
 
 export default {
   component: Avatar,
-  title: 'Components/Avatar',
+  title: "Components/Avatar",
 };
 
-const sizes = ['s', 'm', 'l'];
-const statuses = ['none', 'error', 'warning', 'success'];
-const presences = ['none', 'unknown', 'unavailable', 'busy', 'available'];
+const sizes = ["s", "m", "l"];
+const statuses = ["none", "error", "warning", "success"];
+const presences = ["none", "unknown", "unavailable", "busy", "available"];
 
 export const withVariants = () => (
   <Stack space={3} flexDirection="row">
@@ -31,21 +31,25 @@ export const withDifferentColours = () => (
 );
 
 export const withDifferentStatuses = () => {
-  const glyphAvatars = Object.values(statuses).map(s => (
+  const glyphAvatars = Object.values(statuses).map((s) => (
     <Box as="li" key={s}>
       <Avatar name="Fake Name" variant="glyph" status={s} />
     </Box>
   ));
 
-  const initialsAvatars = Object.values(statuses).map(s => (
+  const initialsAvatars = Object.values(statuses).map((s) => (
     <Box as="li" key={s}>
       <Avatar name="Fake Name" status={s} />
     </Box>
   ));
 
-  const imageAvatars = Object.values(statuses).map(s => (
+  const imageAvatars = Object.values(statuses).map((s) => (
     <Box as="li" key={s}>
-      <Avatar name="Fake Name" status={s} image="https://source.unsplash.com/random/50x50" />
+      <Avatar
+        name="Fake Name"
+        status={s}
+        image="https://source.unsplash.com/random/50x50"
+      />
     </Box>
   ));
 
@@ -65,21 +69,25 @@ export const withDifferentStatuses = () => {
 };
 
 export const withDifferentPresences = () => {
-  const glyphAvatars = Object.values(presences).map(p => (
+  const glyphAvatars = Object.values(presences).map((p) => (
     <Box as="li" key={p}>
       <Avatar name="Fake Name" variant="glyph" presence={p} />
     </Box>
   ));
 
-  const initialsAvatars = Object.values(presences).map(p => (
+  const initialsAvatars = Object.values(presences).map((p) => (
     <Box as="li" key={p}>
       <Avatar name="Fake Name" presence={p} />
     </Box>
   ));
 
-  const imageAvatars = Object.values(presences).map(p => (
+  const imageAvatars = Object.values(presences).map((p) => (
     <Box as="li" key={p}>
-      <Avatar name="Fake Name" presence={p} image="https://source.unsplash.com/random/50x50" />
+      <Avatar
+        name="Fake Name"
+        presence={p}
+        image="https://source.unsplash.com/random/50x50"
+      />
     </Box>
   ));
 
@@ -99,25 +107,29 @@ export const withDifferentPresences = () => {
 };
 
 export const withDifferentSizes = () => {
-  const glyphAvatars = Object.values(sizes).map(s => (
+  const glyphAvatars = Object.values(sizes).map((s) => (
     <Box as="li" key={s}>
       <Avatar name="Fake Name" variant="glyph" size={s} />
     </Box>
   ));
 
-  const initialsAvatars = Object.values(sizes).map(s => (
+  const initialsAvatars = Object.values(sizes).map((s) => (
     <Box as="li" key={s}>
       <Avatar name="Fake Name" size={s} />
     </Box>
   ));
 
-  const imageAvatars = Object.values(sizes).map(s => (
+  const imageAvatars = Object.values(sizes).map((s) => (
     <Box as="li" key={s}>
-      <Avatar name="Fake Name" size={s} image="https://source.unsplash.com/random/50x50" />
+      <Avatar
+        name="Fake Name"
+        size={s}
+        image="https://source.unsplash.com/random/50x50"
+      />
     </Box>
   ));
 
-  const statusPresenceAvatars = Object.values(sizes).map(s => (
+  const statusPresenceAvatars = Object.values(sizes).map((s) => (
     <Box as="li" key={s}>
       <Avatar name="Fake Name" size={s} status="warning" presence="unknown" />
     </Box>
@@ -142,5 +154,5 @@ export const withDifferentSizes = () => {
 };
 
 export const withCustomOnClick = () => (
-  <Avatar name="Fake Name" onClick={action('clicked')} />
-); 
+  <Avatar name="Fake Name" onClick={action("clicked")} />
+);
