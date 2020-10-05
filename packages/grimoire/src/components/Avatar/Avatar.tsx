@@ -14,7 +14,7 @@ import {
   BorderRadiusProps,
 } from "styled-system";
 
-import { Box, Image, Text, focus, shouldForwardProp } from "@phobon/base";
+import { Image, Text, focus, shouldForwardProp } from "@phobon/base";
 
 import { User } from "../../icons/User";
 
@@ -86,7 +86,7 @@ const avatarSystem = compose(
   styledBorderRadius
 );
 
-interface IAvatarProps {
+export interface IAvatarProps {
   image?: string;
   name?: string;
   size?: "s" | "m" | "l";
@@ -96,7 +96,7 @@ interface IAvatarProps {
   onClick?: () => void;
 }
 
-type AvatarProps = IAvatarProps &
+export type AvatarProps = IAvatarProps &
   SpaceProps &
   BorderProps &
   ColorProps &
