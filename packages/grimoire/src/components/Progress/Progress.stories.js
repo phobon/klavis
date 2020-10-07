@@ -4,8 +4,8 @@ import uuidv4 from 'uuid/v4';
 
 import { Box, Text } from '@phobon/base';
 
-import Progress from './Progress';
-import ProgressStep from './ProgressStep';
+import { Progress } from './Progress';
+import { ProgressStep } from './ProgressStep';
 
 export default {
   component: Progress,
