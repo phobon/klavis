@@ -3,7 +3,6 @@ import { Checkbox, Radio } from '@phobon/base';
 
 import { Form } from '../Form';
 import { CheckboxField } from './CheckboxField';
-import { NumberField } from './NumberField';
 import { TextAreaField } from './TextAreaField';
 import { InputField } from './InputField';
 import { SelectField } from './SelectField';
@@ -36,11 +35,11 @@ export const checkboxField = () => (
 
 export const numberField = () => (
   <Form>
-    <NumberField label="label" id="number_1" />
-    <NumberField label="label" hint="hint text" id="number_2" />
-    <NumberField label="label" invalid="invalid text" id="number_3" />
-    <NumberField label="required field" required id="number_4" />
-    <NumberField label="disabled field" disabled id="number_5" />
+    <InputField variant="number" label="label" id="number_1" />
+    <InputField variant="number" label="label" hint="hint text" id="number_2" />
+    <InputField variant="number" label="label" invalid="invalid text" id="number_3" />
+    <InputField variant="number" label="required field" required id="number_4" />
+    <InputField variant="number" label="disabled field" disabled id="number_5" />
   </Form>
 );
 
