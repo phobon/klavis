@@ -8,18 +8,20 @@ import { FormFieldContext } from "./FormFieldContext";
 
 // Using a progressive enhancement strategy to ensure that we have consistent results
 // on modern browsers using css grid, while still maintaining legacy behaviour
-export const FieldGroup: React.FunctionComponent<GridProps & { space?: any } & any> = ({ children, gridTemplateColumns, space, ...props }) => {
+export const FieldGroup: React.FunctionComponent<GridProps & { space?: any } & any> = ({ children, space, ...props }) => {
   const { space: formSpace } = useContext(FormFieldContext);
-  const gap = space || formSpace;
+  const gap = space || formSpace || 3;
+
+  console.log(gap);
 
   return (
     <Grid
       {...props}
-      css={(props: any) => ({
+      css={(theme: any) => ({
         display: "flex",
         flexDirection: "row",
         "> * + *": {
-          marginLeft: typeof props.space === 'string' ? props.space : `${props.theme.space[props.space]}px`,
+          marginLeft: typeof space === 'string' ? space : `${theme.space[props.space]}px`,
         },
         "@supports (display: grid)": {
           display: "grid",
@@ -29,7 +31,6 @@ export const FieldGroup: React.FunctionComponent<GridProps & { space?: any } & a
         },
       })}
       gridGap={gap}
-      gridTemplateColumns={gridTemplateColumns}
       className="form__fieldgroup"
       alignItems="flex-start"
       justifyContent="space-between">

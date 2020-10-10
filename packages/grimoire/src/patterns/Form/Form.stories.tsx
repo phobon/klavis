@@ -25,7 +25,7 @@ export const withSeveralDifferentFields = () => (
 export const withDifferentDensities = () => (
   <>
     <Form density="compact" mr={4} width={1/4}>
-      <Heading.H4>Compact density</Heading.H4>
+      <Heading>Compact density</Heading>
       <InputField id="text1" label="text field 1" />
       <InputField id="text2" label="text field 2" />
       <InputField id="text3" label="text field 3" />
@@ -34,7 +34,7 @@ export const withDifferentDensities = () => (
     </Form>
 
     <Form density="normal" mr={4} width={1/4}>
-      <Heading.H4>Normal density</Heading.H4>
+      <Heading>Normal density</Heading>
       <InputField id="text1" label="text field 1" />
       <InputField id="text2" label="text field 2" />
       <InputField id="text3" label="text field 3" />
@@ -43,7 +43,7 @@ export const withDifferentDensities = () => (
     </Form>
 
     <Form density="spacious" width={1/4}>
-      <Heading.H4>Spacious density</Heading.H4>
+      <Heading>Spacious density</Heading>
       <InputField id="text1" label="text field 1" />
       <InputField id="text2" label="text field 2" />
       <InputField id="text3" label="text field 3" />
@@ -55,7 +55,7 @@ export const withDifferentDensities = () => (
 
 export const withInlineFields = () => (
   <Form>
-    <FieldGroup>
+    <FieldGroup gridTemplateColumns="1fr">
       <InputField id="text1" label="text field" />
     </FieldGroup>
 

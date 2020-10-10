@@ -26,13 +26,13 @@ import { FormFieldContext } from "./FormFieldContext";
 const informationDensity = (props) => {
   const densities = {
     compact: {
-      marginBottom: props.theme.space[3],
+      marginTop: props.theme.space[3],
     },
     normal: {
-      marginBottom: props.theme.space[4],
+      marginTop: props.theme.space[4],
     },
     spacious: {
-      marginBottom: props.theme.space[5],
+      marginTop: props.theme.space[5],
     },
   };
 
@@ -66,8 +66,8 @@ const StyledForm = styled("form", {
   ".form__field": {
     flex: "1 0 auto",
   },
-  ".form__field, .form__fieldgroup": {
-    ...informationDensity,
+  "> [class^='form__'] + [class^='form__']": {
+    ...informationDensity(props),
   },
   "h1, h2, h3, h4, h5, h6": {
     marginBottom: props.theme.space[props.space - 1],

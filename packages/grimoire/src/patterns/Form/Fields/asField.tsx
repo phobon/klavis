@@ -73,8 +73,8 @@ export const asField= (WrappedComponent: any): React.FunctionComponent<AsFieldPr
             htmlFor={id}
             mb={1}
             alignItems="baseline">
-            {label}
-            {!required && optionalLabel && <Text as="span" color="grayscale.4" ml={1}>{`(${optionalLabel()})`}</Text>}
+            <Text as="span" display="inline">{label}</Text>
+            {!required && optionalLabel && <Text as="span" color="grayscale.4" ml={1} display="inline">{`(${optionalLabel()})`}</Text>}
           </Label>
         )}
         <Box flex={1} fullWidth>
@@ -92,7 +92,7 @@ export const asField= (WrappedComponent: any): React.FunctionComponent<AsFieldPr
         <Text fontSize={0} mt={1} color="grayscale.3">{hint}</Text>
       )}
       {invalid && (
-        <Box mt={2} color="reds.2">
+        <Box mt={1} color="reds.2">
           <AlertCircle width={16} height={16} />
           <Text ml={1} fontSize={0} color="guidance.error.0">{invalid}</Text>
         </Box>

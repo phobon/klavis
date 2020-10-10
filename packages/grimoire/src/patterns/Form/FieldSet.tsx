@@ -1,4 +1,4 @@
-import React, { useContext, forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import styled from "@emotion/styled";
 import {
   compose,
@@ -11,7 +11,6 @@ import {
 } from 'styled-system';
 import { shouldForwardProp } from "@phobon/base";
 
-import { FormFieldContext } from './FormFieldContext';
 import { asField } from './Fields/asField';
 
 const fieldsetSystem = compose(spacing, color, borderRadius);
@@ -37,7 +36,7 @@ const StyledFieldSet = styled('fieldset', {
     border: 0,
     transition: "border-color 80ms ease-out",
     "&::before": {
-      content: '',
+      content: "''",
       position: "absolute",
       left: -4,
       top: 0,
@@ -68,28 +67,18 @@ const StyledFieldSet = styled('fieldset', {
     "&:disabled": {
       opacity: 0.5,
       pointerEvents: "none",
+    },
+    "> * + *": {
+      marginTop: props.theme.space[3],
     }
   }),
   fieldsetSystem,
 );
 
-const informationDensity = density => {
-  const densities = {
-    compact: 2,
-    normal: 3,
-    spacious: 4,
-  };
-
-  return densities[density];
-};
-
 const CoreFieldSet: React.FunctionComponent<FieldSetProps & any> = forwardRef(({ id, disabled, invalid, children, ...props }, ref) => {
-  const { density } = useContext(FormFieldContext);
-  const mb = informationDensity(density);
-
   const inputs = React.Children.map(children, (c, i) => {
     const k = `${id}__option${i}`;
-    return React.cloneElement(c, { id: k, key: k, name: id, mb })
+    return React.cloneElement(c, { id: k, key: k, name: id })
   });
   return (
     <StyledFieldSet

@@ -64,9 +64,11 @@ export const CheckboxField: React.FunctionComponent<CheckboxFieldProps & any> = 
         disabled={fieldDisabled}
         label={label && (
           <>
-            {label}
+            <Text as="span" color="grayscale.4" lineHeight={0} display="inline">
+              {label}
+            </Text>
             {!required && optionalLabel && (
-              <Text as="span" color="grayscale.4" lineHeight={0} ml={1}>
+              <Text as="span" color="grayscale.4" lineHeight={0} ml={1} display="inline">
                 {`(${optionalLabel()})`}
               </Text>
             )}

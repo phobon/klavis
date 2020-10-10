@@ -73,7 +73,7 @@ export const withLightTheme = () => {
                 Heading.H3
               </Heading>
               <Heading as="h4" color={g} mb={3}>
-                Heading.H4
+                Heading
               </Heading>
               <Heading as="h5" color={g} mb={3}>
                 Heading.H5
@@ -151,7 +151,7 @@ export const withDarkTheme = () => {
                 Heading.H3
               </Heading>
               <Heading as="h4" color={g} mb={3}>
-                Heading.H4
+                Heading
               </Heading>
               <Heading as="h5" color={g} mb={3}>
                 Heading.H5
