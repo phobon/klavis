@@ -56,18 +56,18 @@ export type MessageProps = IMessageProps & BoxProps;
 export const Message: React.FunctionComponent<MessageProps & { children?: React.ReactNode } & any> = forwardRef(({ children, variant, glyph, ...props }, ref) => { 
   return (
     <Box
-    aria-live={props.variant === "error" || props.variant === "warning"
-      ? "assertive"
-      : "polite"}
-    role="alert"
-    ref={ref}
-    css={(props: any) => ({
-      ...variantColour(props),
-      "> svg": {
-        marginRight: props.theme.space[3],
-      },
-    })}
-    {...props}>
+      aria-live={props.variant === "error" || props.variant === "warning"
+        ? "assertive"
+        : "polite"}
+      role="alert"
+      ref={ref}
+      css={(theme: any) => ({
+        ...variantColour({ theme, variant }),
+        "> svg": {
+          marginRight: theme.space[3],
+        },
+      })}
+      {...props}>
       {glyph}
       <Box
         flex={1}
@@ -93,5 +93,4 @@ Message.defaultProps = {
   alignItems: "flex-start",
   justifyContent: "flex-start",
   variant: "neutral",
-  glyph: null,
 };
