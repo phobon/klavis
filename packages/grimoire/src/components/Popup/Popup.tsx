@@ -84,9 +84,9 @@ const useAlignmentTransition = (popupDirection, isOpen, container, childrenCount
   const [align, setAlign] = useState(horizontalDirection(popupDirection));
   const [valign, setValign] = useState(verticalDirection(popupDirection));
   // eslint-disable-next-line no-unused-vars
-  const [enter, setEnter] = useState(enterDirection(popupDirection));
+  const [enter] = useState(enterDirection(popupDirection));
   // eslint-disable-next-line no-unused-vars
-  const [exit, setExit] = useState(exitDirection(popupDirection));
+  const [exit] = useState(exitDirection(popupDirection));
 
   useEffect(() => {
     if (container && container.current) {
@@ -125,7 +125,7 @@ type PopupProps = IPopupProps & ButtonProps;
 export const Popup: React.FunctionComponent<PopupProps & any> = forwardRef(({ trigger, children, label, closeAfterAction, className, as, popupDirection, ...props }, forwardedRef) => {
   // Set up state and refs.
   const [isOpen, setIsOpen] = useState(false);
-  const container = useRef(null);
+  const container = useRef<any>(null);
 
   // Set up callbacks for when the container should open.
   const onClickOutside = useCallback(e => {
@@ -145,7 +145,7 @@ export const Popup: React.FunctionComponent<PopupProps & any> = forwardRef(({ tr
     document.addEventListener('mousedown', onClickOutside);
     return (() => document.removeEventListener('mousedown', onClickOutside));
   }, [isOpen]);
-  const containerClick = closeAfterAction ? useCallback(() => setIsOpen(false), []) : null;
+  const containerClick: any = closeAfterAction ? useCallback(() => setIsOpen(false), []) : null;
 
   const motionCardProps = useAlignmentTransition(popupDirection, isOpen, container, children.$$typeof ? 1 : children.length);
 

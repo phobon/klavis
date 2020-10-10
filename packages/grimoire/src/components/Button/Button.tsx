@@ -187,7 +187,7 @@ const disabled = ({ theme }) => ({
   },
 });
 
-const buttonSystem = compose(space, layout, border, flexbox, typography, position, fullWidth, fullHeight);
+const buttonSystem = compose(space, layout, border, flexbox, typography, position, fullWidth, fullHeight, gridPosition);
 
 export interface IButtonProps {
   toggled?: boolean;

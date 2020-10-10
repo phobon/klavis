@@ -52,7 +52,7 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
     },
     ref: any
   ) => {
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState<any>([]);
     const [notificationPosition, setNotificationPosition] = useState(
       initialNotificationPosition
     );
@@ -74,7 +74,7 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
 
     return (
       <NotificationsContext.Provider value={[add, setNotificationPosition]}>
-        <>
+        <React.Fragment>
           {children}
 
           {usePortal(
@@ -202,7 +202,7 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
               </Stack>
             </Grid>
           )}
-        </>
+        </React.Fragment>
       </NotificationsContext.Provider>
     );
   }

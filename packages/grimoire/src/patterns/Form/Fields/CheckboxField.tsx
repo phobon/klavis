@@ -45,21 +45,6 @@ export const CheckboxField: React.FunctionComponent<CheckboxFieldProps & any> = 
     )
   }
 
-  let hintElement = null;
-  let invalidElement = null;
-  if (hint) {
-    hintElement = React.isValidElement(hint)
-      ? hint : <Text fontSize={0} mt={1} color="grayscale.3">{hint}</Text>;
-  }
-  if (invalid) {
-    invalidElement = (
-      <Box mt={2} ml="2px" color="reds.2">
-        <AlertCircle width={16} height={16} />
-        {React.isValidElement(invalid) ? invalid : <Text ml={1} fontSize={0} color="guidance.invalid.0">{invalid}</Text>}
-      </Box>
-    );
-  }
-
   return (
     <Box
       flex={1}
@@ -87,7 +72,15 @@ export const CheckboxField: React.FunctionComponent<CheckboxFieldProps & any> = 
             )}
           </>
         )} />
-      {invalidElement || hintElement}
+      {hint && (
+        <Text fontSize={0} mt={1} color="grayscale.3">{hint}</Text>
+      )}
+      {invalid && (
+        <Box mt={2} color="reds.2">
+          <AlertCircle width={16} height={16} />
+          <Text ml={1} fontSize={0} color="guidance.error.0">{invalid}</Text>
+        </Box>
+      )}
     </Box>
   );
 });

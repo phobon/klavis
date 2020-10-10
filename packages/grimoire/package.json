@@ -3,6 +3,9 @@
   "version": "0.13.0",
   "description": "Component patterns using @phobon/base",
   "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": ["dist"],
+  "types": "dist/index.d.ts",
   "author": "Ben McCormick",
   "license": "MIT",
   "keywords": [

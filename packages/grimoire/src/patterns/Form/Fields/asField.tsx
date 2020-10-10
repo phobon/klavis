@@ -11,8 +11,8 @@ interface IAsFieldProps {
   label?: string;
   id?: string;
   required?: boolean;
-  invalid?: any;
-  hint?: string;
+  invalid?: React.ReactNode;
+  hint?: React.ReactNode;
   placeholder?: string;
   visible?: boolean;
   useUnprocessed?: boolean;
@@ -55,21 +55,6 @@ export const asField= (WrappedComponent: any): React.FunctionComponent<AsFieldPr
     )
   }
 
-  let hintElement = null;
-  let invalidElement = null;
-  if (hint) {
-    hintElement = React.isValidElement(hint)
-      ? hint : <Text fontSize={0} mt={1} color="grayscale.3">{hint}</Text>;
-  }
-  if (invalid) {
-    invalidElement = (
-      <Box mt={2} color="reds.2">
-        <AlertCircle width={16} height={16} />
-        {React.isValidElement(invalid) ? invalid : <Text ml={1} fontSize={0} color="guidance.error.0">{invalid}</Text>}
-      </Box>
-    );
-  }
-
   return (
     <Box
       className="form__field"
@@ -103,7 +88,15 @@ export const asField= (WrappedComponent: any): React.FunctionComponent<AsFieldPr
             disabled={fieldDisabled} />
         </Box>
       </Box>
-      {invalidElement || hintElement}
+      {hint && (
+        <Text fontSize={0} mt={1} color="grayscale.3">{hint}</Text>
+      )}
+      {invalid && (
+        <Box mt={2} color="reds.2">
+          <AlertCircle width={16} height={16} />
+          <Text ml={1} fontSize={0} color="guidance.error.0">{invalid}</Text>
+        </Box>
+      )}
     </Box>
   );
 };

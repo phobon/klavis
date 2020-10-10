@@ -103,7 +103,6 @@ export const Tooltip = styled("div", {
 Tooltip.displayName = "Tooltip";
 
 Tooltip.defaultProps = {
-  tooltip: null,
   tooltipDirection: "down",
   position: "relative",
   offset: 0,
