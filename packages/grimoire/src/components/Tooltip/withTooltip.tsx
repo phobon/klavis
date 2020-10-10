@@ -12,20 +12,20 @@ export const withTooltip = (WrappedComponent: any): React.FunctionComponent<Tool
     );
   }
 
-  const [{ fullWidth, fullHeight, width, height, position, ...layoutProps}, passthroughProps] = destructureLayoutProps(props);
+  const [{ fullWidth, fullHeight, position, width, height, size, ...layoutProps}, passthroughProps] = destructureLayoutProps(props);
   return (
     <Tooltip
       tooltip={tooltip}
       tooltipDirection={tooltipDirection}
-      offset={offset}
       position={position || 'relative'}
       as={as}
       width={width}
       height={height}
       fullWidth={fullWidth}
       fullHeight={fullHeight}
+      size={size}
       {...layoutProps}>
-      <WrappedComponent {...passthroughProps} fullWidth={fullWidth || width != null} fullHeight={fullHeight || height != null} />
+      <WrappedComponent {...passthroughProps} fullWidth={fullWidth} fullHeight={fullHeight} size={size} />
     </Tooltip>
   );
 };
@@ -33,5 +33,5 @@ export const withTooltip = (WrappedComponent: any): React.FunctionComponent<Tool
 withTooltip.defaultProps = {
   tooltip: null,
   tooltipDirection: 'down',
-  offset: 0,
+  cursor: "pointer",
 };

@@ -8,11 +8,11 @@ const direction = (props) => {
       "&::after": {
         left: "50%",
         top: `calc(100% + ${props.theme.space[1]}px)`,
-        transform: "translate(-50%, var(--factor))",
+        transform: "translate(-50%, 0)",
       },
       "&:hover, &:focus, &:focus-within": {
         "&::after": {
-          transform: `translate(-50%, calc(var(--factor) - ${props.theme.space[1]}px))`,
+          transform: `translate(-50%, 4px)`,
         }
       }
     },
@@ -20,35 +20,35 @@ const direction = (props) => {
       "&::after": {
         left: "50%",
         bottom: `calc(100% + ${props.theme.space[1]}px)`,
-        transform: "translate(-50%, var(--factor))",
+        transform: "translate(-50%, 0)",
       },
       "&:hover, &:focus, &:focus-within": {
         "&::after": {
-          transform: `translate(-50%, calc(var(--minusfactor) + ${props.theme.space[1]}px))`,
+          transform: `translate(-50%, -4px)`,
         }
       }
     },
     left: {
       "&::after": {
         top: "50%",
-        left: 0,
-        transform: "translate(calc(-100% - var(--xfactor)), -50%)",
+        right: "100%",
+        transform: "translate(0, -50%)",
       },
       "&:hover, &:focus, &:focus-within": {
         "&::after": {
-          transform: "translate(calc(-100% - var(--factor)), -50%)",
+          transform: "translate(-4px, -50%)",
         }
       }
     },
     right: {
       "&::after": {
         top: "50%",
-        right: 0,
-        transform: "translate(calc(100% + var(--xfactor)), -50%)",
+        left: "100%",
+        transform: "translate(0, -50%)",
       },
       "&:hover, &:focus, &:focus-within": {
         "&::after": {
-          transform: "translate(calc(100% + var(--factor)), -50%)",
+          transform: "translate(4px, -50%)",
         }
       }
     },
@@ -62,7 +62,6 @@ const tooltipSystem = compose(layout, position, space, fullWidth, fullHeight);
 export interface ITooltipProps {
   tooltip?: string;
   tooltipDirection?: "down" | "up" | "left" | "right";
-  offset?: number;
 }
 
 export type TooltipProps = ITooltipProps & SpaceProps & LayoutProps & PositionProps & FullWidthProps & FullHeightProps;
@@ -71,9 +70,6 @@ export const Tooltip = styled("div", {
   shouldForwardProp,
 })<TooltipProps>(
   (props: any) => ({
-    "--factor": props.theme.space[1] + props.theme.space[props.offset],
-    "--minusfactor": -(props.theme.space[1] + props.theme.space[props.offset]),
-    "--xfactor": props.theme.space[2] + props.theme.space[props.offset],
     "&::after": {
       content: `'${props.tooltip}'`,
       backgroundColor: props.theme.colors.grayscale[1],
@@ -97,7 +93,7 @@ export const Tooltip = styled("div", {
     }
   }),
   tooltipSystem,
-  direction
+  direction,
 );
 
 Tooltip.displayName = "Tooltip";
@@ -105,5 +101,4 @@ Tooltip.displayName = "Tooltip";
 Tooltip.defaultProps = {
   tooltipDirection: "down",
   position: "relative",
-  offset: 0,
 };
