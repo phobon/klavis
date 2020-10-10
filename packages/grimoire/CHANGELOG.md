@@ -1,5 +1,13 @@
 # Change Log
 
+## 0.14.1
+
+### Patch Changes
+
+- c856ff2: Cleaning up dependencies
+- Updated dependencies [c856ff2]
+  - @phobon/base@3.1.1
+
 ## 0.14.0
 
 ### Minor Changes

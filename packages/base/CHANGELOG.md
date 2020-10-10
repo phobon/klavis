@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.1.1
+
+### Patch Changes
+
+- c856ff2: Cleaning up dependencies
+
 ## 3.1.0
 
 ### Minor Changes
