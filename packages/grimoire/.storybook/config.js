@@ -7,4 +7,4 @@ import StoryBox from './StoryBox';
 addDecorator(withA11y);
 addDecorator(story => <StoryBox>{story()}</StoryBox>);
 
-configure(require.context('../src', true, /\.stories\.js$/), module);
+configure(require.context('../src', true, /\.stories\.tsx$/), module);

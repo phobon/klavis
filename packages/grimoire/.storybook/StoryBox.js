@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { ThemeProvider } from "@emotion/react";
-import { theme, Normalize, Box } from "@phobon/base";
+import { theme } from "@phobon/tokens";
+import { Normalize, Box } from "@phobon/base";
 
 const StoryBox = ({ children, ...props }) => (
   <ThemeProvider theme={theme}>
@@ -20,15 +20,5 @@ const StoryBox = ({ children, ...props }) => (
     </>
   </ThemeProvider>
 );
-
-StoryBox.propTypes = {
-  ...Box.propTypes,
-
-  children: PropTypes.node,
-};
-
-StoryBox.defaultProps = {
-  children: null,
-};
 
 export default StoryBox;
