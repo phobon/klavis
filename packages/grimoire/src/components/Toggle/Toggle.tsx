@@ -1,11 +1,15 @@
+/** @jsx jsx */
 import React, { forwardRef } from "react";
 import styled from "@emotion/styled";
+import { jsx } from "@emotion/react";
 import {
   compose,
   space,
+  color,
   borderRadius,
   position,
   SpaceProps,
+  ColorProps,
   BorderRadiusProps,
   PositionProps,
 } from "styled-system";
@@ -49,15 +53,15 @@ const toggleSize = (props) => {
   return sizes[props.size];
 };
 
-const toggleButtonSystem = compose(space, borderRadius, position, gridPosition);
+const toggleButtonSystem = compose(space, color, borderRadius, position, gridPosition);
 
 interface IToggleProps {
   size?: "s" | "m";
   toggled?: boolean;
-  bg?: string[];
+  bg?: string;
 }
 
-export type ToggleProps = IToggleProps & TooltipProps & SpaceProps & BorderRadiusProps & PositionProps & GridPositionProps;
+export type ToggleProps = IToggleProps & ColorProps & TooltipProps & SpaceProps & BorderRadiusProps & PositionProps & GridPositionProps;
 
 const ToggleButton = styled("button", {
   shouldForwardProp,
@@ -74,30 +78,6 @@ const ToggleButton = styled("button", {
     svg: {
       fill: "white",
     },
-    "&::before": {
-      content: "''",
-      borderRadius: "50%",
-      backgroundColor: props.theme.colors.background,
-      position: "absolute",
-      top: 3,
-      left: 3,
-      transition: "transform 180ms cubic-bezier(0.19, 1, 0.22, 1)",
-    },
-    "&[aria-checked='true']": {
-      backgroundColor: themeGet(`colors.${props.bg[0]}`)(props),
-      "&:hover": {
-        backgroundColor: themeGet(`colors.${props.bg[1]}`)(props),
-      },
-    },
-    "&[aria-checked='false']": {
-      backgroundColor: props.theme.colors.grayscale[4],
-      "&:hover": {
-        backgroundColor: props.theme.colors.grayscale[3],
-      },
-      "&::before": {
-        transform: "translateX(0)",
-      },
-    },
     ...focus,
     "&:disabled": {
       opacity: 0.5,
@@ -109,13 +89,13 @@ const ToggleButton = styled("button", {
         backgroundColor: props.theme.colors.grayscale[5],
       },
       pointerEvents: "none",
-    }
+    },
+    ...toggleSize(props),
   }),
-  toggleSize,
   toggleButtonSystem,
 );
 
-const StyledToggle: React.FunctionComponent<ToggleProps & any> = forwardRef(({ toggled, disabled, size, ...props }, ref) => (
+const StyledToggle: React.FunctionComponent<ToggleProps & any> = forwardRef(({ toggled, disabled, size, bg, ...props }, ref) => (
   <ToggleButton
     aria-checked={toggled}
     aria-readonly={disabled}
@@ -125,6 +105,32 @@ const StyledToggle: React.FunctionComponent<ToggleProps & any> = forwardRef(({ t
     ref={ref}
     role="switch"
     {...props}
+    css={(theme: any) => ({
+      "&::before": {
+        content: "''",
+        borderRadius: "50%",
+        backgroundColor: theme.colors.background,
+        position: "absolute",
+        top: 3,
+        left: 3,
+        transition: "transform 180ms cubic-bezier(0.19, 1, 0.22, 1)",
+      },
+      "&[aria-checked='false']": {
+        backgroundColor: theme.colors.grayscale[4],
+        "&:hover": {
+          backgroundColor: theme.colors.grayscale[3],
+        },
+        "&::before": {
+          transform: "translateX(0)",
+        },
+      },
+      "&[aria-checked='true']": {
+        backgroundColor: themeGet(`colors.${bg[0]}`)({ theme }),
+        "&:hover": {
+          backgroundColor: themeGet(`colors.${bg[1]}`)({ theme }),
+        },
+      },
+    })}
   >
     {!toggled && (
       <Vector
@@ -138,12 +144,12 @@ const StyledToggle: React.FunctionComponent<ToggleProps & any> = forwardRef(({ t
   </ToggleButton>
 ));
 
-export const Toggle = withTooltip(StyledToggle);
-
-Toggle.defaultProps = {
+StyledToggle.defaultProps = {
   size: "m",
   toggled: false,
   bg: ["greens.6", "greens.5"],
 };
+
+export const Toggle = withTooltip(StyledToggle);
 
 Toggle.displayName = "Toggle";
