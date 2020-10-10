@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Stack, Box } from '@phobon/base';
 
-import withBadge from './withBadge';
+import { withBadge } from './withBadge';
 
 export default {
   component: withBadge,

@@ -33,11 +33,11 @@ export interface IWithBadgeProps {
 }
 
 export type WithBadgeProps =
-IWithBadgeProps &
-SpaceProps &
-LayoutProps &
-PositionProps &
-GridPositionProps;
+  IWithBadgeProps &
+  SpaceProps &
+  LayoutProps &
+  PositionProps &
+  GridPositionProps;
 
 const BadgeContainer = styled('div', {
   shouldForwardProp,
