@@ -17,13 +17,13 @@ export const withASmpleHeading = () => (
 );
 
 export const withATagline = () => (
-  <PageHeader heading="Simple heading" tagLine="Tagline" />
+  <PageHeader heading="Simple heading" tagline="Tagline" />
 );
 
 export const withAnAction = () => (
   <PageHeader
     heading="Simple heading"
-    tagLine="Tagline"
+    tagline="Tagline"
     actions={
       <Button variant="primary">Primary</Button>
     } />
@@ -32,7 +32,7 @@ export const withAnAction = () => (
 export const withSeveralActions = () => (
   <PageHeader
     heading="Simple heading"
-    tagLine="Tagline"
+    tagline="Tagline"
     actions={(
       <Stack flexDirection="row" space={2}>
         <Button>Secondary</Button>
@@ -45,7 +45,7 @@ export const withSeveralActions = () => (
 export const withChildren = () => (
   <PageHeader
     heading="Simple heading"
-    tagLine="Tagline"
+    tagline="Tagline"
     actions={(
       <Stack flexDirection="row" space={2}>
         <Button>Secondary</Button>

@@ -1,27 +1,29 @@
 /* eslint-disable react/default-props-match-prop-types */
 import React, { forwardRef } from 'react';
 
-import { Box, Heading, BoxProps } from '@phobon/base';
+import { Stack, Box, Heading, BoxProps, Text } from '@phobon/base';
 
 export interface IPageHeaderProps {
   heading?: string;
-  tagLine?: React.ReactNode;
+  tagline?: string;
   actions?: React.ReactNode;
 }
 
 export type PageHeaderProps = IPageHeaderProps & BoxProps;
 
-export const PageHeader: React.FunctionComponent<PageHeaderProps & { children?: React.ReactNode } & any> = forwardRef(({ heading, tagLine, actions, children, ...props }, ref) => (
-  <Box ref={ref} fullWidth flexDirection="column" alignItems="flex-start" {...props}>
-    {tagLine}
+export const PageHeader: React.FunctionComponent<PageHeaderProps & { children?: React.ReactNode } & any> = forwardRef(({ heading, tagline, actions, children, ...props }, ref) => (
+  <Stack ref={ref} fullWidth flexDirection="column" alignItems="flex-start" {...props}>
+    {tagline && (
+      <Text color="grayscale.4" fontSize={0}>{tagline}</Text>
+    )}
 
     <Box fullWidth justifyContent="space-between" mb={children && 2} alignItems="flex-start">
-      <Heading.H3>{heading}</Heading.H3>
+      <Heading as="h3">{heading}</Heading>
       {actions}
     </Box>
 
     {children}
-  </Box>
+  </Stack>
 ));
 
 PageHeader.displayName = 'PageHeader';
