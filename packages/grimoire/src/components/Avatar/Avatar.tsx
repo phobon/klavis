@@ -1,7 +1,6 @@
 /* eslint-disable react/default-props-match-prop-types */
 import React, { forwardRef } from "react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
 import {
   compose,
   space,
@@ -18,65 +17,66 @@ import { Image, Text, focus, shouldForwardProp } from "@phobon/base";
 
 import { User } from "../../icons/User";
 
-const statusColor = (props) => {
+const statusColor = ({ theme, status }) => {
   const statusColors = {
     none: "transparent",
-    error: props.theme.colors.reds[6],
-    warning: props.theme.colors.oranges[6],
-    success: props.theme.colors.greens[5],
+    error: theme.colors.reds[6],
+    warning: theme.colors.oranges[6],
+    success: theme.colors.greens[5],
   };
 
-  return css`
-    background-color: ${statusColors[props.status]};
-  `;
+  return {
+    backgroundColor: statusColors[status],
+  };
 };
-const presenceColor = (props) => {
+
+const presenceColor = ({ theme, presence }) => {
   const presenceColors = {
     none: "transparent",
-    unknown: props.theme.colors.grayscale[6],
-    unavailable: props.theme.colors.reds[6],
-    busy: props.theme.colors.oranges[6],
-    available: props.theme.colors.greens[6],
+    unknown: theme.colors.grayscale[6],
+    unavailable: theme.colors.reds[6],
+    busy: theme.colors.oranges[6],
+    available: theme.colors.greens[6],
   };
 
-  return css`
-    background-color: ${presenceColors[props.presence]};
-  `;
+  return {
+    backgroundColor: presenceColors[presence],
+  };
 };
 
-const extents = (props) => {
+const extents = ({ size = "m", theme }) => {
   const sizes = {
-    s: props.theme.space[4],
-    m: props.theme.space[5],
-    l: props.theme.space[6],
+    s: theme.space[4],
+    m: theme.space[5],
+    l: theme.space[6],
   };
 
-  return css`
-    width: ${sizes[props.size]}px;
-    height: ${sizes[props.size]}px;
-  `;
+  return {
+    width: sizes[size],
+    height: sizes[size],
+  };
 };
 
-const statusElements = (props) => {
+const statusElements = ({ size = "m" }) => {
   const sizes = {
-    s: css`
-      width: 16px;
-      height: 16px;
-      right: -10px;
-    `,
-    m: css`
-      width: 20px;
-      height: 20px;
-      right: -12px;
-    `,
-    l: css`
-      width: 24px;
-      height: 24px;
-      right: -14px;
-    `,
+    s: {
+      width: 16,
+      height: 16,
+      right: -10,
+    },
+    m: {
+      width: 20,
+      height: 20,
+      right: -12,
+    },
+    l: {
+      width: 24,
+      height: 24,
+      right: -14,
+    },
   };
 
-  return sizes[props.size];
+  return sizes[size];
 };
 
 const avatarSystem = compose(
@@ -107,9 +107,6 @@ const AvatarBox = styled("div", {
 })<AvatarProps>(
   avatarSystem,
   extents,
-  statusElements,
-  statusColor,
-  presenceColor,
   (props: any) => ({
     display: "flex",
     flex: "none",
@@ -124,14 +121,17 @@ const AvatarBox = styled("div", {
       border: `solid 3px ${props.theme.colors.background}`,
       pointerEvents: "none",
       zIndex: 1,
+      ...statusElements(props),
     },
     "&:before": {
-      top: ` -${props.theme.space[1]}px`,
-      opacity: `${props.status !== "none" ? 1 : 0}`,
+      top: -props.theme.space[1],
+      opacity: props.status !== "none" ? 1 : 0,
+      ...statusColor(props),
     },
     "&:after": {
-      bottom: `-${props.theme.space[1]}px`,
-      opacity: `${props.presence !== "none" ? 1 : 0}`,
+      bottom: -props.theme.space[1],
+      opacity: props.presence !== "none" ? 1 : 0,
+      ...presenceColor(props),
     },
   })
 );
@@ -144,15 +144,15 @@ const buttonFocus = (props) =>
 
 const avatarFontSize = (props) => {
   const fontSizes = {
-    s: css`
-      font-size: ${props.theme.fontSizes[0]}px;
-    `,
-    m: css`
-      font-size: ${props.theme.fontSizes[1]}px;
-    `,
-    l: css`
-      font-size: ${props.theme.fontSizes[4]}px;
-    `,
+    s: {
+      fontSize: props.theme.fontSizes[0],
+    },
+    m: {
+      fontSize: props.theme.fontSizes[1],
+    },
+    l: {
+      fontSize: props.theme.fontSizes[4],
+    },
   };
 
   return fontSizes[props.size];
@@ -166,7 +166,6 @@ const AvatarIndicatorButton = styled("button", {
   fontSize: "inherit",
   border: 0,
   padding: 0,
-  background: 0,
   pointerEvents: "all",
   display: "flex",
   flex: "none",
@@ -232,6 +231,8 @@ export const Avatar: React.FunctionComponent<AvatarProps & any> = forwardRef(
       className,
       border,
       borderColor,
+      status,
+      presence,
       ...props
     },
     ref
@@ -241,6 +242,8 @@ export const Avatar: React.FunctionComponent<AvatarProps & any> = forwardRef(
       size={size}
       borderRadius={borderRadius}
       className={`grimoire__avatar ${className ?? ""}`}
+      status={status}
+      presence={presence}
       {...props}
     >
       {image ? (
@@ -278,7 +281,6 @@ export const Avatar: React.FunctionComponent<AvatarProps & any> = forwardRef(
 Avatar.displayName = "Avatar";
 
 Avatar.defaultProps = {
-  image: null,
   size: "m",
   status: "none",
   presence: "none",

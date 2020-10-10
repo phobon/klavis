@@ -75,7 +75,7 @@ export const Tooltip = styled("div", {
     "--minusfactor": -(props.theme.space[1] + props.theme.space[props.offset]),
     "--xfactor": props.theme.space[2] + props.theme.space[props.offset],
     "&::after": {
-      content: '${(props) => props.tooltip}',
+      content: `'${props.tooltip}'`,
       backgroundColor: props.theme.colors.grayscale[1],
       padding: `${props.theme.space[1]}px ${props.theme.space[2]}px`,
       color: props.theme.colors.background,
