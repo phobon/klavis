@@ -13,6 +13,7 @@ export default [
       "@emotion/react",
       "@emotion/styled",
       "styled-system",
+      "@phobon/tokens",
     ],
     plugins: [
       typescript({
@@ -39,6 +40,7 @@ export default [
       "@emotion/react",
       "@emotion/styled",
       "styled-system",
+      "@phobon/tokens",
     ],
     plugins: [
       typescript(),

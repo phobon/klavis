@@ -13,6 +13,8 @@ export default [
       "@emotion/react",
       "@emotion/styled",
       "styled-system",
+      "@phobon/base",
+      "@phobon/tokens",
     ],
     plugins: [
       typescript({
@@ -39,6 +41,8 @@ export default [
       "@emotion/react",
       "@emotion/styled",
       "styled-system",
+      "@phobon/base",
+      "@phobon/tokens",
     ],
     plugins: [
       typescript(),

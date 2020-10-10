@@ -21,8 +21,8 @@
     "storybook": "start-storybook"
   },
   "peerDependencies": {
-    "@phobon/base": "file:../base",
-    "@phobon/tokens": "file:../tokens",
+    "@phobon/base": "^3.x",
+    "@phobon/tokens": "^1.x",
     "framer-motion": "^1.x",
     "react": "^16.x",
     "react-dom": "^16.x",
