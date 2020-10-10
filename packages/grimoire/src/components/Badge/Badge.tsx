@@ -22,7 +22,7 @@ export const Badge = styled('div', {
     overflow: "hidden",
     whiteSpace: "nowrap",
     textOverflow: "ellipsis",
-    lineHeight: props.theme.space[4] + 1,
+    lineHeight: `${props.theme.space[4] + 1}px`,
     textAlign: "center",
     borderRadius: props.theme.radii[5],
     fontSize: props.theme.fontSizes[0],

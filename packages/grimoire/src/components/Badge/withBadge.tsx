@@ -59,7 +59,7 @@ const BadgeContainer = styled('div', {
       overflow: "hidden",
       whiteSpace: "nowrap",
       textOverflow: "ellipsis",
-      lineHeight: props.theme.space[4],
+      lineHeight: `${props.theme.space[4]}px`,
       textAlign: "center",
       color: themeGet(`colors.${props.badgeColor}`, 'white')(props),
       backgroundColor: themeGet(`colors.${props.badgeBg}`)(props),
