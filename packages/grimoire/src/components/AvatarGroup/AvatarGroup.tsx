@@ -54,7 +54,7 @@ const childPositions = ({ length, index, size, groupVariant, theme }) => {
     l: theme.space[6],
   };
 
-  const props = {
+  const props: any = {
     position: groupVariant === 'stack' ? 'absolute' : 'relative',
   };
   if (groupVariant === 'stack') {
@@ -66,10 +66,10 @@ const childPositions = ({ length, index, size, groupVariant, theme }) => {
 };
 
 export interface IAvatarGroupProps {
-  variant: 'stack' | 'grid';
-  size: 's' | 'm' | 'l';
-  maxCount: number;
-  data: AvatarProps[];
+  variant?: 'stack' | 'grid';
+  size?: 's' | 'm' | 'l';
+  maxCount?: number;
+  data?: AvatarProps[];
 }
 
 export type AvatarGroupProps = IAvatarGroupProps & BoxProps;
@@ -81,22 +81,28 @@ export const AvatarGroup: React.FunctionComponent<AvatarGroupProps & any> = forw
   return (
     <Box
       position="relative"
-      variant={variant}
-      size={size}
-      dataLength={avatarData.length + (remainder > 0 ? 1 : 0)}
-      css={appearance}
+      css={(theme: any) => {
+        return ({
+        ...appearance({
+          theme,
+          variant,
+          size,
+          dataLength: avatarData.length + (remainder > 0 ? 1 : 0),
+        }),
+      })}
+    }
       ref={ref}
       {...props}>
       
-      {avatarData.map(({ name, variant: avatarVariant, ...rest }, i) => (
+      {avatarData.map(({ name, variant: avatarVariant, ...rest }, index) => (
         <Avatar
           key={name}
           name={name}
           variant={avatarVariant}
-          groupVariant={variant}
           size={size}
-          index={i}
-          css={childPositions}
+          css={(theme: any) => ({
+            ...childPositions({ length, index, size, groupVariant: variant, theme }),
+          })}
           length={avatarData.length}
           {...rest} />
       ))}
@@ -104,13 +110,12 @@ export const AvatarGroup: React.FunctionComponent<AvatarGroupProps & any> = forw
         <Box
           bg="grayscale.8"
           borderRadius={6}
-          size={size}
           border="3px solid white"
-          css={{
+          css={(theme: any) => ({
             zIndex: -1,
-            ...extents,
-            ...childPositions,
-          }}>
+            ...extents({ theme, size }),
+            ...childPositions({ length, index: 0, size, groupVariant: variant, theme }),
+          })}>
           {`+${remainder}`}
         </Box>
       )}
