@@ -1,6 +1,6 @@
 {
   "name": "@phobon/base",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "Essential compositional components using CSS-in-JS and styled-system",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -22,7 +22,7 @@
     "test": "jest -c jest.tsc.config.js"
   },
   "peerDependencies": {
-    "@phobon/tokens": "^1.x",
+    "@phobon/tokens": "^1.1.1",
     "@styled-system/prop-types": "^5.0.x",
     "@styled-system/theme-get": "^5.0.x",
     "react": "^16.13.x || ^17.x",

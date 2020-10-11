@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.1
+
+### Patch Changes
+
+- 071be29: Cleaning up types and theming
+
 ## 1.1.0
 
 ### Minor Changes

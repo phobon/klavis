@@ -1,6 +1,6 @@
 {
   "name": "@phobon/grimoire",
-  "version": "0.14.1",
+  "version": "0.14.2",
   "description": "Component patterns using @phobon/base",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -21,8 +21,8 @@
     "storybook": "start-storybook"
   },
   "peerDependencies": {
-    "@phobon/base": "^3.1.1",
-    "@phobon/tokens": "^1.x",
+    "@phobon/base": "^3.1.2",
+    "@phobon/tokens": "^1.1.1",
     "framer-motion": "^2.8.x",
     "react": "^16.x",
     "react-dom": "^16.x",
