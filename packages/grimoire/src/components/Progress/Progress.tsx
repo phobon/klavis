@@ -7,19 +7,19 @@ import { Stack, Box } from "@phobon/base";
 
 import { ProgressStep } from "./ProgressStep";
 
-const barOrientation = (props) => {
+const barOrientation = ({ orientation, theme, space }) => {
   const orientations = {
     horizontal: {
-      height: props.theme.space[1],
-      minWidth: props.space,
+      height: theme.space[1],
+      minWidth: space,
       "&::before": {
         width: "calc(100% + 4px)",
         height: "100%",
       },
     },
     vertical: {
-      width: props.theme.space[1],
-      minHeight: props.space,
+      width: theme.space[1],
+      minHeight: space,
       "&::before": {
         height: "calc(100% + 4px)",
         width: "100%",
@@ -27,7 +27,7 @@ const barOrientation = (props) => {
     },
   };
 
-  return orientations[props.orientation];
+  return orientations[orientation];
 };
 
 interface IProgressProps {
@@ -46,6 +46,7 @@ export const Progress: React.FunctionComponent<IProgressProps & any> = forwardRe
   ) => {
     let currentShown = false;
     let currentIndex = 0;
+    console.log(color);
 
     const mappedChildren = React.Children.map(children, (step, i) => {
       if (!step) {
@@ -59,6 +60,7 @@ export const Progress: React.FunctionComponent<IProgressProps & any> = forwardRe
         currentShown = true;
         currentIndex = i;
       }
+
 
       const complete = !currentShown;
       return (
@@ -86,22 +88,23 @@ export const Progress: React.FunctionComponent<IProgressProps & any> = forwardRe
 
           {!isLast && mode === "full" && (
             <Stack
-              css={(p: any) => ({
+              flex={1}
+              bg={bg}
+              space={space}
+              css={theme => ({
                 position: "relative",
                 pointerEvents: "none",
-                ...barOrientation,
+                ...barOrientation({ orientation, theme, space }),
                 "&::before": {
                   content: "''",
                   position: "absolute",
-                  backgroundColor: themeGet(`colors.${p.color}`, props.theme.colors.accent[3]),
+                  backgroundColor: themeGet(`colors.${color}`, theme.colors.accent[3])(theme),
                   opacity: complete ? 1 : 0,
                   transition: "opacity 180ms ease-out",
+                  width: "100%",
+                  height: "100%",
                 },
               })}
-              flex={1}
-              color={color}
-              bg={bg}
-              space={space}
             />
           )}
         </Box>

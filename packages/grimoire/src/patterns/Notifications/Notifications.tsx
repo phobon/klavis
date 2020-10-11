@@ -14,7 +14,7 @@ import { NotificationsContext } from "./NotificationsContext";
 
 let id = 0;
 
-const notificationPositions = (props) => {
+const notificationPositions = ({ notificationPosition }) => {
   const positions = {
     top: {
       justifySelf: "center",
@@ -23,11 +23,11 @@ const notificationPositions = (props) => {
       justifySelf: "center",
     },
   };
+  console.log(notificationPosition);
 
-  return positions[props.notificationPosition];
+  return positions[notificationPosition];
 };
 
-const NotificationContainer = motion.custom(Box);
 const Lifebar = motion.custom(Box);
 
 export interface INotificationsProps {
@@ -101,7 +101,7 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
                 fullHeight
                 css={{
                   gridArea: notificationPosition,
-                  ...notificationPositions
+                  ...notificationPositions({ notificationPosition }),
                 }}
                 width={width}
                 flexDirection="column"
@@ -123,17 +123,18 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
                       const to = rest.timeout || timeout;
                       const seconds = ((to % 60000) / 1000).toFixed(0);
                       return (
-                        <NotificationContainer
-                          fullWidth
+                        <motion.div
                           className="grimoire__notifications__instance"
                           key={key}
-                          positionTransition
                           initial={{ opacity: 0, translateY: 24 }}
                           animate={{ opacity: 1, translateY: 0 }}
                           exit={{
                             opacity: 0,
                             translateX: 24,
                             transition: { duration: 0.2 },
+                          }}
+                          css={{
+                            width: "100%",
                           }}
                         >
                           <Card
@@ -181,7 +182,6 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
                                     top: 0,
                                     left: "-100%",
                                   }}
-                                  positionTransition
                                   animate={{ translateX: "100%" }}
                                   transition={{
                                     duration: seconds,
@@ -194,7 +194,7 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
                               )}
                             </Box>
                           </Card>
-                        </NotificationContainer>
+                        </motion.div>
                       );
                     }
                   )}

@@ -92,7 +92,7 @@ interface Colours extends SecondaryColours {
   foreground: string;
   background: string;
 }
-export interface BaseTheme {
+export type BaseTheme = {
   colors: Colours;
   breakpoints: string[];
   fonts: { [key: string]: string };
@@ -105,7 +105,8 @@ export interface BaseTheme {
   space: number[];
   textStyles: { [key: string]: { [key: string]: string } };
   densities: { [key: string]: number };
-}
+};
+
 export const theme: BaseTheme = {
   ...tokens,
   colors: { ...lightColors },

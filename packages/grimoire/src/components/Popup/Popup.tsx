@@ -176,6 +176,8 @@ export const Popup: React.FunctionComponent<PopupProps & any> = forwardRef(({ tr
             {...motionCardProps}>
             <Card
               boxShadowSize="m"
+              bg="background"
+              borderRadius={4}
               as={as}
               flexDirection="column"
               onClick={containerClick}>

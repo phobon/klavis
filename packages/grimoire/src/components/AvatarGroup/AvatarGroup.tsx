@@ -74,26 +74,24 @@ export interface IAvatarGroupProps {
 
 export type AvatarGroupProps = IAvatarGroupProps & BoxProps;
 
-export const AvatarGroup: React.FunctionComponent<AvatarGroupProps & any> = forwardRef(({ size, maxCount, data, variant, ...props }, ref) => {
+export const AvatarGroup: React.FunctionComponent<AvatarGroupProps & any> = forwardRef(({ size, maxCount, data, variant, gridGap, ...props }, ref) => {
   const remainder = data.length - maxCount;
   const avatarData = remainder > 0 ? data.slice(0, maxCount) : data;
 
   return (
     <Box
       position="relative"
-      css={(theme: any) => {
-        return ({
+      css={theme => ({
         ...appearance({
           theme,
           variant,
           size,
           dataLength: avatarData.length + (remainder > 0 ? 1 : 0),
         }),
+        gridGap: theme.space[gridGap],
       })}
-    }
       ref={ref}
       {...props}>
-      
       {avatarData.map(({ name, variant: avatarVariant, ...rest }, index) => (
         <Avatar
           key={name}

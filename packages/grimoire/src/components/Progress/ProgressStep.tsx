@@ -14,23 +14,23 @@ import { Box, shouldForwardProp } from "@phobon/base";
 
 import { withTooltip } from "../Tooltip";
 
-const stepMode = (props) => {
+const stepMode = ({ theme, mode }) => {
   const stepModes = {
     compact: {
-      width: props.theme.space[2],
-      height: props.theme.space[2],
-      margin: props.theme.space[1],
+      width: theme.space[2],
+      height: theme.space[2],
+      margin: theme.space[1],
     },
     full: {
-      width: props.theme.space[3],
-      height: props.theme.space[3],
+      width: theme.space[3],
+      height: theme.space[3],
       "> div": {
-        width: props.theme.space[3],
-        height: props.theme.space[3],
+        width: theme.space[3],
+        height: theme.space[3],
       },
       "&::before": {
         content: "''",
-        backgroundColor: props.theme.colors.background,
+        backgroundColor: theme.colors.background,
         borderRadius: "100%",
         width: "50%",
         height: "50%",
@@ -44,49 +44,49 @@ const stepMode = (props) => {
     },
   };
 
-  return stepModes[props.mode];
+  return stepModes[mode];
 };
 
-const isCurrent = (props) => {
+const isCurrent = ({ color, theme, current, mode, orientation }) => {
   const currentStates = {
     full: {
-      backgroundColor: themeGet(`colors.${props.color}`, props.theme.colors.accent[5]),
-      width: props.theme.space[4],
-      height: props.theme.space[4],
+      backgroundColor: themeGet(`colors.${color}`, theme.colors.accent[5])(theme),
+      width: theme.space[4],
+      height: theme.space[4],
       "&::before": {
         content: "''",
         opacity: 1,
       },
       "&::after": {
-        color: props.theme.colors.grayscale[2],
+        color: theme.colors.grayscale[2],
       },
     },
     compact: {
-      backgroundColor: themeGet(`colors.${props.color}`, props.theme.colors.accent[5]),
+      backgroundColor: themeGet(`colors.${color}`, theme.colors.accent[5])(theme),
       borderRadius: 12,
-      width: props.orientation === "horizontal" && `${props.theme.space[3]}px`,
-      height: props.orientation === "vertical" && `${props.theme.space[3]}px`,
+      width: orientation === "horizontal" && `${theme.space[3]}px`,
+      height: orientation === "vertical" && `${theme.space[3]}px`,
     },
   };
 
-  return props.current && currentStates[props.mode];
+  return current && currentStates[mode];
 };
 
-const isComplete = (props) => {
+const isComplete = ({ color, theme, complete, mode }) => {
   const completeStates = {
     full: {
-      backgroundColor: themeGet(`colors.${props.color}`, props.theme.colors.accent[5]),
+      backgroundColor: themeGet(`colors.${color}`, theme.colors.accent[5])(theme),
     },
     compact: {
-      backgroundColor: themeGet(`colors.${props.color}`, props.theme.colors.accent[6]),
+      backgroundColor: themeGet(`colors.${color}`, theme.colors.accent[6])(theme),
     },
   };
 
-  return props.complete && completeStates[props.mode];
+  return complete && completeStates[mode];
 };
 
-const labels = (props) =>
-  props.showLabels && {
+const labels = ({ showLabels }) =>
+  showLabels && {
     "&::after": {
       display: "unset",
     }
@@ -94,15 +94,19 @@ const labels = (props) =>
 
 const progressStepSystem = compose(color);
 
-export interface IProgressStepProps {
-
+interface IProgressStepButtonProps {
+  orientation?: "horizontal" | "vertical";
+  current?: boolean;
+  complete?: boolean;
+  mode?: "compact" | "full";
+  childrenPosition?: "right" | "left";
 }
 
-export type ProgressStepProps = IProgressStepProps & ColorProps;
+export type ProgressStepButtonProps = IProgressStepButtonProps & ColorProps;
 
 const ProgressStepButton = styled("button", {
   shouldForwardProp,
-})<ProgressStepProps>({
+})<ProgressStepButtonProps & any>({
     border: 0,
     padding: 0,
     borderRadius: "50%",
@@ -126,7 +130,7 @@ const ProgressStepButton = styled("button", {
   isCurrent,
 );
 
-const StyledProgressStep: React.FunctionComponent<ProgressStepProps & any> = ({
+const StyledProgressStep: React.FunctionComponent<ProgressStepButtonProps & any> = ({
   children,
   orientation,
   alignItems,
@@ -184,7 +188,6 @@ ProgressStep.defaultProps = {
   current: false,
   complete: false,
   childrenPosition: "right",
-
   children: null,
   color: "accent.5",
   bg: "grayscale.6",

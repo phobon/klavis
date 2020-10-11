@@ -74,15 +74,14 @@ const PercentageBarElement = styled("div", {
       width: "100%",
       left: 0,
       borderRadius: props.theme.radii[4],
-      transform: props.progressTranslate,
       transformOrigin: "0 50%",
       transition: "transform 100ms ease-out",
       zIndex: 1,
+      ...thresholdBg(props),
     }
   }),
   color,
   heights,
-  thresholdBg,
 );
 
 export const PercentageBar: React.FunctionComponent<PercentageBarProps & any> = forwardRef(
@@ -126,7 +125,9 @@ export const PercentageBar: React.FunctionComponent<PercentageBarProps & any> = 
             size={size}
             bg={bg}
             css={{
-              translateX: -100 - percentage,
+              "&::after": {
+                transform: `translateX(${-100 + percentage}%)`,
+              },
             }}
           />
           {showPercentage && (

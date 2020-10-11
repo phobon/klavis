@@ -136,10 +136,10 @@ export const withDifferentGridSizes = () => {
     bg: 'yellows.6',
   }];
 
-  const sizes = ['s', 'm', 'l'];
+  const gridGaps = [1, 2, 3];
   return (
     <Stack space={3} width={150}>
-      {sizes.map(s => <AvatarGroup data={data} size={s} key={s} variant="grid" fullWidth />)}
+      {gridGaps.map(s => <AvatarGroup data={data} key={s} gridGap={s} variant="grid" fullWidth />)}
     </Stack>
   );
 };

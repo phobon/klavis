@@ -23,12 +23,11 @@
   "peerDependencies": {
     "@phobon/base": "^3.1.1",
     "@phobon/tokens": "^1.x",
-    "framer-motion": "^1.x",
+    "framer-motion": "^2.8.x",
     "react": "^16.x",
     "react-dom": "^16.x",
     "@emotion/react": "^11.x",
     "@emotion/styled": "^11.x",
-    "emotion-theming": "^10.x",
     "styled-system": "^5.x"
   }
 }
