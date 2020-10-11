@@ -1,5 +1,13 @@
 # Change Log
 
+## 3.1.2
+
+### Patch Changes
+
+- 071be29: Cleaning up types and theming
+- Updated dependencies [071be29]
+  - @phobon/tokens@1.1.1
+
 ## 3.1.1
 
 ### Patch Changes
