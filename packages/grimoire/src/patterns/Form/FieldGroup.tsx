@@ -12,8 +12,6 @@ export const FieldGroup: React.FunctionComponent<GridProps & { space?: any } & a
   const { space: formSpace } = useContext(FormFieldContext);
   const gap = space || formSpace || 3;
 
-  console.log(gap);
-
   return (
     <Grid
       {...props}

@@ -46,7 +46,6 @@ export const Progress: React.FunctionComponent<IProgressProps & any> = forwardRe
   ) => {
     let currentShown = false;
     let currentIndex = 0;
-    console.log(color);
 
     const mappedChildren = React.Children.map(children, (step, i) => {
       if (!step) {

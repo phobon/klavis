@@ -92,7 +92,7 @@ export const withAndWithoutLifebars = () => {
     },
   ];
   return (
-    <Notifications timeout={3000}>
+    <Notifications timeout={40000}>
       <NotificationsHelper notificationTypes={notificationTypes} />
     </Notifications>
   );

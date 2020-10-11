@@ -23,7 +23,6 @@ const notificationPositions = ({ notificationPosition }) => {
       justifySelf: "center",
     },
   };
-  console.log(notificationPosition);
 
   return positions[notificationPosition];
 };
@@ -120,12 +119,14 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
                         typeof showLifeItem === "undefined"
                           ? showLife
                           : showLifeItem;
+                      
                       const to = rest.timeout || timeout;
                       const seconds = ((to % 60000) / 1000).toFixed(0);
                       return (
                         <motion.div
                           className="grimoire__notifications__instance"
                           key={key}
+                          layout
                           initial={{ opacity: 0, translateY: 24 }}
                           animate={{ opacity: 1, translateY: 0 }}
                           exit={{
@@ -182,13 +183,14 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
                                     top: 0,
                                     left: "-100%",
                                   }}
-                                  animate={{ translateX: "100%" }}
+                                  initial={{ x: 0 }}
+                                  animate={{ x : "100%" }}
                                   transition={{
                                     duration: seconds,
                                     ease: "linear",
                                   }}
                                   height={4}
-                                  bg={color || "grayscale.5"}
+                                  bg={color || "grayscale.3"}
                                   fullWidth
                                 />
                               )}
