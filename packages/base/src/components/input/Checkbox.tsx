@@ -21,7 +21,7 @@ export interface ICheckboxProps {
   label?: React.ReactNode;
   labelColor?: string;
   size?: number;
-  invalid?: boolean;
+  invalid?: React.ReactNode;
   borderThickness?: number;
 }
 

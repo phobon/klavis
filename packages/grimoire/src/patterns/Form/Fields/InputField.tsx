@@ -1,4 +1,4 @@
-import { Input } from '@phobon/base';
+import { Input, InputProps } from '@phobon/base';
 import { asField } from './asField';
 
-export const InputField = asField(Input);
+export const InputField = asField<InputProps>(Input);

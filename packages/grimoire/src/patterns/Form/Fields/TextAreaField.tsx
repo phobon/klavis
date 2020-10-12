@@ -1,4 +1,4 @@
-import { TextArea } from '@phobon/base';
+import { TextArea, TextAreaProps } from '@phobon/base';
 import { asField } from './asField';
 
-export const TextAreaField = asField(TextArea);
+export const TextAreaField = asField<TextAreaProps>(TextArea);

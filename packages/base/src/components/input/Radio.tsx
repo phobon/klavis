@@ -20,7 +20,7 @@ export interface IRadioProps {
   label?: React.ReactNode;
   labelColor?: string;
   size?: number;
-  invalid?: boolean;
+  invalid?: React.ReactNode;
   borderThickness?: number;
 }
 

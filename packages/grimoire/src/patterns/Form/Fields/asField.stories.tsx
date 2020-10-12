@@ -1,5 +1,5 @@
 import React from 'react';
-import { Input } from '@phobon/base';
+import { Input, InputProps } from '@phobon/base';
 
 import { asField } from './asField';
 
@@ -12,7 +12,7 @@ export default {
 };
 
 export const higherOrderComponent = () => {
-  const TestField = asField(Input);
+  const TestField = asField<InputProps>(Input);
   return (
     <Form>
       <TestField id="test" label="test label" />

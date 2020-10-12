@@ -17,8 +17,6 @@ const fieldsetSystem = compose(spacing, color, borderRadius);
 
 interface IFieldSetProps {
   id: string;
-  disabled: boolean;
-  invalid: any;
 }
 
 export type FieldSetProps = IFieldSetProps & SpaceProps & ColorProps & BorderRadiusProps;
@@ -101,4 +99,4 @@ CoreFieldSet.defaultProps = {
   invalid: null,
 };
 
-export const FieldSet = asField(CoreFieldSet);
+export const FieldSet = asField<FieldSetProps>(CoreFieldSet);

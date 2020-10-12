@@ -6,7 +6,7 @@ import { FormFieldContext } from '../FormFieldContext';
 
 import { AlertCircle } from '../../../icons/AlertCircle';
 
-interface IAsFieldProps {
+export interface IAsFieldProps {
   value?: any;
   label?: string;
   id?: string;
@@ -16,11 +16,14 @@ interface IAsFieldProps {
   placeholder?: string;
   visible?: boolean;
   useUnprocessed?: boolean;
+  disabled?: boolean;
+  flex?: string;
+  flexBasis?: string | number;
 }
 
-export type AsFieldProps = IAsFieldProps;
+export type AsFieldProps = IAsFieldProps & React.HTMLAttributes<HTMLDivElement>;
 
-export const asField= (WrappedComponent: any): React.FunctionComponent<AsFieldProps & any> => 
+export const asField = <T extends object>(WrappedComponent: React.ComponentType<T & any>): React.FunctionComponent<T & AsFieldProps> => 
   ({
     label,
     id,
