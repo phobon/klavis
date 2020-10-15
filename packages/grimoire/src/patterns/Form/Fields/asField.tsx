@@ -21,88 +21,90 @@ export interface IAsFieldProps {
   flexBasis?: string | number;
 }
 
-export type AsFieldProps = IAsFieldProps & React.HTMLAttributes<HTMLDivElement>;
+export type AsFieldProps = IAsFieldProps;
 
-export const asField = <T extends object>(WrappedComponent: React.ComponentType<T & any>): React.FunctionComponent<T & AsFieldProps> => 
-  ({
+export const asField = <T extends object, U>(WrappedComponent: React.ComponentType<T & U & any>) => 
+  React.forwardRef<T, U & AsFieldProps>(({
     label,
     id,
     required = false,
     invalid,
     hint,
     visible = true,
-    className,
     disabled,
     useUnprocessed = false,
     flex,
-    flexBasis, 
+    flexBasis,
     ...props
-  }) => {
-  const { optionalLabel, density, formDisabled } = useContext(FormFieldContext);
+  }, 
+  ref: any) => {
+    const { optionalLabel, density, formDisabled } = useContext(FormFieldContext);
 
-  // If the field shouldn't be visible, don't render it.
-  if (!visible) {
-    return null;
-  }
+    // If the field shouldn't be visible, don't render it.
+    if (!visible) {
+      return null;
+    }
 
-  const fieldDisabled = disabled || formDisabled;
+    const fieldDisabled = disabled || formDisabled;
 
-  // If we want to use an unprocessed component.
-  if (useUnprocessed) {
+    // If we want to use an unprocessed component.
+    if (useUnprocessed) {
+      return (
+        <WrappedComponent
+          id={id}
+          {...props}
+          invalid={invalid}
+          disabled={fieldDisabled}
+          ref={ref} />
+      );
+    }
+
     return (
-      <WrappedComponent
-        id={id}
-        {...props}
-        invalid={invalid}
-        disabled={fieldDisabled} />
-    )
-  }
-
-  return (
-    <Box
-      className="form__field"
-      flexDirection="column"
-      alignItems="flex-start"
-      flexGrow={1}
-      flexShrink={0}
-      flex={flex}
-      fullWidth>
       <Box
-        fullWidth
+        className="form__field"
         flexDirection="column"
-        alignItems="flex-start">
-        {label && (
-          <Label
-            htmlFor={id}
-            mb={1}
-            alignItems="baseline">
-            <Text as="span" display="inline">{label}</Text>
-            {!required && optionalLabel && <Text as="span" color="grayscale.4" ml={1} display="inline">{`(${optionalLabel()})`}</Text>}
-          </Label>
+        alignItems="flex-start"
+        flexGrow={1}
+        flexShrink={0}
+        flex={flex}
+        fullWidth>
+        <Box
+          fullWidth
+          flexDirection="column"
+          alignItems="flex-start">
+          {label && (
+            <Label
+              htmlFor={id}
+              mb={1}
+              alignItems="baseline">
+              <Text as="span" display="inline">{label}</Text>
+              {!required && optionalLabel && <Text as="span" color="grayscale.4" ml={1} display="inline">{`(${optionalLabel()})`}</Text>}
+            </Label>
+          )}
+          <Box flex={1} fullWidth>
+            <WrappedComponent
+              id={id}
+              fullWidth
+              {...props}
+              density={density}
+              invalid={invalid}
+              disabled={fieldDisabled}
+              ref={ref} />
+          </Box>
+        </Box>
+        {hint && (
+          <Text fontSize={0} mt={1} color="grayscale.3">{hint}</Text>
         )}
-        <Box flex={1} fullWidth>
-          <WrappedComponent
-            id={id}
-            fullWidth
-            {...props}
-            density={density}
-            className={className}
-            invalid={invalid}
-            disabled={fieldDisabled} />
-        </Box>
+        {invalid && (
+          <Box mt={1} color="reds.2">
+            <AlertCircle width={16} height={16} />
+            <Text ml={1} fontSize={0} color="guidance.error.0">{invalid}</Text>
+          </Box>
+        )}
       </Box>
-      {hint && (
-        <Text fontSize={0} mt={1} color="grayscale.3">{hint}</Text>
-      )}
-      {invalid && (
-        <Box mt={1} color="reds.2">
-          <AlertCircle width={16} height={16} />
-          <Text ml={1} fontSize={0} color="guidance.error.0">{invalid}</Text>
-        </Box>
-      )}
-    </Box>
-  );
-};
+    );
+  }
+);
 
 asField.defaultProps = {
   required: false,

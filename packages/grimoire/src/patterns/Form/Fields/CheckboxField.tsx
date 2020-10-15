@@ -88,15 +88,8 @@ export const CheckboxField: React.FunctionComponent<CheckboxFieldProps & any> = 
 });
 
 CheckboxField.defaultProps = {
-  value: null,
-  label: null,
-  id: null,
   required: false,
-  invalid: null,
-  hint: null,
-  placeholder: null,
   visible: true,
-  className: null,
   useUnprocessed: false,
   disabled: false,
 };

@@ -12,7 +12,7 @@ export default {
 };
 
 export const higherOrderComponent = () => {
-  const TestField = asField<InputProps>(Input);
+  const TestField = asField<InputProps, React.InputHTMLAttributes<HTMLInputElement>>(Input);
   return (
     <Form>
       <TestField id="test" label="test label" />

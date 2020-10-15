@@ -99,4 +99,4 @@ CoreFieldSet.defaultProps = {
   invalid: null,
 };
 
-export const FieldSet = asField<FieldSetProps>(CoreFieldSet);
+export const FieldSet = asField<FieldSetProps, React.HTMLAttributes<HTMLFieldSetElement>>(CoreFieldSet);
