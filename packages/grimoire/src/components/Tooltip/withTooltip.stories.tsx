@@ -16,7 +16,6 @@ const TooltipButton = withTooltip(Button);
 
 export const withPositioning = () => (
   <Box fullWidth fullHeight pt={5}>
-    <Button tooltip="test this">Blah2</Button>
     <TooltipButton tooltip="Tooltip text" mr={3}>Tooltip opens down</TooltipButton>
     <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="up">Tooltip opens up</TooltipButton>
     <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="left">Tooltip opens left</TooltipButton>

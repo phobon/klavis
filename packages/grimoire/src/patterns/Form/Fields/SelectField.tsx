@@ -1,4 +1,9 @@
 import { Select, SelectProps } from '@phobon/base';
-import { asField } from './asField';
+import { asField, IAsFieldProps } from './asField';
 
-export const SelectField = asField<SelectProps, React.InputHTMLAttributes<HTMLSelectElement>>(Select);
+type SelectFieldProps =
+  React.DetailedHTMLProps<React.SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
+  & SelectProps
+  & IAsFieldProps;
+
+export const SelectField = asField<HTMLSelectElement, SelectFieldProps>(Select);

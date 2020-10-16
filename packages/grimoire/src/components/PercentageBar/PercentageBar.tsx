@@ -54,7 +54,11 @@ export interface IPercentageBarProps {
   showPercentage?: boolean;
 }
 
-export type PercentageBarProps = IPercentageBarProps & ColorProps & BoxProps;
+export type PercentageBarProps =
+  IPercentageBarProps &
+  ColorProps &
+  BoxProps &
+  React.HTMLAttributes<HTMLDivElement>;
 
 const PercentageBarElement = styled("div", {
   shouldForwardProp,
@@ -84,12 +88,12 @@ const PercentageBarElement = styled("div", {
   heights,
 );
 
-export const PercentageBar: React.FunctionComponent<PercentageBarProps & any> = forwardRef(
+export const PercentageBar: React.FunctionComponent<PercentageBarProps> = forwardRef<HTMLDivElement, PercentageBarProps>(
   (
     {
       heading,
-      total,
-      complete,
+      total = 1,
+      complete = 1,
       dangerThreshold,
       warningThreshold,
       showPercentage,
@@ -142,7 +146,6 @@ export const PercentageBar: React.FunctionComponent<PercentageBarProps & any> = 
 );
 
 PercentageBar.defaultProps = {
-  heading: null,
   dangerThreshold: 30,
   warningThreshold: 70,
   size: "m",

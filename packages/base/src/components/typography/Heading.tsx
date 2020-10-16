@@ -46,7 +46,7 @@ const headingProps = (heading: string): TypographyProps => {
   return headings[heading];
 };
 
-export const Heading: React.PropsWithChildren<TypographyProps & any> = ({
+export const Heading: React.FunctionComponent<TypographyProps & { as?: any }> = ({
   children,
   as,
   ...props

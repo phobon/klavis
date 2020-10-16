@@ -137,10 +137,11 @@ const CheckboxContainer = styled("div", { shouldForwardProp })<CheckboxProps>(
   }
 );
 
-export type CheckboxProps = CheckboxContainerProps &
-  React.InputHTMLAttributes<HTMLInputElement>;
+export type CheckboxProps =
+  CheckboxContainerProps
+  & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
 
-export const Checkbox = forwardRef(
+export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
   (
     {
       id,
@@ -201,7 +202,7 @@ Checkbox.defaultProps = {
   borderRadius: 3,
   borderThickness: 2,
   borderStyle: "solid",
-  borderColor: "grayscale.7",
+  borderColor: "grayscale.5",
   size: 3,
   invalid: false,
 };

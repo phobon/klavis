@@ -4,15 +4,15 @@ import { Text, Checkbox, Box } from '@phobon/base';
 
 import { FormFieldContext } from '../FormFieldContext';
 
-import { AsFieldProps } from "./asField";
+import { IAsFieldProps } from "./asField";
 
 import { AlertCircle } from '../../../icons/AlertCircle';
 
-export interface ICheckboxFieldProps { }
+export type CheckboxFieldProps =
+  & React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+  & IAsFieldProps;
 
-export type CheckboxFieldProps = ICheckboxFieldProps & AsFieldProps;
-
-export const CheckboxField: React.FunctionComponent<CheckboxFieldProps & any> = forwardRef(({
+export const CheckboxField: React.FunctionComponent<CheckboxFieldProps> = forwardRef<HTMLInputElement, CheckboxFieldProps>(({
   label,
   id,
   required = false,
@@ -22,8 +22,9 @@ export const CheckboxField: React.FunctionComponent<CheckboxFieldProps & any> = 
   className,
   disabled,
   useUnprocessed = false,
-  ...props }, ref) => {
-  const { optionalLabel, density, formDisabled } = useContext(FormFieldContext);
+  ...props
+}, ref: any) => {
+  const { optionalLabel, formDisabled } = useContext(FormFieldContext);
 
   // If the field shouldn't be visible, don't render it.
   if (!visible) {
@@ -56,9 +57,7 @@ export const CheckboxField: React.FunctionComponent<CheckboxFieldProps & any> = 
       <Checkbox
         id={id}
         ref={ref}
-        fullWidth
         {...props}
-        density={density}
         className={className}
         invalid={invalid}
         disabled={fieldDisabled}

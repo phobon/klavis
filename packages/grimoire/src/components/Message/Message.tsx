@@ -51,12 +51,16 @@ export interface IMessageProps {
   glyph?: React.ReactNode;
 }
 
-export type MessageProps = IMessageProps & BoxProps;
+export type MessageProps =
+  IMessageProps &
+  BoxProps &
+  React.HTMLAttributes<HTMLDivElement>;
 
-export const Message: React.FunctionComponent<MessageProps & { children?: React.ReactNode } & any> = forwardRef(({ children, variant, glyph, ...props }, ref) => { 
+export const Message: React.FunctionComponent<MessageProps & { children?: React.ReactNode } & any> = forwardRef<HTMLDivElement, MessageProps>(
+  ({ children, variant, glyph, ...props }, ref) => { 
   return (
     <Box
-      aria-live={props.variant === "error" || props.variant === "warning"
+      aria-live={variant === "error" || variant === "warning"
         ? "assertive"
         : "polite"}
       role="alert"

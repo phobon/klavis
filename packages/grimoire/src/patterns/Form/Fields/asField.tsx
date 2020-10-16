@@ -21,10 +21,8 @@ export interface IAsFieldProps {
   flexBasis?: string | number;
 }
 
-export type AsFieldProps = IAsFieldProps;
-
-export const asField = <T extends object, U>(WrappedComponent: React.ComponentType<T & U & any>) => 
-  React.forwardRef<T, U & AsFieldProps>(({
+export const asField = <T extends object, U extends IAsFieldProps>(WrappedComponent: React.ComponentType<any>) => 
+  React.forwardRef<T, U & IAsFieldProps>(({
     label,
     id,
     required = false,
@@ -37,7 +35,7 @@ export const asField = <T extends object, U>(WrappedComponent: React.ComponentTy
     flexBasis,
     ...props
   }, 
-  ref: any) => {
+  ref) => {
     const { optionalLabel, density, formDisabled } = useContext(FormFieldContext);
 
     // If the field shouldn't be visible, don't render it.

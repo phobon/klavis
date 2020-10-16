@@ -9,7 +9,7 @@ export default {
 };
 
 export const withDefaultProps = () => {
-  const data = [{
+  const data: any = [{
     name: 'First Person',
     variant: 'glyph',
     bg: 'cyans.6',
@@ -41,7 +41,7 @@ export const withDefaultProps = () => {
 };
 
 export const withGridVariant = () => {
-  const data = [{
+  const data: any = [{
     name: 'First Person',
     variant: 'glyph',
     bg: 'cyans.6',
@@ -73,7 +73,7 @@ export const withGridVariant = () => {
 };
 
 export const withDifferentSizes = () => {
-  const data = [{
+  const data: any = [{
     name: 'First Person',
     variant: 'glyph',
     bg: 'cyans.6',
@@ -100,7 +100,7 @@ export const withDifferentSizes = () => {
     bg: 'yellows.6',
   }];
 
-  const sizes = ['s', 'm', 'l'];
+  const sizes: any = ['s', 'm', 'l'];
   return (
     <Stack space={3}>
       {sizes.map(s => <AvatarGroup data={data} size={s} key={s} />)}
@@ -109,7 +109,7 @@ export const withDifferentSizes = () => {
 };
 
 export const withDifferentGridSizes = () => {
-  const data = [{
+  const data: any = [{
     name: 'First Person',
     variant: 'glyph',
     bg: 'cyans.6',
@@ -136,7 +136,7 @@ export const withDifferentGridSizes = () => {
     bg: 'yellows.6',
   }];
 
-  const gridGaps = [1, 2, 3];
+  const gridGaps: any = [1, 2, 3];
   return (
     <Stack space={3} width={150}>
       {gridGaps.map(s => <AvatarGroup data={data} key={s} gridGap={s} variant="grid" fullWidth />)}
@@ -145,7 +145,7 @@ export const withDifferentGridSizes = () => {
 };
 
 export const withFewerThanMaxCount = () => {
-  const data = [{
+  const data: any = [{
     name: 'First Person',
     variant: 'glyph',
     bg: 'cyans.6',

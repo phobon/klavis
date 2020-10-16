@@ -1,4 +1,9 @@
 import { TextArea, TextAreaProps } from '@phobon/base';
-import { asField } from './asField';
+import { asField, IAsFieldProps } from './asField';
 
-export const TextAreaField = asField<TextAreaProps, React.InputHTMLAttributes<HTMLTextAreaElement>>(TextArea);
+type TextAreaFieldProps =
+  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
+  & TextAreaProps
+  & IAsFieldProps;
+
+export const TextAreaField = asField<HTMLTextAreaElement, TextAreaFieldProps>(TextArea);

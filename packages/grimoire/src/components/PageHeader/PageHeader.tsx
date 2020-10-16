@@ -9,15 +9,19 @@ export interface IPageHeaderProps {
   actions?: React.ReactNode;
 }
 
-export type PageHeaderProps = IPageHeaderProps & BoxProps;
+export type PageHeaderProps =
+  IPageHeaderProps &
+  BoxProps &
+  React.HTMLAttributes<HTMLDivElement>;
 
-export const PageHeader: React.FunctionComponent<PageHeaderProps & { children?: React.ReactNode } & any> = forwardRef(({ heading, tagline, actions, children, ...props }, ref) => (
+export const PageHeader: React.FunctionComponent<PageHeaderProps> = forwardRef<HTMLDivElement, PageHeaderProps>(
+  ({ heading, tagline, actions, children, ...props }, ref) => (
   <Stack ref={ref} fullWidth flexDirection="column" alignItems="flex-start" {...props}>
     {tagline && (
       <Text color="grayscale.4" fontSize={0}>{tagline}</Text>
     )}
 
-    <Box fullWidth justifyContent="space-between" mb={children && 2} alignItems="flex-start">
+    <Box fullWidth justifyContent="space-between" mb={children ? 2 : 0} alignItems="flex-start">
       <Heading as="h3">{heading}</Heading>
       {actions}
     </Box>

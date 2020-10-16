@@ -8,7 +8,8 @@ import {
   position as styledPosition,
   SpaceProps,
   LayoutProps,
-  PositionProps
+  PositionProps,
+  ColorProps
 } from 'styled-system';
 import themeGet from '@styled-system/theme-get';
 import {
@@ -35,9 +36,11 @@ export interface IWithBadgeProps {
 export type WithBadgeProps =
   IWithBadgeProps &
   SpaceProps &
+  ColorProps &
   LayoutProps &
   PositionProps &
-  GridPositionProps;
+  GridPositionProps &
+  React.HTMLAttributes<HTMLDivElement>;
 
 const BadgeContainer = styled('div', {
   shouldForwardProp,
@@ -92,13 +95,15 @@ const BadgeContainer = styled('div', {
   badgeSystem,
 );
 
-export const withBadge = (WrappedComponent: any): React.FunctionComponent<WithBadgeProps & any> => forwardRef(({
-  badge,
-  badgePosition = 'topleft',
-  badgeBg = 'grayscale.2',
-  badgeColor = 'white',
-  badgeOffset = 2,
-  ...props }, ref) => {
+export const withBadge = <T extends object>(WrappedComponent: React.ComponentType<any>) => forwardRef<T, WithBadgeProps>(
+  ({
+    badge,
+    badgePosition = 'topleft',
+    badgeBg = 'grayscale.2',
+    badgeColor = 'white',
+    badgeOffset = 2,
+    ...props
+  }, ref) => {
   // If there is no badge to display here, then just render the Wrapped component.
   if (!badge) {
     return (

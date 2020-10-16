@@ -26,9 +26,12 @@ const StyledInput = styled("input", { shouldForwardProp })<InputProps & any>(
   browserChrome
 );
 
-export const Input: React.FunctionComponent<InputProps &
-  any> = React.forwardRef(
-  ({ invalid, variant, ...props }: InputProps, ref: any) => (
+export type DetailedInputProps =
+  InputProps &
+  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+
+export const Input: React.FunctionComponent<DetailedInputProps> = React.forwardRef<HTMLInputElement, DetailedInputProps>(
+  ({ invalid, variant, ...props }: InputProps, ref) => (
     <StyledInput
       aria-invalid={invalid ? true : undefined}
       type={variant === "text" ? undefined : variant}

@@ -135,9 +135,11 @@ const RadioContainer = styled("div", { shouldForwardProp })<RadioProps>(
   }
 );
 
-export type RadioProps = RadioContainerProps &
-  React.InputHTMLAttributes<HTMLInputElement>;
-export const Radio = forwardRef(
+export type RadioProps =
+  RadioContainerProps &
+  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+
+export const Radio = forwardRef<HTMLInputElement, RadioProps>(
   (
     {
       id,
@@ -199,7 +201,7 @@ Radio.defaultProps = {
   borderRadius: 3,
   borderThickness: 2,
   borderStyle: "solid",
-  borderColor: "grayscale.7",
+  borderColor: "grayscale.5",
   size: 3,
   invalid: false,
 };

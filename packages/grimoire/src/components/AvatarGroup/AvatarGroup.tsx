@@ -5,6 +5,7 @@ import { jsx } from "@emotion/react";
 import { Box, BoxProps } from '@phobon/base';
 
 import { Avatar, AvatarProps } from '../Avatar';
+import { GridProps } from 'styled-system';
 
 const extents = ({ theme, size }) => {
   const sizes = {
@@ -69,12 +70,17 @@ export interface IAvatarGroupProps {
   variant?: 'stack' | 'grid';
   size?: 's' | 'm' | 'l';
   maxCount?: number;
-  data?: AvatarProps[];
+  data: AvatarProps[];
 }
 
-export type AvatarGroupProps = IAvatarGroupProps & BoxProps;
+export type AvatarGroupProps =
+  IAvatarGroupProps &
+  BoxProps &
+  GridProps &
+  React.HTMLAttributes<HTMLDivElement>;
 
-export const AvatarGroup: React.FunctionComponent<AvatarGroupProps & any> = forwardRef(({ size, maxCount, data, variant, gridGap, ...props }, ref) => {
+export const AvatarGroup: React.FunctionComponent<AvatarGroupProps> = forwardRef<HTMLDivElement, AvatarGroupProps>(
+  ({ size, maxCount = 5, data, variant, gridGap, ...props }, ref) => {
   const remainder = data.length - maxCount;
   const avatarData = remainder > 0 ? data.slice(0, maxCount) : data;
 
@@ -88,7 +94,7 @@ export const AvatarGroup: React.FunctionComponent<AvatarGroupProps & any> = forw
           size,
           dataLength: avatarData.length + (remainder > 0 ? 1 : 0),
         }),
-        gridGap: theme.space[gridGap],
+        gridGap: theme.space[gridGap as number],
       })}
       ref={ref}
       {...props}>
@@ -101,7 +107,6 @@ export const AvatarGroup: React.FunctionComponent<AvatarGroupProps & any> = forw
           css={(theme: any) => ({
             ...childPositions({ length, index, size, groupVariant: variant, theme }),
           })}
-          length={avatarData.length}
           {...rest} />
       ))}
       {remainder > 0 && (
@@ -126,7 +131,5 @@ AvatarGroup.displayName = 'AvatarGroup';
 AvatarGroup.defaultProps = {
   variant: 'stack',
   size: 'm',
-  maxCount: 5,
-  gridGap: 3,
 };
 

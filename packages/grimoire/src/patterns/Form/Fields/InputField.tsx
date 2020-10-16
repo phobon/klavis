@@ -1,4 +1,9 @@
 import { Input, InputProps } from '@phobon/base';
-import { asField } from './asField';
+import { asField, IAsFieldProps } from './asField';
 
-export const InputField = asField<InputProps, React.InputHTMLAttributes<HTMLInputElement>>(Input);
+type InputFieldProps =
+  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+  & InputProps
+  & IAsFieldProps;
+
+export const InputField = asField<HTMLInputElement, InputFieldProps>(Input);

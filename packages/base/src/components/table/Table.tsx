@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import React, { forwardRef, TableHTMLAttributes } from "react";
+import React, { forwardRef } from "react";
 import styled from "@emotion/styled";
 import { compose, space, layout, SpaceProps, LayoutProps } from "styled-system";
 
@@ -54,7 +54,10 @@ interface IColumn {
   variant?: "numeric" | "other";
   label?: string;
 }
-type Column = IColumn & SpaceProps & TableHTMLAttributes<HTMLTableColElement>;
+type Column =
+  IColumn &
+  SpaceProps &
+  React.DetailedHTMLProps<React.TableHTMLAttributes<HTMLTableColElement>, HTMLTableColElement>;
 
 interface IRow {
   id?: string | number;
@@ -78,13 +81,13 @@ export type TableProps = ITableCoreProps &
   SpaceProps &
   LayoutProps &
   GridPositionProps &
-  React.TableHTMLAttributes<HTMLTableElement>;
+  React.DetailedHTMLProps<React.TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>;
 
 type StyledTableProps = ITableProps &
   SpaceProps &
   LayoutProps &
   GridPositionProps &
-  React.TableHTMLAttributes<HTMLTableElement>;
+  React.DetailedHTMLProps<React.TableHTMLAttributes<HTMLTableElement>, HTMLTableElement>;
 
 const StyledTable = styled("table", { shouldForwardProp })<StyledTableProps>(
   (props: any) => ({
@@ -171,8 +174,8 @@ const Td = styled("td")<{ lines?: number }>(({ lines }: any) => ({
   },
 }));
 
-export const Table: React.FunctionComponent<TableProps> = forwardRef(
-  ({ id, columns, rows, ...props }: TableProps, ref: any) => {
+export const Table: React.FunctionComponent<TableProps> = forwardRef<HTMLTableElement, TableProps>(
+  ({ id, columns, rows, ...props }: TableProps, ref) => {
     const cols = columns.map(({ fill, truncate, ...rest }, i) => (
       <Col key={`${id}__col__${i}`} {...rest} />
     ));

@@ -10,9 +10,9 @@ export default {
   title: "Components/Avatar",
 };
 
-const sizes = ["s", "m", "l"];
-const statuses = ["none", "error", "warning", "success"];
-const presences = ["none", "unknown", "unavailable", "busy", "available"];
+const sizes: any = ["s", "m", "l"];
+const statuses: any = ["none", "error", "warning", "success"];
+const presences: any = ["none", "unknown", "unavailable", "busy", "available"];
 
 export const withVariants = () => (
   <Stack space={3} flexDirection="row">
@@ -31,19 +31,19 @@ export const withDifferentColours = () => (
 );
 
 export const withDifferentStatuses = () => {
-  const glyphAvatars = Object.values(statuses).map((s) => (
+  const glyphAvatars = Object.values(statuses).map((s: any) => (
     <Box as="li" key={s}>
       <Avatar name="Fake Name" variant="glyph" status={s} />
     </Box>
   ));
 
-  const initialsAvatars = Object.values(statuses).map((s) => (
+  const initialsAvatars = Object.values(statuses).map((s: any) => (
     <Box as="li" key={s}>
       <Avatar name="Fake Name" status={s} />
     </Box>
   ));
 
-  const imageAvatars = Object.values(statuses).map((s) => (
+  const imageAvatars = Object.values(statuses).map((s: any) => (
     <Box as="li" key={s}>
       <Avatar
         name="Fake Name"
@@ -69,19 +69,19 @@ export const withDifferentStatuses = () => {
 };
 
 export const withDifferentPresences = () => {
-  const glyphAvatars = Object.values(presences).map((p) => (
+  const glyphAvatars = Object.values(presences).map((p: any) => (
     <Box as="li" key={p}>
       <Avatar name="Fake Name" variant="glyph" presence={p} />
     </Box>
   ));
 
-  const initialsAvatars = Object.values(presences).map((p) => (
+  const initialsAvatars = Object.values(presences).map((p: any) => (
     <Box as="li" key={p}>
       <Avatar name="Fake Name" presence={p} />
     </Box>
   ));
 
-  const imageAvatars = Object.values(presences).map((p) => (
+  const imageAvatars = Object.values(presences).map((p: any) => (
     <Box as="li" key={p}>
       <Avatar
         name="Fake Name"
@@ -107,19 +107,19 @@ export const withDifferentPresences = () => {
 };
 
 export const withDifferentSizes = () => {
-  const glyphAvatars = Object.values(sizes).map((s) => (
+  const glyphAvatars = Object.values(sizes).map((s: any) => (
     <Box as="li" key={s}>
       <Avatar name="Fake Name" variant="glyph" size={s} />
     </Box>
   ));
 
-  const initialsAvatars = Object.values(sizes).map((s) => (
+  const initialsAvatars = Object.values(sizes).map((s: any) => (
     <Box as="li" key={s}>
       <Avatar name="Fake Name" size={s} />
     </Box>
   ));
 
-  const imageAvatars = Object.values(sizes).map((s) => (
+  const imageAvatars = Object.values(sizes).map((s: any) => (
     <Box as="li" key={s}>
       <Avatar
         name="Fake Name"
@@ -129,7 +129,7 @@ export const withDifferentSizes = () => {
     </Box>
   ));
 
-  const statusPresenceAvatars = Object.values(sizes).map((s) => (
+  const statusPresenceAvatars = Object.values(sizes).map((s: any) => (
     <Box as="li" key={s}>
       <Avatar name="Fake Name" size={s} status="warning" presence="unknown" />
     </Box>

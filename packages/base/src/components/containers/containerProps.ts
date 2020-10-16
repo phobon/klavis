@@ -41,7 +41,13 @@ export const containerSystem = compose(
   gridPosition
 );
 
-export type ContainerProps = SpaceProps &
+export interface IContainerProps {
+  as?: any;
+}
+
+export type ContainerProps =
+  IContainerProps &
+  SpaceProps &
   LayoutProps &
   BorderProps &
   ColorProps &

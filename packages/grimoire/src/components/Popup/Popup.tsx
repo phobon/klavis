@@ -118,11 +118,16 @@ export interface IPopupProps {
   trigger?: React.ReactNode;
   closeAfterAction?: React.ReactNode;
   popupDirection?: 'up' | 'down' | 'left' | 'right' | 'auto';
+  as?: any;
 }
 
-type PopupProps = IPopupProps & ButtonProps;
+type PopupProps =
+  IPopupProps &
+  ButtonProps &
+  React.HTMLAttributes<HTMLDivElement>;
 
-export const Popup: React.FunctionComponent<PopupProps & any> = forwardRef(({ trigger, children, label, closeAfterAction, className, as, popupDirection, ...props }, forwardedRef) => {
+export const Popup: React.FunctionComponent<PopupProps> = forwardRef<HTMLDivElement, PopupProps>(
+  ({ trigger, children, label, closeAfterAction, className, as, popupDirection, ...props }, forwardedRef) => {
   // Set up state and refs.
   const [isOpen, setIsOpen] = useState(false);
   const container = useRef<any>(null);
@@ -147,8 +152,12 @@ export const Popup: React.FunctionComponent<PopupProps & any> = forwardRef(({ tr
   }, [isOpen]);
   const containerClick: any = closeAfterAction ? useCallback(() => setIsOpen(false), []) : null;
 
-  const motionCardProps = useAlignmentTransition(popupDirection, isOpen, container, children.$$typeof ? 1 : children.length);
-
+  const motionCardProps = useAlignmentTransition(
+    popupDirection,
+    isOpen,
+    container,
+    Array.isArray(children) ? children.length : 1);
+  
   // Destructure layout props here.
   const [layoutProps, passthroughProps] = destructureLayoutProps(props);
 

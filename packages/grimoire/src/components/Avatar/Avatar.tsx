@@ -96,11 +96,13 @@ export interface IAvatarProps {
   onClick?: () => void;
 }
 
-export type AvatarProps = IAvatarProps &
+export type AvatarProps =
+  IAvatarProps &
   SpaceProps &
   BorderProps &
   ColorProps &
-  BorderRadiusProps;
+  BorderRadiusProps &
+  React.HTMLAttributes<HTMLDivElement>;
 
 const AvatarBox = styled("div", {
   shouldForwardProp,
@@ -217,7 +219,7 @@ AvatarIndicator.defaultProps = {
   onClick: null,
 };
 
-export const Avatar: React.FunctionComponent<AvatarProps & any> = forwardRef(
+export const Avatar: React.FunctionComponent<AvatarProps> = forwardRef<HTMLDivElement, AvatarProps>(
   (
     {
       image,
@@ -285,10 +287,8 @@ Avatar.defaultProps = {
   status: "none",
   presence: "none",
   variant: "initials",
-  onClick: null,
   bg: "accent.4",
   color: "white",
-  fontColor: "foreground",
   borderRadius: 6,
   border: "3px solid",
   borderColor: "white",

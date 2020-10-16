@@ -19,7 +19,7 @@ const Content = () => (
   </>
 );
 
-const buttonVariants = [
+const buttonVariants: any = [
   'primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'link', 'clean',
 ];
 
