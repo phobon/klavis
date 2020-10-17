@@ -95,7 +95,7 @@ const BadgeContainer = styled('div', {
   badgeSystem,
 );
 
-export const withBadge = <T extends object>(WrappedComponent: React.ComponentType<any>) => forwardRef<T, WithBadgeProps>(
+export const withBadge = <T extends object>(WrappedComponent: React.ElementType) => forwardRef<T, WithBadgeProps>(
   ({
     badge,
     badgePosition = 'topleft',

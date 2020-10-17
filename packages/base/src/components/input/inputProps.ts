@@ -36,7 +36,7 @@ export const inputSystem = compose(
 );
 
 export interface IInputProps {
-  variant?: "text" | "number" | "password";
+  variant?: "text" | "number" | "password" | "email";
   invalid?: React.ReactNode;
   disabled?: boolean;
   hideBrowserChrome?: boolean;

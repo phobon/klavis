@@ -21,7 +21,7 @@ export interface IAsFieldProps {
   flexBasis?: string | number;
 }
 
-export const asField = <T extends object, U extends IAsFieldProps>(WrappedComponent: React.ComponentType<any>) => 
+export const asField = <T extends object, U extends IAsFieldProps>(WrappedComponent: React.ElementType) => 
   React.forwardRef<T, U & IAsFieldProps>(({
     label,
     id,
