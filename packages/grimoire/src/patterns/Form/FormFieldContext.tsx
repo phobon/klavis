@@ -1,16 +1,18 @@
 import { createContext } from "react";
+import { FlexboxProps } from "styled-system";
 
 export interface IFormFieldContextProps {
   density?: "compact" | "normal" | "spacious";
   optionalLabel?: () => {};
   space?: number;
   formDisabled?: boolean;
-  flexDirection?: string;
-  alignItems?: string;
-  justifyContent?: string;
 }
 
-export const FormFieldContext = createContext<IFormFieldContextProps>({
+export type FormFIeldContextProps =
+  IFormFieldContextProps &
+  FlexboxProps;
+
+export const FormFieldContext = createContext<FormFIeldContextProps>({
   density: "normal",
   space: 3,
   formDisabled: true,

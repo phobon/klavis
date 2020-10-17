@@ -32,19 +32,19 @@ export const withDifferentColours = () => (
 
 export const withDifferentStatuses = () => {
   const glyphAvatars = Object.values(statuses).map((s: any) => (
-    <Box as="li" key={s}>
+    <Box key={s}>
       <Avatar name="Fake Name" variant="glyph" status={s} />
     </Box>
   ));
 
   const initialsAvatars = Object.values(statuses).map((s: any) => (
-    <Box as="li" key={s}>
+    <Box key={s}>
       <Avatar name="Fake Name" status={s} />
     </Box>
   ));
 
   const imageAvatars = Object.values(statuses).map((s: any) => (
-    <Box as="li" key={s}>
+    <Box key={s}>
       <Avatar
         name="Fake Name"
         status={s}
@@ -55,13 +55,13 @@ export const withDifferentStatuses = () => {
 
   return (
     <Stack space={5}>
-      <Stack as="ul" space={3} flexDirection="row">
+      <Stack space={3} flexDirection="row">
         {glyphAvatars}
       </Stack>
-      <Stack as="ul" space={3} flexDirection="row">
+      <Stack space={3} flexDirection="row">
         {initialsAvatars}
       </Stack>
-      <Stack as="ul" space={3} flexDirection="row">
+      <Stack space={3} flexDirection="row">
         {imageAvatars}
       </Stack>
     </Stack>
@@ -70,19 +70,19 @@ export const withDifferentStatuses = () => {
 
 export const withDifferentPresences = () => {
   const glyphAvatars = Object.values(presences).map((p: any) => (
-    <Box as="li" key={p}>
+    <Box key={p}>
       <Avatar name="Fake Name" variant="glyph" presence={p} />
     </Box>
   ));
 
   const initialsAvatars = Object.values(presences).map((p: any) => (
-    <Box as="li" key={p}>
+    <Box key={p}>
       <Avatar name="Fake Name" presence={p} />
     </Box>
   ));
 
   const imageAvatars = Object.values(presences).map((p: any) => (
-    <Box as="li" key={p}>
+    <Box key={p}>
       <Avatar
         name="Fake Name"
         presence={p}
@@ -93,13 +93,13 @@ export const withDifferentPresences = () => {
 
   return (
     <Stack space={5}>
-      <Stack as="ul" space={3} flexDirection="row">
+      <Stack space={3} flexDirection="row">
         {glyphAvatars}
       </Stack>
-      <Stack as="ul" space={3} flexDirection="row">
+      <Stack space={3} flexDirection="row">
         {initialsAvatars}
       </Stack>
-      <Stack as="ul" space={3} flexDirection="row">
+      <Stack space={3} flexDirection="row">
         {imageAvatars}
       </Stack>
     </Stack>
@@ -108,19 +108,19 @@ export const withDifferentPresences = () => {
 
 export const withDifferentSizes = () => {
   const glyphAvatars = Object.values(sizes).map((s: any) => (
-    <Box as="li" key={s}>
+    <Box key={s}>
       <Avatar name="Fake Name" variant="glyph" size={s} />
     </Box>
   ));
 
   const initialsAvatars = Object.values(sizes).map((s: any) => (
-    <Box as="li" key={s}>
+    <Box key={s}>
       <Avatar name="Fake Name" size={s} />
     </Box>
   ));
 
   const imageAvatars = Object.values(sizes).map((s: any) => (
-    <Box as="li" key={s}>
+    <Box key={s}>
       <Avatar
         name="Fake Name"
         size={s}
@@ -130,23 +130,23 @@ export const withDifferentSizes = () => {
   ));
 
   const statusPresenceAvatars = Object.values(sizes).map((s: any) => (
-    <Box as="li" key={s}>
+    <Box key={s}>
       <Avatar name="Fake Name" size={s} status="warning" presence="unknown" />
     </Box>
   ));
 
   return (
     <Stack space={5}>
-      <Stack as="ul" space={3} flexDirection="row">
+      <Stack space={3} flexDirection="row">
         {glyphAvatars}
       </Stack>
-      <Stack as="ul" space={3} flexDirection="row">
+      <Stack space={3} flexDirection="row">
         {initialsAvatars}
       </Stack>
-      <Stack as="ul" space={3} flexDirection="row">
+      <Stack space={3} flexDirection="row">
         {imageAvatars}
       </Stack>
-      <Stack as="ul" space={3} flexDirection="row">
+      <Stack space={3} flexDirection="row">
         {statusPresenceAvatars}
       </Stack>
     </Stack>

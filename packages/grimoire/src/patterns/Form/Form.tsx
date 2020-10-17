@@ -7,11 +7,15 @@ import {
   height,
   alignItems as styledAlignItems,
   justifyContent as styledJustifyContent,
+  grid,
+  flexbox,
   SpaceProps,
   WidthProps,
   HeightProps,
   AlignItemsProps,
   JustifyContentProps,
+  GridProps,
+  FlexboxProps,
 } from "styled-system";
 import {
   fullWidth,
@@ -23,27 +27,38 @@ import {
 
 import { FormFieldContext } from "./FormFieldContext";
 
-const informationDensity = (props) => {
+const informationDensity = ({ theme, density }) => {
   const densities = {
     compact: {
-      marginTop: props.theme.space[3],
+      marginTop: theme.space[3],
     },
     normal: {
-      marginTop: props.theme.space[4],
+      marginTop: theme.space[4],
     },
     spacious: {
-      marginTop: props.theme.space[5],
+      marginTop: theme.space[5],
     },
   };
 
-  return densities[props.density];
+  return densities[density];
 };
 
-const formSystem = compose(styledSpace, width, height, styledAlignItems, styledJustifyContent, fullWidth, fullHeight);
+const formSystem = compose(
+  styledSpace,
+  width,
+  height,
+  styledAlignItems,
+  styledJustifyContent,
+  fullWidth,
+  fullHeight,
+  grid,
+  flexbox
+);
 
 interface IFormProps {
-  density: "compact" | "normal" | "spacious";
-  optionalLabel: () => {};
+  density?: "compact" | "normal" | "spacious";
+  disabled?: boolean;
+  optionalLabel?: () => string;
 }
 
 export type FormProps =
@@ -54,11 +69,14 @@ export type FormProps =
   AlignItemsProps &
   JustifyContentProps &
   FullWidthProps &
-  FullHeightProps;
+  FullHeightProps &
+  GridProps &
+  FlexboxProps &
+  React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
 
 const StyledForm = styled("form", {
   shouldForwardProp,
-})<FormProps>((props: any) => ({
+})<FormProps>(({ theme, density }) => ({
   boxSizing: "border-box",
   display: "flex",
   flex: "none",
@@ -67,16 +85,16 @@ const StyledForm = styled("form", {
     flex: "1 0 auto",
   },
   "> [class*='form__'] + [class*='form__']": {
-    ...informationDensity(props),
+    ...informationDensity({ theme, density }),
   },
   "h1, h2, h3, h4, h5, h6": {
-    marginBottom: props.theme.space[props.space - 1],
+    ...informationDensity({ theme, density }),
   },
 }),
   formSystem,
 );
 
-export const Form: React.FunctionComponent<FormProps & any> = forwardRef(
+export const Form: React.FunctionComponent<FormProps> = forwardRef<HTMLFormElement, FormProps>(
   (
     {
       children,

@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import React from 'react';
 
 import { Radio, Heading } from '@phobon/base';
@@ -23,7 +25,7 @@ export const withSeveralDifferentFields = () => (
 );
 
 export const withDifferentDensities = () => (
-  <>
+  <React.Fragment>
     <Form density="compact" mr={4} width={1/4}>
       <Heading>Compact density</Heading>
       <InputField id="text1" label="text field 1" />
@@ -50,7 +52,7 @@ export const withDifferentDensities = () => (
       <TextAreaField id="textarea" label="text area" />
       <CheckboxField id="checkbox" label="checkbox field" />
     </Form>
-  </>
+  </React.Fragment>
 );
 
 export const withInlineFields = () => (
@@ -74,4 +76,21 @@ export const withInlineFields = () => (
       <InputField id="text4" label="text field" />
     </FieldGroup>
   </Form>
+);
+
+export const withGridProps = () => (
+  <div
+    css={{
+      gridTemplateColumns: "repeat(12, 1fr)",
+      gridTemplateRows: "auto",
+      gridGap: 16,
+    }}>
+    <Form gridColumn="3 / span 5">
+      <InputField id="text1" label="text field 1" />
+      <InputField id="text2" label="text field 2" />
+      <InputField id="text3" label="text field 3" />
+      <TextAreaField id="textarea" label="text area" />
+      <CheckboxField id="checkbox" label="checkbox field" />
+    </Form>
+  </div>
 );
