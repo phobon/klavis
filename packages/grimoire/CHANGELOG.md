@@ -59,7 +59,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [0.12.12](https://github.com/phobon/grimoire/compare/@phobon/grimoire@0.12.10...@phobon/grimoire@0.12.12) (2020-08-24)
+## [0.12.12](https://github.com/phobon/klavis/compare/@phobon/grimoire@0.12.10...@phobon/grimoire@0.12.12) (2020-08-24)
 
 **Note:** Version bump only for package @phobon/grimoire
 

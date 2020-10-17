@@ -1,15 +1,15 @@
 {
   "name": "@phobon/tokens",
   "version": "1.1.1",
-  "description": "Grimoire design system tokens",
+  "description": "Klavis design system tokens",
   "author": "phobon <exponen7@gmail.com>",
-  "homepage": "https://github.com/phobon/grimoire#readme",
+  "homepage": "https://github.com/phobon/klavis#readme",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/phobon/grimoire.git"
+    "url": "git+https://github.com/phobon/klavis.git"
   },
   "scripts": {
     "build": "rollup -c",

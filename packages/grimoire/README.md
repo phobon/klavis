@@ -1,2 +1,3 @@
 # grimoire
-A design system using [base](https://github.com/phobon/grimoire) components
+
+A design system using [base](https://github.com/phobon/klavis) components

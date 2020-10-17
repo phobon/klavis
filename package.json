@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "grimoire",
+  "name": "klavis",
   "workspaces": [
     "packages/*"
   ],
