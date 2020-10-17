@@ -118,7 +118,7 @@ export interface IPopupProps {
   trigger?: React.ReactNode;
   closeAfterAction?: React.ReactNode;
   popupDirection?: 'up' | 'down' | 'left' | 'right' | 'auto';
-  as?: any;
+  as?: React.ElementType<any>;
 }
 
 type PopupProps =

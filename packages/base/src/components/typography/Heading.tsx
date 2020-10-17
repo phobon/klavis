@@ -46,12 +46,12 @@ const headingProps = (heading: string): TypographyProps => {
   return headings[heading];
 };
 
-export const Heading: React.FunctionComponent<TypographyProps & { as?: any }> = ({
+export const Heading: React.FunctionComponent<TypographyProps> = ({
   children,
   as,
   ...props
 }) => {
-  const rest = headingProps(as.toString());
+  const rest = headingProps(as as string);
   return (
     <Text as={as} {...rest} {...props}>
       {children}

@@ -28,7 +28,8 @@ const StyledInput = styled("input", { shouldForwardProp })<InputProps & any>(
 
 export type DetailedInputProps =
   InputProps &
-  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> &
+  { as?: React.ElementType<any> };
 
 export const Input: React.FunctionComponent<DetailedInputProps> = React.forwardRef<HTMLInputElement, DetailedInputProps>(
   ({ invalid, variant, ...props }: InputProps, ref) => (

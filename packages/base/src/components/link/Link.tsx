@@ -12,6 +12,7 @@ export interface ILinkProps {
   href?: string;
   clean?: boolean;
   active?: boolean;
+  as?: React.ElementType<any>;
 }
 
 export type LinkProps = ILinkProps & TypographyProps;

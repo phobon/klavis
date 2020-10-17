@@ -55,6 +55,7 @@ export const imageSystem = compose(
 export interface IImageProps {
   cover?: boolean;
   responsive?: boolean;
+  as?: React.ElementType<any>;
 }
 
 export type ImageProps = IImageProps &

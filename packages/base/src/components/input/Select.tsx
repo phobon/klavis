@@ -42,7 +42,7 @@ export const Select: React.FunctionComponent<SelectProps> = forwardRef<HTMLSelec
             "-webkit-appearance": "none",
             minWidth: 150,
           }}
-          as={"select"}
+          as="select"
           ref={ref}
           fullWidth
           {...passthroughProps}

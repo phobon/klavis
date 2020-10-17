@@ -38,7 +38,13 @@ export const typographySystem = compose(
   fullHeight
 );
 
-export type TypographyProps = SpaceProps &
+export interface ITypographyProps {
+  as?: React.ElementType<any>;
+}
+
+export type TypographyProps =
+  ITypographyProps &
+  SpaceProps &
   ColorProps &
   LayoutProps &
   StyledTypographyProps &

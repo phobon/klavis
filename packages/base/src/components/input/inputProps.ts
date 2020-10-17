@@ -40,6 +40,7 @@ export interface IInputProps {
   invalid?: React.ReactNode;
   disabled?: boolean;
   hideBrowserChrome?: boolean;
+  as?: React.ElementType<any>;
 }
 
 export type InputProps =
