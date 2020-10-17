@@ -63,7 +63,6 @@ export interface ITooltipProps {
   tooltip?: string;
   tooltipDirection?: "down" | "up" | "left" | "right";
   offset?: number;
-  as?: any;
 }
 
 export type TooltipProps = ITooltipProps & SpaceProps & LayoutProps & PositionProps & FullWidthProps & FullHeightProps;

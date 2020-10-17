@@ -64,7 +64,6 @@ export const Progress: React.FunctionComponent<IProgressProps & any> = forwardRe
       const complete = !currentShown;
       return (
         <Box
-          as="li"
           key={`${id}__step${i}`}
           flex={!isLast && mode === "full" ? "1 1 auto" : "none"}
           flexDirection="inherit"
