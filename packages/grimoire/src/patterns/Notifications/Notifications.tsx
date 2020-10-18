@@ -8,7 +8,7 @@ import { usePortal } from "@phobon/hooks";
 
 import { Remove } from "../../icons/Remove";
 
-import { SquareButton } from "../../components";
+import { Button } from "../../components";
 
 import { NotificationsContext } from "./NotificationsContext";
 
@@ -33,12 +33,22 @@ export interface INotificationsProps {
   timeout: number;
   showLife: boolean;
   config: any;
-  notificationPosition: "topleft" | "top" | "topright" | "left" | "middle" | "right" | "bottomleft" | "bottom" | "bottomright";
+  notificationPosition:
+    | "topleft"
+    | "top"
+    | "topright"
+    | "left"
+    | "middle"
+    | "right"
+    | "bottomleft"
+    | "bottom"
+    | "bottomright";
 }
 
 export type NotificationsProps = INotificationsProps & CardProps;
 
-export const Notifications: React.FunctionComponent<NotificationsProps & any> = forwardRef(
+export const Notifications: React.FunctionComponent<NotificationsProps &
+  any> = forwardRef(
   (
     {
       children,
@@ -119,7 +129,7 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
                         typeof showLifeItem === "undefined"
                           ? showLife
                           : showLifeItem;
-                      
+
                       const to = rest.timeout || timeout;
                       const seconds = ((to % 60000) / 1000).toFixed(0);
                       return (
@@ -139,15 +149,16 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
                           }}
                         >
                           <Card
-                          fullWidth
-                          css={{
-                            pointerEvents: "all",
-                            position: "relative",
-                            "> div": {
-                              overflow: "hidden",
-                            },
-                          }}
-                          {...props}>
+                            fullWidth
+                            css={{
+                              pointerEvents: "all",
+                              position: "relative",
+                              "> div": {
+                                overflow: "hidden",
+                              },
+                            }}
+                            {...props}
+                          >
                             <Box
                               flex={1}
                               css={{ position: "relative", overflow: "hidden" }}
@@ -160,9 +171,10 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
                                 {content}
                               </Box>
                               {canDismiss && (
-                                <SquareButton
+                                <Button
                                   variant="tertiary"
                                   size="s"
+                                  shape="square"
                                   ml={4}
                                   mt={3}
                                   mr={3}
@@ -174,7 +186,7 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
                                   }}
                                 >
                                   <Remove color="inherit" size={12} />
-                                </SquareButton>
+                                </Button>
                               )}
                               {showLifebar && (
                                 <Lifebar
@@ -184,7 +196,7 @@ export const Notifications: React.FunctionComponent<NotificationsProps & any> = 
                                     left: "-100%",
                                   }}
                                   initial={{ x: 0 }}
-                                  animate={{ x : "100%" }}
+                                  animate={{ x: "100%" }}
                                   transition={{
                                     duration: seconds,
                                     ease: "linear",

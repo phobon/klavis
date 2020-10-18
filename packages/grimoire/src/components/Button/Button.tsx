@@ -1,4 +1,5 @@
-/* eslint-disable react/default-props-match-prop-types */
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import React from "react";
 import styled from "@emotion/styled";
 import {
@@ -10,7 +11,7 @@ import {
   FullWidthProps,
   FullHeightProps,
   GridPositionProps,
-} from '@phobon/base';
+} from "@phobon/base";
 import {
   variant,
   compose,
@@ -26,129 +27,144 @@ import {
   FlexboxProps,
   TypographyProps,
   PositionProps,
-} from 'styled-system';
+} from "styled-system";
 
-import { withTooltip } from '../Tooltip';
+import { withTooltip } from "../Tooltip";
 
 const variants = {
   primary: {
-    color: 'white',
-    fill: 'white',
-    bg: 'accent.4',
-    '&:hover': {
-      bg: 'accent.2',
+    color: "white",
+    fill: "white",
+    bg: "accent.4",
+    "&:hover": {
+      bg: "accent.2",
     },
     '&[aria-pressed="true"]': {
-      bg: 'accent.2',
-      '&:hover': {
-        bg: 'accent.4',
+      bg: "accent.2",
+      "&:hover": {
+        bg: "accent.4",
       },
     },
   },
   secondary: {
-    color: 'grayscale.1',
-    fill: 'grayscale.1',
-    bg: 'grayscale.8',
-    '&:hover': {
-      bg: 'grayscale.7',
+    color: "grayscale.1",
+    fill: "grayscale.1",
+    bg: "grayscale.8",
+    "&:hover": {
+      bg: "grayscale.7",
     },
     '&[aria-pressed="true"]': {
-      bg: 'grayscale.2',
-      color: 'grayscale.9',
-      '&:hover': {
-        bg: 'grayscale.4',
+      bg: "grayscale.2",
+      color: "grayscale.9",
+      "&:hover": {
+        bg: "grayscale.4",
       },
     },
   },
   tertiary: {
-    color: 'grayscale.1',
-    fill: 'grayscale.1',
-    bg: 'transparent',
-    '&:hover': {
-      bg: 'grayscale.7',
+    color: "grayscale.1",
+    fill: "grayscale.1",
+    bg: "transparent",
+    "&:hover": {
+      bg: "grayscale.7",
     },
     '&[aria-pressed="true"]': {
-      bg: 'grayscale.2',
-      color: 'grayscale.9',
-      '&:hover': {
-        bg: 'grayscale.4',
+      bg: "grayscale.2",
+      color: "grayscale.9",
+      "&:hover": {
+        bg: "grayscale.4",
       },
     },
   },
   warning: {
-    bg: 'guidance.warning.1',
-    color: 'guidance.warning.0',
-    fill: 'guidance.warning.0',
-    '&:hover': {
-      bg: 'oranges.7',
+    bg: "guidance.warning.1",
+    color: "guidance.warning.0",
+    fill: "guidance.warning.0",
+    "&:hover": {
+      bg: "oranges.7",
     },
     '&[aria-pressed="true"]': {
-      bg: 'oranges.6',
-      '&:hover': {
-        bg: 'oranges.7',
+      bg: "oranges.6",
+      "&:hover": {
+        bg: "oranges.7",
       },
     },
   },
   danger: {
-    bg: 'guidance.error.1',
-    color: 'guidance.error.0',
-    fill: 'guidance.error.0',
-    '&:hover': {
-      bg: 'reds.7',
+    bg: "guidance.error.1",
+    color: "guidance.error.0",
+    fill: "guidance.error.0",
+    "&:hover": {
+      bg: "reds.7",
     },
     '&[aria-pressed="true"]': {
-      bg: 'reds.6',
-      '&:hover': {
-        bg: 'reds.7',
+      bg: "reds.6",
+      "&:hover": {
+        bg: "reds.7",
       },
     },
   },
   success: {
-    bg: 'guidance.success.1',
-    color: 'guidance.success.0',
-    fill: 'guidance.success.0',
-    '&:hover': {
-      bg: 'greens.7',
+    bg: "guidance.success.1",
+    color: "guidance.success.0",
+    fill: "guidance.success.0",
+    "&:hover": {
+      bg: "greens.7",
     },
     '&[aria-pressed="true"]': {
-      bg: 'greens.6',
-      '&:hover': {
-        bg: 'greens.7',
+      bg: "greens.6",
+      "&:hover": {
+        bg: "greens.7",
       },
     },
   },
   link: {
-    bg: 'transparent',
-    border: 'none',
-    color: 'grayscale.1',
-    fill: 'grayscale.1',
+    bg: "transparent",
+    border: "none",
+    color: "grayscale.1",
+    fill: "grayscale.1",
     padding: 0,
-    textDecoration: 'underline dotted',
-    '&:hover': {
-      color: 'accent.2',
-      fill: 'accent.2',
-      textDecoration: 'underline',
+    textDecoration: "underline dotted",
+    "&:hover": {
+      color: "accent.2",
+      fill: "accent.2",
+      textDecoration: "underline",
     },
     '&[aria-pressed="true"]': {
-      color: 'accent.4',
-      fill: 'accent.4',
-      textDecoration: 'underline',
-      '&:hover': {
-        color: 'grayscale.1',
-        fill: 'grayscale.1',
-        textDecoration: 'underline dotted',
+      color: "accent.4",
+      fill: "accent.4",
+      textDecoration: "underline",
+      "&:hover": {
+        color: "grayscale.1",
+        fill: "grayscale.1",
+        textDecoration: "underline dotted",
       },
     },
   },
   clean: {
-    bg: 'transparent',
+    bg: "transparent",
     border: 0,
-    color: 'inherit',
-    fill: 'inherit',
+    color: "inherit",
+    fill: "inherit",
     padding: 0,
-    width: 'unset',
-    height: 'unset',
+    width: "unset",
+    height: "unset",
   },
+};
+
+const buttonShape = ({ shape }) => {
+  const shapes = {
+    default: {},
+    circle: {
+      padding: 0,
+      borderRadius: "50%",
+    },
+    square: {
+      padding: 0,
+    },
+  };
+
+  return shapes[shape];
 };
 
 const size = ({ theme, pl, pr, size: propsSize }) => {
@@ -177,76 +193,105 @@ const size = ({ theme, pl, pr, size: propsSize }) => {
 };
 
 const disabled = ({ theme }) => ({
-  '&:disabled': {
+  "&:disabled": {
     opacity: 0.5,
     backgroundColor: theme.colors.grayscale[7],
     border: 0,
     color: theme.colors.grayscale[4],
     fill: theme.colors.grayscale[4],
-    pointerEvents: 'none',
+    pointerEvents: "none",
   },
 });
 
-const buttonSystem = compose(space, layout, border, flexbox, typography, position, fullWidth, fullHeight, gridPosition);
+const buttonSystem = compose(
+  space,
+  layout,
+  border,
+  flexbox,
+  typography,
+  position,
+  fullWidth,
+  fullHeight,
+  gridPosition
+);
 
 export interface IButtonProps {
   toggled?: boolean;
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'danger' | 'warning' | 'success' | 'link' | 'clean';
-  size?: 's' | 'm' | 'l';
+  variant?:
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "danger"
+    | "warning"
+    | "success"
+    | "link"
+    | "clean";
+  shape?: "default" | "circle" | "square";
+  size?: "s" | "m" | "l";
 }
 
-export type ButtonProps =
- IButtonProps &
- SpaceProps &
- LayoutProps &
- BorderProps &
- FlexboxProps &
- TypographyProps &
- PositionProps &
- FullWidthProps &
- FullHeightProps &
- GridPositionProps;
+export type ButtonProps = IButtonProps &
+  SpaceProps &
+  LayoutProps &
+  BorderProps &
+  FlexboxProps &
+  TypographyProps &
+  PositionProps &
+  FullWidthProps &
+  FullHeightProps &
+  GridPositionProps;
 
-const StyledButton = styled('button', {
+const StyledButton = styled("button", {
   shouldForwardProp,
-})<ButtonProps>({
-    boxSizing: 'border-box',
-    position: 'relative',
-    cursor: 'pointer',
-    transition: 'all 120ms ease-out',
+})<ButtonProps>(
+  {
+    boxSizing: "border-box",
+    position: "relative",
+    cursor: "pointer",
+    transition: "all 120ms ease-out",
     ...focus,
     ...disabled,
   },
   buttonSystem,
   size,
-  variant({ variants }),
+  variant({ variants })
 );
 
-const GrimoireButton: React.PropsWithChildren<ButtonProps & any> = ({ children, toggled, ...props }) => (
+const GrimoireButton: React.PropsWithChildren<ButtonProps & any> = ({
+  children,
+  toggled,
+  shape,
+  ...props
+}) => (
   <StyledButton
-    aria-pressed={toggled ? 'true' : undefined}
+    aria-pressed={toggled ? "true" : undefined}
     toggled={toggled}
-    {...props}>
+    css={{
+      ...buttonShape({ shape }),
+    }}
+    {...props}
+  >
     {children}
   </StyledButton>
 );
 
 export const Button = withTooltip(GrimoireButton);
 
-Button.displayName = 'Button';
+Button.displayName = "Button";
 
 Button.defaultProps = {
-  display: 'flex',
-  flex: 'none',
-  alignItems: 'center',
-  justifyContent: 'center',
+  display: "flex",
+  flex: "none",
+  alignItems: "center",
+  justifyContent: "center",
   border: 0,
-  width: 'initial',
+  width: "initial",
   fontSize: 1,
   borderRadius: 3,
-  borderColor: 'grayscale.5',
+  borderColor: "grayscale.5",
   toggled: false,
-  variant: 'secondary',
-  size: 'm',
-  type: 'button',
+  variant: "secondary",
+  size: "m",
+  type: "button",
+  shape: "default",
 };
