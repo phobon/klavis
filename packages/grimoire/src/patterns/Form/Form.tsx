@@ -84,10 +84,7 @@ const StyledForm = styled("form", {
   ".form__field": {
     flex: "1 0 auto",
   },
-  "> [class*='form__'] + [class*='form__']": {
-    ...informationDensity({ theme, density }),
-  },
-  "h1, h2, h3, h4, h5, h6": {
+  "> * + *, [class*='form__'] + [class*='form__']": {
     ...informationDensity({ theme, density }),
   },
 }),
