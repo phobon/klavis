@@ -1,17 +1,17 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-import React from 'react';
+import React from "react";
 
-import { Radio, Heading } from '@phobon/base';
+import { Radio, Heading } from "@phobon/base";
 
-import { Form } from './Form';
-import { InputField, TextAreaField, CheckboxField } from './Fields';
+import { Form } from "./Form";
+import { InputField, TextAreaField, CheckboxField } from "./Fields";
 
-import { FieldSet } from './FieldSet';
-import { FieldGroup } from './FieldGroup';
+import { FieldSet } from "./FieldSet";
+import { FieldGroup } from "./FieldGroup";
 
 export default {
-  title: 'Patterns/Form',
+  title: "Patterns/Form",
 };
 
 export const withSeveralDifferentFields = () => (
@@ -26,7 +26,7 @@ export const withSeveralDifferentFields = () => (
 
 export const withDifferentDensities = () => (
   <React.Fragment>
-    <Form density="compact" mr={4} width={1/4}>
+    <Form density="compact" mr={4} width={1 / 4}>
       <Heading>Compact density</Heading>
       <InputField id="text1" label="text field 1" />
       <InputField id="text2" label="text field 2" />
@@ -35,7 +35,7 @@ export const withDifferentDensities = () => (
       <CheckboxField id="checkbox" label="checkbox field" />
     </Form>
 
-    <Form density="normal" mr={4} width={1/4}>
+    <Form density="normal" mr={4} width={1 / 4}>
       <Heading>Normal density</Heading>
       <InputField id="text1" label="text field 1" />
       <InputField id="text2" label="text field 2" />
@@ -44,7 +44,7 @@ export const withDifferentDensities = () => (
       <CheckboxField id="checkbox" label="checkbox field" />
     </Form>
 
-    <Form density="spacious" width={1/4}>
+    <Form density="spacious" width={1 / 4}>
       <Heading>Spacious density</Heading>
       <InputField id="text1" label="text field 1" />
       <InputField id="text2" label="text field 2" />
@@ -84,7 +84,8 @@ export const withGridProps = () => (
       gridTemplateColumns: "repeat(12, 1fr)",
       gridTemplateRows: "auto",
       gridGap: 16,
-    }}>
+    }}
+  >
     <Form gridColumn="3 / span 5">
       <InputField id="text1" label="text field 1" />
       <InputField id="text2" label="text field 2" />

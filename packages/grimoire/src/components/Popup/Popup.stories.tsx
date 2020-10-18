@@ -1,26 +1,42 @@
-import React from 'react';
+import React from "react";
 
-import { Box, Text } from '@phobon/base';
+import { Box, Text } from "@phobon/base";
 
-import { Popup } from './Popup';
-import { Avatar } from '../Avatar';
+import { Popup } from "./Popup";
+import { Avatar } from "../Avatar";
 
 export default {
   component: Popup,
-  title: 'Components/Popup',
+  title: "Components/Popup",
 };
 
 const Content = () => (
   <>
-    <svg width="96" height="91" viewBox="0 0 96 91" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M48 0L59.2257 34.5491H95.5528L66.1636 55.9017L77.3893 90.4509L48 69.0983L18.6107 90.4509L29.8364 55.9017L0.447174 34.5491H36.7743L48 0Z" fill="#6FCF97" />
+    <svg
+      width="96"
+      height="91"
+      viewBox="0 0 96 91"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M48 0L59.2257 34.5491H95.5528L66.1636 55.9017L77.3893 90.4509L48 69.0983L18.6107 90.4509L29.8364 55.9017L0.447174 34.5491H36.7743L48 0Z"
+        fill="#6FCF97"
+      />
     </svg>
     <Text>Content</Text>
   </>
 );
 
 const buttonVariants: any = [
-  'primary', 'secondary', 'tertiary', 'danger', 'warning', 'success', 'link', 'clean',
+  "primary",
+  "secondary",
+  "tertiary",
+  "danger",
+  "warning",
+  "success",
+  "link",
+  "clean",
 ];
 
 export const withAndWithoutLabels = () => (
@@ -36,7 +52,12 @@ export const withAndWithoutLabels = () => (
 );
 
 export const withVaryingAlignment = () => (
-  <Box fullWidth justifyContent="space-between" style={{ height: '100vh' }} pb={6}>
+  <Box
+    fullWidth
+    justifyContent="space-between"
+    style={{ height: "100vh" }}
+    pb={6}
+  >
     <Box fullHeight flexDirection="column" justifyContent="space-between">
       <Popup trigger="opens down">
         <Content />
@@ -57,7 +78,12 @@ export const withVaryingAlignment = () => (
 );
 
 export const withDefinedDirectionalPopupAlignment = () => (
-  <Box fullWidth justifyContent="space-between" style={{ height: '100vh' }} pb={6}>
+  <Box
+    fullWidth
+    justifyContent="space-between"
+    style={{ height: "100vh" }}
+    pb={6}
+  >
     <Box fullHeight flexDirection="column" justifyContent="space-between">
       <Popup trigger="left opens down" popupDirection="left">
         <Content />
@@ -78,18 +104,20 @@ export const withDefinedDirectionalPopupAlignment = () => (
 );
 
 export const withAlternateTriggers = () => (
-  <Popup trigger={<Avatar name="Cool McDude" status="warning" presence="unknown" />} variant="clean">
+  <Popup
+    trigger={<Avatar name="Cool McDude" status="warning" presence="unknown" />}
+    variant="clean"
+  >
     <Content />
   </Popup>
 );
 
-export const withButtonVariants = () => (
-  buttonVariants.map(a => (
+export const withButtonVariants = () =>
+  buttonVariants.map((a) => (
     <Popup key={a} variant={a} trigger={a} mx={2}>
       <Content />
     </Popup>
-  ),
-));
+  ));
 
 export const withDefinedDirections = () => (
   <Box fullWidth justifyContent="space-between">

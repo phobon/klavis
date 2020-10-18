@@ -1,14 +1,14 @@
 /* eslint-disable react/no-array-index-key */
-import React from 'react';
+import React from "react";
 
-import { Box } from '@phobon/base';
-import { Button } from '../Button';
+import { Box } from "@phobon/base";
+import { Button } from "../Button";
 
-import { withTooltip } from './withTooltip';
+import { withTooltip } from "./withTooltip";
 
 export default {
   component: withTooltip,
-  title: 'Components/withTooltip',
+  title: "Components/withTooltip",
 };
 
 const TooltipButton = withTooltip(Button);
@@ -16,22 +16,34 @@ const TooltipButton = withTooltip(Button);
 
 export const withPositioning = () => (
   <Box fullWidth fullHeight pt={5}>
-    <TooltipButton tooltip="Tooltip text" mr={3}>Tooltip opens down</TooltipButton>
-    <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="up">Tooltip opens up</TooltipButton>
-    <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="left">Tooltip opens left</TooltipButton>
-    <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="right">Tooltip opens right</TooltipButton>
+    <TooltipButton tooltip="Tooltip text" mr={3}>
+      Tooltip opens down
+    </TooltipButton>
+    <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="up">
+      Tooltip opens up
+    </TooltipButton>
+    <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="left">
+      Tooltip opens left
+    </TooltipButton>
+    <TooltipButton tooltip="Tooltip text" mr={3} tooltipDirection="right">
+      Tooltip opens right
+    </TooltipButton>
   </Box>
 );
 
 export const withFluidLayout = () => (
   <Box width={500} height={400} flexDirection="column" alignItems="flex-start">
-    <TooltipButton tooltip="Tooltip text" mb={3} fullWidth>Tooltip opens down</TooltipButton>
+    <TooltipButton tooltip="Tooltip text" mb={3} fullWidth>
+      Tooltip opens down
+    </TooltipButton>
   </Box>
 );
 
 export const withAndWithoutATooltipProp = () => (
   <Box fullWidth fullHeight flexDirection="column">
-    <TooltipButton tooltip="Tooltip text" mb={3}>This has a tooltip</TooltipButton>
+    <TooltipButton tooltip="Tooltip text" mb={3}>
+      This has a tooltip
+    </TooltipButton>
 
     <TooltipButton>This does not have a tooltip</TooltipButton>
   </Box>
@@ -56,7 +68,7 @@ export const withAndWithoutATooltipProp = () => (
 //           </TooltipButton>
 //         ))}
 //       </Box>
-      
+
 //       <Box fullWidth mb={8} flexDirection="column">
 //         {items.map((x, i) => (
 //           <TooltipButton key={i} tooltip="Tooltip text" mb={3} tooltipDirection="right" offset={i}>
@@ -64,7 +76,7 @@ export const withAndWithoutATooltipProp = () => (
 //           </TooltipButton>
 //         ))}
 //       </Box>
-      
+
 //       <Box fullWidth flexDirection="column">
 //         {items.map((x, i) => (
 //           <TooltipButton key={i} tooltip="Tooltip text" mb={3} tooltipDirection="left" offset={i}>

@@ -1,18 +1,21 @@
-import React from 'react';
-import { Input } from '@phobon/base';
+import React from "react";
+import { Input } from "@phobon/base";
 
-import { asField } from './asField';
+import { asField } from "./asField";
 
-import { Form } from '../Form';
-import { InputField } from './InputField';
+import { Form } from "../Form";
+import { InputField } from "./InputField";
 
 export default {
   component: asField,
-  title: 'Patterns/Form/asField',
+  title: "Patterns/Form/asField",
 };
 
 export const higherOrderComponent = () => {
-  const TestField = asField<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(Input);
+  const TestField = asField<
+    HTMLInputElement,
+    React.InputHTMLAttributes<HTMLInputElement>
+  >(Input);
   return (
     <Form>
       <TestField id="test" label="test label" />

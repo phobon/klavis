@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { Stack, Box } from '@phobon/base';
+import { Stack, Box } from "@phobon/base";
 
-import { Spacer } from './Spacer';
+import { Spacer } from "./Spacer";
 
 export default {
   component: Spacer,
-  title: 'Components/Spacer',
+  title: "Components/Spacer",
 };
 
 export const withDifferentLengths = () => (
@@ -46,6 +46,6 @@ export const withDifferentDirections = () => (
 
 export const withResponsiveDisplays = () => (
   <Box height={100}>
-    <Spacer direction="vertical" bg="grayscale.3" display={['none', 'block']} />
+    <Spacer direction="vertical" bg="grayscale.3" display={["none", "block"]} />
   </Box>
 );

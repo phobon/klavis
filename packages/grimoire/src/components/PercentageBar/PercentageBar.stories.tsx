@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import { Box, Text } from '@phobon/base';
+import { Box, Text } from "@phobon/base";
 
-import { PercentageBar } from './PercentageBar';
+import { PercentageBar } from "./PercentageBar";
 
 export default {
   component: PercentageBar,
-  title: 'Components/PercentageBar',
+  title: "Components/PercentageBar",
 };
 
 export const withDifferentPercentages = () => (
@@ -31,11 +31,16 @@ export const withDifferentHeadings = () => (
       total={100}
       complete={20}
       showPercentage
-      heading={(
+      heading={
         <Box>
-          <Text as="span" fontWeight="bold">20 / 100</Text>
-          <Text as="span" ml={1}>remaining</Text>
+          <Text as="span" fontWeight="bold">
+            20 / 100
+          </Text>
+          <Text as="span" ml={1}>
+            remaining
+          </Text>
         </Box>
-      )} />
+      }
+    />
   </Box>
 );

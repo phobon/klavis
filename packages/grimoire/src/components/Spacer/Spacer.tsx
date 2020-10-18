@@ -11,7 +11,7 @@ import {
   MinWidthProps,
   MinHeightProps,
   DisplayProps,
-} from 'styled-system';
+} from "styled-system";
 
 import { shouldForwardProp } from "@phobon/base";
 
@@ -23,22 +23,28 @@ export interface ISpacerProps {
   thickness?: string | number;
 }
 
-export type SpacerProps = ISpacerProps & ColorProps & SpaceProps & MinWidthProps & MinHeightProps & DisplayProps;
+export type SpacerProps = ISpacerProps &
+  ColorProps &
+  SpaceProps &
+  MinWidthProps &
+  MinHeightProps &
+  DisplayProps;
 
-export const Spacer = styled('span', {
+export const Spacer = styled("span", {
   shouldForwardProp,
-})<SpacerProps>(props => ({
-  width: props.direction === 'horizontal' ? props.length : props.thickness,
-  height: props.direction === 'vertical' ? props.length : props.thickness,
-}),
-spacerSystem,
+})<SpacerProps>(
+  (props) => ({
+    width: props.direction === "horizontal" ? props.length : props.thickness,
+    height: props.direction === "vertical" ? props.length : props.thickness,
+  }),
+  spacerSystem
 );
 
 Spacer.defaultProps = {
-  direction: 'horizontal',
-  bg: 'grayscale.8',
-  thickness: '2px',
-  length: '80%',
-  display: 'block',
+  direction: "horizontal",
+  bg: "grayscale.8",
+  thickness: "2px",
+  length: "80%",
+  display: "block",
   minWidth: 0,
 };

@@ -1,16 +1,16 @@
-import React from 'react';
-import { Checkbox, Radio } from '@phobon/base';
+import React from "react";
+import { Checkbox, Radio } from "@phobon/base";
 
-import { Form } from '../Form';
-import { CheckboxField } from './CheckboxField';
-import { TextAreaField } from './TextAreaField';
-import { InputField } from './InputField';
-import { SelectField } from './SelectField';
+import { Form } from "../Form";
+import { CheckboxField } from "./CheckboxField";
+import { TextAreaField } from "./TextAreaField";
+import { InputField } from "./InputField";
+import { SelectField } from "./SelectField";
 
-import { FieldSet } from '../FieldSet';
+import { FieldSet } from "../FieldSet";
 
 export default {
-  title: 'Patterns/Form/Fields',
+  title: "Patterns/Form/Fields",
 };
 
 const SelectOptions = () => (
@@ -37,9 +37,24 @@ export const numberField = () => (
   <Form>
     <InputField variant="number" label="label" id="number_1" />
     <InputField variant="number" label="label" hint="hint text" id="number_2" />
-    <InputField variant="number" label="label" invalid="invalid text" id="number_3" />
-    <InputField variant="number" label="required field" required id="number_4" />
-    <InputField variant="number" label="disabled field" disabled id="number_5" />
+    <InputField
+      variant="number"
+      label="label"
+      invalid="invalid text"
+      id="number_3"
+    />
+    <InputField
+      variant="number"
+      label="required field"
+      required
+      id="number_4"
+    />
+    <InputField
+      variant="number"
+      label="disabled field"
+      disabled
+      id="number_5"
+    />
   </Form>
 );
 
@@ -92,12 +107,22 @@ export const fieldSet = () => (
       <Radio label="radio2 label" value="value2" id="radio_2" />
       <Radio label="radio3 label" value="value3" id="radio_3" />
     </FieldSet>
-    <FieldSet id="group3" label="Disabled Fieldset" hint="Fieldset2 hint" disabled>
+    <FieldSet
+      id="group3"
+      label="Disabled Fieldset"
+      hint="Fieldset2 hint"
+      disabled
+    >
       <Radio label="radio1 label" value="value1" id="radio_4" />
       <Radio label="radio2 label" value="value2" id="radio_5" />
       <Radio label="radio3 label" value="value3" id="radio_6" />
     </FieldSet>
-    <FieldSet id="group4" label="Invalid Fieldset" hint="Fieldset2 hint" invalid="Something is wrong">
+    <FieldSet
+      id="group4"
+      label="Invalid Fieldset"
+      hint="Fieldset2 hint"
+      invalid="Something is wrong"
+    >
       <Radio label="radio1 label" value="value1" id="radio_7" />
       <Radio label="radio2 label" value="value2" id="radio_8" />
       <Radio label="radio3 label" value="value3" id="radio_9" />

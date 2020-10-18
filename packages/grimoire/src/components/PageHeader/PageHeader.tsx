@@ -1,7 +1,7 @@
 /* eslint-disable react/default-props-match-prop-types */
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from "react";
 
-import { Stack, Box, Heading, BoxProps, Text } from '@phobon/base';
+import { Stack, Box, Heading, BoxProps, Text } from "@phobon/base";
 
 export interface IPageHeaderProps {
   heading?: string;
@@ -9,19 +9,33 @@ export interface IPageHeaderProps {
   actions?: React.ReactNode;
 }
 
-export type PageHeaderProps =
-  IPageHeaderProps &
+export type PageHeaderProps = IPageHeaderProps &
   BoxProps &
   React.HTMLAttributes<HTMLDivElement>;
 
-export const PageHeader: React.FunctionComponent<PageHeaderProps> = forwardRef<HTMLDivElement, PageHeaderProps>(
-  ({ heading, tagline, actions, children, ...props }, ref) => (
-  <Stack ref={ref} fullWidth flexDirection="column" alignItems="flex-start" {...props}>
+export const PageHeader: React.FunctionComponent<PageHeaderProps> = forwardRef<
+  HTMLDivElement,
+  PageHeaderProps
+>(({ heading, tagline, actions, children, ...props }, ref) => (
+  <Stack
+    ref={ref}
+    fullWidth
+    flexDirection="column"
+    alignItems="flex-start"
+    {...props}
+  >
     {tagline && (
-      <Text color="grayscale.4" fontSize={0}>{tagline}</Text>
+      <Text color="grayscale.4" fontSize={0}>
+        {tagline}
+      </Text>
     )}
 
-    <Box fullWidth justifyContent="space-between" mb={children ? 2 : 0} alignItems="flex-start">
+    <Box
+      fullWidth
+      justifyContent="space-between"
+      mb={children ? 2 : 0}
+      alignItems="flex-start"
+    >
       <Heading as="h3">{heading}</Heading>
       {actions}
     </Box>
@@ -30,7 +44,7 @@ export const PageHeader: React.FunctionComponent<PageHeaderProps> = forwardRef<H
   </Stack>
 ));
 
-PageHeader.displayName = 'PageHeader';
+PageHeader.displayName = "PageHeader";
 
 PageHeader.defaultProps = {
   px: 3,

@@ -96,8 +96,7 @@ export interface IAvatarProps {
   onClick?: () => void;
 }
 
-export type AvatarProps =
-  IAvatarProps &
+export type AvatarProps = IAvatarProps &
   SpaceProps &
   BorderProps &
   ColorProps &
@@ -106,37 +105,33 @@ export type AvatarProps =
 
 const AvatarBox = styled("div", {
   shouldForwardProp,
-})<AvatarProps>(
-  avatarSystem,
-  extents,
-  (props: any) => ({
-    display: "flex",
-    flex: "none",
-    alignItems: "center",
-    justifyContent: "center",
-    position: "relative",
+})<AvatarProps>(avatarSystem, extents, (props: any) => ({
+  display: "flex",
+  flex: "none",
+  alignItems: "center",
+  justifyContent: "center",
+  position: "relative",
+  pointerEvents: "none",
+  "&:before, &:after": {
+    content: "''",
+    position: "absolute",
+    borderRadius: "50%",
+    border: `solid 3px ${props.theme.colors.background}`,
     pointerEvents: "none",
-    "&:before, &:after": {
-      content: "''",
-      position: "absolute",
-      borderRadius: "50%",
-      border: `solid 3px ${props.theme.colors.background}`,
-      pointerEvents: "none",
-      zIndex: 1,
-      ...statusElements(props),
-    },
-    "&:before": {
-      top: -props.theme.space[1],
-      opacity: props.status !== "none" ? 1 : 0,
-      ...statusColor(props),
-    },
-    "&:after": {
-      bottom: -props.theme.space[1],
-      opacity: props.presence !== "none" ? 1 : 0,
-      ...presenceColor(props),
-    },
-  })
-);
+    zIndex: 1,
+    ...statusElements(props),
+  },
+  "&:before": {
+    top: -props.theme.space[1],
+    opacity: props.status !== "none" ? 1 : 0,
+    ...statusColor(props),
+  },
+  "&:after": {
+    bottom: -props.theme.space[1],
+    opacity: props.presence !== "none" ? 1 : 0,
+    ...presenceColor(props),
+  },
+}));
 
 const buttonFocus = (props) =>
   props.onClick && {
@@ -219,7 +214,10 @@ AvatarIndicator.defaultProps = {
   onClick: null,
 };
 
-export const Avatar: React.FunctionComponent<AvatarProps> = forwardRef<HTMLDivElement, AvatarProps>(
+export const Avatar: React.FunctionComponent<AvatarProps> = forwardRef<
+  HTMLDivElement,
+  AvatarProps
+>(
   (
     {
       image,

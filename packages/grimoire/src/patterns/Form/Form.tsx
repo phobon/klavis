@@ -61,8 +61,7 @@ interface IFormProps {
   optionalLabel?: () => string;
 }
 
-export type FormProps =
-  IFormProps &
+export type FormProps = IFormProps &
   SpaceProps &
   WidthProps &
   HeightProps &
@@ -72,26 +71,33 @@ export type FormProps =
   FullHeightProps &
   GridProps &
   FlexboxProps &
-  React.DetailedHTMLProps<React.FormHTMLAttributes<HTMLFormElement>, HTMLFormElement>;
+  React.DetailedHTMLProps<
+    React.FormHTMLAttributes<HTMLFormElement>,
+    HTMLFormElement
+  >;
 
 const StyledForm = styled("form", {
   shouldForwardProp,
-})<FormProps>(({ theme, density }) => ({
-  boxSizing: "border-box",
-  display: "flex",
-  flex: "none",
-  flexDirection: "column",
-  ".form__field": {
-    flex: "1 0 auto",
-  },
-  "> * + *": {
-    ...informationDensity({ theme, density }),
-  },
-}),
-  formSystem,
+})<FormProps>(
+  ({ theme, density }) => ({
+    boxSizing: "border-box",
+    display: "flex",
+    flex: "none",
+    flexDirection: "column",
+    ".form__field": {
+      flex: "1 0 auto",
+    },
+    "> * + *": {
+      ...informationDensity({ theme, density }),
+    },
+  }),
+  formSystem
 );
 
-export const Form: React.FunctionComponent<FormProps> = forwardRef<HTMLFormElement, FormProps>(
+export const Form: React.FunctionComponent<FormProps> = forwardRef<
+  HTMLFormElement,
+  FormProps
+>(
   (
     {
       children,

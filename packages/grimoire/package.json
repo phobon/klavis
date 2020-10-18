@@ -1,10 +1,12 @@
 {
   "name": "@phobon/grimoire",
-  "version": "0.14.11",
+  "version": "1.0.0",
   "description": "Component patterns using @phobon/base",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "types": "dist/index.d.ts",
   "author": "Ben McCormick",
   "license": "MIT",

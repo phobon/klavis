@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from "react";
 import styled from "@emotion/styled";
 import {
   compose,
@@ -9,9 +9,9 @@ import {
   SpaceProps,
   LayoutProps,
   PositionProps,
-  ColorProps
-} from 'styled-system';
-import themeGet from '@styled-system/theme-get';
+  ColorProps,
+} from "styled-system";
+import themeGet from "@styled-system/theme-get";
 import {
   destructureLayoutProps,
   gridPosition,
@@ -21,20 +21,26 @@ import {
   GridPositionProps,
   FullWidthProps,
   FullHeightProps,
-} from '@phobon/base';
+} from "@phobon/base";
 
-const badgeSystem = compose(space, layout, styledPosition, gridPosition, fullWidth, fullHeight);
+const badgeSystem = compose(
+  space,
+  layout,
+  styledPosition,
+  gridPosition,
+  fullWidth,
+  fullHeight
+);
 
 export interface IWithBadgeProps {
   badgeBg?: string;
   badgeColor?: string;
-  badgePosition?: 'topleft' | 'topright' | 'bottomleft' | 'bottomright',
+  badgePosition?: "topleft" | "topright" | "bottomleft" | "bottomright";
   badge?: string;
   badgeOffset?: number | string;
 }
 
-export type WithBadgeProps =
-  IWithBadgeProps &
+export type WithBadgeProps = IWithBadgeProps &
   SpaceProps &
   ColorProps &
   LayoutProps &
@@ -42,7 +48,7 @@ export type WithBadgeProps =
   GridPositionProps &
   React.HTMLAttributes<HTMLDivElement>;
 
-const BadgeContainer = styled('div', {
+const BadgeContainer = styled("div", {
   shouldForwardProp,
 })<WithBadgeProps & FullWidthProps & FullHeightProps>(
   (props: any) => ({
@@ -64,7 +70,7 @@ const BadgeContainer = styled('div', {
       textOverflow: "ellipsis",
       lineHeight: `${props.theme.space[4]}px`,
       textAlign: "center",
-      color: themeGet(`colors.${props.badgeColor}`, 'white')(props),
+      color: themeGet(`colors.${props.badgeColor}`, "white")(props),
       backgroundColor: themeGet(`colors.${props.badgeBg}`)(props),
     },
     "&.topleft": {
@@ -77,13 +83,13 @@ const BadgeContainer = styled('div', {
       "&::before": {
         right: -props.theme.space[props.badgeOffset],
         top: -props.theme.space[props.badgeOffset],
-      }
+      },
     },
     "&.bottomleft": {
       "&::before": {
         bottom: -props.theme.space[props.badgeOffset],
         left: -props.theme.space[props.badgeOffset],
-      }
+      },
     },
     "&.bottomright": {
       "&::before": {
@@ -92,50 +98,67 @@ const BadgeContainer = styled('div', {
       },
     },
   }),
-  badgeSystem,
+  badgeSystem
 );
 
-export const withBadge = <T extends object>(WrappedComponent: React.ElementType) => forwardRef<T, WithBadgeProps>(
-  ({
-    badge,
-    badgePosition = 'topleft',
-    badgeBg = 'grayscale.2',
-    badgeColor = 'white',
-    badgeOffset = 2,
-    ...props
-  }, ref) => {
-  // If there is no badge to display here, then just render the Wrapped component.
-  if (!badge) {
-    return (
-      <WrappedComponent {...props} ref={ref} />
-    );
-  }
+export const withBadge = <T extends object>(
+  WrappedComponent: React.ElementType
+) =>
+  forwardRef<T, WithBadgeProps>(
+    (
+      {
+        badge,
+        badgePosition = "topleft",
+        badgeBg = "grayscale.2",
+        badgeColor = "white",
+        badgeOffset = 2,
+        ...props
+      },
+      ref
+    ) => {
+      // If there is no badge to display here, then just render the Wrapped component.
+      if (!badge) {
+        return <WrappedComponent {...props} ref={ref} />;
+      }
 
-  const { onClick, color: _color, bg, ...containerProps } = props;
-  const [{ fullWidth, fullHeight, width, height, position, ...layoutProps }, passthroughProps] = destructureLayoutProps(containerProps);
+      const { onClick, color: _color, bg, ...containerProps } = props;
+      const [
+        { fullWidth, fullHeight, width, height, position, ...layoutProps },
+        passthroughProps,
+      ] = destructureLayoutProps(containerProps);
 
-  return (
-    <BadgeContainer
-      position={position || 'relative'}
-      width={width}
-      height={height}
-      fullWidth={fullWidth}
-      fullHeight={fullHeight}
-      {...layoutProps}
-      className={`${badgePosition}`}
-      badge={badge}
-      badgeBg={badgeBg}
-      badgeColor={badgeColor}
-      badgeOffset={badgeOffset}>
-      <WrappedComponent ref={ref} color={_color} bg={bg} {...passthroughProps} fullWidth={fullWidth || width != null} fullHeight={fullHeight || height != null} onClick={onClick} />
-    </BadgeContainer>
+      return (
+        <BadgeContainer
+          position={position || "relative"}
+          width={width}
+          height={height}
+          fullWidth={fullWidth}
+          fullHeight={fullHeight}
+          {...layoutProps}
+          className={`${badgePosition}`}
+          badge={badge}
+          badgeBg={badgeBg}
+          badgeColor={badgeColor}
+          badgeOffset={badgeOffset}
+        >
+          <WrappedComponent
+            ref={ref}
+            color={_color}
+            bg={bg}
+            {...passthroughProps}
+            fullWidth={fullWidth || width != null}
+            fullHeight={fullHeight || height != null}
+            onClick={onClick}
+          />
+        </BadgeContainer>
+      );
+    }
   );
-});
 
 withBadge.defaultProps = {
-  badgeBg: 'grayscale.2',
-  badgeColor: 'white',
-  badgePosition: 'topleft',
+  badgeBg: "grayscale.2",
+  badgeColor: "white",
+  badgePosition: "topleft",
   badgeOffset: 2,
   badge: null,
 };

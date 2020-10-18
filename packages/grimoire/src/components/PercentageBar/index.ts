@@ -1,1 +1,1 @@
-export * from './PercentageBar';
+export * from "./PercentageBar";

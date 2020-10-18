@@ -39,7 +39,8 @@ interface IProgressProps {
   orientation: "horizontal" | "vertical";
 }
 
-export const Progress: React.FunctionComponent<IProgressProps & any> = forwardRef(
+export const Progress: React.FunctionComponent<IProgressProps &
+  any> = forwardRef(
   (
     { id, children, mode, fontSize, color, bg, orientation, space, ...props },
     ref
@@ -59,7 +60,6 @@ export const Progress: React.FunctionComponent<IProgressProps & any> = forwardRe
         currentShown = true;
         currentIndex = i;
       }
-
 
       const complete = !currentShown;
       return (
@@ -89,14 +89,17 @@ export const Progress: React.FunctionComponent<IProgressProps & any> = forwardRe
               flex={1}
               bg={bg}
               space={space}
-              css={theme => ({
+              css={(theme) => ({
                 position: "relative",
                 pointerEvents: "none",
                 ...barOrientation({ orientation, theme, space }),
                 "&::before": {
                   content: "''",
                   position: "absolute",
-                  backgroundColor: themeGet(`colors.${color}`, theme.colors.accent[3])(theme),
+                  backgroundColor: themeGet(
+                    `colors.${color}`,
+                    theme.colors.accent[3]
+                  )(theme),
                   opacity: complete ? 1 : 0,
                   transition: "opacity 180ms ease-out",
                   width: "100%",

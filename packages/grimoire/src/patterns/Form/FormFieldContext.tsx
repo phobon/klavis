@@ -8,9 +8,7 @@ export interface IFormFieldContextProps {
   formDisabled?: boolean;
 }
 
-export type FormFIeldContextProps =
-  IFormFieldContextProps &
-  FlexboxProps;
+export type FormFIeldContextProps = IFormFieldContextProps & FlexboxProps;
 
 export const FormFieldContext = createContext<FormFIeldContextProps>({
   density: "normal",

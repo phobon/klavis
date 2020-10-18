@@ -1,11 +1,11 @@
 /* eslint-disable react/default-props-match-prop-types */
 /** @jsx jsx */
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from "react";
 import { jsx } from "@emotion/react";
-import { Box, BoxProps } from '@phobon/base';
+import { Box, BoxProps } from "@phobon/base";
 
-import { Avatar, AvatarProps } from '../Avatar';
-import { GridProps } from 'styled-system';
+import { Avatar, AvatarProps } from "../Avatar";
+import { GridProps } from "styled-system";
 
 const extents = ({ theme, size }) => {
   const sizes = {
@@ -30,18 +30,18 @@ const appearance = ({ variant, size, theme, dataLength }) => {
   const s = sizes[size];
 
   // This width calculation is here to handle overflow and layout correctly
-  const width = (dataLength * s) - (dataLength * 6);
+  const width = dataLength * s - dataLength * 6;
 
   const appearances = {
-    'stack': {
-      display: 'flex',
+    stack: {
+      display: "flex",
       height: s,
-      width, 
+      width,
     },
-    'grid': {
-      display: 'grid',
+    grid: {
+      display: "grid",
       gridTemplateColumns: `repeat(auto-fill, minmax(${s}px, 1fr))`,
-      gridAutoRows: 'auto',
+      gridAutoRows: "auto",
     },
   };
 
@@ -56,9 +56,9 @@ const childPositions = ({ length, index, size, groupVariant, theme }) => {
   };
 
   const props: any = {
-    position: groupVariant === 'stack' ? 'absolute' : 'relative',
+    position: groupVariant === "stack" ? "absolute" : "relative",
   };
-  if (groupVariant === 'stack') {
+  if (groupVariant === "stack") {
     props["left"] = (sizes[size] - 8) * index;
     props["zIndex"] = length - index;
   }
@@ -67,27 +67,28 @@ const childPositions = ({ length, index, size, groupVariant, theme }) => {
 };
 
 export interface IAvatarGroupProps {
-  variant?: 'stack' | 'grid';
-  size?: 's' | 'm' | 'l';
+  variant?: "stack" | "grid";
+  size?: "s" | "m" | "l";
   maxCount?: number;
   data: AvatarProps[];
 }
 
-export type AvatarGroupProps =
-  IAvatarGroupProps &
+export type AvatarGroupProps = IAvatarGroupProps &
   BoxProps &
   GridProps &
   React.HTMLAttributes<HTMLDivElement>;
 
-export const AvatarGroup: React.FunctionComponent<AvatarGroupProps> = forwardRef<HTMLDivElement, AvatarGroupProps>(
-  ({ size, maxCount = 5, data, variant, gridGap, ...props }, ref) => {
+export const AvatarGroup: React.FunctionComponent<AvatarGroupProps> = forwardRef<
+  HTMLDivElement,
+  AvatarGroupProps
+>(({ size, maxCount = 5, data, variant, gridGap, ...props }, ref) => {
   const remainder = data.length - maxCount;
   const avatarData = remainder > 0 ? data.slice(0, maxCount) : data;
 
   return (
     <Box
       position="relative"
-      css={theme => ({
+      css={(theme) => ({
         ...appearance({
           theme,
           variant,
@@ -97,7 +98,8 @@ export const AvatarGroup: React.FunctionComponent<AvatarGroupProps> = forwardRef
         gridGap: theme.space[gridGap as number],
       })}
       ref={ref}
-      {...props}>
+      {...props}
+    >
       {avatarData.map(({ name, variant: avatarVariant, ...rest }, index) => (
         <Avatar
           key={name}
@@ -105,9 +107,16 @@ export const AvatarGroup: React.FunctionComponent<AvatarGroupProps> = forwardRef
           variant={avatarVariant}
           size={size}
           css={(theme: any) => ({
-            ...childPositions({ length, index, size, groupVariant: variant, theme }),
+            ...childPositions({
+              length,
+              index,
+              size,
+              groupVariant: variant,
+              theme,
+            }),
           })}
-          {...rest} />
+          {...rest}
+        />
       ))}
       {remainder > 0 && (
         <Box
@@ -117,8 +126,15 @@ export const AvatarGroup: React.FunctionComponent<AvatarGroupProps> = forwardRef
           css={(theme: any) => ({
             zIndex: -1,
             ...extents({ theme, size }),
-            ...childPositions({ length, index: 0, size, groupVariant: variant, theme }),
-          })}>
+            ...childPositions({
+              length,
+              index: 0,
+              size,
+              groupVariant: variant,
+              theme,
+            }),
+          })}
+        >
           {`+${remainder}`}
         </Box>
       )}
@@ -126,10 +142,9 @@ export const AvatarGroup: React.FunctionComponent<AvatarGroupProps> = forwardRef
   );
 });
 
-AvatarGroup.displayName = 'AvatarGroup';
+AvatarGroup.displayName = "AvatarGroup";
 
 AvatarGroup.defaultProps = {
-  variant: 'stack',
-  size: 'm',
+  variant: "stack",
+  size: "m",
 };
-

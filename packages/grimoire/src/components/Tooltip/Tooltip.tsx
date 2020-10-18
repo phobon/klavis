@@ -1,6 +1,20 @@
 import styled from "@emotion/styled";
-import { compose, space, layout, position, SpaceProps, LayoutProps, PositionProps } from "styled-system";
-import { fullWidth, fullHeight, shouldForwardProp, FullWidthProps, FullHeightProps } from "@phobon/base";
+import {
+  compose,
+  space,
+  layout,
+  position,
+  SpaceProps,
+  LayoutProps,
+  PositionProps,
+} from "styled-system";
+import {
+  fullWidth,
+  fullHeight,
+  shouldForwardProp,
+  FullWidthProps,
+  FullHeightProps,
+} from "@phobon/base";
 
 const direction = (props) => {
   const tooltipDirections = {
@@ -13,8 +27,8 @@ const direction = (props) => {
       "&:hover, &:focus, &:focus-within": {
         "&::after": {
           transform: `translate(-50%, 4px)`,
-        }
-      }
+        },
+      },
     },
     up: {
       "&::after": {
@@ -25,8 +39,8 @@ const direction = (props) => {
       "&:hover, &:focus, &:focus-within": {
         "&::after": {
           transform: `translate(-50%, -4px)`,
-        }
-      }
+        },
+      },
     },
     left: {
       "&::after": {
@@ -37,8 +51,8 @@ const direction = (props) => {
       "&:hover, &:focus, &:focus-within": {
         "&::after": {
           transform: "translate(-4px, -50%)",
-        }
-      }
+        },
+      },
     },
     right: {
       "&::after": {
@@ -49,8 +63,8 @@ const direction = (props) => {
       "&:hover, &:focus, &:focus-within": {
         "&::after": {
           transform: "translate(4px, -50%)",
-        }
-      }
+        },
+      },
     },
   };
 
@@ -65,7 +79,12 @@ export interface ITooltipProps {
   offset?: number;
 }
 
-export type TooltipProps = ITooltipProps & SpaceProps & LayoutProps & PositionProps & FullWidthProps & FullHeightProps;
+export type TooltipProps = ITooltipProps &
+  SpaceProps &
+  LayoutProps &
+  PositionProps &
+  FullWidthProps &
+  FullHeightProps;
 
 export const Tooltip = styled("div", {
   shouldForwardProp,
@@ -90,11 +109,11 @@ export const Tooltip = styled("div", {
     "&:hover, &:focus, &:focus-within": {
       "&::after": {
         opacity: 1,
-      }
-    }
+      },
+    },
   }),
   tooltipSystem,
-  direction,
+  direction
 );
 
 Tooltip.displayName = "Tooltip";

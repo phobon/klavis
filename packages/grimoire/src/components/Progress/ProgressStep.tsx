@@ -4,11 +4,7 @@ import { jsx } from "@emotion/react";
 import styled from "@emotion/styled";
 import themeGet from "@styled-system/theme-get";
 
-import {
-  compose,
-  color,
-  ColorProps,
-} from "styled-system";
+import { compose, color, ColorProps } from "styled-system";
 
 import { Box, shouldForwardProp } from "@phobon/base";
 
@@ -50,7 +46,10 @@ const stepMode = ({ theme, mode }) => {
 const isCurrent = ({ color, theme, current, mode, orientation }) => {
   const currentStates = {
     full: {
-      backgroundColor: themeGet(`colors.${color}`, theme.colors.accent[5])(theme),
+      backgroundColor: themeGet(
+        `colors.${color}`,
+        theme.colors.accent[5]
+      )(theme),
       width: theme.space[4],
       height: theme.space[4],
       "&::before": {
@@ -62,7 +61,10 @@ const isCurrent = ({ color, theme, current, mode, orientation }) => {
       },
     },
     compact: {
-      backgroundColor: themeGet(`colors.${color}`, theme.colors.accent[5])(theme),
+      backgroundColor: themeGet(
+        `colors.${color}`,
+        theme.colors.accent[5]
+      )(theme),
       borderRadius: 12,
       width: orientation === "horizontal" && `${theme.space[3]}px`,
       height: orientation === "vertical" && `${theme.space[3]}px`,
@@ -75,10 +77,16 @@ const isCurrent = ({ color, theme, current, mode, orientation }) => {
 const isComplete = ({ color, theme, complete, mode }) => {
   const completeStates = {
     full: {
-      backgroundColor: themeGet(`colors.${color}`, theme.colors.accent[5])(theme),
+      backgroundColor: themeGet(
+        `colors.${color}`,
+        theme.colors.accent[5]
+      )(theme),
     },
     compact: {
-      backgroundColor: themeGet(`colors.${color}`, theme.colors.accent[6])(theme),
+      backgroundColor: themeGet(
+        `colors.${color}`,
+        theme.colors.accent[6]
+      )(theme),
     },
   };
 
@@ -89,7 +97,7 @@ const labels = ({ showLabels }) =>
   showLabels && {
     "&::after": {
       display: "unset",
-    }
+    },
   };
 
 const progressStepSystem = compose(color);
@@ -106,7 +114,8 @@ export type ProgressStepButtonProps = IProgressStepButtonProps & ColorProps;
 
 const ProgressStepButton = styled("button", {
   shouldForwardProp,
-})<ProgressStepButtonProps & any>({
+})<ProgressStepButtonProps & any>(
+  {
     border: 0,
     padding: 0,
     borderRadius: "50%",
@@ -127,10 +136,11 @@ const ProgressStepButton = styled("button", {
   stepMode,
   labels,
   isComplete,
-  isCurrent,
+  isCurrent
 );
 
-const StyledProgressStep: React.FunctionComponent<ProgressStepButtonProps & any> = ({
+const StyledProgressStep: React.FunctionComponent<ProgressStepButtonProps &
+  any> = ({
   children,
   orientation,
   alignItems,
@@ -144,20 +154,16 @@ const StyledProgressStep: React.FunctionComponent<ProgressStepButtonProps & any>
   if (orientation === "horizontal") {
     top = current ? "calc(130% - 6px)" : "130%";
   }
-  
-  const spanCss: any = 
-    {
-      position: "absolute",
-      whiteSpace: "pre",
-      top,
-      transform: orientation === "vertical" ? "translateY(-50%)" : null,
-      opacity: !current ? 0.4 : 1,
-    };
+
+  const spanCss: any = {
+    position: "absolute",
+    whiteSpace: "pre",
+    top,
+    transform: orientation === "vertical" ? "translateY(-50%)" : null,
+    opacity: !current ? 0.4 : 1,
+  };
   const p = childrenPosition === "right" ? "left" : "right";
-  spanCss[p] = orientation ===
-    "vertical"
-      ? "150%"
-      : "unset";
+  spanCss[p] = orientation === "vertical" ? "150%" : "unset";
 
   return (
     <Box
@@ -171,11 +177,7 @@ const StyledProgressStep: React.FunctionComponent<ProgressStepButtonProps & any>
         current={current}
         {...props}
       />
-      <span
-        css={spanCss}
-      >
-        {children}
-      </span>
+      <span css={spanCss}>{children}</span>
     </Box>
   );
 };

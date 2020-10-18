@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from "react";
 import styled from "@emotion/styled";
 import {
   compose,
@@ -8,10 +8,10 @@ import {
   SpaceProps,
   ColorProps,
   BorderRadiusProps,
-} from 'styled-system';
+} from "styled-system";
 import { shouldForwardProp } from "@phobon/base";
 
-import { asField } from './Fields/asField';
+import { asField } from "./Fields/asField";
 
 const fieldsetSystem = compose(spacing, color, borderRadius);
 
@@ -19,11 +19,15 @@ interface IFieldSetProps {
   id: string;
 }
 
-export type FieldSetProps = IFieldSetProps & SpaceProps & ColorProps & BorderRadiusProps;
+export type FieldSetProps = IFieldSetProps &
+  SpaceProps &
+  ColorProps &
+  BorderRadiusProps;
 
-const StyledFieldSet = styled('fieldset', {
+const StyledFieldSet = styled("fieldset", {
   shouldForwardProp,
-})<FieldSetProps>((props: any) => ({
+})<FieldSetProps>(
+  (props: any) => ({
     position: "relative",
     width: "100%",
     display: "flex",
@@ -68,35 +72,41 @@ const StyledFieldSet = styled('fieldset', {
     },
     "> * + *": {
       marginTop: props.theme.space[3],
-    }
+    },
   }),
-  fieldsetSystem,
+  fieldsetSystem
 );
 
-const CoreFieldSet: React.FunctionComponent<FieldSetProps & any> = forwardRef(({ id, disabled, invalid, children, ...props }, ref) => {
-  const inputs = React.Children.map(children, (c, i) => {
-    const k = `${id}__option${i}`;
-    return React.cloneElement(c, { id: k, key: k, name: id })
-  });
-  return (
-    <StyledFieldSet
-      ref={ref}
-      id={id}
-      px={2}
-      my={1}
-      py={2}
-      borderRadius={3}
-      disabled={disabled}
-      aria-invalid={invalid ? "true" : undefined}
-      {...props}>
-      {inputs}
-    </StyledFieldSet>
-  );
-});
+const CoreFieldSet: React.FunctionComponent<FieldSetProps & any> = forwardRef(
+  ({ id, disabled, invalid, children, ...props }, ref) => {
+    const inputs = React.Children.map(children, (c, i) => {
+      const k = `${id}__option${i}`;
+      return React.cloneElement(c, { id: k, key: k, name: id });
+    });
+    return (
+      <StyledFieldSet
+        ref={ref}
+        id={id}
+        px={2}
+        my={1}
+        py={2}
+        borderRadius={3}
+        disabled={disabled}
+        aria-invalid={invalid ? "true" : undefined}
+        {...props}
+      >
+        {inputs}
+      </StyledFieldSet>
+    );
+  }
+);
 
 CoreFieldSet.defaultProps = {
   disabled: false,
   invalid: null,
 };
 
-export const FieldSet = asField<FieldSetProps, React.HTMLAttributes<HTMLFieldSetElement>>(CoreFieldSet);
+export const FieldSet = asField<
+  FieldSetProps,
+  React.HTMLAttributes<HTMLFieldSetElement>
+>(CoreFieldSet);

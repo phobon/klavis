@@ -47,45 +47,55 @@ const variantColour = (props) => {
 };
 
 export interface IMessageProps {
-  variant?: "info" | "question" | "success" | "warning" | "error" | "neutral" | "dark";
+  variant?:
+    | "info"
+    | "question"
+    | "success"
+    | "warning"
+    | "error"
+    | "neutral"
+    | "dark";
   glyph?: React.ReactNode;
 }
 
-export type MessageProps =
-  IMessageProps &
+export type MessageProps = IMessageProps &
   BoxProps &
   React.HTMLAttributes<HTMLDivElement>;
 
-export const Message: React.FunctionComponent<MessageProps & { children?: React.ReactNode } & any> = forwardRef<HTMLDivElement, MessageProps>(
-  ({ children, variant, glyph, ...props }, ref) => { 
-  return (
-    <Box
-      aria-live={variant === "error" || variant === "warning"
-        ? "assertive"
-        : "polite"}
-      role="alert"
-      ref={ref}
-      css={(theme: any) => ({
-        ...variantColour({ theme, variant }),
-        "> svg": {
-          marginRight: theme.space[3],
-        },
-      })}
-      {...props}>
-      {glyph}
+export const Message: React.FunctionComponent<MessageProps & {
+  children?: React.ReactNode;
+} & any> = forwardRef<HTMLDivElement, MessageProps>(
+  ({ children, variant, glyph, ...props }, ref) => {
+    return (
       <Box
-        flex={1}
-        color="inherit"
-        bg="inherit"
-        justifyContent="flex-start"
-        flexDirection="column"
-        alignItems="flex-start"
+        aria-live={
+          variant === "error" || variant === "warning" ? "assertive" : "polite"
+        }
+        role="alert"
+        ref={ref}
+        css={(theme: any) => ({
+          ...variantColour({ theme, variant }),
+          "> svg": {
+            marginRight: theme.space[3],
+          },
+        })}
+        {...props}
       >
-        {children}
+        {glyph}
+        <Box
+          flex={1}
+          color="inherit"
+          bg="inherit"
+          justifyContent="flex-start"
+          flexDirection="column"
+          alignItems="flex-start"
+        >
+          {children}
+        </Box>
       </Box>
-    </Box>
-  );
-});
+    );
+  }
+);
 
 Message.displayName = "Message";
 
