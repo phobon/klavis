@@ -4,7 +4,9 @@
   "description": "Essential compositional components using CSS-in-JS and styled-system",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "types": "dist/index.d.ts",
   "author": "Ben McCormick",
   "license": "MIT",
@@ -17,7 +19,7 @@
   "sideEffects": false,
   "scripts": {
     "build": "rollup -c",
-    "prepare": "yarn build",
+    "prepare": "yarn && yarn build",
     "storybook": "start-storybook",
     "test": "jest -c jest.tsc.config.js"
   },
