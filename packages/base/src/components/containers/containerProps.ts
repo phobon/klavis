@@ -41,13 +41,7 @@ export const containerSystem = compose(
   gridPosition
 );
 
-export interface IContainerProps {
-  as?: React.ElementType<any>;
-}
-
-export type ContainerProps =
-  IContainerProps &
-  SpaceProps &
+export type ContainerProps = SpaceProps &
   LayoutProps &
   BorderProps &
   ColorProps &

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { Theme, Interpolation } from "@emotion/react";
 
 import { shouldForwardProp } from "../../utils/shouldForwardProp";
 
@@ -20,18 +21,19 @@ const browserChrome = ({ hideBrowserChrome }: IInputProps) =>
     "-moz-appearance": "textfield",
   };
 
-const StyledInput = styled("input", { shouldForwardProp })<InputProps & any>(
+const StyledInput = styled("input", { shouldForwardProp })(
   inputStyles,
   inputSystem,
   browserChrome
 );
 
-export type DetailedInputProps =
-  InputProps &
-  React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement> &
-  { as?: React.ElementType<any> };
+export type DetailedInputProps = InputProps &
+  React.DetailedHTMLProps<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    HTMLInputElement
+  > & { as?: React.ElementType; css?: Interpolation<Theme> };
 
-export const Input: React.FunctionComponent<DetailedInputProps> = React.forwardRef<HTMLInputElement, DetailedInputProps>(
+export const Input = React.forwardRef<HTMLInputElement, DetailedInputProps>(
   ({ invalid, variant, ...props }: InputProps, ref) => (
     <StyledInput
       aria-invalid={invalid ? true : undefined}

@@ -90,3 +90,7 @@ export const withAreaBasedComposition = () => (
     />
   </Grid>
 );
+
+export const withPolymorphicAs = () => (
+  <Grid p={10} bg="oranges.8" as="article" />
+);

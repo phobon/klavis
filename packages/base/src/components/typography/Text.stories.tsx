@@ -46,3 +46,5 @@ export const withDifferentFontWeights = () => (
     <Text fontWeight="bold">fontWeight: bold</Text>
   </Box>
 );
+
+export const withPolymorphicAs = () => <Text p={10} bg="oranges.8" as="p" />;

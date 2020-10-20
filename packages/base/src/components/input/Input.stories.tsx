@@ -50,3 +50,7 @@ export const withAndWithoutHidingBrowserChrome = () => (
     <Input value={0} id="2" hideBrowserChrome />
   </Stack>
 );
+
+export const withPolymorphicAs = () => (
+  <Input width={50} height={100} as="textarea" />
+);

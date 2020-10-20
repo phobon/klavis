@@ -56,6 +56,7 @@ export const withResponsiveSpace = () => (
     <Text>Item 3</Text>
   </Stack>
 );
+
 export const withPolymorphicAs = () => (
-  <Stack as="article"></Stack>
+  <Stack p={10} bg="oranges.8" as="article" />
 );

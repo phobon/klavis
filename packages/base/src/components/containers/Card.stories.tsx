@@ -37,3 +37,7 @@ export const withDifferentBoxShadowIntensities = () => (
     ))}
   </Box>
 );
+
+export const withPolymorphicAs = () => (
+  <Card p={10} bg="oranges.8" as="article" />
+);

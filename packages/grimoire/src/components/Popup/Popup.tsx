@@ -6,7 +6,7 @@ import React, {
   useRef,
   forwardRef,
 } from "react";
-import { jsx } from "@emotion/react";
+import { Interpolation, jsx, Theme } from "@emotion/react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { Box, Card, destructureLayoutProps } from "@phobon/base";
@@ -147,12 +147,14 @@ export interface IPopupProps {
   trigger?: React.ReactNode;
   closeAfterAction?: React.ReactNode;
   popupDirection?: "up" | "down" | "left" | "right" | "auto";
-  as?: React.ElementType<any>;
 }
 
 type PopupProps = IPopupProps &
   ButtonProps &
-  React.HTMLAttributes<HTMLDivElement>;
+  React.HTMLAttributes<HTMLDivElement> & {
+    as?: React.ElementType;
+    css?: Interpolation<Theme>;
+  };
 
 export const Popup: React.FunctionComponent<PopupProps> = forwardRef<
   HTMLDivElement,

@@ -175,7 +175,5 @@ export const withDifferentDirectionalMargins = () => (
 );
 
 export const withPolymorphicAs = () => (
-  <Box>
-    <Box as="article"></Box>
-  </Box>
+  <Box p={10} bg="oranges.8" as="article" />
 );

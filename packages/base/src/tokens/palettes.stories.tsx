@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable prefer-spread */
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "@emotion/react";
 import { contrast } from "chroma-js";
 import { theme } from "@phobon/tokens";
 

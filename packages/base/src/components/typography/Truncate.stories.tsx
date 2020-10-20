@@ -119,3 +119,7 @@ export const withDifferentAlignments = () => (
     </Truncate>
   </Stack>
 );
+
+export const withPolymorphicAs = () => (
+  <Truncate p={10} bg="oranges.8" as="p" />
+);
