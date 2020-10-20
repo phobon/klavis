@@ -1,12 +1,10 @@
 {
   "name": "@phobon/grimoire",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Component patterns using @phobon/base",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "types": "dist/index.d.ts",
   "author": "Ben McCormick",
   "license": "MIT",
@@ -25,7 +23,7 @@
   "peerDependencies": {
     "@emotion/react": "^11.x",
     "@emotion/styled": "^11.x",
-    "@phobon/base": "^3.x",
+    "@phobon/base": "^3.1.7",
     "@phobon/tokens": "^1.x",
     "framer-motion": "^2.8.x",
     "react": "^16.x",
