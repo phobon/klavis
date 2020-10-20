@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.1
+
+### Patch Changes
+
+- 50884ca: Cleaning up types
+- Updated dependencies [50884ca]
+  - @phobon/base@3.1.7
+
 ## 0.14.2
 
 ### Patch Changes

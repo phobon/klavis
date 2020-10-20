@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.1.7
+
+### Patch Changes
+
+- 50884ca: Cleaning up types
+
 ## 3.1.2
 
 ### Patch Changes
