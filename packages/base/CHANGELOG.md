@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.1.8
+
+### Patch Changes
+
+- bdb4b5b: Forcing install and build
+
 ## 3.1.7
 
 ### Patch Changes

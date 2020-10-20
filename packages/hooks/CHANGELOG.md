@@ -1,5 +1,11 @@
 # Change Log
 
+## 2.2.1
+
+### Patch Changes
+
+- bdb4b5b: Forcing install and build
+
 ## 2.2.0
 
 ### Minor Changes

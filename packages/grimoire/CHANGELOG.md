@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.2
+
+### Patch Changes
+
+- bdb4b5b: Forcing install and build
+- Updated dependencies [bdb4b5b]
+  - @phobon/base@3.1.8
+
 ## 1.0.1
 
 ### Patch Changes
