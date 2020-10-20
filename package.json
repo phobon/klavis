@@ -23,6 +23,10 @@
     "@emotion/memoize": "^0.7.4",
     "@emotion/react": "^11.0.0-next.19",
     "@emotion/styled": "^11.0.0-next.19",
+    "@phobon/base": "file:packages/base",
+    "@phobon/grimoire": "file:packages/grimoire",
+    "@phobon/hooks": "file:packages/hooks",
+    "@phobon/tokens": "file:packages/tokens",
     "@rollup/plugin-babel": "^5.2.0",
     "@rollup/plugin-commonjs": "^15.0.0",
     "@rollup/plugin-node-resolve": "^9.0.0",
@@ -71,11 +75,5 @@
     "ts-loader": "^7.0.4",
     "tslib": "^1.12.0",
     "typescript": "^3.9.2"
-  },
-  "dependencies": {
-    "@phobon/base": "file:packages/base",
-    "@phobon/grimoire": "file:packages/grimoire",
-    "@phobon/hooks": "file:packages/hooks",
-    "@phobon/tokens": "file:packages/tokens"
   }
 }
