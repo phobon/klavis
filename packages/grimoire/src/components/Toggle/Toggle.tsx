@@ -169,6 +169,7 @@ StyledToggle.defaultProps = {
   size: "m",
   toggled: false,
   bg: ["greens.6", "greens.5"],
+  type: "button",
 };
 
 export const Toggle = withTooltip(StyledToggle);

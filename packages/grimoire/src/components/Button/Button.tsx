@@ -192,17 +192,6 @@ const size = ({ theme, pl, pr, size: propsSize }) => {
   return sizes[propsSize];
 };
 
-const disabled = ({ theme }) => ({
-  "&:disabled": {
-    opacity: 0.5,
-    backgroundColor: theme.colors.grayscale[7],
-    border: 0,
-    color: theme.colors.grayscale[4],
-    fill: theme.colors.grayscale[4],
-    pointerEvents: "none",
-  },
-});
-
 const buttonSystem = compose(
   space,
   layout,
@@ -244,17 +233,24 @@ export type ButtonProps = IButtonProps &
 const StyledButton = styled("button", {
   shouldForwardProp,
 })<ButtonProps>(
-  {
+  ({ theme }) => ({
     boxSizing: "border-box",
     position: "relative",
     cursor: "pointer",
     transition: "all 120ms ease-out",
-    ...focus,
-    ...disabled,
-  },
+    "&:disabled": {
+      opacity: 0.5,
+      backgroundColor: theme.colors.grayscale[7],
+      border: 0,
+      color: theme.colors.grayscale[4],
+      fill: theme.colors.grayscale[4],
+      pointerEvents: "none",
+    },
+  }),
   buttonSystem,
   size,
-  variant({ variants })
+  variant({ variants }),
+  focus
 );
 
 const GrimoireButton: React.PropsWithChildren<ButtonProps & any> = ({
