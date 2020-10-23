@@ -1,5 +1,13 @@
 # Change Log
 
+## 1.0.4
+
+### Patch Changes
+
+- 26ba78f: usePortal, types for Notifications
+- Updated dependencies [26ba78f]
+  - @phobon/base@3.1.9
+
 ## 1.0.2
 
 ### Patch Changes

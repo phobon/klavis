@@ -1,5 +1,11 @@
 # Change Log
 
+## 3.1.9
+
+### Patch Changes
+
+- 26ba78f: usePortal, types for Notifications
+
 ## 3.1.8
 
 ### Patch Changes
