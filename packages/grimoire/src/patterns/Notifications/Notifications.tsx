@@ -29,42 +29,57 @@ const notificationPositions = ({ notificationPosition }) => {
 
 const Lifebar = motion.custom(Box);
 
-export interface INotificationsProps {
-  timeout: number;
-  showLife: boolean;
-  config: any;
-  notificationPosition:
-    | "topleft"
-    | "top"
-    | "topright"
-    | "left"
-    | "middle"
-    | "right"
-    | "bottomleft"
-    | "bottom"
-    | "bottomright";
+export interface INotificationProps {
+  content: React.ElementType;
+  canDismiss: boolean;
+  color?: string;
+  showLife?: boolean;
+  timeout?: number;
 }
 
-export type NotificationsProps = INotificationsProps & CardProps;
+export type NotificationPosition =
+  | "topleft"
+  | "top"
+  | "topright"
+  | "left"
+  | "middle"
+  | "right"
+  | "bottomleft"
+  | "bottom"
+  | "bottomright";
 
-export const Notifications: React.FunctionComponent<NotificationsProps &
-  any> = forwardRef(
+export interface INotificationsProps {
+  timeout?: number;
+  showLife?: boolean;
+  config?: any;
+  notificationPosition?: NotificationPosition;
+}
+
+export type NotificationsProps = INotificationsProps &
+  CardProps &
+  React.HTMLAttributes<HTMLDivElement>;
+
+type InternalNotification = INotificationProps & { key?: any };
+
+export const Notifications = forwardRef<HTMLDivElement, NotificationsProps>(
   (
     {
       children,
-      timeout,
-      showLife,
-      config,
-      notificationPosition: initialNotificationPosition,
+      timeout = 10000,
+      showLife = true,
+      config = { tension: 125, friction: 20, precision: 0.1 },
+      notificationPosition: initialNotificationPosition = "bottomright",
       width,
       ...props
     },
     ref: any
   ) => {
-    const [items, setItems] = useState<any>([]);
-    const [notificationPosition, setNotificationPosition] = useState(
-      initialNotificationPosition
+    const [items, setItems] = useState<InternalNotification[]>(
+      [] as InternalNotification[]
     );
+    const [notificationPosition, setNotificationPosition] = useState<
+      NotificationPosition
+    >(initialNotificationPosition);
 
     const add = useCallback(async ({ promise, ...p }) => {
       const k = id++;
@@ -223,12 +238,8 @@ export const Notifications: React.FunctionComponent<NotificationsProps &
 );
 
 Notifications.defaultProps = {
-  children: null,
-  timeout: 10000,
-  showLife: true,
-  config: { tension: 125, friction: 20, precision: 0.1 },
-  notificationPosition: "bottomright",
   boxShadowIntensity: 0.7,
   boxShadowSize: "m",
   width: 350,
+  borderRadius: 3,
 };

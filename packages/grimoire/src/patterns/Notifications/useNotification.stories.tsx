@@ -9,7 +9,7 @@ import { CheckCircle } from "../../icons/CheckCircle";
 
 import { Button, Message } from "../../components";
 
-import { Notifications } from "./Notifications";
+import { NotificationPosition, Notifications } from "./Notifications";
 import { useNotifications } from "./useNotifications";
 
 export default {
@@ -45,15 +45,17 @@ const colors = {
   error: "reds.9",
 };
 
-const NotificationsHelper: React.FunctionComponent<any> = ({
-  notificationTypes,
-  notificationPosition,
-}) => {
+const NotificationsHelper: React.FunctionComponent<{
+  notificationTypes?: any;
+  notificationPosition?: NotificationPosition;
+}> = ({ notificationTypes, notificationPosition }) => {
   const [add, setPosition] = useNotifications();
 
-  useEffect(() => notificationPosition && setPosition(notificationPosition), [
-    notificationPosition,
-  ]);
+  useEffect(() => {
+    if (notificationPosition) {
+      setPosition(notificationPosition);
+    }
+  }, [notificationPosition]);
 
   const notificationTriggers = notificationTypes.map((n) => (
     <Button key={n.label} onClick={() => add(n.notification)} mr={3}>

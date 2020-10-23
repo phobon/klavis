@@ -23,10 +23,11 @@ const boxShadow = ({ boxShadowSize = "l", theme }: any) => {
 
 export type BoxShadowSize = "none" | "s" | "m" | "l" | "xl" | "xxl";
 
-interface ICardProps {
+export interface ICardProps {
   boxShadowIntensity?: number;
   boxShadowSize?: BoxShadowSize;
 }
+
 export type CardProps = ICardProps & StackProps;
 
 export const Card = styled("div")<CardProps>(

@@ -6,7 +6,9 @@
   ],
   "scripts": {
     "publish-ci": "lerna publish from-package -y --no-verify-access",
-    "build": "lerna run build --parallel"
+    "build": "lerna run build --parallel",
+    "storybook:base": "yarn workspace @phobon/base storybook",
+    "storybook:grimoire": "yarn workspace @phobon/grimoire storybook"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
