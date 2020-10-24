@@ -1,11 +1,13 @@
 import React from "react";
 import { action } from "@storybook/addon-actions";
 
+import { Stack } from "@phobon/base";
+
 import { Button } from "./Button";
 
 export default {
   component: Button,
-  title: "Components/Buttons/Button",
+  title: "Components/Button",
 };
 
 const buttonVariants = [
@@ -93,3 +95,17 @@ export const withDifferentShapes = () =>
       onClick={action("clicked")}
     ></Button>
   ));
+
+export const withCoverProps = () => (
+  <Stack width={500} space={3}>
+    <Button fullWidth>Default</Button>
+    {buttonSizes.map((s) => (
+      <Button
+        key={s}
+        size={s}
+        fullWidth
+        onClick={action("clicked")}
+      >{`size: ${s}`}</Button>
+    ))}
+  </Stack>
+);

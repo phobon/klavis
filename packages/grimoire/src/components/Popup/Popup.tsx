@@ -151,15 +151,15 @@ export interface IPopupProps {
 
 type PopupProps = IPopupProps &
   ButtonProps &
-  React.HTMLAttributes<HTMLDivElement> & {
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > & {
     as?: React.ElementType;
     css?: Interpolation<Theme>;
   };
 
-export const Popup: React.FunctionComponent<PopupProps> = forwardRef<
-  HTMLDivElement,
-  PopupProps
->(
+export const Popup = forwardRef<HTMLButtonElement, PopupProps>(
   (
     {
       trigger,

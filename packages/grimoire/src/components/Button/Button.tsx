@@ -167,7 +167,7 @@ const buttonShape = ({ shape }) => {
   return shapes[shape];
 };
 
-const size = ({ theme, pl, pr, size: propsSize }) => {
+const buttonSize = ({ theme, pl, pr, size }) => {
   const sizes = {
     s: {
       minWidth: theme.space[4],
@@ -189,7 +189,7 @@ const size = ({ theme, pl, pr, size: propsSize }) => {
     },
   };
 
-  return sizes[propsSize];
+  return sizes[size];
 };
 
 const buttonSystem = compose(
@@ -219,7 +219,7 @@ export interface IButtonProps {
   size?: "s" | "m" | "l";
 }
 
-export type ButtonProps = IButtonProps &
+type StyledButtonProps = IButtonProps &
   SpaceProps &
   LayoutProps &
   BorderProps &
@@ -248,27 +248,31 @@ const StyledButton = styled("button", {
     },
   }),
   buttonSystem,
-  size,
   variant({ variants }),
   focus
 );
 
-const GrimoireButton: React.PropsWithChildren<ButtonProps & any> = ({
-  children,
-  toggled,
-  shape,
-  ...props
-}) => (
-  <StyledButton
-    aria-pressed={toggled ? "true" : undefined}
-    toggled={toggled}
-    css={{
-      ...buttonShape({ shape }),
-    }}
-    {...props}
-  >
-    {children}
-  </StyledButton>
+export type ButtonProps = StyledButtonProps &
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >;
+
+const GrimoireButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ children, toggled, shape, size, pl, pr, ...props }, ref) => (
+    <StyledButton
+      aria-pressed={toggled ? "true" : undefined}
+      toggled={toggled}
+      ref={ref}
+      css={(theme) => ({
+        ...buttonShape({ shape }),
+        ...buttonSize({ theme, pl, pr, size }),
+      })}
+      {...props}
+    >
+      {children}
+    </StyledButton>
+  )
 );
 
 export const Button = withTooltip(GrimoireButton);
