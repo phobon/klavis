@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.5
+
+### Patch Changes
+
+- a1c4855: Improving Button layout
+
 ## 1.0.4
 
 ### Patch Changes
