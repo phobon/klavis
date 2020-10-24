@@ -285,7 +285,6 @@ Button.defaultProps = {
   alignItems: "center",
   justifyContent: "center",
   border: 0,
-  width: "initial",
   fontSize: 1,
   borderRadius: 3,
   borderColor: "grayscale.5",
