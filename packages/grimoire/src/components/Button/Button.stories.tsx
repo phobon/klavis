@@ -4,6 +4,7 @@ import { action } from "@storybook/addon-actions";
 import { Stack } from "@phobon/base";
 
 import { Button } from "./Button";
+import { User } from "../../icons/User";
 
 export default {
   component: Button,
@@ -87,13 +88,9 @@ export const withTooltips = () =>
 
 export const withDifferentShapes = () =>
   shapes.map((s) => (
-    <Button
-      key={s}
-      mr={2}
-      mb={2}
-      shape={s}
-      onClick={action("clicked")}
-    ></Button>
+    <Button key={s} mr={2} mb={2} shape={s} onClick={action("clicked")}>
+      <User />
+    </Button>
   ));
 
 export const withCoverProps = () => (

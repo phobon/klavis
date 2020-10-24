@@ -156,11 +156,13 @@ const buttonShape = ({ shape }) => {
   const shapes = {
     default: {},
     circle: {
-      padding: 0,
+      paddingLeft: 0,
+      paddingRight: 0,
       borderRadius: "50%",
     },
     square: {
-      padding: 0,
+      paddingLeft: 0,
+      paddingRight: 0,
     },
   };
 
@@ -265,8 +267,8 @@ const GrimoireButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
       toggled={toggled}
       ref={ref}
       css={(theme) => ({
-        ...buttonShape({ shape }),
         ...buttonSize({ theme, pl, pr, size }),
+        ...buttonShape({ shape }),
       })}
       {...props}
     >
