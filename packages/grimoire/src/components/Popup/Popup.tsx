@@ -157,7 +157,7 @@ export interface IMotionOptions {
 
 export interface IPopupProps {
   trigger?: React.ReactNode;
-  closeAfterAction?: React.ReactNode;
+  closeAfterAction?: boolean;
   popupDirection?: "up" | "down" | "left" | "right" | "auto";
   animationOptions?: { distance?: number };
 }
@@ -216,9 +216,15 @@ export const Popup = forwardRef<HTMLButtonElement, PopupProps>(
       document.addEventListener("mousedown", onClickOutside);
       return () => document.removeEventListener("mousedown", onClickOutside);
     }, [isOpen]);
-    const containerClick: any = closeAfterAction
-      ? useCallback(() => setIsOpen(false), [])
-      : null;
+    const containerClick = useCallback(
+      (e) => {
+        if (closeAfterAction) {
+          e.preventDefault();
+          setIsOpen(false);
+        }
+      },
+      [closeAfterAction]
+    );
 
     const motionCardProps = useAlignmentTransition(
       popupDirection,

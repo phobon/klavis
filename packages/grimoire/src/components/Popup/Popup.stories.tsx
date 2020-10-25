@@ -144,6 +144,18 @@ export const withDifferentDistances = () => (
   </Popup>
 );
 
+export const withAndWithoutCloseAfterAction = () => (
+  <Box>
+    <Popup trigger="closeAfterAction" closeAfterAction mr={3}>
+      <Content />
+    </Popup>
+
+    <Popup trigger="default">
+      <Content />
+    </Popup>
+  </Box>
+);
+
 export const withProfileMenu = () => (
   <Box width={500}>
     <Popup
