@@ -1,9 +1,11 @@
 import React from "react";
 
-import { Box, Text } from "@phobon/base";
+import { Box, Text, Image, Card } from "@phobon/base";
 
 import { Popup } from "./Popup";
 import { Avatar } from "../Avatar";
+import { Button } from "../Button";
+import { Spacer } from "../Spacer";
 
 export default {
   component: Popup,
@@ -132,6 +134,95 @@ export const withDefinedDirections = () => (
     </Popup>
     <Popup trigger="opens right" popupDirection="right">
       <Content />
+    </Popup>
+  </Box>
+);
+
+export const withDifferentDistances = () => (
+  <Popup trigger="with label" animationOptions={{ distance: 20 }}>
+    <Content />
+  </Popup>
+);
+
+export const withProfileMenu = () => (
+  <Box width={500}>
+    <Popup
+      shape="square"
+      trigger={
+        <Image
+          fullHeight
+          borderRadius="inherit"
+          src="https://source.unsplash.com/random/100x100"
+        />
+      }
+      transition={{ duration: 0.15 }}
+    >
+      <Card
+        flexDirection="column"
+        fullWidth
+        width={250}
+        py={3}
+        alignItems="center"
+        borderRadius={4}
+      >
+        <Button
+          as="a"
+          variant="tertiary"
+          borderRadius={0}
+          justifyContent="flex-start"
+          fullWidth
+          pl={4}
+          pr={4}
+        >
+          Profile
+        </Button>
+        <Spacer length="80%" my={3} thickness={1} />
+        <Button
+          as="a"
+          variant="tertiary"
+          borderRadius={0}
+          justifyContent="flex-start"
+          fullWidth
+          pl={4}
+          pr={4}
+        >
+          Edit Profile
+        </Button>
+        <Button
+          as="a"
+          variant="tertiary"
+          borderRadius={0}
+          justifyContent="flex-start"
+          fullWidth
+          pl={4}
+          pr={4}
+        >
+          Edit Work Availability
+        </Button>
+        <Spacer length="80%" my={3} thickness={1} />
+        <Button
+          as="a"
+          variant="tertiary"
+          borderRadius={0}
+          justifyContent="flex-start"
+          fullWidth
+          pl={4}
+          pr={4}
+        >
+          Account Settings
+        </Button>
+        <Button
+          as="a"
+          variant="tertiary"
+          borderRadius={0}
+          justifyContent="flex-start"
+          fullWidth
+          pl={4}
+          pr={4}
+        >
+          Sign Out
+        </Button>
+      </Card>
     </Popup>
   </Box>
 );

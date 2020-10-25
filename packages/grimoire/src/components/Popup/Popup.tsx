@@ -6,64 +6,66 @@ import React, {
   useRef,
   forwardRef,
 } from "react";
-import { Interpolation, jsx, Theme } from "@emotion/react";
+import { jsx } from "@emotion/react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { Box, Card, destructureLayoutProps } from "@phobon/base";
+import { Box, destructureLayoutProps } from "@phobon/base";
 import { useWindowSize } from "@phobon/hooks";
 
 import { Button, ButtonProps } from "../Button";
 
-const horizontalDirection = (popupDirection) => {
+const horizontalDirection = (popupDirection, distance = 8) => {
   const directions = {
-    left: { right: "calc(100% + 8px)" },
-    right: { left: "calc(100% + 8px)" },
-    auto: { left: 0 },
+    left: { right: `calc(100% + ${distance}px)` },
+    right: { left: `calc(100% + ${distance}px)` },
   };
 
   return directions[popupDirection];
 };
 
-const verticalDirection = (popupDirection) => {
+const verticalDirection = (popupDirection, distance = 4) => {
+  const doubleDistance = distance * 2;
   const directions = {
-    up: { bottom: "calc(100% + 8px)" },
-    down: { top: "calc(100% + 8px)" },
+    up: { bottom: `calc(100% + ${doubleDistance}px)` },
+    down: { top: `calc(100% + ${doubleDistance}px)` },
     left: { top: 0 },
     right: { top: 0 },
-    auto: { top: "calc(100% + 8px)" },
+    auto: { top: `calc(100% + ${doubleDistance}px)` },
   };
 
   return directions[popupDirection];
 };
-const reverseVerticalDirection = (popupDirection) => {
+
+const reverseVerticalDirection = (popupDirection, distance = 4) => {
+  const doubleDistance = distance * 2;
   const directions = {
     right: { bottom: 0 },
     left: { bottom: 0 },
-    auto: { bottom: "calc(100% + 8px)" },
+    auto: { bottom: `calc(100% + ${doubleDistance}px)` },
   };
 
   return directions[popupDirection];
 };
 
-const enterDirection = (popupDirection) => {
+const enterDirection = (popupDirection, distance = 4) => {
   const directions = {
-    down: { translateY: -4 },
-    up: { translateY: 4 },
-    left: { translateX: 4 },
-    right: { translateX: -4 },
-    auto: { translateY: -4 },
+    down: { translateY: -distance },
+    up: { translateY: distance },
+    left: { translateX: distance },
+    right: { translateX: -distance },
+    auto: { translateY: -distance },
   };
 
   return directions[popupDirection];
 };
 
-const exitDirection = (popupDirection) => {
+const exitDirection = (popupDirection, distance = 4) => {
   const directions = {
-    down: { translateY: -4 },
-    up: { translateY: 4 },
-    left: { translateX: 4 },
-    right: { translateX: -4 },
-    auto: { translateY: -4 },
+    down: { translateY: -distance },
+    up: { translateY: distance },
+    left: { translateX: distance },
+    right: { translateX: -distance },
+    auto: { translateY: -distance },
   };
 
   return directions[popupDirection];
@@ -95,15 +97,20 @@ const useAlignmentTransition = (
   popupDirection,
   isOpen,
   container,
-  childrenCount
+  childrenCount,
+  options
 ) => {
   const windowSize = useWindowSize();
-  const [align, setAlign] = useState(horizontalDirection(popupDirection));
-  const [valign, setValign] = useState(verticalDirection(popupDirection));
+  const [align, setAlign] = useState(
+    horizontalDirection(popupDirection, options.distance)
+  );
+  const [valign, setValign] = useState(
+    verticalDirection(popupDirection, options.distance)
+  );
   // eslint-disable-next-line no-unused-vars
-  const [enter] = useState(enterDirection(popupDirection));
+  const [enter] = useState(enterDirection(popupDirection, options.distance));
   // eslint-disable-next-line no-unused-vars
-  const [exit] = useState(exitDirection(popupDirection));
+  const [exit] = useState(exitDirection(popupDirection, options.distance));
 
   useEffect(() => {
     if (container && container.current) {
@@ -142,33 +149,41 @@ const useAlignmentTransition = (
   };
 };
 
+export interface IMotionOptions {
+  initial?: any;
+  animate?: any;
+  transition?: any;
+}
+
 export interface IPopupProps {
-  label?: string;
   trigger?: React.ReactNode;
   closeAfterAction?: React.ReactNode;
   popupDirection?: "up" | "down" | "left" | "right" | "auto";
+  animationOptions?: { distance?: number };
 }
 
-type PopupProps = IPopupProps &
+export type PopupProps = IPopupProps &
+  IMotionOptions &
   ButtonProps &
   React.DetailedHTMLProps<
     React.HTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
-  > & {
-    as?: React.ElementType;
-    css?: Interpolation<Theme>;
-  };
+  >;
 
 export const Popup = forwardRef<HTMLButtonElement, PopupProps>(
   (
     {
       trigger,
       children,
-      label,
-      closeAfterAction,
+      closeAfterAction = false,
       className,
-      as,
-      popupDirection,
+      popupDirection = "auto",
+      initial = { opacity: 0 },
+      animate = { opacity: 1, translateX: 0, translateY: 0 },
+      transition = { duration: 0.15 },
+      animationOptions = {
+        distance: 4,
+      },
       ...props
     },
     forwardedRef
@@ -209,7 +224,8 @@ export const Popup = forwardRef<HTMLButtonElement, PopupProps>(
       popupDirection,
       isOpen,
       container,
-      Array.isArray(children) ? children.length : 1
+      Array.isArray(children) ? children.length : 1,
+      animationOptions
     );
 
     // Destructure layout props here.
@@ -232,20 +248,13 @@ export const Popup = forwardRef<HTMLButtonElement, PopupProps>(
           {isOpen && (
             <motion.div
               css={{ position: "absolute", zIndex: 1 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, translateX: 0, translateY: 0 }}
+              initial={initial}
+              animate={animate}
+              transition={transition}
+              onClick={containerClick}
               {...motionCardProps}
             >
-              <Card
-                boxShadowSize="m"
-                bg="background"
-                borderRadius={4}
-                as={as}
-                flexDirection="column"
-                onClick={containerClick}
-              >
-                {children}
-              </Card>
+              {children}
             </motion.div>
           )}
         </AnimatePresence>
@@ -253,11 +262,3 @@ export const Popup = forwardRef<HTMLButtonElement, PopupProps>(
     );
   }
 );
-
-Popup.defaultProps = {
-  trigger: null,
-  children: null,
-  closeAfterAction: false,
-  as: "div",
-  popupDirection: "auto",
-};
