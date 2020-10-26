@@ -4,13 +4,21 @@ import { jsx } from "@emotion/react";
 import styled from "@emotion/styled";
 import themeGet from "@styled-system/theme-get";
 
-import { compose, color, ColorProps } from "styled-system";
+import {
+  compose,
+  color,
+  layout,
+  flexbox,
+  ColorProps,
+  LayoutProps,
+  FlexboxProps,
+} from "styled-system";
 
 import { Box, shouldForwardProp } from "@phobon/base";
 
 import { withTooltip } from "../Tooltip";
 
-const stepMode = ({ theme, mode }) => {
+const stepMode = ({ theme, mode }): any => {
   const stepModes = {
     compact: {
       width: theme.space[2],
@@ -43,7 +51,7 @@ const stepMode = ({ theme, mode }) => {
   return stepModes[mode];
 };
 
-const isCurrent = ({ color, theme, current, mode, orientation }) => {
+const isCurrent = ({ color, theme, current, mode, orientation }): any => {
   const currentStates = {
     full: {
       backgroundColor: themeGet(
@@ -74,7 +82,7 @@ const isCurrent = ({ color, theme, current, mode, orientation }) => {
   return current && currentStates[mode];
 };
 
-const isComplete = ({ color, theme, complete, mode }) => {
+const isComplete = ({ color, theme, complete, mode }): any => {
   const completeStates = {
     full: {
       backgroundColor: themeGet(
@@ -93,28 +101,25 @@ const isComplete = ({ color, theme, complete, mode }) => {
   return complete && completeStates[mode];
 };
 
-const labels = ({ showLabels }) =>
-  showLabels && {
-    "&::after": {
-      display: "unset",
-    },
-  };
+const progressStepSystem = compose(color, layout, flexbox);
 
-const progressStepSystem = compose(color);
-
-interface IProgressStepButtonProps {
+interface IProgressStepProps {
   orientation?: "horizontal" | "vertical";
   current?: boolean;
   complete?: boolean;
   mode?: "compact" | "full";
   childrenPosition?: "right" | "left";
+  showLabels?: boolean;
 }
 
-export type ProgressStepButtonProps = IProgressStepButtonProps & ColorProps;
+type InternalProgressStepProps = IProgressStepProps &
+  ColorProps &
+  LayoutProps &
+  FlexboxProps;
 
 const ProgressStepButton = styled("button", {
   shouldForwardProp,
-})<ProgressStepButtonProps & any>(
+})<InternalProgressStepProps>(
   {
     border: 0,
     padding: 0,
@@ -134,55 +139,76 @@ const ProgressStepButton = styled("button", {
   },
   progressStepSystem,
   stepMode,
-  labels,
   isComplete,
   isCurrent
 );
 
-const StyledProgressStep: React.FunctionComponent<ProgressStepButtonProps &
-  any> = ({
-  children,
-  orientation,
-  alignItems,
-  justifyContent,
-  current,
-  complete,
-  childrenPosition,
-  ...props
-}) => {
-  let top = "50%";
-  if (orientation === "horizontal") {
-    top = current ? "calc(130% - 6px)" : "130%";
+export type ProgressStepProps = InternalProgressStepProps &
+  React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >;
+
+const StyledProgressStep = React.forwardRef<
+  HTMLButtonElement,
+  ProgressStepProps
+>(
+  (
+    {
+      children,
+      orientation,
+      alignItems,
+      justifyContent,
+      current,
+      complete,
+      childrenPosition,
+      showLabels,
+      ...props
+    },
+    ref
+  ) => {
+    let top = "50%";
+    if (orientation === "horizontal") {
+      top = current ? "calc(130% - 6px)" : "130%";
+    }
+
+    const spanCss: any = {
+      position: "absolute",
+      whiteSpace: "pre",
+      top,
+      transform: orientation === "vertical" ? "translateY(-50%)" : null,
+      opacity: !current ? 0.4 : 1,
+    };
+    const p = childrenPosition === "right" ? "left" : "right";
+    spanCss[p] = orientation === "vertical" ? "150%" : "unset";
+
+    return (
+      <Box
+        position="relative"
+        alignItems={alignItems}
+        justifyContent={justifyContent}
+      >
+        <ProgressStepButton
+          orientation={orientation}
+          complete={complete}
+          current={current}
+          ref={ref}
+          css={{
+            "&::after": {
+              display: showLabels ? "unset" : "initial",
+            },
+          }}
+          {...props}
+        />
+        <span css={spanCss}>{children}</span>
+      </Box>
+    );
   }
+);
 
-  const spanCss: any = {
-    position: "absolute",
-    whiteSpace: "pre",
-    top,
-    transform: orientation === "vertical" ? "translateY(-50%)" : null,
-    opacity: !current ? 0.4 : 1,
-  };
-  const p = childrenPosition === "right" ? "left" : "right";
-  spanCss[p] = orientation === "vertical" ? "150%" : "unset";
-
-  return (
-    <Box
-      position="relative"
-      alignItems={alignItems}
-      justifyContent={justifyContent}
-    >
-      <ProgressStepButton
-        orientation={orientation}
-        complete={complete}
-        current={current}
-        {...props}
-      />
-      <span css={spanCss}>{children}</span>
-    </Box>
-  );
-};
-
-export const ProgressStep = withTooltip(StyledProgressStep);
+export const ProgressStep = withTooltip<HTMLButtonElement, ProgressStepProps>(
+  StyledProgressStep
+);
 
 ProgressStep.defaultProps = {
   orientation: "horizontal",

@@ -256,7 +256,7 @@ const StyledButton = styled("button", {
 
 export type ButtonProps = StyledButtonProps &
   React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLButtonElement>,
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   >;
 
@@ -277,7 +277,9 @@ const GrimoireButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   )
 );
 
-export const Button = withTooltip(GrimoireButton);
+export const Button = withTooltip<HTMLButtonElement, ButtonProps>(
+  GrimoireButton
+);
 
 Button.displayName = "Button";
 

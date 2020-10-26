@@ -120,51 +120,41 @@ export const withVerticalOrientation = () => (
 export const withCustomOnClicksForSteps = () => (
   <Box flexDirection="column" p={7}>
     <Progress id={uuidv4()} mb={8}>
+      <ProgressStep aria-label="step1" onClick={action("First Step clicked")}>
+        First Step
+      </ProgressStep>
+      <ProgressStep aria-label="step1" onClick={action("Second Step clicked")}>
+        Second Step
+      </ProgressStep>
       <ProgressStep
         aria-label="step1"
-        label="First Step"
-        onClick={action("First Step clicked")}
-      />
-      <ProgressStep
-        aria-label="step1"
-        label="Second Step"
-        onClick={action("Second Step clicked")}
-      />
-      <ProgressStep
-        aria-label="step1"
-        label="Third Step"
         onClick={action("Third Step clicked")}
         current
-      />
-      <ProgressStep
-        aria-label="step1"
-        label="Fourth Step"
-        onClick={action("Fourth Step clicked")}
-      />
+      >
+        Third Step
+      </ProgressStep>
+      <ProgressStep aria-label="step1" onClick={action("Fourth Step clicked")}>
+        Fourth Step
+      </ProgressStep>
     </Progress>
 
     <Progress id={uuidv4()} mode="compact">
+      <ProgressStep aria-label="step1" onClick={action("First Step clicked")}>
+        First Step
+      </ProgressStep>
+      <ProgressStep aria-label="step1" onClick={action("Second Step clicked")}>
+        Second Step
+      </ProgressStep>
       <ProgressStep
         aria-label="step1"
-        label="First Step"
-        onClick={action("First Step clicked")}
-      />
-      <ProgressStep
-        aria-label="step1"
-        label="Second Step"
-        onClick={action("Second Step clicked")}
-      />
-      <ProgressStep
-        aria-label="step1"
-        label="Third Step"
         onClick={action("Third Step clicked")}
         current
-      />
-      <ProgressStep
-        aria-label="step1"
-        label="Fourth Step"
-        onClick={action("Fourth Step clicked")}
-      />
+      >
+        Third Step
+      </ProgressStep>
+      <ProgressStep aria-label="step1" onClick={action("Fourth Step clicked")}>
+        Fourth Step
+      </ProgressStep>
     </Progress>
   </Box>
 );

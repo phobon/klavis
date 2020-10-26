@@ -5,11 +5,9 @@ import { jsx } from "@emotion/react";
 import {
   compose,
   space,
-  color,
   borderRadius,
   position,
   SpaceProps,
-  ColorProps,
   BorderRadiusProps,
   PositionProps,
 } from "styled-system";
@@ -22,7 +20,7 @@ import {
   GridPositionProps,
 } from "@phobon/base";
 
-import { withTooltip, TooltipProps } from "../Tooltip";
+import { withTooltip } from "../Tooltip";
 
 const toggleSize = (props) => {
   const sizes = {
@@ -59,23 +57,15 @@ const toggleSize = (props) => {
   return sizes[props.size];
 };
 
-const toggleButtonSystem = compose(
-  space,
-  color,
-  borderRadius,
-  position,
-  gridPosition
-);
+const toggleButtonSystem = compose(space, borderRadius, position, gridPosition);
 
 interface IToggleProps {
   size?: "s" | "m";
   toggled?: boolean;
-  bg?: string;
+  bg?: string[];
 }
 
-export type ToggleProps = IToggleProps &
-  ColorProps &
-  TooltipProps &
+type InternalToggleProps = IToggleProps &
   SpaceProps &
   BorderRadiusProps &
   PositionProps &
@@ -83,7 +73,7 @@ export type ToggleProps = IToggleProps &
 
 const ToggleButton = styled("button", {
   shouldForwardProp,
-})<ToggleProps>(
+})<InternalToggleProps>(
   (props: any) => ({
     display: "flex",
     boxSizing: "border-box",
@@ -114,8 +104,17 @@ const ToggleButton = styled("button", {
   toggleButtonSystem
 );
 
-const StyledToggle: React.FunctionComponent<ToggleProps & any> = forwardRef(
-  ({ toggled, disabled, size, bg, ...props }, ref) => (
+export type ToggleProps = InternalToggleProps &
+  React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  >;
+
+const StyledToggle = forwardRef<HTMLButtonElement, ToggleProps>(
+  (
+    { toggled, disabled, size, bg = ["greens.6", "greens.5"], ...props },
+    ref
+  ) => (
     <ToggleButton
       aria-checked={toggled}
       aria-readonly={disabled}
@@ -168,10 +167,9 @@ const StyledToggle: React.FunctionComponent<ToggleProps & any> = forwardRef(
 StyledToggle.defaultProps = {
   size: "m",
   toggled: false,
-  bg: ["greens.6", "greens.5"],
   type: "button",
 };
 
-export const Toggle = withTooltip(StyledToggle);
+export const Toggle = withTooltip<HTMLButtonElement, ToggleProps>(StyledToggle);
 
 Toggle.displayName = "Toggle";

@@ -2,7 +2,7 @@
 import React from "react";
 
 import { Box } from "@phobon/base";
-import { Button } from "../Button";
+import { Button, ButtonProps } from "../Button";
 
 import { withTooltip } from "./withTooltip";
 
@@ -11,7 +11,7 @@ export default {
   title: "Components/withTooltip",
 };
 
-const TooltipButton = withTooltip(Button);
+const TooltipButton = withTooltip<HTMLButtonElement, ButtonProps>(Button);
 // const TooltipBox = withTooltip(Box);
 
 export const withPositioning = () => (

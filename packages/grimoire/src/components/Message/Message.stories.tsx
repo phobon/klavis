@@ -13,7 +13,7 @@ export default {
   title: "Components/Message",
 };
 
-const variants = [
+const variants: any = [
   "Info",
   "Question",
   "Success",

@@ -27,14 +27,14 @@ const buttonSizes = ["s", "m", "l"];
 const shapes = ["circle", "square"];
 
 export const withDifferentVariants = () =>
-  buttonVariants.map((a) => (
+  buttonVariants.map((a: any) => (
     <Button key={a} variant={a} mr={2} mb={2} onClick={action("clicked")}>
       {a}
     </Button>
   ));
 
 export const withADisabledState = () =>
-  buttonVariants.map((a) => (
+  buttonVariants.map((a: any) => (
     <Button
       key={a}
       variant={a}
@@ -48,7 +48,7 @@ export const withADisabledState = () =>
   ));
 
 export const withAToggledState = () =>
-  buttonVariants.map((a) => (
+  buttonVariants.map((a: any) => (
     <Button
       key={a}
       variant={a}
@@ -62,7 +62,7 @@ export const withAToggledState = () =>
   ));
 
 export const withDifferentSizes = () =>
-  buttonSizes.map((s) => (
+  buttonSizes.map((s: any) => (
     <Button
       key={s}
       mr={2}
@@ -73,7 +73,7 @@ export const withDifferentSizes = () =>
   ));
 
 export const withTooltips = () =>
-  buttonVariants.map((a) => (
+  buttonVariants.map((a: any) => (
     <Button
       key={a}
       variant={a}
@@ -87,7 +87,7 @@ export const withTooltips = () =>
   ));
 
 export const withDifferentShapes = () =>
-  shapes.map((s) => (
+  shapes.map((s: any) => (
     <Button key={s} mr={2} mb={2} shape={s} onClick={action("clicked")}>
       <User />
     </Button>
@@ -96,7 +96,7 @@ export const withDifferentShapes = () =>
 export const withCoverProps = () => (
   <Stack width={500} space={3}>
     <Button fullWidth>Default</Button>
-    {buttonSizes.map((s) => (
+    {buttonSizes.map((s: any) => (
       <Button
         key={s}
         size={s}
