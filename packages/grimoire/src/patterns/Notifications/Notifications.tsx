@@ -30,7 +30,7 @@ const notificationPositions = ({ notificationPosition }) => {
 const Lifebar = motion.custom(Box);
 
 export interface INotificationProps {
-  content: React.ElementType;
+  content: React.ReactNode;
   canDismiss: boolean;
   color?: string;
   showLife?: boolean;

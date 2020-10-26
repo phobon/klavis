@@ -13,9 +13,20 @@ import {
   DisplayProps,
 } from "styled-system";
 
-import { shouldForwardProp } from "@phobon/base";
+import {
+  shouldForwardProp,
+  gridPosition,
+  GridPositionProps,
+} from "@phobon/base";
 
-const spacerSystem = compose(color, space, minWidth, minHeight, display);
+const spacerSystem = compose(
+  color,
+  space,
+  minWidth,
+  minHeight,
+  display,
+  gridPosition
+);
 
 export interface ISpacerProps {
   direction?: "horizontal" | "vertical";
@@ -28,7 +39,9 @@ export type SpacerProps = ISpacerProps &
   SpaceProps &
   MinWidthProps &
   MinHeightProps &
-  DisplayProps;
+  DisplayProps &
+  GridPositionProps &
+  React.HTMLAttributes<HTMLSpanElement>;
 
 export const Spacer = styled("span", {
   shouldForwardProp,

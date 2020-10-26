@@ -2,7 +2,7 @@
 /** @jsx jsx */
 import React, { forwardRef } from "react";
 import { jsx } from "@emotion/react";
-import { Box, BoxProps } from "@phobon/base";
+import { Box, BoxProps, TypographyProps } from "@phobon/base";
 
 const variantColour = (props) => {
   const variants = {
@@ -60,11 +60,10 @@ export interface IMessageProps {
 
 export type MessageProps = IMessageProps &
   BoxProps &
+  TypographyProps &
   React.HTMLAttributes<HTMLDivElement>;
 
-export const Message: React.FunctionComponent<MessageProps & {
-  children?: React.ReactNode;
-} & any> = forwardRef<HTMLDivElement, MessageProps>(
+export const Message = forwardRef<HTMLDivElement, MessageProps>(
   ({ children, variant, glyph, ...props }, ref) => {
     return (
       <Box
