@@ -31,7 +31,7 @@ const Lifebar = motion.custom(Box);
 
 export interface INotificationProps {
   content: React.ReactNode;
-  canDismiss: boolean;
+  canDismiss?: boolean;
   color?: string;
   showLife?: boolean;
   timeout?: number;
