@@ -12,7 +12,7 @@ export const withTooltip = <T extends object, U>(
     ({ tooltip, tooltipDirection, offset, as, ...props }, ref) => {
       // If there is no tooltip to display here, then just render the WrappedComponent.
       if (!tooltip) {
-        return <WrappedComponent as={as} {...props} />;
+        return <WrappedComponent as={as} ref={ref} {...props} />;
       }
 
       const [
