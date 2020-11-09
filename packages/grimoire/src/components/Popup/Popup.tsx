@@ -113,6 +113,10 @@ const useAlignmentTransition = (
   const [exit] = useState(exitDirection(popupDirection, options.distance));
 
   useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
     if (container && container.current) {
       const b = container.current.getBoundingClientRect();
 
