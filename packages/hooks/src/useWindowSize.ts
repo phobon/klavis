@@ -7,13 +7,6 @@ export interface WindowSize {
   outerHeight?: number;
 }
 
-const getWindowSize = (): WindowSize => ({
-  innerWidth: window.innerWidth,
-  innerHeight: window.innerHeight,
-  outerWidth: window.outerWidth,
-  outerHeight: window.outerHeight,
-});
-
 export const useWindowSize = (): WindowSize => {
   const [windowSize, setWindowSize] = useState<WindowSize>(() => ({
     innerWidth: -1,
@@ -23,7 +16,18 @@ export const useWindowSize = (): WindowSize => {
   }));
 
   useEffect(() => {
-    const handleResize = () => setWindowSize(getWindowSize());
+    const handleResize = () => {
+      if (window == null) {
+        throw Error("window is undefined");
+      }
+
+      setWindowSize({
+        innerWidth: window.innerWidth,
+        innerHeight: window.innerHeight,
+        outerWidth: window.outerWidth,
+        outerHeight: window.outerHeight,
+      });
+    };
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
