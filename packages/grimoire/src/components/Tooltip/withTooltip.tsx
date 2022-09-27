@@ -5,9 +5,8 @@ import { destructureLayoutProps } from "@phobon/base";
 
 import { Tooltip, TooltipProps } from "./Tooltip";
 
-export type ExtractProps<T> = T extends React.FunctionComponent<infer X> ? X : never;
-
-export type ExtractRefType<T> = T extends React.FunctionComponent<infer X> ? X extends RefAttributes<infer R> ? R : never : never;
+type ExtractProps<T> = T extends React.FunctionComponent<infer X> ? X : never;
+type ExtractRefType<T> = T extends React.FunctionComponent<infer X> ? X extends RefAttributes<infer R> ? R : never : never;
 
 export const withTooltip = <T extends ExtractRefType<V>, V extends React.ElementType>(
   WrappedComponent: V
