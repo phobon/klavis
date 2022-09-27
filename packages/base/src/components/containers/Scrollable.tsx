@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import styled from "@emotion/styled";
 import themeGet from "@styled-system/theme-get";
 
@@ -85,13 +85,13 @@ export const ScrollableContainer = styled("div")<ScrollableProps>(
   boxSystem
 );
 
-export const Scrollable: React.FunctionComponent<ScrollableProps> = ({
+export const Scrollable: React.FunctionComponent<PropsWithChildren<ScrollableProps>> = ({
   minimal,
   scrollDirection,
   scrollbarColor,
   children,
   ...props
-}: ScrollableProps & { children?: any }) => {
+}) => {
   const [layoutProps, passthroughProps] = destructureLayoutProps(props);
 
   const {

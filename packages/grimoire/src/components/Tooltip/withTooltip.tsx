@@ -1,14 +1,18 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/react";
-import React from "react";
+import React, { RefAttributes } from "react";
 import { destructureLayoutProps } from "@phobon/base";
 
 import { Tooltip, TooltipProps } from "./Tooltip";
 
-export const withTooltip = <T extends object, U>(
-  WrappedComponent: React.ElementType
+export type ExtractProps<T> = T extends React.FunctionComponent<infer X> ? X : never;
+
+export type ExtractRefType<T> = T extends React.FunctionComponent<infer X> ? X extends RefAttributes<infer R> ? R : never : never;
+
+export const withTooltip = <T extends ExtractRefType<V>, V extends React.ElementType>(
+  WrappedComponent: V
 ) =>
-  React.forwardRef<T, U & TooltipProps & { as?: React.ElementType }>(
+  React.forwardRef<T, ExtractProps<V> & TooltipProps & { as?: React.ElementType }>(
     ({ tooltip, tooltipDirection, offset, as, ...props }, ref) => {
       // If there is no tooltip to display here, then just render the WrappedComponent.
       if (!tooltip) {

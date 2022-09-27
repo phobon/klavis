@@ -209,14 +209,14 @@ const buttonSystem = compose(
 export interface IButtonProps {
   toggled?: boolean;
   variant?:
-    | "primary"
-    | "secondary"
-    | "tertiary"
-    | "danger"
-    | "warning"
-    | "success"
-    | "link"
-    | "clean";
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "danger"
+  | "warning"
+  | "success"
+  | "link"
+  | "clean";
   shape?: "default" | "circle" | "square";
   size?: "s" | "m" | "l";
 }
@@ -277,7 +277,7 @@ const GrimoireButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   )
 );
 
-export const Button = withTooltip<HTMLButtonElement, ButtonProps>(
+export const Button = withTooltip(
   GrimoireButton
 );
 

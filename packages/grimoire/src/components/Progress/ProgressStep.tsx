@@ -206,7 +206,7 @@ const StyledProgressStep = React.forwardRef<
   }
 );
 
-export const ProgressStep = withTooltip<HTMLButtonElement, ProgressStepProps>(
+export const ProgressStep = withTooltip(
   StyledProgressStep
 );
 

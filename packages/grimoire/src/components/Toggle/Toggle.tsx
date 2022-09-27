@@ -170,6 +170,6 @@ StyledToggle.defaultProps = {
   type: "button",
 };
 
-export const Toggle = withTooltip<HTMLButtonElement, ToggleProps>(StyledToggle);
+export const Toggle = withTooltip(StyledToggle);
 
 Toggle.displayName = "Toggle";

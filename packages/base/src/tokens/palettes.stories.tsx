@@ -14,8 +14,7 @@ export default {
 
 const guidance = ["success", "error", "warning", "info"];
 
-const colourSet = { ...theme.colors };
-delete colourSet.accent;
+const { accent, ...colourSet } = theme.colors;
 
 const SmallColourBox = ({ children, ...props }: any) => (
   <Box fullHeight fullWidth borderRadius={4} {...props}>
@@ -247,9 +246,7 @@ export const withDarkSecondaryPalettes = () => {
 };
 
 export const withContrastRatios = () => {
-  const fixedColourSet = { ...colourSet };
-  delete fixedColourSet.guidance;
-  delete fixedColourSet.grayscale;
+  const { guidance, grayscale, ...fixedColourSet } = colourSet;
 
   const o: any = Object.keys(fixedColourSet)
     .map((c) => {

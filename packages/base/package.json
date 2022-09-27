@@ -26,7 +26,7 @@
   "peerDependencies": {
     "@emotion/react": "^11.x",
     "@emotion/styled": "^11.x",
-    "@phobon/tokens": "^1.x",
+    "@phobon/tokens": "*",
     "@styled-system/prop-types": "^5.0.x",
     "@styled-system/theme-get": "^5.0.x",
     "react": "^16.13.x || ^17.x",

@@ -1,5 +1,5 @@
 import { Interpolation, Theme } from "@emotion/react";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Text } from "./Text";
 
 import { TypographyProps } from "./typographyProps";
@@ -47,10 +47,10 @@ const headingProps = (heading: string): TypographyProps => {
   return headings[heading];
 };
 
-export const Heading: React.FunctionComponent<TypographyProps & {
+export const Heading: React.FunctionComponent<PropsWithChildren<TypographyProps & {
   as?: React.ElementType;
   css?: Interpolation<Theme>;
-}> = ({ children, as, ...props }) => {
+}>> = ({ children, as, ...props }) => {
   const rest = headingProps(as as string);
   return (
     <Text as={as} {...rest} {...props}>

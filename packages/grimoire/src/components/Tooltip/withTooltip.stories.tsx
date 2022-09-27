@@ -11,8 +11,7 @@ export default {
   title: "Components/withTooltip",
 };
 
-const TooltipButton = withTooltip<HTMLButtonElement, ButtonProps>(Button);
-// const TooltipBox = withTooltip(Box);
+const TooltipButton = withTooltip(Button);
 
 export const withPositioning = () => (
   <Box fullWidth fullHeight pt={5}>

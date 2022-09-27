@@ -27,7 +27,7 @@ const notificationPositions = ({ notificationPosition }) => {
   return positions[notificationPosition];
 };
 
-const Lifebar = motion.custom(Box);
+const Lifebar = motion(Box);
 
 export interface INotificationProps {
   content: React.ReactNode;
