@@ -1,6 +1,6 @@
 {
   "name": "@phobon/base",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "Essential compositional components using CSS-in-JS and styled-system",
   "main": "dist/index.js",
   "module": "dist/index.es.js",

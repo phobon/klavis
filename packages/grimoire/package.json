@@ -1,6 +1,6 @@
 {
   "name": "@phobon/grimoire",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Component patterns using @phobon/base",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
