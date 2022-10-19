@@ -1,6 +1,6 @@
 {
   "name": "@phobon/base",
-  "version": "3.2.2",
+  "version": "3.2.4",
   "description": "Essential compositional components using CSS-in-JS and styled-system",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
@@ -29,10 +29,10 @@
     "@phobon/tokens": "*",
     "@styled-system/prop-types": "^5.0.x",
     "@styled-system/theme-get": "^5.0.x",
+    "framer-motion": "^7.4.0",
     "react": "^18.x",
     "react-dom": "^18.x",
-    "styled-system": "^5.1.x",
-    "framer-motion": "^7.4.0"
+    "styled-system": "^5.1.x"
   },
   "repository": {
     "type": "git",
