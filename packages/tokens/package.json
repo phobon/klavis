@@ -14,5 +14,6 @@
   "scripts": {
     "build": "rollup -c",
     "prepare": "yarn build"
-  }
+  },
+  "gitHead": "a584815d414722d26e88edbe6d960a5201eba42b"
 }

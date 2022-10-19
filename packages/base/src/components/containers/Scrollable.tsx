@@ -7,6 +7,8 @@ import { Box, BoxProps, boxSystem } from "./Box";
 import { destructureLayoutProps } from "../../utils";
 import { containerStyles } from "./containerProps";
 
+import { motion } from "framer-motion";
+
 const scrollDirectionProps = ({ scrollDirection = "vertical" }) => {
   const scrollDirections = {
     vertical: {
@@ -72,7 +74,7 @@ export interface IScrollableProps {
   scrollbarColor?: string;
 }
 export type ScrollableProps = IScrollableProps & BoxProps;
-export const ScrollableContainer = styled("div")<ScrollableProps>(
+export const ScrollableContainer = motion(styled("div")<ScrollableProps>(
   {
     position: "relative",
     overflow: "hidden",
@@ -83,7 +85,7 @@ export const ScrollableContainer = styled("div")<ScrollableProps>(
   scrollDirectionProps,
   minimalStyle,
   boxSystem
-);
+));
 
 export const Scrollable: React.FunctionComponent<PropsWithChildren<ScrollableProps>> = ({
   minimal,
@@ -116,6 +118,7 @@ export const Scrollable: React.FunctionComponent<PropsWithChildren<ScrollablePro
       minimal={minimal}
       scrollDirection={scrollDirection}
       scrollbarColor={scrollbarColor}
+      layoutScroll
       {...containerProps}
     >
       <Box

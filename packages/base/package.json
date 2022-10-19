@@ -29,9 +29,10 @@
     "@phobon/tokens": "*",
     "@styled-system/prop-types": "^5.0.x",
     "@styled-system/theme-get": "^5.0.x",
-    "react": "^16.13.x || ^17.x",
-    "react-dom": "^16.13.x || ^17.x",
-    "styled-system": "^5.1.x"
+    "react": "^18.x",
+    "react-dom": "^18.x",
+    "styled-system": "^5.1.x",
+    "framer-motion": "^7.4.0"
   },
   "repository": {
     "type": "git",
@@ -45,5 +46,6 @@
     "setupFiles": [
       "jest-localstorage-mock"
     ]
-  }
+  },
+  "gitHead": "a584815d414722d26e88edbe6d960a5201eba42b"
 }

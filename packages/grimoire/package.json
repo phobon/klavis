@@ -29,8 +29,9 @@
     "@phobon/hooks": "*",
     "@phobon/tokens": "*",
     "framer-motion": "^7.4.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^18.x",
+    "react-dom": "^18.x",
     "styled-system": "^5.x"
-  }
+  },
+  "gitHead": "a584815d414722d26e88edbe6d960a5201eba42b"
 }
